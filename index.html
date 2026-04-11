@@ -99,6 +99,53 @@
 }
 </style>
 <!-- ============================================
+     LOADER HIDE SCRIPT
+     ============================================ -->
+<script>
+(function() {
+  var loader = document.getElementById('pageLoader');
+  var bar    = loader ? loader.querySelector('.progress-bar') : null;
+  var start  = Date.now();
+  var minDuration = 1200; // ms minimum affichage
+
+  // Animer la barre de progression
+  if (bar) {
+    var progress = 0;
+    var interval = setInterval(function() {
+      progress = Math.min(progress + Math.random() * 18, 90);
+      bar.style.width = progress + '%';
+      if (progress >= 90) clearInterval(interval);
+    }, 120);
+  }
+
+  function hideLoader() {
+    var elapsed = Date.now() - start;
+    var delay   = Math.max(0, minDuration - elapsed);
+    setTimeout(function() {
+      if (bar) bar.style.width = '100%';
+      setTimeout(function() {
+        if (loader) {
+          loader.classList.add('hide');
+          // Supprimer du DOM après la transition
+          loader.addEventListener('transitionend', function() {
+            loader.style.display = 'none';
+          }, { once: true });
+        }
+      }, 200);
+    }, delay);
+  }
+
+  if (document.readyState === 'complete') {
+    hideLoader();
+  } else {
+    window.addEventListener('load', hideLoader);
+    // Sécurité : masquer après 5s max même si load ne se déclenche pas
+    setTimeout(hideLoader, 5000);
+  }
+})();
+</script>
+
+<!-- ============================================
      NAVIGATION
      ============================================ -->
 <div id="navOverlay" class="nav-overlay"></div>
@@ -2167,20 +2214,191 @@
 <!-- ============================================
      PARTENAIRES
      ============================================ -->
+<!-- ============================================
+     SECTION : NOS PARTENAIRES — LOGO CAROUSEL
+     ============================================ -->
 <section class="partners-section" id="partners">
   <div class="container">
-    <div class="section-header">
-      <div class="section-badge reveal">Ils nous font confiance</div>
-      <h2 class="section-title reveal">Nos partenaires <em>de référence</em></h2>
+    <div class="partners-heading">
+      <span class="partners-eyebrow">✦ Ils nous font confiance</span>
+      <h2 class="partners-title">Nos <em>Partenaires</em></h2>
+      <div class="partners-title-line"></div>
     </div>
-    <div class="partners-grid">
-      <div class="partner-card"><div class="partner-logo-placeholder">✈️</div><div class="partner-name">Aéroport Monastir</div><div class="partner-sector">Infrastructure Aéroportuaire</div><div class="partner-desc">Poste de contrôle livré dans le délai.</div></div>
-      <div class="partner-card"><div class="partner-logo-placeholder">🛫</div><div class="partner-name">Nouvelair</div><div class="partner-sector">Aviation Commerciale</div><div class="partner-desc">Cabines techniques pour opérations aériennes.</div></div>
-      <div class="partner-card"><div class="partner-logo-placeholder">🇯🇵</div><div class="partner-name">Ambassade du Japon</div><div class="partner-sector">Diplomatique & Institutionnel</div><div class="partner-desc">Structures modulaires pour représentation officielle.</div></div>
-      <div class="partner-card"><div class="partner-logo-placeholder">🏨</div><div class="partner-name">Azurex</div><div class="partner-sector">Industrie & Resort</div><div class="partner-desc">Smart Cabin installée, attraction vedette du resort.</div></div>
+  </div>
+
+  <!-- Bande défilante -->
+  <div class="partners-track-wrapper">
+    <div class="partners-track">
+      <!-- Série 1 -->
+      <div class="partner-logo-item"><img src="images/partenaires/desertjoy.png" alt="Desert Joy" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/energy china.jpg" alt="Energy China" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/faculte_de_medecin_dentaire_monastir.png" alt="Faculté de Médecine Dentaire Monastir" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/hergla_park.png" alt="Hergla Park" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/hopital_universitaire_fattouma_bourguiba_monastir.png" alt="Hôpital Universitaire Fattouma Bourguiba" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/horizon_school_of_digital_technologies.png" alt="Horizon School of Digital Technologies" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/hotel_mahdia_beach_and_aqua_park.png" alt="Hôtel Mahdia Beach & Aqua Park" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/Le_moteur.jpg" alt="Le Moteur" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/ministere_education.png" alt="Ministère de l'Éducation" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/novation_city.jpg" alt="Novation City" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/pharmacie_centrale_tunisie.jpg" alt="Pharmacie Centrale de Tunisie" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/sarraj_immobilier.png" alt="Sarraj Immobilier" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/soroubat.png" alt="Soroubat" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/stam.png" alt="STAM" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/staroil.jpg" alt="Staroil" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/steg.png" alt="STEG" loading="lazy"></div>
+      <!-- Série 2 — doublon pour boucle sans coupure -->
+      <div class="partner-logo-item"><img src="images/partenaires/desertjoy.png" alt="Desert Joy" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/energy china.jpg" alt="Energy China" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/faculte_de_medecin_dentaire_monastir.png" alt="Faculté de Médecine Dentaire Monastir" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/hergla_park.png" alt="Hergla Park" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/hopital_universitaire_fattouma_bourguiba_monastir.png" alt="Hôpital Universitaire Fattouma Bourguiba" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/horizon_school_of_digital_technologies.png" alt="Horizon School of Digital Technologies" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/hotel_mahdia_beach_and_aqua_park.png" alt="Hôtel Mahdia Beach & Aqua Park" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/Le_moteur.jpg" alt="Le Moteur" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/ministere_education.png" alt="Ministère de l'Éducation" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/novation_city.jpg" alt="Novation City" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/pharmacie_centrale_tunisie.jpg" alt="Pharmacie Centrale de Tunisie" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/sarraj_immobilier.png" alt="Sarraj Immobilier" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/soroubat.png" alt="Soroubat" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/stam.png" alt="STAM" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/staroil.jpg" alt="Staroil" loading="lazy"></div>
+      <div class="partner-logo-item"><img src="images/partenaires/steg.png" alt="STEG" loading="lazy"></div>
     </div>
   </div>
 </section>
+
+<style>
+/* ===== PARTENAIRES — CAROUSEL INFINI ===== */
+.partners-section {
+  background: #ffffff;
+  padding: 3.5rem 0 3rem;
+  overflow: hidden;
+}
+
+/* Titre */
+.partners-heading {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.partners-eyebrow {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary, #f5da1a);
+  background: rgba(245, 218, 26, 0.1);
+  border: 1px solid rgba(245, 218, 26, 0.35);
+  border-radius: 2rem;
+  padding: 0.3rem 1rem;
+  margin-bottom: 0.9rem;
+}
+.partners-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #0f0e0a;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+}
+.partners-title em {
+  font-style: italic;
+  color: var(--primary, #f5da1a);
+  font-family: 'DM Serif Display', serif;
+}
+.partners-title-line {
+  width: 56px;
+  height: 3px;
+  background: var(--primary, #f5da1a);
+  border-radius: 2px;
+  margin: 0 auto 0;
+}
+
+.partners-track-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  /* masques de fondu sur les bords */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  margin-top: 2.5rem;
+}
+
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  animation: partnersScroll 38s linear infinite;
+}
+
+.partners-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes partnersScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.partner-logo-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 80px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(220, 213, 195, 0.6);
+  padding: 12px 18px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.partner-logo-item:hover {
+  border-color: var(--primary, #f5da1a);
+  box-shadow: 0 6px 20px rgba(245, 218, 26, 0.2);
+  transform: translateY(-3px);
+}
+
+.partner-logo-item img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(60%) opacity(0.75);
+  transition: filter 0.3s ease;
+}
+
+.partner-logo-item:hover img {
+  filter: grayscale(0%) opacity(1);
+}
+
+@media (max-width: 768px) {
+  .partner-logo-item {
+    width: 120px;
+    height: 60px;
+    padding: 8px 12px;
+  }
+  .partners-track {
+    gap: 2rem;
+    animation-duration: 28s;
+  }
+}
+</style>
 
 <!-- ============================================
      SAV & GARANTIE
@@ -2241,7 +2459,7 @@
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
         <div>
-          <div class="contact-item-title"><a href="mailto:mettec@gbm.tn">mettec@gbm.tn</a></div>
+          <div class="contact-item-title"><a href="/cdn-cgi/l/email-protection#d7bab2a3a3b2b497b0b5baf9a3b9"><span class="__cf_email__" data-cfemail="4a272f3e3e2f290a2d2827643e24">[email&#160;protected]</span></a></div>
           <div class="contact-item-val">Réponse sous 24h ouvrées</div>
         </div>
       </div>
@@ -2316,7 +2534,7 @@
   <div><div class="footer-col-title">Société</div><ul class="footer-links"><li><a href="processus.html">Notre processus</a></li><li><a href="#">Certifications</a></li><li><a href="#partners">Références</a></li><li><a href="#sav">SAV & Garantie</a></li><li><a href="#configurator">Configurateur</a></li></ul></div>
   <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:+21636405822">+216 36 40 58 22</a></li><li><a href="tel:+21629225405">+216 29 22 54 05</a></li>
 <li>
-  <a href="mailto:mettec@gbm.tn">mettec@gbm.tn</a>
+  <a href="/cdn-cgi/l/email-protection#9ff2faebebfafcdff8fdf2b1ebf1"><span class="__cf_email__" data-cfemail="5e333b2a2a3b3d1e393c33702a30">[email&#160;protected]</span></a>
 </li>    <li><a href="#">Monastir, Tunisie</a></li><li><a href="#contact">Parlons de votre Idée</a></li></ul></div>
  
   <div class="footer-bottom"><span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span><span class="footer-copy">Design by <strong>AMH</strong></span><div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
@@ -2419,7 +2637,7 @@
   .footer-nl-btn { border-radius: 0 0 .8rem .8rem; text-align: center; }
 }
 </style>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function handleNewsletter(e) {
   e.preventDefault();
   document.getElementById('nlSuccess').classList.add('show');
@@ -2768,14 +2986,17 @@ function handleNewsletter(e) {
     if (opened && msgBox.children.length === 0) renderWelcome();
   });
   closeB.addEventListener('click', () => { opened = false; win.classList.remove('open'); btn.classList.remove('active'); });
+
+  // Fermer en cliquant en dehors
   document.addEventListener('click', (e) => {
-    if (opened && !win.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
-      opened = false; win.classList.remove('open'); btn.classList.remove('active');
+    if (opened && !win.contains(e.target) && !btn.contains(e.target)) {
+      opened = false;
+      win.classList.remove('open');
+      btn.classList.remove('active');
     }
   });
 })();
 </script>
 
-<script src="script1.js"></script>
 </body>
 </html>
