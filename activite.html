@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notre Activité — METTEC | Préfabrication · Construction · Mobilier</title>
+  <meta name="description" content="METTEC : trois univers d'excellence — préfabrication métallique, construction et installation sur site, et mobilier artisanal. Monastir, Tunisie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style1.css">
+  <style>
+
+    /* ──────────────────────────────────────────
+       HERO — copie fidèle de index.html
+    ────────────────────────────────────────── */
+    .act-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--gray-800) 40%, var(--black) 100%);
+      overflow: hidden;
+      padding: 6rem 1.5rem 4rem;
+    }
+    .act-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(245,218,26,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,218,26,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .act-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--white));
+      pointer-events: none;
+    }
+    .act-hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(15,14,10,0.35);
+    }
+    .act-hero-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      max-width: 960px;
+      color: var(--white);
+    }
+    .act-hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(245,218,26,0.12);
+      border: 1px solid rgba(245,218,26,0.3);
+      padding: .5rem 1.25rem; border-radius: 50px;
+      font-family: var(--font-mono); font-size: .78rem;
+      font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+      margin-bottom: 1.5rem; backdrop-filter: blur(10px);
+    }
+    .act-hero-badge .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #4ade80; animation: pulse-dot 2s ease infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)}
+    }
+    .act-hero-title {
+      font-family: var(--font-main);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -.04em; margin-bottom: 1.5rem;
+    }
+    .act-hero-title em {
+      font-family: var(--font-serif); font-style: italic;
+      font-weight: 400; color: var(--primary-light); display: block;
+    }
+    .act-hero-desc {
+      font-family: var(--font-mono);
+      font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+      opacity: .85; max-width: 680px;
+      margin: 0 auto 2.5rem; line-height: 1.9;
+    }
+    .act-hero-chips {
+      display: flex; justify-content: center;
+      gap: .75rem; margin-bottom: 2rem; flex-wrap: wrap;
+    }
+    .act-hero-buttons {
+      display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .act-hero-scroll {
+      position: absolute; bottom: 3rem; left: 50%;
+      transform: translateX(-50%); z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+      color: rgba(255,255,255,0.5); font-family: var(--font-mono);
+      font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
+      animation: bounce-scroll 2s ease infinite; cursor: pointer;
+    }
+    .act-hero-scroll svg { width: 20px; height: 20px; stroke: currentColor; }
+    @keyframes bounce-scroll {
+      0%,100%{transform:translateX(-50%) translateY(0)}
+      50%{transform:translateX(-50%) translateY(-8px)}
+    }
+
+    /* ── STICKY TABS ── */
+    .act-tabs-wrap {
+      position: sticky; top: 72px; z-index: 80;
+      background: var(--cream);
+      border-bottom: 1px solid var(--gray-200);
+      box-shadow: 0 2px 20px rgba(15,14,10,.06);
+    }
+    .act-tabs {
+      display: flex; max-width: 1280px; margin: 0 auto;
+      padding: 0 2rem; overflow-x: auto; scrollbar-width: none;
+    }
+    .act-tabs::-webkit-scrollbar { display: none; }
+    .act-tab {
+      display: flex; align-items: center; gap: .55rem;
+      padding: 1.1rem 1.8rem;
+      font-family: var(--font-mono); font-size: .73rem;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--gray-600);
+      border-bottom: 2.5px solid transparent;
+      white-space: nowrap; cursor: pointer;
+      transition: var(--transition); text-decoration: none;
+    }
+    .act-tab:hover { color: var(--accent); }
+    .act-tab.active { color: var(--accent); border-bottom-color: var(--primary); }
+    .act-tab-num {
+      font-size: .62rem; color: var(--primary);
+      background: rgba(245,218,26,.15);
+      width: 20px; height: 20px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-weight: 700;
+    }
+
+    /* ── CHAPTER INTRO ── */
+    .chapter-intro { padding: 7rem 0 3rem; }
+    .chapter-intro-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 2rem;
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 5rem; align-items: center;
+    }
+    .chapter-intro-inner.rev { direction: rtl; }
+    .chapter-intro-inner.rev > * { direction: ltr; }
+    .chapter-label {
+      font-family: var(--font-mono); font-size: .68rem;
+      letter-spacing: .28em; text-transform: uppercase; color: var(--primary-dark);
+      display: flex; align-items: center; gap: .75rem; margin-bottom: 1.2rem;
+    }
+    .chapter-label::before { content:''; display:block; width:36px; height:2px; background:var(--primary); }
+    .chapter-big-num {
+      font-family: var(--font-serif);
+      font-size: clamp(4rem,8vw,8rem); line-height: .9;
+      color: var(--gray-200); margin-bottom: -1.2rem; display: block;
+    }
+    .chapter-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem,4vw,3.4rem); line-height: 1.1;
+      color: var(--accent); margin-bottom: 1.4rem;
+    }
+    .chapter-title em { font-style: italic; color: var(--primary-dark); }
+    .chapter-desc { color: var(--gray-600); font-size: 1.03rem; line-height: 1.8; margin-bottom: 2rem; }
+
+    /* dark chapter */
+    .chapter-dark { background: var(--accent); }
+    .chapter-dark .chapter-big-num { color: rgba(245,218,26,.1); }
+    .chapter-dark .chapter-title { color: var(--cream); }
+    .chapter-dark .chapter-title em { color: var(--primary); }
+    .chapter-dark .chapter-label { color: var(--primary); }
+    .chapter-dark .chapter-label::before { background: var(--primary); }
+    .chapter-dark .chapter-desc { color: rgba(250,246,236,.6); }
+
+    /* photo box */
+    .chapter-visual { position: relative; }
+    .chapter-vis-box {
+      aspect-ratio: 4/3; border-radius: 1.5rem; overflow: hidden; position: relative;
+    }
+    .chapter-vis-box img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .6s ease;
+    }
+    .chapter-vis-box:hover img { transform: scale(1.04); }
+    .chapter-vis-box::before {
+      content: '';
+      position: absolute; bottom: -16px; right: -16px;
+      width: 120px; height: 120px;
+      background: var(--primary); border-radius: 1rem; z-index: -1;
+    }
+    .chapter-dark .chapter-vis-box::before { background: rgba(245,218,26,.3); }
+
+    /* ── SECTION HEADER ── */
+    .sec-head {
+      max-width: 1280px; margin: 0 auto 3.5rem; padding: 0 2rem;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem;
+    }
+    .sec-head-left { max-width: 600px; }
+    .sec-badge {
+      display: inline-block; background: var(--primary); color: var(--accent);
+      font-family: var(--font-mono); font-size: .64rem; letter-spacing: .2em;
+      text-transform: uppercase; padding: .35rem .9rem; border-radius: 2rem;
+      font-weight: 700; margin-bottom: 1rem;
+    }
+    .sec-head-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem,2.8vw,2.4rem); color: var(--accent); line-height: 1.15;
+    }
+    .sec-head-title em { color: var(--primary-dark); font-style: italic; }
+    .sec-head-count { font-family: var(--font-mono); font-size: .72rem; color: var(--gray-600); letter-spacing: .1em; }
+    .sec-head.dark .sec-head-title { color: var(--cream); }
+    .sec-head.dark .sec-head-count { color: rgba(250,246,236,.4); }
+
+    /* ── PRODUCT CARDS ── */
+    .products-section { padding: 1rem 0 7rem; }
+    .products-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    .products-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+
+    .prod-card {
+      background: var(--cream); border: 1.5px solid var(--gray-200);
+      border-radius: 1.25rem; overflow: hidden; display: flex; flex-direction: column;
+      transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s, border-color .35s;
+    }
+    .prod-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(15,14,10,.12); border-color: var(--primary); }
+
+    .prod-card-photo { height: 220px; position: relative; overflow: hidden; flex-shrink: 0; }
+    .prod-card-photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease;
+    }
+    .prod-card:hover .prod-card-photo img { transform: scale(1.06); }
+    .prod-card-tag {
+      position: absolute; top: 1rem; left: 1rem;
+      background: var(--primary); color: var(--accent);
+      font-family: var(--font-mono); font-size: .62rem; letter-spacing: .12em;
+      text-transform: uppercase; padding: .3rem .75rem; border-radius: 2rem; font-weight: 700;
+    }
+    .prod-card-body { padding: 1.6rem; flex: 1; display: flex; flex-direction: column; }
+    .prod-card-name { font-family: var(--font-main); font-weight: 700; font-size: 1.08rem; color: var(--accent); margin-bottom: .5rem; }
+    .prod-card-desc { font-size: .88rem; color: var(--gray-600); line-height: 1.7; flex: 1; margin-bottom: 1.2rem; }
+    .prod-card-feats { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.4rem; }
+    .prod-card-feats li {
+      font-size: .72rem; font-family: var(--font-mono); color: var(--gray-600);
+      background: var(--gray-100); padding: .25rem .65rem; border-radius: 2rem; letter-spacing: .04em;
+    }
+    .prod-card-cta {
+      display: inline-flex; align-items: center; gap: .45rem;
+      font-family: var(--font-mono); font-size: .73rem; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent); font-weight: 700;
+      border-bottom: 2px solid var(--primary); padding-bottom: .1rem;
+      transition: var(--transition); width: fit-content;
+    }
+    .prod-card-cta:hover { color: var(--primary-dark); gap: .75rem; }
+
+    /* dark */
+    .prod-card.dark { background: #1a1812; border-color: rgba(245,218,26,.12); }
+    .prod-card.dark:hover { border-color: var(--primary); }
+    .prod-card.dark .prod-card-name { color: var(--cream); }
+    .prod-card.dark .prod-card-desc { color: rgba(250,246,236,.55); }
+    .prod-card.dark .prod-card-feats li { background: rgba(245,218,26,.08); color: rgba(250,246,236,.6); }
+    .prod-card.dark .prod-card-cta { color: var(--cream); }
+    .prod-card.dark .prod-card-cta:hover { color: var(--primary); }
+
+    /* featured yellow */
+    .prod-card.featured { background: var(--primary); border-color: var(--primary-dark); }
+    .prod-card.featured .prod-card-name,
+    .prod-card.featured .prod-card-desc { color: var(--accent); }
+    .prod-card.featured .prod-card-feats li { background: rgba(15,14,10,.1); color: var(--accent); }
+    .prod-card.featured .prod-card-cta { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* ── SHOWCASE ── */
+    .showcase-wrap { padding: 2.5rem 0 0; }
+    .showcase-card {
+      background: var(--accent); border-radius: 2rem; padding: 4rem 5%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .showcase-card::after {
+      content: ''; position: absolute; right: -80px; top: -80px; width: 420px; height: 420px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(245,218,26,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .showcase-label { font-family: var(--font-mono); font-size: .68rem; color: var(--primary); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 1rem; }
+    .showcase-title { font-family: var(--font-serif); font-size: clamp(1.8rem,3vw,2.8rem); color: var(--cream); line-height: 1.15; margin-bottom: 1.4rem; }
+    .showcase-title em { color: var(--primary); font-style: italic; }
+    .showcase-desc { color: rgba(250,246,236,.6); line-height: 1.8; margin-bottom: 2rem; }
+    .showcase-grid-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .sgm-item { background: rgba(245,218,26,.06); border: 1px solid rgba(245,218,26,.15); border-radius: 1rem; padding: 1.2rem 1.4rem; }
+    .sgm-icon { font-size: 1.6rem; margin-bottom: .5rem; }
+    .sgm-name { font-size: .88rem; font-weight: 700; color: var(--cream); margin-bottom: .25rem; }
+    .sgm-sub { font-size: .75rem; color: rgba(250,246,236,.45); line-height: 1.5; }
+
+    /* ── MEUBLES MASONRY ── */
+    .meubles-masonry { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; }
+    .meubles-masonry .prod-card:nth-child(1) { grid-column: span 2; }
+    .meubles-masonry .prod-card:nth-child(6) { grid-column: span 2; }
+
+    /* ── CTA BAND ── */
+    .act-cta-band { background: var(--primary); padding: 5rem 0; text-align: center; position: relative; overflow: hidden; }
+    .act-cta-band::before {
+      content: 'METTEC'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      font-family: var(--font-serif); font-size: clamp(80px,18vw,200px);
+      color: rgba(15,14,10,.07); pointer-events: none; white-space: nowrap; letter-spacing: -.04em;
+    }
+    .act-cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 0 2rem; }
+    .act-cta-band h2 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); color: var(--accent); margin-bottom: 1rem; line-height: 1.1; }
+    .act-cta-band p { color: rgba(15,14,10,.7); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2.4rem; }
+    .act-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-act-dark {
+      background: var(--accent); color: var(--primary);
+      padding: .9rem 2.2rem; border-radius: .6rem;
+      font-family: var(--font-mono); font-size: .8rem; letter-spacing: .1em;
+      text-transform: uppercase; font-weight: 700; transition: var(--transition); text-decoration: none;
+    }
+    .btn-act-dark:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,14,10,.25); }
+    .btn-act-outline {
+      background: transparent; color: var(--accent); padding: .9rem 2.2rem; border-radius: .6rem;
+      border: 2px solid var(--accent); font-family: var(--font-mono); font-size: .8rem;
+      letter-spacing: .1em; text-transform: uppercase; font-weight: 700;
+      transition: var(--transition); text-decoration: none;
+    }
+    .btn-act-outline:hover { background: var(--accent); color: var(--primary); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+    .reveal.in { opacity:1; transform:none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .chapter-intro-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .chapter-intro-inner.rev { direction: ltr; }
+      .chapter-visual { display: none; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .showcase-card { grid-template-columns: 1fr; }
+      .meubles-masonry { grid-template-columns: 1fr 1fr; }
+      .meubles-masonry .prod-card:nth-child(1),
+      .meubles-masonry .prod-card:nth-child(6) { grid-column: span 1; }
+      .sec-head { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 640px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .meubles-masonry { grid-template-columns: 1fr; }
+      .act-tabs { padding: 0 1rem; }
+      .act-tab { padding: .9rem 1rem; font-size: .65rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="pageLoader">
+  <img src="images/mascotte-mettec.png" alt="METTEC" class="loader-mascot" onerror="this.style.opacity='0'">
+  <div class="loader-dots"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div>
+  <div class="loader-tagline">Bâti pour l'Éternité</div>
+  <div class="loader-progress"><div class="progress-bar"></div></div>
+</div>
+<style>
+#pageLoader{position:fixed;inset:0;z-index:99999;background:var(--cream,#faf6ec);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .6s ease,transform .5s ease;}
+#pageLoader.hide{opacity:0;pointer-events:none;transform:scale(1.04);}
+.loader-mascot{width:clamp(200px,18vw,260px);animation:mascotBounce 1.4s ease infinite;filter:drop-shadow(0 8px 24px rgba(15,14,10,.12));}
+@keyframes mascotBounce{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+.loader-dots{display:flex;gap:8px;align-items:center;}.loader-dot{width:8px;height:8px;border-radius:50%;background:#f5da1a;animation:ldot 1.2s ease infinite;}
+.loader-dot:nth-child(2){animation-delay:.2s;width:10px;height:10px;}.loader-dot:nth-child(3){animation-delay:.4s;}
+@keyframes ldot{0%,80%,100%{transform:scale(.6);background:#e8e0c8}40%{transform:scale(1.2);background:#f5da1a}}
+.loader-tagline{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#6b6550;}
+.loader-progress{width:200px;height:3px;background:#e8e0c8;border-radius:2px;overflow:hidden;}
+.progress-bar{height:100%;background:linear-gradient(90deg,#f5da1a,#c4ad00);width:0%;border-radius:2px;transition:width .3s ease;}
+:root{--primary:#f5da1a;--primary-dark:#c4ad00;--primary-light:#fef48a;--accent:#0f0e0a;--cream:#faf6ec;--white:#faf6ec;--black:#0f0e0a;--gray-100:#f4eedc;--gray-200:#e8e0c8;--gray-300:#d9d0b5;--gray-600:#6b6550;--gray-700:#2e2b22;--gray-800:#2f2b20;--font-main:'Syne','Inter',sans-serif;--font-mono:'Space Mono',monospace;--font-serif:'DM Serif Display',Georgia,serif;--transition:all .3s cubic-bezier(.4,0,.2,1);--radius:.75rem;--radius-sm:.375rem;--radius-lg:1rem;--shadow-lg:0 10px 15px -3px rgb(0 0 0/.1);}
+</style>
+
+<!-- NAV -->
+<div id="navOverlay" class="nav-overlay"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo-mettec.png" alt="METTEC" class="nav-logo-img" style="height:80px;width:80px;object-fit:contain;">
+      <div><div class="nav-logo-text"></div><span class="nav-logo-sub"></span></div>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+    
+    <ul class="nav-links" id="navLinks">
+      <button class="menu-close" id="menuClose" aria-label="Fermer">✕</button>
+      <li><a href="index.html" class="nav-link">Accueil</a></li>
+      <li><a href="apropos.html" class="nav-link">A propos</a></li>
+      <li class="nav-dropdown">
+        <span class="nav-link nav-dropdown-toggle">Gammes <span class="chevron">▾</span></span>
+        <div class="nav-dropdown-menu">
+          <a href="gammes.html" class="nav-dropdown-item"><div class="item-icon">🏗️</div><div><div style="font-weight:700;font-size:.85rem">Gamme Standard</div><div style="font-size:.72rem">Industriel · Gardiennage</div></div></a>
+          <a href="gammes.html" class="nav-dropdown-item"><div class="item-icon">🏠</div><div><div style="font-weight:700;font-size:.85rem">Gamme Habitation</div><div style="font-size:.72rem">Comfort · Smart · Autonome</div></div></a>
+          <a href="gammes.html" class="nav-dropdown-item"><div class="item-icon">🛡️</div><div><div style="font-weight:700;font-size:.85rem">Gamme Sécurité</div><div style="font-size:.72rem">Postes de garde · Contrôle</div></div></a>
+          <a href="gammes.html" class="nav-dropdown-item"><div class="item-icon">✨</div><div><div style="font-weight:700;font-size:.85rem">Gamme Extra</div><div style="font-size:.72rem">Bar · Coffee shop · Sanitaire</div></div></a>
+        </div>
+      </li>
+      <li><a href="processus.html" class="nav-link">Processus</a></li>
+      <li><a href="realisations.html" class="nav-link">Réalisations</a></li>
+      <li><a href="activite.html" class="nav-link" style="color:var(--primary-dark);font-weight:700;">Activités</a></li>
+      <li><a href="faq.html" class="nav-link">FAQ</a></li>
+      <li><a href="vision.html" class="nav-link">Vision</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="index.html#contact" class="nav-link nav-cta"> Parlons de Votre Idée →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ════════════════════════════
+     HERO — identique à index
+═════════════════════════════ -->
+<section class="act-hero">
+  <div class="act-hero-overlay"></div>
+  <div class="act-hero-content">
+    
+    <h1 class="act-hero-title">
+      Trois savoir-faire,
+      <em>une seule adresse.</em>
+    </h1>
+    <p class="act-hero-desc">
+      METTEC maîtrise trois univers complémentaires : la préfabrication de précision hors-site,
+      la construction et l'installation sur chantier, et l'art du mobilier artisanal sur mesure.
+      De l'atelier à votre espace de vie — tout est signé METTEC.
+    </p>
+    <div class="act-hero-chips">
+      <span class="cert-chip">🏗️ Pré-fabrication</span>
+      <span class="cert-chip">🏢 Construction &amp; Installation</span>
+      <span class="cert-chip">🪑 Meubles &amp; Aménagement</span>
+      <span class="cert-chip">🏅 ISO 9001 · Garantie 3 ans</span>
+    </div>
+    <div class="act-hero-buttons">
+      <a href="#tabs-anchor" class="btn btn-white btn-lg">Découvrir nos activités</a>
+      <a href="index.html#contact" class="btn btn-outline btn-lg">Parlons de votre projet</a>
+    </div>
+  </div>
+  <div class="act-hero-scroll" onclick="document.getElementById('tabs-anchor').scrollIntoView({behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>
+    Défiler
+  </div>
+</section>
+
+<!-- STICKY TABS -->
+<div id="tabs-anchor" class="act-tabs-wrap">
+  <nav class="act-tabs">
+    <a href="#prefabrication" class="act-tab active"><span class="act-tab-num">01</span>Pré-fabrication</a>
+    <a href="#construction" class="act-tab"><span class="act-tab-num">02</span>Construction &amp; Installation</a>
+    <a href="#meubles" class="act-tab"><span class="act-tab-num">03</span>Meubles &amp; Aménagement</a>
+  </nav>
+</div>
+
+<!-- ════════════════════════════
+     01 — PRÉ-FABRICATION
+═════════════════════════════ -->
+<section id="prefabrication">
+  <div class="chapter-intro">
+    <div class="chapter-intro-inner">
+      <div class="reveal">
+        <span class="chapter-big-num">01</span>
+        <div class="chapter-label">Première expertise</div>
+        <h2 class="chapter-title">Pré-fabrication<br><em>hors-site</em></h2>
+        <p class="chapter-desc">
+          Tout naît dans notre atelier de Monastir. Chaque ossature est découpée au laser,
+          assemblée au millimètre et testée avant de quitter nos halls. La préfabrication,
+          c'est la promesse d'un chantier zéro surprise — qualité constante, délais tenus,
+          coûts maîtrisés. Du bureau d'études à la livraison clé en main, nous maîtrisons
+          chaque étape de la chaîne de valeur.
+        </p>
+        <a href="index.html#contact" class="btn btn-primary" style="width:fit-content;">Demander un devis</a>
+      </div>
+      <div class="chapter-visual reveal">
+        <div class="chapter-vis-box">
+          <img src="images/construction.jpg" alt="Atelier fabrication métallique" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="products-section">
+    <div class="products-inner">
+      <div class="sec-head reveal">
+        <div class="sec-head-left">
+          <span class="sec-badge">Gamme Pré-fab</span>
+          <h3 class="sec-head-title">Cabines, Capsules &amp; <em>Maisonettes</em></h3>
+        </div>
+        <span class="sec-head-count">3 familles · Livraison clé en main</span>
+      </div>
+      <div class="products-grid reveal">
+
+        <div class="prod-card">
+          <div class="prod-card-photo">
+            <img src="https://scontent.ftun14-1.fna.fbcdn.net/v/t39.30808-6/484353734_1143853984104131_8891163812872826619_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=hwulaZ3SYLsQ7kNvwEmHimz&_nc_oc=AdoiQ8DvziSMyzqxiAZTiubdl1tg9gFEHiLgHysqCAy-VtByFv38enSCu3FSSqKuA9U&_nc_zt=23&_nc_ht=scontent.ftun14-1.fna&_nc_gid=UJ48p8rJ__hZ8N6ErY-cMA&_nc_ss=7a389&oh=00_Af0q-l-5CoBjXjMiP3qolI5iOBjRUFlR6BZU1qn7Rwa2bQ&oe=69DA0303" alt="Cabine modulaire métallique" loading="lazy">
+            <div class="prod-card-tag">Bestseller</div>
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-name">Cabines Modulaires</div>
+            <p class="prod-card-desc">L'unité de base METTEC — robuste, polyvalente, déplaçable. Gardiennage, bureau de chantier ou local technique. Livrée montée en 3 à 5 semaines.</p>
+            <ul class="prod-card-feats"><li>6×3×2.4m standard</li><li>Sur mesure possible</li><li>Ossature acier galvanisée</li><li>Sandwich PU 100mm</li><li>Déplaçable</li></ul>
+            <a href="index.html#contact" class="prod-card-cta">Demander un devis →</a>
+          </div>
+        </div>
+
+        <div class="prod-card featured">
+          <div class="prod-card-photo">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.Tl_XrSnPmqE8dxWA3mbfKQHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Capsule modulaire intelligente" loading="lazy" style="filter:brightness(.85)">
+            <div class="prod-card-tag" style="background:var(--accent);color:var(--primary);">Smart · Autonome</div>
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-name">Capsules Intelligentes</div>
+            <p class="prod-card-desc">La cabine du futur, aujourd'hui. Forme épurée, domotique IoT intégrée, panneaux solaires en option. Pour ceux qui refusent de choisir entre esthétique et autonomie.</p>
+            <ul class="prod-card-feats"><li>Design aérodynamique</li><li>IoT &amp; domotique</li><li>Off-grid optionnel</li><li>Panoramique double-vitrage</li><li>Finition premium</li></ul>
+            <a href="index.html#contact" class="prod-card-cta">Configurer ma Capsule →</a>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-card-photo">
+            <img src="images/mettec-villa-bekalta.jpg" alt="Maisonette modulaire S+1" loading="lazy">
+            <div class="prod-card-tag">S+0 · S+1 · S+2</div>
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-name">Maisonettes Modulaires</div>
+            <p class="prod-card-desc">Quand la cabine devient maison. De plain-pied à deux niveaux, la maisonette METTEC est une habitation complète livrée montée — isolation, électricité, plomberie inclus.</p>
+            <ul class="prod-card-feats"><li>S+0 / S+1 / S+2</li><li>Isolation renforcée</li><li>Plomberie &amp; électricité</li><li>Finition intérieure</li><li>Permis simplifié</li></ul>
+            <a href="index.html#contact" class="prod-card-cta">Voir les plans →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     02 — CONSTRUCTION & INSTALLATION
+═════════════════════════════ -->
+<section id="construction" class="chapter-dark" style="padding:4rem 0 0;">
+  <div class="chapter-intro">
+    <div class="chapter-intro-inner rev">
+      <div class="chapter-visual reveal">
+        <div class="chapter-vis-box">
+          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80" alt="Construction chantier métallique" loading="lazy">
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="chapter-big-num" style="color:rgba(245,218,26,.1)">02</span>
+        <div class="chapter-label">Deuxième expertise</div>
+        <h2 class="chapter-title">Construction &amp;<br><em>Installation sur site</em></h2>
+        <p class="chapter-desc">
+          Des fondations jusqu'au faîte — METTEC intervient directement sur votre chantier.
+          Marchés publics d'envergure ou projets privés ambitieux, nos équipes certifiées
+          transforment les plans en bâtiments debout, en ossatures qui traversent les décennies.
+          500 projets livrés, zéro compromis sur la qualité.
+        </p>
+        <a href="index.html#contact" class="btn btn-primary" style="width:fit-content;">Étude de projet</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="products-section" style="padding-top:1rem;">
+    <div class="products-inner">
+      <div class="sec-head dark reveal">
+        <div class="sec-head-left">
+          <span class="sec-badge">4 domaines d'intervention</span>
+          <h3 class="sec-head-title">Du logement à la <em>charpente</em></h3>
+        </div>
+        <span class="sec-head-count">Études · Fabrication · Pose</span>
+      </div>
+      <div class="products-grid reveal">
+
+        <div class="prod-card dark">
+          <div class="prod-card-photo">
+            <img src="images/projet_ain_zaghouan_1.jpg" alt="Habitat résidentiel construction" loading="lazy">
+            <div class="prod-card-tag" style="background:rgba(74,222,128,.2);color:#4ade80;">Résidentiel</div>
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-name">Habitats &amp; Logements</div>
+            <p class="prod-card-desc">Maisons individuelles, villas, résidences en ossature métallique. Rapidité incomparable vs béton, isolation thermique exceptionnelle, design contemporain sans compromis.</p>
+            <ul class="prod-card-feats"><li>Ossature métal légère</li><li>Isolation BBC</li><li>Plans d'architecte</li><li>Finition complète</li></ul>
+            <a href="index.html#contact" class="prod-card-cta">Étude →</a>
+          </div>
+        </div>
+
+        <div class="prod-card dark">
+          <div class="prod-card-photo">
+            <img src="https://th.bing.com/th/id/R.673034fdf292fdb5e39fcdb30f9f6bd0?rik=vzlhouvQAKMXFg&riu=http%3a%2f%2fwww.bungeco.fr%2fimages%2fphotos%2fguerite-de-gardien.jpg&ehk=826AMsoi7ZP74P79PnzNTdPqcVHsE5U4kLHuGA46yzM%3d&risl=&pid=ImgRaw&r=0" alt="Bâtiment public structure acier" loading="lazy">
+            <div class="prod-card-tag" style="background:rgba(96,165,250,.2);color:#60a5fa;">Appel d'offres</div>
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-name">Marchés Publics</div>
+            <p class="prod-card-desc">Infrastructures gouvernementales, bâtiments administratifs, établissements scolaires et hospitaliers. Documentation technique irréprochable, normes strictes respectées.</p>
+            <ul class="prod-card-feats"><li>Dossiers AO complets</li><li>Normes ISO / AFNOR</li><li>Assurance décennale</li><li>Reporting détaillé</li></ul>
+            <a href="index.html#contact" class="prod-card-cta">Nous contacter →</a>
+          </div>
+        </div>
+
+        <div class="prod-card dark">
+          <div class="prod-card-photo">
+            <img src="images/slide6.webp" alt="Projet commercial privé" loading="lazy">
+            <div class="prod-card-tag" style="background:rgba(245,218,26,.2);color:var(--primary);">Sur mesure</div>
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-name">Marchés Privés</div>
+            <p class="prod-card-desc">Centres commerciaux, hôtels, restaurants, showrooms — nous donnons vie aux projets privés ambitieux. Délais serrés, budget maîtrisé, rendu spectaculaire.</p>
+            <ul class="prod-card-feats"><li>Commercial &amp; hôtellerie</li><li>Façades aluminium</li><li>Intégration architecte</li><li>Fast-track delivery</li></ul>
+            <a href="index.html#contact" class="prod-card-cta">Votre projet →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Charpentes showcase -->
+      <div class="showcase-wrap reveal">
+        <div class="showcase-card">
+          <div>
+            <div class="showcase-label">Notre spécialité structurelle</div>
+            <h3 class="showcase-title">Charpentes<br><em>Métalliques</em></h3>
+            <p class="showcase-desc">Hangars industriels, entrepôts logistiques, serres agricoles, tribunes sportives — METTEC maîtrise la charpente grande portée jusqu'à 60m sans poteau intermédiaire.</p>
+            <a href="index.html#contact" class="btn-act-outline">Demander une étude de structure →</a>
+          </div>
+          <div class="showcase-grid-mini">
+            <div class="sgm-item"><div class="sgm-icon">🏭</div><div class="sgm-name">Hangars industriels</div><div class="sgm-sub">Portée jusqu'à 60m · Bardage inclus</div></div>
+            <div class="sgm-item"><div class="sgm-icon">📦</div><div class="sgm-name">Entrepôts logistiques</div><div class="sgm-sub">Racks intégrés · Quais de chargement</div></div>
+            <div class="sgm-item"><div class="sgm-icon">🌿</div><div class="sgm-name">Serres &amp; véranda</div><div class="sgm-sub">Vitrage isolant · Polycarbonate</div></div>
+            <div class="sgm-item"><div class="sgm-icon">🏟️</div><div class="sgm-name">Structures sportives</div><div class="sgm-sub">Tribunes · Halles · Couvertures</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     03 — MEUBLES
+═════════════════════════════ -->
+<section id="meubles" style="padding:5rem 0 0;">
+  <div class="chapter-intro">
+    <div class="chapter-intro-inner">
+      <div class="reveal">
+        <span class="chapter-big-num">03</span>
+        <div class="chapter-label">Troisième expertise</div>
+        <h2 class="chapter-title">L'art du<br><em>Mobilier Artisanal</em></h2>
+        <p class="chapter-desc">
+          Quand la structure laisse place à l'âme. Nos artisans combinent acier, bois massif
+          et matériaux nobles pour créer des meubles uniques — fonctionnels, durables,
+          esthétiquement inoubliables. Du salon à la cuisine, chaque pièce est fabriquée
+          à la main dans nos ateliers de Monastir, livrée et installée chez vous.
+        </p>
+        <a href="index.html#contact" class="btn btn-primary" style="width:fit-content;">Concevoir mes meubles</a>
+      </div>
+      <div class="chapter-visual reveal">
+        <div class="chapter-vis-box">
+          <img src="images/projet_villa_ariana_1.jpg" alt="Salon mobilier design" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="products-section" style="padding-top:1rem;">
+    <div class="products-inner">
+      <div class="sec-head reveal">
+        <div class="sec-head-left">
+          <span class="sec-badge">Gamme Mobilier</span>
+          <h3 class="sec-head-title">Des pièces pensées <em>pour vivre</em></h3>
+        </div>
+        <span class="sec-head-count">Tout sur mesure · Livraison &amp; installation incluses</span>
+      </div>
+
+      <div class="meubles-masonry reveal">
+
+        <div class="prod-card">
+          <div class="prod-card-photo" style="height:260px;">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=75" alt="Salon design sur mesure" loading="lazy">
+            <div class="prod-card-tag">Pièce maîtresse</div>
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-name">Salons &amp; Salles de séjour</div>
+            <p class="prod-card-desc">Canapés d'angle ou droits, méridienne, chauffeuses — nos salons allient confort généreux et design contemporain. Tissu, cuir, velours : uniquement les matières qui traversent le temps.</p>
+            <ul class="prod-card-feats"><li>Cuir pleine fleur</li><li>Structure acier</li><li>L, U ou droit</li><li>Table basse coordonnée</li></ul>
+            <a href="index.html#contact" class="prod-card-cta">Composer mon salon →</a>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-card-photo">
+            <img src="https://www.eportatif.com/image/cache/catalog/blog/mutfak-masa-sandalye-600x315h.jpg.webp" alt="Table bois acier design" loading="lazy">
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-name">Tables</div>
+            <p class="prod-card-desc">De la table familiale au bureau directorial — pieds épingles, tréteaux acier, plateaux bois massif, verre ou marbre. Chaque table est un statement design.</p>
+            <ul class="prod-card-feats"><li>Bois / verre / marbre</li><li>Pieds acier sur mesure</li><li>4 à 12 couverts</li></ul>
+            <a href="index.html#contact" class="prod-card-cta">Voir les modèles →</a>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-card-photo">
+            <img src="images/projet_ain_zaghouan_2.jpg" alt="Chaises design artisanales" loading="lazy">
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-name">Fauteuils</div>
+            <p class="prod-card-desc">Salle à manger, bureau ergonomique, tabourets de bar, banquettes — nos assises allient structure acier robuste et tapisserie artisanale.</p>
+            <ul class="prod-card-feats"><li>Empilables dispo.</li><li>Tapisserie sur mesure</li><li>Contract &amp; résidentiel</li></ul>
+            <a href="index.html#contact" class="prod-card-cta">Commander →</a>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-card-photo">
+            <img src="images/projet_ain_zaghouan_3.jpg" alt="Cuisine équipée sur mesure" loading="lazy">
+            <div class="prod-card-tag">Cuisine complète</div>
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-name">Éléments de Cuisine</div>
+            <p class="prod-card-desc">Meubles bas, colonnes, îlots centraux et plans de travail — de A à Z. Structure inox ou laqué, finition MDF ou bois massif, quincaillerie premium.</p>
+            <ul class="prod-card-feats"><li>Meubles bas &amp; hauts</li><li>Îlots sur mesure</li><li>Marbre / granit / quartz</li></ul>
+            <a href="index.html#contact" class="prod-card-cta">Projet cuisine →</a>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-card-photo">
+            <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?w=700&q=75" alt="Lit chambre design artisanal" loading="lazy">
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-name">Lits &amp; Têtes de lit</div>
+            <p class="prod-card-desc">Simple, double, king-size, baldaquin, lit coffre — fabriqués pour 20 ans minimum. Tête tapissée ou métal forgé, sommier en option.</p>
+            <ul class="prod-card-feats"><li>90 à 200cm</li><li>Coffre opt.</li><li>Tête sur mesure</li></ul>
+            <a href="index.html#contact" class="prod-card-cta">Configurer mon lit →</a>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-card-photo" style="height:260px;">
+            <img src="images/projet_villa_ariana_2.jpg" alt="Dressing armoire rangement sur mesure" loading="lazy">
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-name">Rangements &amp; Dressings</div>
+            <p class="prod-card-desc">Armoires, dressings walk-in, bibliothèques, étagères flottantes — nos solutions maximisent chaque centimètre tout en apportant une touche de luxe sobre.</p>
+            <ul class="prod-card-feats"><li>Dressing sur mesure</li><li>Coulissantes / battantes</li><li>Miroir opt.</li><li>LED intégré</li><li>Tiroirs soft-close</li></ul>
+            <a href="index.html#contact" class="prod-card-cta">Planifier mon rangement →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="act-cta-band">
+  <div class="act-cta-inner">
+    <h2>Une idée ?<br><em>Faisons-la ensemble.</em></h2>
+    <p>Qu'il s'agisse d'une cabine à livrer en 3 semaines, d'un bâtiment industriel ou d'une cuisine de rêve — METTEC transforme vos besoins en réalisations exceptionnelles.</p>
+    <div class="act-cta-btns">
+      <a href="index.html#contact" class="btn-act-dark">Parlons de votre projet →</a>
+      <a href="https://wa.me/21629225405" class="btn-act-outline" target="_blank">WhatsApp direct</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+     <!-- Newsletter -->
+  <div class="footer-newsletter">
+    <div class="footer-newsletter-eyebrow">✦ Restez informé</div>
+    <p class="footer-newsletter-desc">Découvrez ce que Mettec peut donner comme des solutions pour ces clients — directement dans votre boîte mail.</p>
+    <form class="footer-nl-form" onsubmit="handleNewsletter(event)">
+      <input type="email" class="footer-nl-input" placeholder="votre@email.com" required>
+      <button type="submit" class="footer-nl-btn">S'abonner →</button>
+    </form>
+    <div class="footer-nl-success" id="nlSuccess">✅ Bienvenue ! Vous êtes maintenant abonné.</div>
+    <p class="footer-nl-note">Pas de spam. Désinscription en 1 clic.</p>
+  </div>
+  <div>
+    <a class="footer-logo" href="#"><img src="images/logo-mettec.png" alt="METTEC" class="footer-logo-img"><div><div class="footer-logo-name"></div><span class="footer-logo-sub"></span></div></a>
+    <style>
+        .footer-logo-img {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;   /* garde les proportions sans couper */
+}
+    </style>
+    <p class="footer-tagline">Votre idée, Notre acier.<br>Bâti pour l'Éternité.</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/company/mettec-gbm" class="footer-social" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://www.facebook.com/mettec.tn/" class="footer-social" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12v-1a5 5 0 0 1 10 0v4"/><path d="M15 11v6a3 3 0 0 1-6 0v-4"/><path d="M9 16a3 3 0 0 0 6 0"/><path d="M12 5v5"/><circle cx="12" cy="5" r="1"/></svg>
+      </a>
+    </div>
+  </div>
+  <div><div class="footer-col-title">Gammes</div><ul class="footer-links"><li><a href="#gammes">Standard</a></li><li><a href="#gammes">Habitation Comfort</a></li><li><a href="#gammes">Habitation Smart</a></li><li><a href="#gammes">Habitation Autonome</a></li><li><a href="#gammes">Sécurité / Gardiennage</a></li><li><a href="#gammes">Gamme Extra</a></li></ul></div>
+  <div><div class="footer-col-title">Société</div><ul class="footer-links"><li><a href="processus.html">Notre processus</a></li><li><a href="#">Certifications</a></li><li><a href="#partners">Références</a></li><li><a href="#sav">SAV & Garantie</a></li><li><a href="#configurator">Configurateur</a></li></ul></div>
+  <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:+21636405822">+216 36 40 58 22</a></li><li><a href="tel:+21629225405">+216 29 22 54 05</a></li>
+<li>
+  <a href="mailto:mettec@gbm.tn">mettec@gbm.tn</a>
+</li>    <li><a href="#">Monastir, Tunisie</a></li><li><a href="index.html#contact">Parlons de votre Idée</a></li></ul></div>
+ 
+  <div class="footer-bottom"><span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span><span class="footer-copy">Design by <strong>AMH</strong></span><div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
+</footer>
+<style>
+/* ── Footer Newsletter ── */
+.footer-newsletter {
+  padding: 2.5rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: .75rem;
+}
+.footer-newsletter-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.footer-newsletter-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #ffffff;
+  line-height: 1.2;
+}
+.footer-newsletter-title em {
+  color: var(--primary);
+  font-style: italic;
+}
+.footer-newsletter-desc {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  color: rgba(3, 3, 3, 0.45);
+  max-width: 420px;
+  line-height: 1.7;
+}
+.footer-nl-form {
+  display: flex;
+  gap: 0;
+  border-radius: 3rem;
+  overflow: hidden;
+  border: 1.5px solid rgba(245,218,26,0.3);
+  background: rgba(255,255,255,0.04);
+  transition: border-color 0.25s;
+  max-width: 460px;
+  width: 100%;
+}
+.footer-nl-form:focus-within {
+  border-color: var(--primary);
+  background: rgba(245,218,26,0.05);
+}
+.footer-nl-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: .85rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: #ffffff;
+}
+.footer-nl-input::placeholder { color: rgba(255,255,255,0.3); }
+.footer-nl-btn {
+  background: var(--primary);
+  border: none;
+  padding: .85rem 1.6rem;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: #0f0e0a;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+}
+.footer-nl-btn:hover { background: #ffe000; transform: scale(1.03); }
+.footer-nl-success {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  color: #4ade80;
+  background: rgba(74,222,128,0.1);
+  padding: .6rem 1.2rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(74,222,128,0.25);
+}
+.footer-nl-success.show { display: block; }
+.footer-nl-note {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  color: rgba(255,255,255,0.22);
+  letter-spacing: .05em;
+}
+@media (max-width: 600px) {
+  .footer-nl-form { flex-direction: column; border-radius: 1rem; }
+  .footer-nl-btn { border-radius: 0 0 .8rem .8rem; text-align: center; }
+}
+</style>
+
+<button id="scrollTop"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+<!-- ══════════════════════════════════════
+     CHATBOT BUTTON + CONVERSATION WIDGET
+══════════════════════════════════════ -->
+<style>
+/* ── Chatbot Trigger Button ── */
+#chatbot-btn {
+  position: fixed;
+  bottom: 6rem;
+  right: 2rem;
+  z-index: 9999;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  box-shadow: 0 8px 32px rgba(15,14,10,0.28);
+  transition: transform 0.35s cubic-bezier(.22,.68,0,1.4), box-shadow 0.3s;
+  animation: chatbot-float 3s ease-in-out infinite;
+}
+#chatbot-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 50%;
+}
+#chatbot-btn:hover {
+  transform: scale(1.12) translateY(-4px);
+  box-shadow: 0 16px 48px rgba(245,218,26,0.45);
+  animation: none;
+}
+#chatbot-btn.active {
+  animation: none;
+  transform: scale(0.92) rotate(-8deg);
+}
+@keyframes chatbot-float {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-8px) rotate(2deg); }
+}
+
+/* ── Notification pulse ring ── */
+#chatbot-btn::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2.5px solid var(--primary);
+  animation: chatbot-ring 2.4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes chatbot-ring {
+  0%   { opacity:1; transform:scale(1); }
+  80%  { opacity:0; transform:scale(1.6); }
+  100% { opacity:0; }
+}
+
+/* ── Chat Window ── */
+#chatbot-window {
+  position: fixed;
+  bottom: 10rem;
+  right: 2rem;
+  z-index: 9998;
+  width: 360px;
+  max-height: 580px;
+  border-radius: 1.25rem;
+  background: #ffffff;
+  box-shadow:
+    0 20px 60px rgba(15,14,10,.15),
+    0 0 0 1px rgba(220,213,195,0.8);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.88) translateY(24px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.38s cubic-bezier(.22,.68,0,1.25), opacity 0.3s ease;
+  transform-origin: bottom right;
+}
+#chatbot-window.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Chat Header — light gold ── */
+.cb-header {
+  background: linear-gradient(120deg, #f5da1a 0%, #e8ca00 100%);
+  padding: .85rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.cb-header::before {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cb-header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.6);
+  object-fit: contain;
+  background: #fff8d0;
+  flex-shrink: 0;
+  animation: cb-avatar-bounce 2s ease infinite;
+}
+@keyframes cb-avatar-bounce {
+  0%,100% { transform: rotate(-3deg); }
+  50%      { transform: rotate(3deg) translateY(-2px); }
+}
+.cb-header-info { flex: 1; }
+.cb-header-name {
+  font-family: var(--font-main);
+  font-size: .88rem;
+  font-weight: 800;
+  color: #0f0e0a;
+  letter-spacing: -.01em;
+}
+.cb-header-status {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  color: rgba(15,14,10,.55);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-top: .12rem;
+}
+.cb-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #16a34a;
+  animation: pulse-dot 2s ease infinite;
+}
+.cb-close {
+  background: rgba(15,14,10,.1);
+  border: none;
+  color: rgba(15,14,10,.55);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+.cb-close:hover {
+  background: rgba(15,14,10,.2);
+  color: #0f0e0a;
+}
+
+/* ── Messages Area ── */
+.cb-messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1rem 1rem .8rem;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  scroll-behavior: smooth;
+  background: #f8f6f0;
+}
+.cb-messages::-webkit-scrollbar { width: 3px; }
+.cb-messages::-webkit-scrollbar-track { background: transparent; }
+.cb-messages::-webkit-scrollbar-thumb { background: #ddd8c8; border-radius: 2px; }
+
+/* Bot message bubble */
+.cb-msg-bot {
+  display: flex;
+  align-items: flex-end;
+  gap: .45rem;
+  animation: cb-msg-in 0.35s cubic-bezier(.22,.68,0,1.2);
+}
+@keyframes cb-msg-in {
+  from { opacity:0; transform:translateY(10px) scale(.96); }
+  to   { opacity:1; transform:none; }
+}
+.cb-msg-bot-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #fff8d0;
+  border: 1.5px solid #e8ca00;
+  flex-shrink: 0;
+}
+.cb-bubble-bot {
+  background: #ffffff;
+  color: #2e2b22;
+  border-radius: 1rem 1rem 1rem .25rem;
+  padding: .65rem .9rem;
+  font-family: var(--font-mono);
+  font-size: .76rem;
+  line-height: 1.65;
+  max-width: 84%;
+  box-shadow: 0 1px 4px rgba(15,14,10,.08), 0 0 0 1px rgba(220,213,195,.5);
+}
+.cb-bubble-bot strong {
+  color: #b49a00;
+  font-weight: 700;
+}
+
+/* Typing indicator */
+.cb-typing {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+}
+.cb-typing-dots {
+  background: #ffffff;
+  border-radius: 1rem 1rem 1rem .25rem;
+  padding: .6rem .9rem;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(15,14,10,.08);
+}
+.cb-typing-dots span {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #c4b060;
+  animation: typing-bounce 1.2s ease infinite;
+}
+.cb-typing-dots span:nth-child(2) { animation-delay: .2s; }
+.cb-typing-dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes typing-bounce {
+  0%,60%,100% { transform:translateY(0); opacity:.4; }
+  30%          { transform:translateY(-4px); opacity:1; }
+}
+
+/* ── Questions panel — scrollable, compact ── */
+.cb-questions {
+  padding: .55rem .8rem .65rem;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  flex-shrink: 0;
+  max-height: 195px;
+  overflow-y: auto;
+  border-top: 1px solid #e8e0c8;
+  background: #fffdf5;
+}
+.cb-questions::-webkit-scrollbar { width: 3px; }
+.cb-questions::-webkit-scrollbar-track { background: transparent; }
+.cb-questions::-webkit-scrollbar-thumb { background: #e8ca00; border-radius: 2px; }
+
+.cb-questions-label {
+  font-family: var(--font-mono);
+  font-size: .56rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #a89e7a;
+  margin-bottom: .1rem;
+  flex-shrink: 0;
+}
+.cb-q-btn {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: #ffffff;
+  color: #2e2b22;
+  border: 1px solid #e8e0c8;
+  border-radius: .6rem;
+  padding: .4rem .7rem;
+  font-family: var(--font-mono);
+  font-size: .67rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s;
+  line-height: 1.35;
+  flex-shrink: 0;
+}
+.cb-q-btn:hover {
+  background: #fffbe8;
+  border-color: #e8ca00;
+  transform: translateX(3px);
+}
+.cb-q-btn .cb-q-icon {
+  font-size: .95rem;
+  flex-shrink: 0;
+}
+.cb-q-btn.used {
+  opacity: .35;
+  pointer-events: none;
+  transform: none;
+}
+
+/* ── User message ── */
+.cb-msg-user {
+  display: flex;
+  justify-content: flex-end;
+  animation: cb-msg-in 0.3s ease;
+}
+.cb-bubble-user {
+  background: #f5da1a;
+  color: #0f0e0a;
+  border-radius: 1rem 1rem .25rem 1rem;
+  padding: .55rem .85rem;
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  line-height: 1.45;
+  max-width: 80%;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(245,218,26,.25);
+}
+
+/* ── Reset button ── */
+.cb-reset {
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  color: #a89e7a;
+  cursor: pointer;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: .2rem;
+  padding: .2rem 0;
+  transition: color 0.2s;
+  text-decoration: underline;
+  flex-shrink: 0;
+}
+.cb-reset:hover { color: #0f0e0a; }
+
+@media (max-width: 440px) {
+  #chatbot-window { width: calc(100vw - 2rem); right: 1rem; bottom: 9rem; }
+  #chatbot-btn    { right: 1rem; bottom: 5rem; width: 60px; height: 60px; }
+}
+</style>
+
+<!-- Chatbot Trigger -->
+<button id="chatbot-btn" aria-label="Ouvrir le chatbot METTEC">
+  <img src="images/chatbot.png" alt="GBM Chatbot">
+</button>
+
+<!-- Chat Window -->
+<div id="chatbot-window" role="dialog" aria-label="Assistant METTEC">
+  <div class="cb-header">
+    <img src="images/chatbot.png" alt="Bot" class="cb-header-avatar">
+    <div class="cb-header-info">
+      <div class="cb-header-name">Assistant METTEC</div>
+      <div class="cb-header-status">
+        <span class="cb-status-dot"></span>
+        En ligne · Répond instantanément
+      </div>
+    </div>
+    <button class="cb-close" id="chatbot-close" aria-label="Fermer">✕</button>
+  </div>
+
+  <div class="cb-messages" id="cb-messages">
+    <!-- Messages injected by JS -->
+  </div>
+
+  <div class="cb-questions" id="cb-questions">
+    <div class="cb-questions-label">✦ Choisissez votre question</div>
+    <!-- Questions injected by JS -->
+  </div>
+</div>
+
+<script>
+(function() {
+  const btn    = document.getElementById('chatbot-btn');
+  const win    = document.getElementById('chatbot-window');
+  const closeB = document.getElementById('chatbot-close');
+  const msgBox = document.getElementById('cb-messages');
+  const qBox   = document.getElementById('cb-questions');
+  let opened   = false;
+
+  /* ── Q&A data ── */
+  const questions = [
+    {
+      icon: '🏗️',
+      q: 'Qu\'est-ce que METTEC sait faire en préfabrication ?',
+      a: '<strong>Préfabrication métallique</strong> — notre cœur de métier depuis des années. Cabines modulaires, capsules Smart connectées, maisonettes clé-en-main, kiosques, vestiaires industriels… Tout est fabriqué dans notre atelier de Monastir avec une précision au millimètre. Délai livraison : <strong>3 à 6 semaines</strong> selon le projet.'
+    },
+    {
+      icon: '🏠',
+      q: 'Vous construisez des bâtiments entiers ?',
+      a: 'Absolument ! Notre pôle <strong>Construction & Installation</strong> s\'attaque aux grands projets : bâtiments industriels, charpentes métalliques, hangars de stockage, habitats et logements. Nos équipes interviennent directement sur site, partout en Tunisie. Du terrassement à la remise des clés — <strong>un seul interlocuteur.</strong>'
+    },
+    {
+      icon: '🛋️',
+      q: 'Est-ce que vous faites du mobilier sur mesure ?',
+      a: 'Oui et c\'est notre passion secrète ! <strong>Salons, cuisines complètes, dressings, lits, tables, chaises</strong>… Chaque pièce est conçue sur mesure dans nos ateliers : structure acier, bois massif, cuir pleine fleur, marbre, velours. Livraison et installation incluses. Aucune série — uniquement <strong>du mobilier unique.</strong>'
+    },
+    {
+      icon: '⏱️',
+      q: 'Quel est votre délai de livraison typique ?',
+      a: 'Ça dépend du projet ! Pour une <strong>cabine modulaire standard</strong> : 3 semaines. Pour un <strong>projet construction</strong> : selon la complexité, 2 à 6 mois. Pour du <strong>mobilier sur mesure</strong> : 4 à 8 semaines. On vous donne un planning détaillé dès la signature. Chez METTEC, on respecte les délais — c\'est une promesse.'
+    },
+    {
+      icon: '💡',
+      q: 'Comment démarrer un projet avec vous ?',
+      a: 'C\'est simple ! <strong>3 étapes :</strong> ① Contactez-nous via le formulaire ou WhatsApp — on répond en moins de 24h. ② Un consultant vous appelle pour cerner votre besoin. ③ On vous envoie une <strong>proposition</strong> sous 24h. On aime les idées folles — racontez-nous la vôtre !'
+    },
+    {
+      icon: '🔩',
+      q: 'Quels matériaux utilisez-vous ?',
+      a: 'On ne transige pas sur la matière. <strong>Acier galvanisé & inoxydable</strong> pour les structures, <strong>bois massif</strong> (chêne, noyer, hêtre), <strong>marbre & granit</strong> pour les plans de travail, <strong>cuir pleine fleur</strong> pour le rembourrage. Quincaillerie premium européenne, peintures époxy, finitions laquées — le tout fabriqué pour <strong>durer 20 ans minimum.</strong>'
+    },
+    {
+      icon: '📍',
+      q: 'Où êtes-vous situés et livrez-vous partout ?',
+      a: 'Notre atelier principal est à <strong>Zone Industrielle, Manzel Harb, Monastir</strong>. Mais on livre et installe partout en Tunisie — du Nord au Sud. Pour les projets d\'envergure à l\'international, on étudie ça aussi. Appelez-nous au <strong>+216 36 40 58 22</strong> ou passez nous voir !'
+    }
+  ];
+
+  /* ── Render welcome message ── */
+  function renderWelcome() {
+    msgBox.innerHTML = '';
+    qBox.innerHTML = '<div class="cb-questions-label">✦ Choisissez votre question</div>';
+
+    const welcomeMsg = document.createElement('div');
+    welcomeMsg.className = 'cb-msg-bot';
+    welcomeMsg.innerHTML = `
+      <img src="images/chatbot.png" alt="Bot" class="cb-msg-bot-avatar">
+      <div class="cb-bubble-bot">
+        👋 Bonjour ! Je suis l'assistant de <strong>METTEC</strong>.<br><br>
+        Préfabrication, construction, mobilier sur mesure… je connais chaque boulon de l'entreprise !<br><br>
+        <strong>Quelle est votre question ?</strong> ✨
+      </div>`;
+    msgBox.appendChild(welcomeMsg);
+
+    questions.forEach((item, i) => {
+      const b = document.createElement('button');
+      b.className = 'cb-q-btn';
+      b.innerHTML = `<span class="cb-q-icon">${item.icon}</span><span>${item.q}</span>`;
+      b.addEventListener('click', () => handleQ(i, b));
+      qBox.appendChild(b);
+    });
+
+    const resetBtn = document.createElement('button');
+    resetBtn.className = 'cb-reset';
+    resetBtn.textContent = '↺ Recommencer la conversation';
+    resetBtn.addEventListener('click', () => {
+      renderWelcome();
+      msgBox.scrollTop = 0;
+    });
+    qBox.appendChild(resetBtn);
+  }
+
+  /* ── Handle question click ── */
+  function handleQ(index, btnEl) {
+    btnEl.classList.add('used');
+
+    /* User bubble */
+    const userMsg = document.createElement('div');
+    userMsg.className = 'cb-msg-user';
+    userMsg.innerHTML = `<div class="cb-bubble-user">${questions[index].q}</div>`;
+    msgBox.appendChild(userMsg);
+    msgBox.scrollTop = msgBox.scrollHeight;
+
+    /* Typing indicator */
+    const typing = document.createElement('div');
+    typing.className = 'cb-msg-bot cb-typing';
+    typing.innerHTML = `
+      <img src="images/chatbot.png" alt="" class="cb-msg-bot-avatar">
+      <div class="cb-typing-dots">
+        <span></span><span></span><span></span>
+      </div>`;
+    msgBox.appendChild(typing);
+    msgBox.scrollTop = msgBox.scrollHeight;
+
+    /* Bot answer after delay */
+    setTimeout(() => {
+      typing.remove();
+      const botMsg = document.createElement('div');
+      botMsg.className = 'cb-msg-bot';
+      botMsg.innerHTML = `
+        <img src="images/chatbot.png" alt="Bot" class="cb-msg-bot-avatar">
+        <div class="cb-bubble-bot">${questions[index].a}</div>`;
+      msgBox.appendChild(botMsg);
+      msgBox.scrollTop = msgBox.scrollHeight;
+    }, 950);
+  }
+
+  /* ── Toggle chatbot ── */
+  btn.addEventListener('click', () => {
+    opened = !opened;
+    win.classList.toggle('open', opened);
+    btn.classList.toggle('active', opened);
+    if (opened && msgBox.children.length === 0) {
+      renderWelcome();
+    }
+  });
+
+  closeB.addEventListener('click', () => {
+    opened = false;
+    win.classList.remove('open');
+    btn.classList.remove('active');
+  });
+
+  /* Close on outside click */
+  document.addEventListener('click', (e) => {
+    if (opened && !win.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+      opened = false;
+      win.classList.remove('open');
+      btn.classList.remove('active');
+    }
+  });
+})();
+</script>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script1.js"></script>
+</body></html>

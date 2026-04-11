@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vidéos — METTEC | Cabines Modulaires en Action</title>
+  <meta name="description" content="Découvrez nos réalisations en vidéo : fabrication, installation, cabines Smart, industrielles et sur mesure. METTEC — Monastir, Tunisie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style1.css">
+
+<style>
+/* ============================================
+   VIDEOS PAGE — Styles spécifiques
+   ============================================ */
+
+/* ── PAGE WRAPPER ── */
+.videos-page {
+  padding-top: 90px;
+  background: var(--cream);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.videos-hero {
+  background: var(--black);
+  padding: clamp(3rem, 8vw, 6rem) 1.5rem clamp(2.5rem, 6vw, 4.5rem);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.videos-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(245,218,26,.10) 0%, transparent 70%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 60px,
+      rgba(245,218,26,.03) 60px,
+      rgba(245,218,26,.03) 61px
+    );
+  pointer-events: none;
+}
+
+.videos-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(245,218,26,.08);
+  border: 1px solid rgba(245,218,26,.2);
+  border-radius: 2rem;
+  padding: .45rem 1.1rem;
+  margin-bottom: 1.6rem;
+}
+
+.videos-hero-title {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  line-height: .95;
+  letter-spacing: -.03em;
+  color: var(--cream);
+  margin-bottom: 1.2rem;
+}
+
+.videos-hero-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--primary);
+  display: block;
+}
+
+.videos-hero-desc {
+  max-width: 580px;
+  margin: 0 auto 2.5rem;
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  color: rgba(250,246,236,.55);
+  line-height: 1.8;
+  letter-spacing: .02em;
+}
+
+.videos-hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  flex-wrap: wrap;
+}
+
+.videos-hero-stat {
+  text-align: center;
+}
+
+.videos-hero-stat-num {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--primary);
+  letter-spacing: -.03em;
+  line-height: 1;
+}
+
+.videos-hero-stat-label {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(250,246,236,.4);
+  margin-top: .3rem;
+}
+
+/* ── FILTER BAR ── */
+.filter-bar-section {
+  background: var(--gray-100);
+  border-bottom: 1px solid var(--gray-200);
+  position: sticky;
+  top: 73px;
+  z-index: 100;
+  transition: box-shadow .3s;
+}
+
+.filter-bar-section.shadowed {
+  box-shadow: 0 4px 24px rgba(15,14,10,.1);
+}
+
+.filter-bar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: .85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.filter-bar::-webkit-scrollbar { display: none; }
+
+.filter-label {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filter-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--gray-300);
+  flex-shrink: 0;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: var(--font-mono);
+  font-size: .67rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: .5rem 1.1rem;
+  border-radius: 2rem;
+  border: 1.5px solid var(--gray-300);
+  background: transparent;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filter-btn:hover {
+  border-color: var(--primary-dark);
+  color: var(--black);
+  background: rgba(245,218,26,.08);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--black);
+  box-shadow: 0 4px 16px rgba(245,218,26,.35);
+}
+
+.filter-count {
+  background: rgba(15,14,10,.12);
+  border-radius: 1rem;
+  padding: .1rem .45rem;
+  font-size: .58rem;
+}
+
+.filter-btn.active .filter-count {
+  background: rgba(15,14,10,.18);
+}
+
+/* ── MAIN CONTENT ── */
+.videos-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+/* ── SECTION TITLE ── */
+.videos-section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.8rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.videos-section-title {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  letter-spacing: -.02em;
+  color: var(--black);
+}
+
+.videos-section-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--primary-dark);
+}
+
+.videos-section-count {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  border-radius: 2rem;
+  padding: .35rem .9rem;
+}
+
+/* ── VIDEO GRID ── */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 1024px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .video-grid { grid-template-columns: 1fr; gap: 1.25rem; } }
+
+/* Featured card spans 2 cols on desktop */
+.video-card--featured {
+  grid-column: span 2;
+}
+
+@media (max-width: 1024px) { .video-card--featured { grid-column: span 2; } }
+@media (max-width: 640px)  { .video-card--featured { grid-column: span 1; } }
+
+/* ── VIDEO CARD ── */
+.video-card {
+  background: #fff;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--gray-200);
+  transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), border-color .3s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(15,14,10,.13);
+  border-color: var(--primary);
+}
+
+/* ── VIDEO THUMBNAIL WRAPPER ── */
+.video-thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--black);
+  flex-shrink: 0;
+}
+
+.video-card--featured .video-thumb-wrap {
+  aspect-ratio: 16/7;
+}
+
+/* Iframe embed */
+.video-thumb-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none; /* disabled until modal opens */
+}
+
+/* Placeholder when no video loaded */
+.video-thumb-placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1a1a14 0%, #0f0e0a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-thumb-placeholder-icon {
+  font-size: 2.5rem;
+  opacity: .25;
+}
+
+/* Overlay on hover */
+.video-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15,14,10,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.video-card:hover .video-thumb-overlay {
+  opacity: 1;
+}
+
+/* Play button */
+.play-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .3s, box-shadow .3s;
+  box-shadow: 0 0 0 8px rgba(245,218,26,.25);
+}
+
+.video-card--featured .play-btn {
+  width: 76px;
+  height: 76px;
+}
+
+.video-card:hover .play-btn {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 12px rgba(245,218,26,.2);
+}
+
+.play-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--black);
+  margin-left: 3px;
+}
+
+.video-card--featured .play-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Duration badge */
+.video-duration {
+  position: absolute;
+  bottom: .7rem;
+  right: .7rem;
+  background: rgba(15,14,10,.8);
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .08em;
+  padding: .25rem .6rem;
+  border-radius: .35rem;
+  backdrop-filter: blur(4px);
+}
+
+/* Category badge */
+.video-category-badge {
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: .3rem .75rem;
+  border-radius: 2rem;
+  backdrop-filter: blur(8px);
+}
+
+.badge--fabrication  { background: rgba(245,218,26,.85); color: #0f0e0a; }
+.badge--installation { background: rgba(16,185,129,.85);  color: #fff; }
+.badge--smart        { background: rgba(59,130,246,.85);  color: #fff; }
+.badge--timelapse    { background: rgba(139,92,246,.85);  color: #fff; }
+.badge--presentation { background: rgba(245,158,11,.85);  color: #0f0e0a; }
+.badge--chantier     { background: rgba(239,68,68,.85);   color: #fff; }
+
+/* Featured badge */
+.badge-featured {
+  position: absolute;
+  top: .75rem;
+  right: .75rem;
+  font-family: var(--font-mono);
+  font-size: .55rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: .3rem .75rem;
+  border-radius: 2rem;
+  background: var(--primary);
+  color: var(--black);
+}
+
+/* ── CARD BODY ── */
+.video-card-body {
+  padding: 1.2rem 1.3rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.video-card--featured .video-card-body {
+  padding: 1.4rem 1.6rem 1.7rem;
+}
+
+.video-card-title {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: clamp(.92rem, 1.4vw, 1.05rem);
+  color: var(--black);
+  line-height: 1.35;
+  letter-spacing: -.01em;
+  margin-bottom: .55rem;
+  transition: color .2s;
+}
+
+.video-card:hover .video-card-title {
+  color: var(--primary-dark);
+}
+
+.video-card--featured .video-card-title {
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+}
+
+.video-card-desc {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--gray-600);
+  line-height: 1.75;
+  letter-spacing: .01em;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.video-card--featured .video-card-desc {
+  font-size: .76rem;
+}
+
+/* Footer meta */
+.video-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding-top: .9rem;
+  border-top: 1px solid var(--gray-200);
+  flex-wrap: wrap;
+}
+
+.video-meta-date {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .1em;
+  color: var(--gray-600);
+  text-transform: uppercase;
+}
+
+.video-meta-views {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .08em;
+  color: var(--gray-600);
+}
+
+.video-meta-views svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--gray-600);
+  fill: none;
+}
+
+.video-watch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--primary-dark);
+  background: rgba(245,218,26,.1);
+  border: 1.5px solid rgba(245,218,26,.3);
+  padding: .4rem .9rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-left: auto;
+}
+
+.video-watch-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--black);
+}
+
+/* ── SECTION SEPARATOR ── */
+.section-sep {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0 2rem;
+}
+
+.section-sep::before,
+.section-sep::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gray-200);
+}
+
+.section-sep-label {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  white-space: nowrap;
+  padding: .3rem .8rem;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  border-radius: 2rem;
+}
+
+/* ── LOAD MORE ── */
+.load-more-wrap {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.load-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: .85rem 2.2rem;
+  border-radius: 2rem;
+  border: 2px solid var(--primary-dark);
+  background: transparent;
+  color: var(--primary-dark);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.load-more-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(245,218,26,.3);
+}
+
+/* ── CTA SECTION ── */
+.videos-cta-section {
+  background: var(--black);
+  padding: clamp(3rem, 7vw, 5rem) 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.videos-cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(245,218,26,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.videos-cta-eyebrow {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.videos-cta-title {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--cream);
+  letter-spacing: -.02em;
+  line-height: 1.05;
+  margin-bottom: 1.1rem;
+}
+
+.videos-cta-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--primary);
+  font-weight: 400;
+}
+
+.videos-cta-desc {
+  max-width: 480px;
+  margin: 0 auto 2rem;
+  font-family: var(--font-mono);
+  font-size: .76rem;
+  color: rgba(250,246,236,.5);
+  line-height: 1.75;
+}
+
+.videos-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 1rem 2.4rem;
+  border-radius: 2rem;
+  background: var(--primary);
+  color: var(--black);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.videos-cta-btn:hover {
+  background: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(245,218,26,.4);
+}
+
+/* ── VIDEO MODAL ── */
+.video-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,14,10,.92);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s cubic-bezier(.4,0,.2,1);
+  backdrop-filter: blur(8px);
+}
+
+.video-modal-backdrop.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.video-modal {
+  background: var(--black);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(245,218,26,.2);
+  width: 100%;
+  max-width: 900px;
+  overflow: hidden;
+  transform: scale(.95) translateY(20px);
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 40px 100px rgba(0,0,0,.6);
+}
+
+.video-modal-backdrop.open .video-modal {
+  transform: scale(1) translateY(0);
+}
+
+.video-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.3rem .8rem;
+  border-bottom: 1px solid rgba(245,218,26,.1);
+  gap: 1rem;
+}
+
+.video-modal-title {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--cream);
+  letter-spacing: -.01em;
+  line-height: 1.3;
+}
+
+.video-modal-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(245,218,26,.2);
+  background: rgba(245,218,26,.06);
+  color: var(--cream);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.video-modal-close:hover {
+  background: var(--primary);
+  color: var(--black);
+  border-color: var(--primary);
+}
+
+.video-modal-player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+}
+
+.video-modal-player video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: none;
+}
+
+.video-modal-footer {
+  padding: 1rem 1.3rem 1.2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.video-modal-desc {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  color: rgba(250,246,236,.55);
+  line-height: 1.75;
+  flex: 1;
+  min-width: 200px;
+}
+
+.video-modal-category {
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: .35rem .85rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s cubic-bezier(.4,0,.2,1), transform .6s cubic-bezier(.4,0,.2,1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+.reveal-delay-5 { transition-delay: .5s; }
+
+/* ── EMPTY STATE (when filter returns 0) ── */
+.videos-empty {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  display: none;
+}
+
+.videos-empty.visible { display: block; }
+
+.videos-empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: .35;
+}
+
+.videos-empty-text {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--gray-600);
+  letter-spacing: .05em;
+}
+
+/* ── SEARCH BAR ── */
+.video-search-wrap {
+  position: relative;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.video-search-input {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .05em;
+  color: var(--black);
+  background: #fff;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 2rem;
+  padding: .5rem 1rem .5rem 2.2rem;
+  width: 200px;
+  outline: none;
+  transition: var(--transition);
+}
+
+.video-search-input:focus {
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 0 3px rgba(245,218,26,.15);
+}
+
+.video-search-icon {
+  position: absolute;
+  left: .75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  stroke: var(--gray-600);
+  fill: none;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .video-search-wrap { display: none; }
+}
+
+/* ── SCROLL TOP ── */
+#scrollTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--black);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 20px rgba(245,218,26,.4);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .3s, transform .3s;
+  z-index: 500;
+}
+
+#scrollTop.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#scrollTop:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+#scrollTop svg {
+  width: 20px; height: 20px;
+  stroke: var(--black); stroke-width: 2.5;
+  fill: none; stroke-linecap: round; stroke-linejoin: round;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     PAGE LOADER
+     ============================================ -->
+<div id="pageLoader">
+  <img src="images/mascotte-mettec.png" alt="METTEC" class="loader-mascot" onerror="this.style.opacity='0'">
+  <div class="loader-dots">
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+  </div>
+  <div class="loader-tagline">Préparez le popcorn…</div>
+  <div class="loader-progress">
+    <div class="progress-bar"></div>
+  </div>
+</div>
+
+<!-- ============================================
+     NAVIGATION (identique à vision.html)
+     ============================================ -->
+<div id="navOverlay" class="nav-overlay"></div>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo-mettec.png" alt="METTEC" class="nav-logo-img"
+           style="height:80px;width:80px;object-fit:contain;">
+      <div>
+        <div class="nav-logo-text"></div>
+        <span class="nav-logo-sub"></span>
+      </div>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <button class="menu-close" id="menuClose" aria-label="Fermer">✕</button>
+      <li><a href="index.html"      class="nav-link">Accueil</a></li>
+      <li><a href="apropos.html"    class="nav-link">À propos</a></li>
+      <li class="nav-dropdown">
+        <span class="nav-link nav-dropdown-toggle">Gammes <span class="chevron">▾</span></span>
+        <div class="nav-dropdown-menu">
+          <a href="gammes.html" class="nav-dropdown-item">
+            <div class="item-icon">🏗️</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Standard</div><div style="font-size:.72rem">Industriel · Gardiennage</div></div>
+          </a>
+          <a href="gammes.html" class="nav-dropdown-item">
+            <div class="item-icon">🏠</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Habitation</div><div style="font-size:.72rem">Comfort · Smart · Autonome</div></div>
+          </a>
+          <a href="gammes.html" class="nav-dropdown-item">
+            <div class="item-icon">🛡️</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Sécurité</div><div style="font-size:.72rem">Postes de garde · Contrôle</div></div>
+          </a>
+          <a href="gammes.html" class="nav-dropdown-item">
+            <div class="item-icon">✨</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Extra</div><div style="font-size:.72rem">Bar · Coffee shop · Sanitaire</div></div>
+          </a>
+        </div>
+      </li>
+      <li><a href="processus.html"   class="nav-link">Processus</a></li>
+      <li><a href="realisations.html" class="nav-link">Réalisations</a></li>
+      <li><a href="activite.html"    class="nav-link">Activités</a></li>
+      <li><a href="faq.html"         class="nav-link">FAQ</a></li>
+      <li><a href="vision.html"      class="nav-link">Vision</a></li>
+      <li><a href="videos.html"      class="nav-link active">Vidéos</a></li>
+      <li><a href="index.html#contact" class="nav-link nav-cta">Parlons de votre Idée →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<div class="videos-page">
+
+  <section class="videos-hero">
+    <div class="videos-hero-badge">▶ Galerie vidéo METTEC</div>
+    <h1 class="videos-hero-title">
+      Voir pour<br>
+      <em>Croire.</em>
+    </h1>
+    <p class="videos-hero-desc">
+      De l'acier brut à la cabine clé en main — chaque vidéo raconte
+      une histoire de précision, de savoir-faire et d'innovation.
+      Fabrication, installation, time-lapse, témoignages… tout est là.
+    </p>
+    <div class="videos-hero-stats">
+      <div class="videos-hero-stat">
+        <div class="videos-hero-stat-num">6</div>
+        <div class="videos-hero-stat-label">Vidéos</div>
+      </div>
+      <div class="videos-hero-stat">
+        <div class="videos-hero-stat-num">500+</div>
+        <div class="videos-hero-stat-label">Projets réalisés</div>
+      </div>
+      <div class="videos-hero-stat">
+        <div class="videos-hero-stat-num">20+</div>
+        <div class="videos-hero-stat-label">Ans d'expertise</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FILTER BAR
+       ============================================ -->
+  <div class="filter-bar-section" id="filterBarSection">
+    <div class="filter-bar">
+      <span class="filter-label">Filtrer</span>
+      <div class="filter-divider"></div>
+      <button class="filter-btn active" data-filter="all">
+        Tout voir <span class="filter-count">6</span>
+      </button>
+      <button class="filter-btn" data-filter="chantier">
+        🏗️ Réalisations <span class="filter-count">3</span>
+      </button>
+      <button class="filter-btn" data-filter="fabrication">
+        🔩 Cabines & Bureaux <span class="filter-count">2</span>
+      </button>
+      <button class="filter-btn" data-filter="installation">
+        🍹 Buvette <span class="filter-count">1</span>
+      </button>
+
+      <!-- Search -->
+      <div class="video-search-wrap" style="margin-left:auto;">
+        <svg class="video-search-icon" viewBox="0 0 24 24" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" class="video-search-input" id="videoSearch"
+               placeholder="Rechercher une vidéo…">
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       MAIN CONTENT
+       ============================================ -->
+  <main class="videos-main">
+
+    <!-- ── À LA UNE ── -->
+    <div class="videos-section-header">
+      <h2 class="videos-section-title">À la une <em>· En vedette</em></h2>
+      <span class="videos-section-count" id="visibleCount">6 vidéos</span>
+    </div>
+
+    <div class="video-grid" id="videoGrid">
+
+      <!-- CARD 1 — Projet Ain Zaghouan — FEATURED -->
+      <div class="video-card video-card--featured reveal"
+           data-category="chantier"
+           data-title="Projet Ain Zaghouan — Chalet en forêt"
+           data-desc="Un chalet d'exception niché dans la forêt d'Ain Zaghouan : revêtement bois intérieur et extérieur, cuisine entièrement équipée, chambres avec lits et accessoires, salon aménagé, terrasse panoramique. Un design profondément inspiré de la nature."
+           data-embed="videos/projet ain zaghouan.mp4">
+        <div class="video-thumb-wrap">
+          <video class="video-thumb-video" src="videos/projet ain zaghouan.mp4" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <div class="video-thumb-overlay">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+          </div>
+          <span class="video-category-badge badge--chantier">🌲 Chalet</span>
+          <span class="badge-featured">★ Vedette</span>
+        </div>
+        <div class="video-card-body">
+          <div class="video-card-title">Chalet Ain Zaghouan — Immersion en forêt</div>
+          <div class="video-card-desc">
+            Cuisine équipée, chambres avec lits, salon confort, terrasse bois, revêtement naturel
+            intérieur & extérieur — un habitat modulaire entièrement inspiré de la nature.
+          </div>
+          <div class="video-card-meta">
+            <span class="video-meta-date">Nov. 2025</span>
+            <button class="video-watch-btn">▶ Regarder</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2 — Projet Dar Bekalta -->
+      <div class="video-card reveal reveal-delay-1"
+           data-category="chantier"
+           data-title="Projet Dar Bekalta — Habitation de luxe"
+           data-desc="Une habitation modulaire luxueuse à Dar Bekalta : piscine privée, design moderne épuré, finitions premium et aménagements haut de gamme. L'alliance parfaite du modulaire et du luxe."
+           data-embed="videos/projet dar bekalta.mp4">
+        <div class="video-thumb-wrap">
+          <video class="video-thumb-video" src="videos/projet dar bekalta.mp4" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <div class="video-thumb-overlay">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+          </div>
+          <span class="video-category-badge badge--chantier">🏊 Luxe</span>
+        </div>
+        <div class="video-card-body">
+          <div class="video-card-title">Dar Bekalta — Habitation luxueuse avec piscine</div>
+          <div class="video-card-desc">
+            Piscine privée, design moderne, finitions premium — une réalisation modulaire
+            qui repousse les limites du luxe contemporain.
+          </div>
+          <div class="video-card-meta">
+            <span class="video-meta-date">Avr. 2026</span>
+            <button class="video-watch-btn">▶ Regarder</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3 — Projet Hergla -->
+      <div class="video-card reveal reveal-delay-2"
+           data-category="chantier"
+           data-title="Projet Hergla — Espace de prière design artisanal tunisien"
+           data-desc="Un espace de prière unique à Hergla, alliant architecture modulaire et artisanat tunisien authentique. Design décoratif traditionnel, zellij, motifs locaux et matériaux nobles pour un lieu de recueillement d'exception."
+           data-embed="videos/projet hergla.mp4">
+        <div class="video-thumb-wrap">
+          <video class="video-thumb-video" src="videos/projet hergla.mp4" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <div class="video-thumb-overlay">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+          </div>
+          <span class="video-category-badge badge--presentation">🕌 Prière</span>
+        </div>
+        <div class="video-card-body">
+          <div class="video-card-title">Hergla — Espace de prière artisanal tunisien</div>
+          <div class="video-card-desc">
+            Design artisanal tunisien authentique, motifs décoratifs traditionnels et
+            matériaux nobles — un espace de recueillement modulaire d'exception.
+          </div>
+          <div class="video-card-meta">
+            <span class="video-meta-date">Avr. 2026</span>
+            <button class="video-watch-btn">▶ Regarder</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4 — Projet Enfidha -->
+      <div class="video-card reveal reveal-delay-1"
+           data-category="chantier"
+           data-title="Projet Enfidha — Cabine revêtement bois"
+           data-desc="Une cabine modulaire à Enfidha entièrement habillée en bois : revêtement extérieur et intérieur en bois naturel, style chaleureux et contemporain. Un rendu élégant qui démontre la polyvalence des finitions METTEC."
+           data-embed="videos/enfidha.mp4">
+        <div class="video-thumb-wrap">
+          <video class="video-thumb-video" src="videos/enfidha.mp4" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <div class="video-thumb-overlay">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+          </div>
+          <span class="video-category-badge badge--fabrication">🪵 Bois</span>
+        </div>
+        <div class="video-card-body">
+          <div class="video-card-title">Enfidha — Cabine tout bois, style naturel</div>
+          <div class="video-card-desc">
+            Revêtement bois intérieur et extérieur, finition naturelle chaleureuse —
+            la preuve que le modulaire peut être aussi élégant que le traditionnel.
+          </div>
+          <div class="video-card-meta">
+            <span class="video-meta-date">Avr. 2026</span>
+            <button class="video-watch-btn">▶ Regarder</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 5 — Projet Paolo -->
+      <div class="video-card reveal reveal-delay-2"
+           data-category="fabrication"
+           data-title="Projet Paolo — Cabines de bureaux industriels"
+           data-desc="Des cabines de bureaux intégrées dans une usine pour les employés : style professionnel et confortable, espaces de travail bien conçus, isolation phonique, climatisation et éclairage adaptés à un environnement industriel exigeant."
+           data-embed="videos/paolo.mp4">
+        <div class="video-thumb-wrap">
+          <video class="video-thumb-video" src="videos/paolo.mp4" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <div class="video-thumb-overlay">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+          </div>
+          <span class="video-category-badge badge--fabrication">🏭 Bureaux</span>
+        </div>
+        <div class="video-card-body">
+          <div class="video-card-title">Paolo — Cabines bureaux en milieu industriel</div>
+          <div class="video-card-desc">
+            Espaces de travail professionnels et confortables intégrés en usine :
+            isolation, climatisation, éclairage — le confort des employés au cœur de l'industrie.
+          </div>
+          <div class="video-card-meta">
+            <span class="video-meta-date">Avr. 2026</span>
+            <button class="video-watch-btn">▶ Regarder</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 6 — Buvette -->
+      <div class="video-card reveal reveal-delay-3"
+           data-category="fabrication"
+           data-title="Buvette modulaire METTEC"
+           data-desc="Une buvette modulaire clé en main : comptoir intégré, zone service, habillage esthétique, raccordements eau et électricité inclus. Rapide à installer, facile à déplacer, idéale pour les espaces publics, clubs sportifs et événements."
+           data-embed="videos/buvette.mp4">
+        <div class="video-thumb-wrap">
+          <video class="video-thumb-video" src="videos/buvette.mp4" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <div class="video-thumb-overlay">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+          </div>
+          <span class="video-category-badge badge--installation">🍹 Buvette</span>
+        </div>
+        <div class="video-card-body">
+          <div class="video-card-title">Buvette modulaire — Clé en main prête à servir</div>
+          <div class="video-card-desc">
+            Comptoir, service, plomberie et électricité intégrés — une buvette modulaire
+            METTEC prête à l'emploi pour clubs, événements et espaces publics.
+          </div>
+          <div class="video-card-meta">
+            <span class="video-meta-date">Avr. 2026</span>
+            <button class="video-watch-btn">▶ Regarder</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.video-grid -->
+
+  </main>
+
+  <!-- ============================================
+       CTA SECTION
+       ============================================ -->
+  <section class="videos-cta-section">
+    <div class="videos-cta-eyebrow">✦ Votre projet mérite sa vidéo</div>
+    <h2 class="videos-cta-title">
+      Vous avez une idée ?<br>
+      <em>Construisons-la ensemble.</em>
+    </h2>
+    <p class="videos-cta-desc">
+      Chaque cabine METTEC est unique. Contactez-nous pour discuter
+      de votre projet — devis gratuit sous 48h, rendu 3D inclus.
+    </p>
+    <a href="index.html#contact" class="videos-cta-btn">
+      Parlons de votre idée →
+    </a>
+  </section>
+
+</div><!-- /.videos-page -->
+
+<!-- ============================================
+     FOOTER (identique à vision.html)
+     ============================================ -->
+<footer>
+  <div class="footer-newsletter">
+    <div class="footer-newsletter-eyebrow">✦ Restez informé</div>
+    <p class="footer-newsletter-desc">Recevez nos actualités, innovations et études de cas — directement dans votre boîte mail.</p>
+    <form class="footer-nl-form" onsubmit="handleNewsletter(event)">
+      <input type="email" class="footer-nl-input" placeholder="votre@email.com" required>
+      <button type="submit" class="footer-nl-btn">S'abonner →</button>
+    </form>
+    <div class="footer-nl-success" id="nlSuccess">✅ Bienvenue ! Vous êtes maintenant abonné.</div>
+    <p class="footer-nl-note">Pas de spam. Désinscription en 1 clic.</p>
+  </div>
+  <div>
+    <a class="footer-logo" href="index.html">
+      <img src="images/logo-mettec.png" alt="METTEC" class="footer-logo-img">
+      <style>.footer-logo-img{height:100px;width:100px;object-fit:contain}</style>
+      <div><div class="footer-logo-name"></div><span class="footer-logo-sub"></span></div>
+    </a>
+    <p class="footer-tagline">Votre idée, Notre acier.<br>Bâti pour l'Éternité.</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/company/mettec-gbm" class="footer-social" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://www.facebook.com/mettec.tn/" class="footer-social" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12v-1a5 5 0 0 1 10 0v4"/><path d="M15 11v6a3 3 0 0 1-6 0v-4"/><path d="M9 16a3 3 0 0 0 6 0"/><path d="M12 5v5"/><circle cx="12" cy="5" r="1"/></svg>
+      </a>
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-title">Gammes</div>
+    <ul class="footer-links">
+      <li><a href="gammes.html">Standard</a></li>
+      <li><a href="gammes.html">Habitation Comfort</a></li>
+      <li><a href="gammes.html">Habitation Smart</a></li>
+      <li><a href="gammes.html">Habitation Autonome</a></li>
+      <li><a href="gammes.html">Sécurité / Gardiennage</a></li>
+      <li><a href="gammes.html">Gamme Extra</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Société</div>
+    <ul class="footer-links">
+      <li><a href="processus.html">Notre processus</a></li>
+      <li><a href="#">Certifications</a></li>
+      <li><a href="#">Références</a></li>
+      <li><a href="#">SAV & Garantie</a></li>
+      <li><a href="videos.html">Vidéos</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Contact</div>
+    <ul class="footer-links">
+      <li><a href="tel:+21636405822">+216 36 40 58 22</a></li>
+      <li><a href="tel:+21629225405">+216 29 22 54 05</a></li>
+      <li><a href="mailto:mettec@gbm.tn">mettec@gbm.tn</a></li>
+      <li>Monastir, Tunisie</li>
+      <li><a href="index.html#contact">Parlons de votre Idée</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span>
+    <span class="footer-copy">Design by <strong>AMH</strong></span>
+    <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div>
+  </div>
+</footer>
+
+<!-- Newsletter styles -->
+<style>
+.footer-newsletter{padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,0.08);grid-column:1 / -1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.75rem}
+.footer-newsletter-eyebrow{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--primary)}
+.footer-newsletter-title{font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.2rem);color:#fff;line-height:1.2}
+.footer-newsletter-title em{color:var(--primary);font-style:italic}
+.footer-newsletter-desc{font-family:var(--font-mono);font-size:1rem;color:rgba(0,0,0,0.45);max-width:420px;line-height:1.7}
+.footer-nl-form{display:flex;gap:0;border-radius:3rem;overflow:hidden;border:1.5px solid rgba(245,218,26,0.3);background:rgba(255,255,255,0.04);transition:border-color .25s;max-width:460px;width:100%}
+.footer-nl-form:focus-within{border-color:var(--primary);background:rgba(245,218,26,0.05)}
+.footer-nl-input{flex:1;background:transparent;border:none;outline:none;padding:.85rem 1.4rem;font-family:var(--font-mono);font-size:.78rem;color:#fff}
+.footer-nl-input::placeholder{color:rgba(255,255,255,0.3)}
+.footer-nl-btn{background:var(--primary);border:none;padding:.85rem 1.6rem;font-family:var(--font-mono);font-size:.75rem;font-weight:700;letter-spacing:.06em;color:#0f0e0a;cursor:pointer;white-space:nowrap;transition:background .2s,transform .2s}
+.footer-nl-btn:hover{background:#ffe000;transform:scale(1.03)}
+.footer-nl-success{display:none;font-family:var(--font-mono);font-size:.74rem;color:#4ade80;background:rgba(74,222,128,0.1);padding:.6rem 1.2rem;border-radius:2rem;border:1px solid rgba(74,222,128,0.25)}
+.footer-nl-success.show{display:block}
+.footer-nl-note{font-family:var(--font-mono);font-size:.6rem;color:rgba(255,255,255,0.22);letter-spacing:.05em}
+@media(max-width:600px){.footer-nl-form{flex-direction:column;border-radius:1rem}.footer-nl-btn{border-radius:0 0 .8rem .8rem;text-align:center}}
+</style>
+<button id="scrollTop"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+<!-- ============================================
+     CHATBOT (identique à vision.html)
+     ============================================ -->
+<button id="chatbot-btn" aria-label="Ouvrir le chatbot METTEC">
+  <img src="images/chatbot.png" alt="Assistant METTEC">
+</button>
+<div id="chatbot-window" role="dialog" aria-label="Assistant METTEC">
+  <div class="cb-header">
+    <img src="images/chatbot.png" alt="Bot" class="cb-header-avatar">
+    <div class="cb-header-info">
+      <div class="cb-header-name">Assistant METTEC</div>
+      <div class="cb-header-status">
+        <span class="cb-status-dot"></span>
+        En ligne · Répond instantanément
+      </div>
+    </div>
+    <button class="cb-close" id="chatbot-close" aria-label="Fermer">✕</button>
+  </div>
+  <div class="cb-messages" id="cb-messages"></div>
+  <div class="cb-questions" id="cb-questions">
+    <div class="cb-questions-label">✦ Choisissez votre question</div>
+  </div>
+</div>
+
+<!-- ============================================
+     VIDEO MODAL
+     ============================================ -->
+<div class="video-modal-backdrop" id="videoModal" role="dialog" aria-modal="true">
+  <div class="video-modal" id="videoModalInner">
+    <div class="video-modal-header">
+      <div class="video-modal-title" id="modalTitle">Vidéo METTEC</div>
+      <button class="video-modal-close" id="modalClose" aria-label="Fermer">✕</button>
+    </div>
+    <div class="video-modal-player">
+      <video id="modalVideo" controls autoplay style="width:100%;height:100%;background:#000;display:block;"
+             title="Vidéo METTEC"></video>
+    </div>
+    <div class="video-modal-footer">
+      <div class="video-modal-desc" id="modalDesc"></div>
+      <span class="video-modal-category" id="modalCategoryBadge"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SCRIPTS
+     ============================================ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function () {
+  /* ── LOADER ── */
+  (function () {
+    const loader = document.getElementById('pageLoader');
+    const bar = document.querySelector('.progress-bar');
+    let w = 0;
+    const iv = setInterval(() => {
+      w = Math.min(w + Math.random() * 18 + 4, 92);
+      if (bar) bar.style.width = w + '%';
+    }, 140);
+    window.addEventListener('load', () => {
+      clearInterval(iv);
+      if (bar) bar.style.width = '100%';
+      setTimeout(() => {
+        loader.style.opacity = '0';
+        loader.style.transition = 'opacity .5s ease';
+        setTimeout(() => { loader.style.display = 'none'; }, 500);
+      }, 350);
+    });
+  })();
+
+  /* ── NAV ── */
+  const menuToggle  = document.getElementById('menuToggle');
+  const menuClose   = document.getElementById('menuClose');
+  const navLinks    = document.getElementById('navLinks');
+  const navOverlay  = document.getElementById('navOverlay');
+  const navbar      = document.querySelector('.navbar');
+  const dropdowns   = document.querySelectorAll('.nav-dropdown');
+
+  window.addEventListener('scroll', () => {
+    navbar && navbar.classList.toggle('scrolled', window.pageYOffset > 60);
+  }, { passive: true });
+
+  if (menuToggle) menuToggle.addEventListener('click', () => {
+    navLinks.classList.add('active');
+    navOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeMenu() {
+    navLinks.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    dropdowns.forEach(d => d.classList.remove('active'));
+  }
+
+  if (menuClose)  menuClose.addEventListener('click', closeMenu);
+  if (navOverlay) navOverlay.addEventListener('click', closeMenu);
+
+  dropdowns.forEach(dd => {
+    const toggle = dd.querySelector('.nav-dropdown-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', e => {
+      e.preventDefault(); e.stopPropagation();
+      dropdowns.forEach(d => { if (d !== dd) d.classList.remove('active'); });
+      dd.classList.toggle('active');
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav-dropdown'))
+      dropdowns.forEach(d => d.classList.remove('active'));
+  });
+
+  /* ── SCROLL TOP ── */
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollTopBtn && scrollTopBtn.classList.toggle('visible', window.pageYOffset > 500);
+  }, { passive: true });
+  scrollTopBtn && scrollTopBtn.addEventListener('click', () =>
+    window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── FILTER BAR SHADOW ── */
+  const filterBar = document.getElementById('filterBarSection');
+  window.addEventListener('scroll', () => {
+    if (!filterBar) return;
+    filterBar.classList.toggle('shadowed', window.pageYOffset > 160);
+  }, { passive: true });
+
+  /* ── VIDEO DATA (from DOM cards) ── */
+  const allCards = Array.from(document.querySelectorAll('.video-card[data-category]'));
+
+  /* ── MODAL ── */
+  const modal      = document.getElementById('videoModal');
+  const modalVideo  = document.getElementById('modalVideo');
+  const modalTitle  = document.getElementById('modalTitle');
+  const modalDesc   = document.getElementById('modalDesc');
+  const modalBadge  = document.getElementById('modalCategoryBadge');
+  const modalClose  = document.getElementById('modalClose');
+
+  // Category badge classes map
+  const badgeClassMap = {
+    fabrication:  'badge--fabrication',
+    installation: 'badge--installation',
+    smart:        'badge--smart',
+    timelapse:    'badge--timelapse',
+    presentation: 'badge--presentation',
+    chantier:     'badge--chantier'
+  };
+  const catLabels = {
+    fabrication:  '🔩 Fabrication',
+    installation: '🏗️ Installation',
+    smart:        '💡 Smart Cabin',
+    timelapse:    '⏱️ Time-lapse',
+    presentation: '🎬 Présentation',
+    chantier:     '🦺 Chantier'
+  };
+
+  function openModal(card) {
+    const title  = card.dataset.title  || '';
+    const desc   = card.dataset.desc   || '';
+    const embed  = card.dataset.embed  || '';
+    const cat    = card.dataset.category || '';
+
+    modalTitle.textContent = title;
+    modalDesc.textContent  = desc;
+    modalBadge.textContent  = catLabels[cat] || cat;
+    modalBadge.className    = 'video-modal-category ' + (badgeClassMap[cat] || '');
+
+    modalVideo.src = embed;
+    modalVideo.load();
+    modalVideo.play().catch(() => {});
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modalVideo.pause();
+    modalVideo.src = '';
+    document.body.style.overflow = '';
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Attach open to every card click
+  allCards.forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+  });
+
+  /* ── FILTER ── */
+  const filterBtns = document.querySelectorAll('.filter-btn[data-filter]');
+  const countEl    = document.getElementById('visibleCount');
+  const emptyEl    = document.getElementById('videosEmpty');
+  let currentFilter = 'all';
+
+  function applyFilter(filter, searchVal) {
+    let visible = 0;
+    const search = (searchVal || '').toLowerCase().trim();
+
+    allCards.forEach(card => {
+      const cat   = card.dataset.category || '';
+      const title = (card.dataset.title || '').toLowerCase();
+      const desc  = (card.dataset.desc  || '').toLowerCase();
+
+      const catMatch    = filter === 'all' || cat === filter;
+      const searchMatch = !search ||
+                          title.includes(search) ||
+                          desc.includes(search)  ||
+                          cat.includes(search);
+
+      const show = catMatch && searchMatch;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    if (countEl) countEl.textContent = visible + ' vidéo' + (visible > 1 ? 's' : '');
+    if (emptyEl) emptyEl.classList.toggle('visible', visible === 0);
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      applyFilter(currentFilter, document.getElementById('videoSearch')?.value);
+    });
+  });
+
+  const searchInput = document.getElementById('videoSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      applyFilter(currentFilter, searchInput.value);
+    });
+  }
+
+  /* ── LOAD MORE (placeholder) ── */
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+      loadMoreBtn.textContent = '✓ Toutes les vidéos sont affichées';
+      loadMoreBtn.disabled = true;
+      loadMoreBtn.style.opacity = '.5';
+      loadMoreBtn.style.cursor = 'default';
+    });
+  }
+
+  /* ── REVEAL ON SCROLL ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const revObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        revObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  reveals.forEach(el => revObs.observe(el));
+
+  /* ── NEWSLETTER ── */
+  window.handleNewsletter = function (e) {
+    e.preventDefault();
+    document.getElementById('nlSuccess').classList.add('show');
+    e.target.style.display = 'none';
+  };
+
+}());
+</script>
+
+<!-- ============================================
+     CHATBOT STYLES
+     ============================================ -->
+<style>
+/* ── Chatbot Trigger Button ── */
+#chatbot-btn {
+  position: fixed;
+  bottom: 6rem;
+  right: 2rem;
+  z-index: 9999;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary);
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 8px 32px rgba(15,14,10,0.28);
+  transition: transform 0.35s cubic-bezier(.22,.68,0,1.4), box-shadow 0.3s;
+  animation: chatbot-float 3s ease-in-out infinite;
+}
+#chatbot-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 50%;
+}
+#chatbot-btn:hover {
+  transform: scale(1.12) translateY(-4px);
+  box-shadow: 0 16px 48px rgba(245,218,26,0.45);
+  animation: none;
+}
+#chatbot-btn.active {
+  animation: none;
+  transform: scale(0.92) rotate(-8deg);
+}
+@keyframes chatbot-float {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-8px) rotate(2deg); }
+}
+#chatbot-btn::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2.5px solid var(--primary);
+  animation: chatbot-ring 2.4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes chatbot-ring {
+  0%   { opacity:1; transform:scale(1); }
+  80%  { opacity:0; transform:scale(1.6); }
+  100% { opacity:0; }
+}
+/* ── Chat Window ── */
+#chatbot-window {
+  position: fixed;
+  bottom: 10rem;
+  right: 2rem;
+  z-index: 9998;
+  width: 360px;
+  max-height: 580px;
+  border-radius: 1.25rem;
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(15,14,10,.15), 0 0 0 1px rgba(220,213,195,0.8);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.88) translateY(24px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.38s cubic-bezier(.22,.68,0,1.25), opacity 0.3s ease;
+  transform-origin: bottom right;
+}
+#chatbot-window.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+.cb-header {
+  background: linear-gradient(120deg, #f5da1a 0%, #e8ca00 100%);
+  padding: .85rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.cb-header::before {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cb-header-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.6);
+  object-fit: contain;
+  background: #fff8d0;
+  flex-shrink: 0;
+  animation: cb-avatar-bounce 2s ease infinite;
+}
+@keyframes cb-avatar-bounce {
+  0%,100% { transform: rotate(-3deg); }
+  50%      { transform: rotate(3deg) translateY(-2px); }
+}
+.cb-header-info { flex: 1; }
+.cb-header-name {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .88rem; font-weight: 800;
+  color: #0f0e0a; letter-spacing: -.01em;
+}
+.cb-header-status {
+  display: flex; align-items: center; gap: .35rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .58rem;
+  color: rgba(15,14,10,.55); letter-spacing: .06em;
+  text-transform: uppercase; margin-top: .12rem;
+}
+.cb-status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #16a34a; animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot {
+  0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)}
+}
+.cb-close {
+  background: rgba(15,14,10,.1); border: none;
+  color: rgba(15,14,10,.55); width: 26px; height: 26px;
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem; transition: background 0.2s, color 0.2s; flex-shrink: 0;
+}
+.cb-close:hover { background: rgba(15,14,10,.2); color: #0f0e0a; }
+.cb-messages {
+  flex: 1; min-height: 0; overflow-y: auto;
+  padding: 1rem 1rem .8rem;
+  display: flex; flex-direction: column; gap: .65rem;
+  scroll-behavior: smooth; background: #f8f6f0;
+}
+.cb-messages::-webkit-scrollbar { width: 3px; }
+.cb-messages::-webkit-scrollbar-track { background: transparent; }
+.cb-messages::-webkit-scrollbar-thumb { background: #ddd8c8; border-radius: 2px; }
+.cb-msg-bot {
+  display: flex; align-items: flex-end; gap: .45rem;
+  animation: cb-msg-in 0.35s cubic-bezier(.22,.68,0,1.2);
+}
+@keyframes cb-msg-in {
+  from { opacity:0; transform:translateY(10px) scale(.96); }
+  to   { opacity:1; transform:none; }
+}
+.cb-msg-bot-avatar {
+  width: 24px; height: 24px; border-radius: 50%;
+  object-fit: contain; background: #fff8d0;
+  border: 1.5px solid #e8ca00; flex-shrink: 0;
+}
+.cb-bubble-bot {
+  background: #ffffff; color: #2e2b22;
+  border-radius: 1rem 1rem 1rem .25rem;
+  padding: .65rem .9rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .76rem; line-height: 1.65; max-width: 84%;
+  box-shadow: 0 1px 4px rgba(15,14,10,.08), 0 0 0 1px rgba(220,213,195,.5);
+}
+.cb-bubble-bot strong { color: #b49a00; font-weight: 700; }
+.cb-typing { display: flex; align-items: center; gap: .45rem; }
+.cb-typing-dots {
+  background: #ffffff; border-radius: 1rem 1rem 1rem .25rem;
+  padding: .6rem .9rem; display: flex; gap: 4px; align-items: center;
+  box-shadow: 0 1px 4px rgba(15,14,10,.08);
+}
+.cb-typing-dots span {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: #c4b060; animation: typing-bounce 1.2s ease infinite;
+}
+.cb-typing-dots span:nth-child(2) { animation-delay: .2s; }
+.cb-typing-dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes typing-bounce {
+  0%,60%,100% { transform:translateY(0); opacity:.4; }
+  30%          { transform:translateY(-4px); opacity:1; }
+}
+.cb-questions {
+  padding: .55rem .8rem .65rem;
+  display: flex; flex-direction: column; gap: .3rem;
+  flex-shrink: 0; max-height: 195px; overflow-y: auto;
+  border-top: 1px solid #e8e0c8; background: #fffdf5;
+}
+.cb-questions::-webkit-scrollbar { width: 3px; }
+.cb-questions::-webkit-scrollbar-track { background: transparent; }
+.cb-questions::-webkit-scrollbar-thumb { background: #e8ca00; border-radius: 2px; }
+.cb-questions-label {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .56rem;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: #a89e7a; margin-bottom: .1rem; flex-shrink: 0;
+}
+.cb-q-btn {
+  display: flex; align-items: center; gap: .5rem;
+  background: #ffffff; color: #2e2b22;
+  border: 1px solid #e8e0c8; border-radius: .6rem;
+  padding: .4rem .7rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .67rem; cursor: pointer; text-align: left;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s;
+  line-height: 1.35; flex-shrink: 0;
+}
+.cb-q-btn:hover { background: #fffbe8; border-color: #e8ca00; transform: translateX(3px); }
+.cb-q-btn .cb-q-icon { font-size: .95rem; flex-shrink: 0; }
+.cb-q-btn.used { opacity: .35; pointer-events: none; transform: none; }
+.cb-msg-user { display: flex; justify-content: flex-end; animation: cb-msg-in 0.3s ease; }
+.cb-bubble-user {
+  background: #f5da1a; color: #0f0e0a;
+  border-radius: 1rem 1rem .25rem 1rem;
+  padding: .55rem .85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .74rem; line-height: 1.45; max-width: 80%;
+  font-weight: 600; box-shadow: 0 2px 8px rgba(245,218,26,.25);
+}
+.cb-reset {
+  background: none; border: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .58rem; color: #a89e7a; cursor: pointer;
+  letter-spacing: .1em; text-transform: uppercase;
+  text-align: center; margin-top: .2rem; padding: .2rem 0;
+  transition: color 0.2s; text-decoration: underline; flex-shrink: 0;
+}
+.cb-reset:hover { color: #0f0e0a; }
+@media (max-width: 440px) {
+  #chatbot-window { width: calc(100vw - 2rem); right: 1rem; bottom: 9rem; }
+  #chatbot-btn    { right: 1rem; bottom: 5rem; width: 60px; height: 60px; }
+}
+</style>
+
+<!-- Chatbot Script -->
+<script>
+(function () {
+  const btn    = document.getElementById('chatbot-btn');
+  const win    = document.getElementById('chatbot-window');
+  const closeB = document.getElementById('chatbot-close');
+  const msgBox = document.getElementById('cb-messages');
+  const qBox   = document.getElementById('cb-questions');
+  let opened   = false;
+
+  const questions = [
+    { icon: '🌲', q: 'C\'est quoi le projet Ain Zaghouan ?',
+      a: 'Un <strong>chalet en forêt</strong> entièrement modulaire : revêtement bois intérieur & extérieur, cuisine équipée, chambres avec lits, salon confort et terrasse panoramique. Un design profondément inspiré de la nature tunisienne.' },
+    { icon: '🏊', q: 'Parlez-moi du projet Dar Bekalta.',
+      a: 'Une <strong>habitation modulaire luxueuse</strong> avec piscine privée, design moderne épuré et finitions premium. La preuve que le modulaire peut atteindre le niveau du haut standing.' },
+    { icon: '🕌', q: 'C\'est quoi la vidéo de Hergla ?',
+      a: 'Un <strong>espace de prière</strong> unique alliant architecture modulaire et artisanat tunisien authentique : motifs décoratifs traditionnels, matériaux nobles, un lieu de recueillement d\'exception.' },
+    { icon: '📞', q: 'Comment obtenir un devis ?',
+      a: 'Simple ! Cliquez sur <strong>"Parlons de votre Idée →"</strong> dans le menu ou en bas de page. Réponse sous 2h, rendu 3D offert, devis sous 48h. Appelez aussi le <strong>+216 36 40 58 22</strong>.' }
+  ];
+
+  function renderWelcome() {
+    msgBox.innerHTML = '';
+    qBox.innerHTML = '<div class="cb-questions-label">✦ Choisissez votre question</div>';
+    const w = document.createElement('div');
+    w.className = 'cb-msg-bot';
+    w.innerHTML = `<img src="images/chatbot.png" alt="Bot" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">🎬 Bienvenue sur la page <strong>Vidéos METTEC</strong> !<br><br>Vous cherchez une vidéo spécifique ? Utilisez les filtres en haut de page, ou posez-moi votre question. <strong>Que puis-je faire pour vous ?</strong> ✨</div>`;
+    msgBox.appendChild(w);
+    questions.forEach((item, i) => {
+      const b = document.createElement('button');
+      b.className = 'cb-q-btn';
+      b.innerHTML = `<span class="cb-q-icon">${item.icon}</span><span>${item.q}</span>`;
+      b.addEventListener('click', () => handleQ(i, b));
+      qBox.appendChild(b);
+    });
+    const r = document.createElement('button');
+    r.className = 'cb-reset';
+    r.textContent = '↺ Recommencer la conversation';
+    r.addEventListener('click', () => { renderWelcome(); msgBox.scrollTop = 0; });
+    qBox.appendChild(r);
+  }
+
+  function handleQ(index, btnEl) {
+    btnEl.classList.add('used');
+    const um = document.createElement('div');
+    um.className = 'cb-msg-user';
+    um.innerHTML = `<div class="cb-bubble-user">${questions[index].q}</div>`;
+    msgBox.appendChild(um);
+    msgBox.scrollTop = msgBox.scrollHeight;
+    const typing = document.createElement('div');
+    typing.className = 'cb-msg-bot cb-typing';
+    typing.innerHTML = `<img src="images/chatbot.png" alt="" class="cb-msg-bot-avatar"><div class="cb-typing-dots"><span></span><span></span><span></span></div>`;
+    msgBox.appendChild(typing);
+    msgBox.scrollTop = msgBox.scrollHeight;
+    setTimeout(() => {
+      typing.remove();
+      const bm = document.createElement('div');
+      bm.className = 'cb-msg-bot';
+      bm.innerHTML = `<img src="images/chatbot.png" alt="Bot" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">${questions[index].a}</div>`;
+      msgBox.appendChild(bm);
+      msgBox.scrollTop = msgBox.scrollHeight;
+    }, 950);
+  }
+
+  btn.addEventListener('click', () => {
+    opened = !opened;
+    win.classList.toggle('open', opened);
+    btn.classList.toggle('active', opened);
+    if (opened && msgBox.children.length === 0) renderWelcome();
+  });
+  closeB.addEventListener('click', () => {
+    opened = false;
+    win.classList.remove('open');
+    btn.classList.remove('active');
+  });
+  document.addEventListener('click', (e) => {
+    if (opened && !win.contains(e.target) && !btn.contains(e.target)) {
+      opened = false;
+      win.classList.remove('open');
+      btn.classList.remove('active');
+    }
+  });
+}());
+</script>
+
+</body>
+</html>

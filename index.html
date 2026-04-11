@@ -1,0 +1,2781 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>METTEC — Cabines Modulaires Premium | Monastir, Tunisie</title>
+  <meta name="description" content="METTEC fabrique des cabines modulaires à ossature métallique certifiées. Sur mesure, livrées clé en main. Smart Cabin, Autonomous, S+1/S+2. 500+ projets. Monastir, Tunisie.">
+  <!-- Polices Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+<!-- ============================================
+     PAGE LOADER
+     ============================================ -->
+
+<div id="pageLoader">
+  <img src="images/mascotte-mettec.png" alt="METTEC" class="loader-mascot" onerror="this.style.opacity='0'">
+  <div class="loader-dots">
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+  </div>
+  <div class="loader-tagline">Construit pour l'Éternité</div>
+  <div class="loader-progress">
+    <div class="progress-bar"></div>
+  </div>
+</div>
+<style>
+    /* Nouveau loader type "mascotte" */
+#pageLoader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--cream);  /* ou #faf6ec */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  transition: opacity 0.6s ease, transform 0.5s ease;
+}
+#pageLoader.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.04);
+}
+.loader-mascot {
+  width: clamp(200px, 18vw, 260px);
+  height: auto;
+  animation: mascotBounce 1.4s ease infinite;
+  filter: drop-shadow(0 8px 24px rgba(15,14,10,.12));
+}
+@keyframes mascotBounce {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+.loader-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.loader-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: ldot 1.2s ease infinite;
+}
+.loader-dot:nth-child(2) { animation-delay: .2s; width: 10px; height: 10px; }
+.loader-dot:nth-child(3) { animation-delay: .4s; }
+@keyframes ldot {
+  0%,80%,100% { transform: scale(.6); background: var(--linen); }
+  40% { transform: scale(1.2); background: var(--gold); }
+}
+.loader-tagline {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--t2xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.loader-progress {
+  width: 200px;
+  height: 3px;
+  background: var(--gray-200);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  width: 0%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+</style>
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<div id="navOverlay" class="nav-overlay"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-logo">
+      <img src="images/logo-mettec.png" alt="METTEC" class="nav-logo-img">
+      <style>
+        .nav-logo-img {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;   /* garde les proportions sans couper */
+}
+      </style>
+      <div>
+        <div class="nav-logo-text"></div>
+        <span class="nav-logo-sub"></span>
+      </div>
+
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <button class="menu-close" id="menuClose" aria-label="Fermer">✕</button>
+      <li><a href="apropos.html" class="nav-link">A propos</a></li>
+      <!-- Gammes dropdown -->
+      <li class="nav-dropdown">
+        <span class="nav-link nav-dropdown-toggle">Gammes <span class="chevron">▾</span></span>
+        <div class="nav-dropdown-menu">
+          <a href="gammes.html" class="nav-dropdown-item">
+            <div class="item-icon">🏗️</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Standard</div><div style="font-size:.72rem">Industriel · Gardiennage</div></div>
+          </a>
+          <a href="gammes.html" class="nav-dropdown-item">
+            <div class="item-icon">🏠</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Habitation</div><div style="font-size:.72rem">Comfort · Smart · Autonome</div></div>
+          </a>
+          <a href="gammes.html" class="nav-dropdown-item">
+            <div class="item-icon">🛡️</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Sécurité</div><div style="font-size:.72rem">Postes de garde · Contrôle</div></div>
+          </a>
+          <a href="gammes.html" class="nav-dropdown-item">
+            <div class="item-icon">✨</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Extra</div><div style="font-size:.72rem">Bar · Coffee shop · Sanitaire</div></div>
+          </a>
+        </div>
+      </li>
+      <li><a href="processus.html" class="nav-link">Processus</a></li>
+      <li><a href="realisations.html" class="nav-link">Réalisations</a></li>
+      <li><a href="activite.html" class="nav-link">Activités</a></li>
+      <li><a href="faq.html" class="nav-link">FAQ</a></li>
+      <li><a href="vision.html" class="nav-link">Vision</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="#contact" class="nav-link nav-cta"> Parlons de Votre Idée →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================
+     HERO SECTION
+     ============================================ -->
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Votre idée, notre acier.<em>Construit pour l'Éternité.</em></h1>
+    <p class="hero-description">METTEC conçoit et fabrique des <strong>cabines modulaires à ossature métallique</strong> sur mesure — livrées clé en main en Afrique du Nord & Europe. Standard, Habitation, Smart, Autonome ou Sécurité : chaque cabine est une histoire unique.</p>
+    <div class="hero-certs">
+      <span class="cert-chip">🏅 ISO 9001</span>
+      <span class="cert-chip">🛡️ Garantie 3 ans</span>
+      <span class="cert-chip">⚡ Livraison Clé en Main</span>
+      <span class="cert-chip">📐 Sur Mesure</span>
+    </div>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn btn-white btn-lg">Parlons de votre Idée</a>
+      <a href="#gammes" class="btn btn-outline btn-lg">Découvrir les gammes</a>
+    </div>
+  </div>
+  <div class="hero-scroll" onclick="document.getElementById('stats').scrollIntoView({behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>
+    Défiler
+  </div>
+</section>
+
+<!-- ============================================
+     MARQUEE BAND
+     ============================================ -->
+<div class="marquee-band">
+  <div class="marquee-inner">
+    <span>Ossature Acier <strong>S355</strong></span>
+    <span>Panneaux Sandwich <strong>PU 100mm</strong></span>
+    <span>Certification <strong>ISO 9001</strong>, <strong>ISO 14001</strong>, <strong>ISO 45001</strong></span>
+    <span>Livraison <strong>Clé en main</strong></span>
+    <span>Garantie <strong>3 ans</strong></span>
+    <span>Sur Mesure <strong>S+0 · S+1 · S+2</strong></span>
+    <span>Zones <strong>Monastir · Afrique · Europe</strong></span>
+    <span>Smart Cabin <strong>Domotique IoT</strong></span>
+    <span>Off-Grid <strong>Solaire Autonome</strong></span>
+    <!-- doublon pour infini -->
+    <span>Ossature Acier <strong>S355</strong></span>
+    <span>Panneaux Sandwich <strong>PU 100mm</strong></span>
+    <span>Certification <strong>ISO 9001</strong>, <strong>ISO 14001</strong>, <strong>ISO 45001</strong></span>
+    <span>Livraison <strong>Clé en main</strong></span>
+    <span>Garantie <strong>3 ans</strong></span>
+  </div>
+</div>
+
+<!-- ============================================
+     STATS BAND
+     ============================================ -->
+<div class="stats-band" id="stats">
+  <div class="stat-item"><div class="stat-number" data-count="500">0</div><div class="stat-label">Projets livrés</div><div class="stat-sub">Afrique du Nord & Europe</div></div>
+  <div class="stat-item"><div class="stat-number" style="font-size:clamp(1.75rem,3.5vw,3rem)">15<small style="font-size:.5em">ans</small></div><div class="stat-label">D'expertise</div><div class="stat-sub">Fabrication certifiée</div></div>
+  <div class="stat-item"><div class="stat-number" style="font-size:clamp(1.75rem,3.5vw,3rem)">3<small style="font-size:.5em">ans</small></div><div class="stat-label">Garantie</div><div class="stat-sub">Sur la structure</div></div>
+  <div class="stat-item"><div class="stat-number" style="font-size:clamp(1.75rem,3.5vw,3rem)">24<small style="font-size:.5em">h</small></div><div class="stat-label">Délai de réponse</div><div class="stat-sub">Devis technique detailé</div></div>
+</div>
+
+
+<!-- ============================================
+     SECTION : POURQUOI LE MODULAIRE ?
+     ============================================ -->
+<section class="modular-why" id="pourquoi-modulaire">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge reveal-modular">✦ Pourquoi la construction métallique ?</div>
+      <h2 class="section-title reveal-modular">Construire l’avenir,<br><em>module par module.</em></h2>
+      <p class="section-subtitle reveal-modular">Le choix du modulaire selon METTEC, c’est allier liberté architecturale, rapidité et responsabilité environnementale.</p>
+    </div>
+
+    <!-- 3 piliers modulaires -->
+    <div class="modular-grid reveal-modular">
+      <div class="modular-card">
+        <div class="modular-icon">🔄</div>
+        <h3 class="modular-card-title">Adaptation aux besoins modifiables</h3>
+        <p class="modular-card-text">Extension, reconfiguration ou déplacement : nos modules évoluent avec vous. Une flexibilité totale pour des projets qui grandissent ou se transforment.</p>
+      </div>
+      <div class="modular-card">
+        <div class="modular-icon">⚡</div>
+        <h3 class="modular-card-title">Installation rapide & coûts maîtrisés</h3>
+        <p class="modular-card-text">Préfabriqués en usine, assemblés en un temps record. Main‑d’œuvre réduit, des économies concrètes dès le premier processus.</p>
+      </div>
+      <div class="modular-card">
+        <div class="modular-icon">♻️</div>
+        <h3 class="modular-card-title">Durabilité & réutilisation des modules</h3>
+        <p class="modular-card-text">Démontables, déplaçables, réassemblables. Une seconde vie pour chaque structure, zéro gaspillage, empreinte carbone réduite.</p>
+      </div>
+    </div>
+
+    <!-- Les 3E : Ecologique, Economique, Ergonomique -->
+<div class="modular-3e"> 
+      
+  <div class="modular-3e-item reveal-modular">
+    <div class="modular-3e-icon">💰</div>
+    <div class="modular-3e-content">
+      <h4>Économique</h4>
+      <p>Réduction significative des coûts de construction et d’exploitation grâce à des solutions optimisées et rapides à mettre en œuvre.</p>
+    </div>
+  </div>
+
+  <div class="modular-3e-item reveal-modular">
+    <div class="modular-3e-icon">🪑</div>
+    <div class="modular-3e-content">
+      <h4>Ergonomique</h4>
+      <p>Des espaces intelligemment conçus pour offrir confort, efficacité et adaptation parfaite à vos besoins professionnels ou personnels.</p>
+    </div>
+  </div>
+
+  <div class="modular-3e-item reveal-modular">
+    <div class="modular-3e-icon">🏆</div>
+    <div class="modular-3e-content">
+      <h4>Qualité</h4>
+      <p>Des matériaux fiables et des finitions soignées garantissant des constructions robustes, conformes aux standards les plus exigeants.</p>
+    </div>
+  </div>
+
+  <div class="modular-3e-item reveal-modular">
+    <div class="modular-3e-icon">💡</div>
+    <div class="modular-3e-content">
+      <h4>Innovation</h4>
+      <p>Des solutions modernes et évolutives intégrant les dernières technologies pour répondre aux défis d’aujourd’hui et de demain.</p>
+    </div>
+  </div>
+
+  <div class="modular-3e-item reveal-modular">
+    <div class="modular-3e-icon">⏳</div>
+    <div class="modular-3e-content">
+      <h4>Durabilité</h4>
+      <p>Des structures conçues pour durer dans le temps avec une résistance optimale et un entretien minimal.</p>
+    </div>
+  </div>
+
+  <div class="modular-3e-item reveal-modular">
+    <div class="modular-3e-icon">🌱</div>
+    <div class="modular-3e-content">
+      <h4>Écologique</h4>
+      <p>Une approche respectueuse de l’environnement avec des matériaux recyclables et une réduction de l’empreinte carbone.</p>
+    </div>
+  </div>
+
+</div>
+
+    <!-- Services clés -->
+    <div class="modular-services">
+      <div class="modular-services-header reveal-modular">
+        <span class="services-badge">✦ L’innovation modulaire, au service de votre espace</span>
+        <h3 class="services-title">METTEC vous accompagne<br><em>de la consultation à la clé en main</em></h3>
+      </div>
+      <div class="services-grid reveal-modular">
+        <div class="service-chip">📋 Consultation & Conseils</div>
+        <div class="service-chip">✏️ Conception sur Mesure</div>
+        <div class="service-chip">🏗️ Installation & Montage</div>
+        <div class="service-chip">🛋️ Aménagement Intérieur</div>
+        <div class="service-chip">🎨 Habillage extérieur</div>
+        <div class="service-chip">🔑 Livraison Clé en Main</div>
+        <div class="service-chip">🛠️ Service Après-Vente</div>
+        <div class="service-chip">🌱 Solution écologique</div>
+      </div>
+    </div>
+
+    <div class="modular-cta reveal-modular">
+      <a href="#contact" class="btn btn-primary">Parlons de votre projet modulaire →</a>
+      <a href="#gammes" class="btn btn-outline">Découvrir nos gammes</a>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ===== SECTION MODULAIRE ===== */
+.modular-why {
+  background: var(--cream, #faf6ec);
+  padding: 5rem 0;
+  position: relative;
+}
+
+.modular-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 3rem 0 4rem;
+}
+
+.modular-card {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  padding: 2rem 1.8rem;
+  box-shadow: 0 8px 30px rgba(15,14,10,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(245,218,26,0.2);
+}
+
+.modular-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(15,14,10,0.1);
+  border-color: var(--primary, #f5da1a);
+}
+
+.modular-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.modular-card-title {
+  font-family: var(--font-main, 'Syne', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #0f0e0a;
+}
+
+.modular-card-text {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #3a382f;
+}
+
+/* 3E style */
+.modular-3e {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin: 3rem 0 4rem;
+  background: rgba(245,218,26,0.08);
+  border-radius: 2rem;
+  padding: 2rem 2rem;
+}
+
+.modular-3e-item {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.modular-3e-icon {
+  font-size: 2rem;
+  background: var(--primary, #f5da1a);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5da1a;
+  box-shadow: 0 4px 10px rgba(245,218,26,0.3);
+}
+
+.modular-3e-content h4 {
+  font-family: var(--font-main, 'Syne');
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: #0f0e0a;
+}
+
+.modular-3e-content p {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #3a382f;
+  line-height: 1.5;
+}
+
+/* Services */
+.modular-services {
+  margin: 3rem 0 2rem;
+}
+
+.modular-services-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.services-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: rgba(245,218,26,0.2);
+  padding: 0.3rem 1rem;
+  border-radius: 2rem;
+  color: #b49a00;
+  display: inline-block;
+  margin-bottom: 0.8rem;
+}
+
+.services-title {
+  font-family: var(--font-main, 'Syne');
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.services-title em {
+  color: var(--primary);
+  font-style: italic;
+}
+
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.service-chip {
+  background: #ffffff;
+  border: 1px solid #e0d8c4;
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: default;
+  color: #2e2b22;
+}
+
+.service-chip:hover {
+  border-color: var(--primary);
+  background: #fffae6;
+  transform: translateY(-2px);
+}
+
+/* CTA buttons */
+.modular-cta {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 3.5rem;
+}
+
+.modular-cta .btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--primary);
+  color: #0f0e0a;
+}
+
+.modular-cta .btn-outline:hover {
+  background: var(--primary);
+  color: #0f0e0a;
+}
+
+/* Reveal animations */
+.reveal-modular {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-modular.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .modular-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .modular-3e {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+  .modular-3e-item {
+    width: 100%;
+  }
+  .services-title {
+    font-size: 1.4rem;
+  }
+  .modular-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
+
+<script>
+(function() {
+  // Animation au scroll pour les éléments .reveal-modular
+  const revealElements = document.querySelectorAll('.reveal-modular');
+  if (revealElements.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+    revealElements.forEach(el => observer.observe(el));
+  }
+})();
+</script>
+
+
+
+<!-- SECTION CONFIGURATEUR CABINE 3D - METTEC -->
+<!-- Insérer ce bloc complet dans votre fichier HTML -->
+
+<style>
+/* === CSS ISOLÉ POUR CONFIGURATEUR CABINE === */
+/* Tous les sélecteurs sont préfixés par .mettec-cabin- pour éviter les conflits */
+
+.mettec-cabin-section {
+  --mtc-ink:#050505;
+  --mtc-ink2:#0a0908;
+  --mtc-gold:#f5da1a;
+  --mtc-gold-dark:#c4ad00;
+  --mtc-gold-light:#fef48a;
+  --mtc-sand:#9a8b5e;
+  --mtc-linen:#e8e0c8;
+  --mtc-mist:#5c5644;
+  --mtc-cream:#faf6ec;
+  --mtc-iot:#00d4ff;
+  --mtc-solar:#00e676;
+  --mtc-energy:#ffd600;
+  
+  font-family:'Space Mono',monospace;
+  background:var(--mtc-ink);
+  color:var(--mtc-cream);
+  position:relative;
+  width:100%;
+  min-height:100vh;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+}
+
+.mettec-canvas-wrap {
+  position:relative;
+  width:100%;
+  height:100%;
+  min-height:600px;
+  background:radial-gradient(ellipse at 30% 40%, #0a1018 0%, #020408 50%, #000000 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:2rem;
+}
+
+#mettec-cabin-canvas {
+  display:block;
+  width:100% !important;
+  height:clamp(400px, 60vh, 700px);
+  border-radius:24px;
+  cursor:grab;
+  touch-action:none;
+  box-shadow:0 0 0 1px rgba(245,218,26,.2), 0 0 80px rgba(245,218,26,.08), 0 30px 100px -30px rgba(0,0,0,.9);
+}
+
+#mettec-cabin-canvas:active { cursor:grabbing; }
+
+.mettec-badge {
+  position:absolute;
+  top:2rem;
+  left:2rem;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--mtc-gold);
+  background:rgba(5,8,12,.95);
+  border:1px solid rgba(245,218,26,.3);
+  border-radius:40px;
+  padding:12px 20px;
+  backdrop-filter:blur(12px);
+  pointer-events:none;
+  z-index:10;
+}
+
+.mettec-badge-dot {
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#00e676;
+  animation:mettec-pulse 1.5s infinite;
+  box-shadow:0 0 15px #00e676;
+}
+
+@keyframes mettec-pulse {
+  0%,100% { transform:scale(1); opacity:1; }
+  50% { transform:scale(0.8); opacity:0.6; }
+}
+
+.mettec-equip-status {
+  position:absolute;
+  top:2rem;
+  right:2rem;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  z-index:10;
+}
+
+.mettec-equip-tag {
+  background:rgba(5,8,12,.95);
+  border:1px solid rgba(245,218,26,.2);
+  border-radius:30px;
+  padding:8px 16px;
+  font-size:11px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  backdrop-filter:blur(12px);
+  transform:translateX(120px);
+  opacity:0;
+  transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color:var(--mtc-linen);
+}
+
+.mettec-equip-tag.active {
+  transform:translateX(0);
+  opacity:1;
+}
+
+.mettec-equip-tag.solar { border-color:var(--mtc-solar); color:var(--mtc-solar); }
+.mettec-equip-tag.smart { border-color:var(--mtc-iot); color:var(--mtc-iot); }
+.mettec-equip-tag.ac { border-color:var(--mtc-energy); color:var(--mtc-energy); }
+.mettec-equip-tag.kitchen { border-color:#ff8a65; color:#ff8a65; }
+.mettec-equip-tag.bathroom { border-color:#4fc3f7; color:#4fc3f7; }
+
+.mettec-controls {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:1.5rem;
+  flex-wrap:wrap;
+  padding:20px;
+  background:rgba(245,218,26,.04);
+  border-radius:20px;
+  border:1px solid rgba(245,218,26,.1);
+  justify-content:center;
+}
+
+.mettec-btn {
+  background:rgba(245,218,26,.06);
+  border:1px solid rgba(245,218,26,.2);
+  color:var(--mtc-gold);
+  font-size:11px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:12px 20px;
+  border-radius:30px;
+  cursor:pointer;
+  transition:all .25s ease;
+  font-family:'Space Mono',monospace;
+  font-weight:700;
+}
+
+.mettec-btn:hover {
+  background:rgba(245,218,26,.15);
+  border-color:rgba(245,218,26,.4);
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(245,218,26,.15);
+}
+
+.mettec-btn.active {
+  background:var(--mtc-gold);
+  color:var(--mtc-ink);
+  border-color:var(--mtc-gold);
+  box-shadow:0 6px 25px rgba(245,218,26,.4);
+}
+
+.mettec-hint {
+  font-size:11px;
+  color:rgba(245,218,26,.5);
+  margin-top:1rem;
+  letter-spacing:0.05em;
+  text-align:center;
+}
+
+/* Panneau de configuration */
+.mettec-config-panel {
+  background:linear-gradient(145deg, #080a06 0%, #050704 100%);
+  border-left:1px solid rgba(245,218,26,.08);
+  padding:3rem 2rem;
+  overflow-y:auto;
+  max-height:100vh;
+}
+
+.mettec-eyebrow {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:11px;
+  letter-spacing:0.3em;
+  color:var(--mtc-sand);
+  margin-bottom:1.5rem;
+  text-transform:uppercase;
+}
+
+.mettec-eyebrow::before {
+  content:"";
+  width:40px;
+  height:1px;
+  background:linear-gradient(90deg, var(--mtc-gold), transparent);
+}
+
+.mettec-title {
+  font-family:'Syne', sans-serif;
+  font-weight:800;
+  font-size:clamp(2rem, 4vw, 3.5rem);
+  line-height:0.95;
+  letter-spacing:-0.04em;
+  color:var(--mtc-cream);
+  margin-bottom:1rem;
+}
+
+.mettec-title em {
+  font-family:'DM Serif Display', serif;
+  font-style:italic;
+  color:var(--mtc-gold);
+  display:block;
+  font-weight:400;
+  margin-top:0.2em;
+}
+
+.mettec-subtitle {
+  font-size:14px;
+  color:var(--mtc-mist);
+  margin-bottom:3rem;
+  line-height:1.7;
+  max-width:400px;
+}
+
+/* Étapes */
+.mettec-steps {
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+.mettec-step {
+  background:linear-gradient(145deg, rgba(20,22,18,.9) 0%, rgba(12,14,10,.7) 100%);
+  border:1px solid rgba(245,218,26,.1);
+  border-radius:24px;
+  backdrop-filter:blur(10px);
+  overflow:hidden;
+  transition:all 0.3s ease;
+}
+
+.mettec-step:hover { border-color:rgba(245,218,26,.2); }
+.mettec-step.active-step {
+  border-color:rgba(245,218,26,.6);
+  background:linear-gradient(145deg, rgba(30,32,26,.95) 0%, rgba(18,20,14,.8) 100%);
+  box-shadow:0 15px 50px rgba(245,218,26,.12);
+}
+
+.mettec-step-header {
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:20px 24px;
+  cursor:pointer;
+  transition:background 0.2s;
+}
+
+.mettec-step-header:hover { background:rgba(245,218,26,.03); }
+
+.mettec-step-num {
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  border:2px solid rgba(245,218,26,.4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:14px;
+  transition:all 0.3s;
+  background:rgba(245,218,26,.05);
+  flex-shrink:0;
+}
+
+.mettec-step.active-step .mettec-step-num {
+  background:var(--mtc-gold);
+  border-color:var(--mtc-gold);
+  color:var(--mtc-ink);
+  box-shadow:0 0 20px rgba(245,218,26,.5);
+}
+
+.mettec-step-title {
+  font-family:'Syne', sans-serif;
+  font-weight:700;
+  font-size:15px;
+  flex:1;
+}
+
+.mettec-step-value {
+  background:rgba(245,218,26,.12);
+  border-radius:20px;
+  padding:6px 14px;
+  font-size:11px;
+  color:var(--mtc-gold);
+  font-weight:700;
+  border:1px solid rgba(245,218,26,.2);
+}
+
+.mettec-step-body {
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+  padding:0 24px;
+}
+
+.mettec-step.active-step .mettec-step-body {
+  max-height:500px;
+  padding:0 24px 24px;
+}
+
+/* Sliders */
+.mettec-slider-group {
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.mettec-slider-item label {
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  color:var(--mtc-linen);
+  margin-bottom:10px;
+  font-weight:700;
+}
+
+.mettec-slider-item label span {
+  color:var(--mtc-gold);
+  font-family:'Syne', sans-serif;
+  font-weight:800;
+}
+
+.mettec-slider {
+  -webkit-appearance:none;
+  width:100%;
+  height:6px;
+  background:rgba(245,218,26,.1);
+  border-radius:6px;
+  outline:none;
+}
+
+.mettec-slider::-webkit-slider-thumb {
+  -webkit-appearance:none;
+  width:24px;
+  height:24px;
+  background:var(--mtc-gold);
+  border-radius:50%;
+  cursor:pointer;
+  border:3px solid var(--mtc-ink);
+  box-shadow:0 0 15px rgba(245,218,26,.6);
+}
+
+/* Options */
+.mettec-options {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.mettec-option {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 20px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(245,218,26,.12);
+  border-radius:16px;
+  cursor:pointer;
+  transition:all 0.3s;
+}
+
+.mettec-option:hover {
+  background:rgba(245,218,26,.06);
+  border-color:rgba(245,218,26,.25);
+  transform:translateX(5px);
+}
+
+.mettec-option.selected {
+  border-color:var(--mtc-gold-dark);
+  background:linear-gradient(135deg, rgba(196,173,0,.2) 0%, rgba(196,173,0,.05) 100%);
+}
+
+.mettec-option input { display:none; }
+
+.mettec-option-main {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:700;
+  font-size:14px;
+}
+
+.mettec-option-price {
+  font-size:11px;
+  color:var(--mtc-sand);
+  background:rgba(245,218,26,.1);
+  padding:4px 12px;
+  border-radius:20px;
+}
+
+/* Checkboxes équipements */
+.mettec-checks {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.mettec-check {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 18px;
+  border-radius:14px;
+  cursor:pointer;
+  transition:all 0.3s;
+  border:1px solid transparent;
+  background:rgba(255,255,255,.01);
+}
+
+.mettec-check:hover {
+  background:rgba(245,218,26,.04);
+  transform:translateX(5px);
+}
+
+.mettec-check.checked {
+  background:linear-gradient(135deg, rgba(245,218,26,.15) 0%, rgba(245,218,26,.03) 100%);
+  border-color:rgba(245,218,26,.3);
+}
+
+.mettec-check input { display:none; }
+
+.mettec-check-box {
+  width:22px;
+  height:22px;
+  border:2px solid rgba(245,218,26,.4);
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all 0.3s;
+  flex-shrink:0;
+}
+
+.mettec-check.checked .mettec-check-box {
+  background:var(--mtc-gold);
+  border-color:var(--mtc-gold);
+  box-shadow:0 0 15px rgba(245,218,26,.4);
+}
+
+.mettec-check-box::after {
+  content:"✓";
+  color:var(--mtc-ink);
+  font-weight:800;
+  font-size:12px;
+  opacity:0;
+  transform:scale(0);
+  transition:all 0.3s;
+}
+
+.mettec-check.checked .mettec-check-box::after {
+  opacity:1;
+  transform:scale(1);
+}
+
+.mettec-check-content { flex:1; }
+.mettec-check-title {
+  font-size:14px;
+  font-weight:700;
+  display:block;
+  margin-bottom:4px;
+}
+.mettec-check-desc {
+  font-size:11px;
+  color:var(--mtc-mist);
+}
+
+/* Finitions */
+.mettec-finishes {
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:12px;
+}
+
+.mettec-finish {
+  border:1px solid rgba(245,218,26,.15);
+  border-radius:20px;
+  padding:16px 12px;
+  cursor:pointer;
+  text-align:center;
+  background:rgba(0,0,0,.4);
+  transition:all 0.4s;
+}
+
+.mettec-finish:hover {
+  transform:translateY(-4px);
+  border-color:rgba(245,218,26,.3);
+}
+
+.mettec-finish.selected {
+  border-color:var(--mtc-gold-dark);
+  background:linear-gradient(180deg, rgba(196,173,0,.2) 0%, rgba(196,173,0,.05) 100%);
+  box-shadow:0 8px 30px rgba(196,173,0,.15);
+  transform:translateY(-4px);
+}
+
+.mettec-finish-swatch {
+  height:50px;
+  border-radius:12px;
+  margin-bottom:10px;
+  box-shadow:inset 0 2px 4px rgba(0,0,0,.5), 0 4px 8px rgba(0,0,0,.3);
+  position:relative;
+  overflow:hidden;
+}
+
+.mettec-finish-swatch::after {
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:50%;
+  background:linear-gradient(180deg, rgba(255,255,255,.2) 0%, transparent 100%);
+}
+
+.mettec-finish-name {
+  font-size:11px;
+  font-weight:700;
+  color:var(--mtc-linen);
+}
+
+/* Responsive */
+@media (max-width:1200px) {
+  .mettec-cabin-section {
+    grid-template-columns:1fr;
+  }
+  .mettec-config-panel {
+    border-left:none;
+    border-top:1px solid rgba(245,218,26,.1);
+    max-height:none;
+  }
+  .mettec-equip-status { display:none; }
+}
+
+@media (max-width:640px) {
+  .mettec-finishes { grid-template-columns:repeat(2, 1fr); }
+  .mettec-canvas-wrap { padding:1rem; min-height:400px; }
+  #mettec-cabin-canvas { height:350px; }
+}
+</style>
+
+<!-- HTML DE LA SECTION -->
+<section class="mettec-cabin-section" id="mettec-cabin-section">
+  
+  <!-- Partie gauche: Canvas 3D -->
+  <div class="mettec-canvas-wrap">
+    <canvas id="mettec-cabin-canvas"></canvas>
+    
+    <div class="mettec-badge">
+      <span class="mettec-badge-dot"></span>
+      Rendu Temps Réel · RTX · PBR
+    </div>
+    
+    <div class="mettec-equip-status">
+      <div class="mettec-equip-tag solar" data-equip="solar">☀️ Solaire 3kWc</div>
+      <div class="mettec-equip-tag smart" data-equip="smart">📡 Smart Home</div>
+      <div class="mettec-equip-tag ac" data-equip="ac">❄️ Climatisation</div>
+      <div class="mettec-equip-tag kitchen" data-equip="kitchen">🍳 Cuisine</div>
+      <div class="mettec-equip-tag bathroom" data-equip="bathroom">🚿 Salle de bain</div>
+    </div>
+    
+    <div class="mettec-controls">
+      <button class="mettec-btn active" onclick="mettecSetView('perspective', this)">Vue 3D</button>
+      <button class="mettec-btn" onclick="mettecSetView('front', this)">Façade</button>
+      <button class="mettec-btn" onclick="mettecSetView('side', this)">Profil</button>
+      <button class="mettec-btn" onclick="mettecSetView('top', this)">Plan</button>
+      <div style="width:1px;height:24px;background:rgba(245,218,26,.2);margin:0 8px;"></div>
+      <button class="mettec-btn active" id="mettec-btn-solid" onclick="mettecSetMode('solid')">Texturé</button>
+      <button class="mettec-btn" id="mettec-btn-wire" onclick="mettecSetMode('wire')">Filaire</button>
+      <button class="mettec-btn" onclick="mettecAutoRotate(this)" id="mettec-btn-rotate">⟳ Auto</button>
+      <button class="mettec-btn" onclick="mettecReset()" style="margin-left:auto;border-color:#ff6b35;color:#ff6b35;">↺ Reset</button>
+    </div>
+    
+    <p class="mettec-hint">🖱️ Glisser pour tourner · Molette zoom · Clic droit panoramique</p>
+  </div>
+  
+  <!-- Partie droite: Configuration -->
+  <div class="mettec-config-panel">
+    <div class="mettec-eyebrow">Configurateur Architecte 3D</div>
+    <h2 class="mettec-title">Concevez votre <em>espace idéal</em></h2>
+    <p class="mettec-subtitle">Personnalisez chaque détail avec des équipements haut de gamme visualisés en temps réel.</p>
+    
+    <div class="mettec-steps">
+      
+      <!-- Étape 1: Dimensions -->
+      <div class="mettec-step active-step" data-step="1">
+        <div class="mettec-step-header" onclick="mettecToggleStep(1)">
+          <div class="mettec-step-num">1</div>
+          <div class="mettec-step-title">Dimensions Structure</div>
+          <div class="mettec-step-value" id="mettec-dim-value">6m × 3m × 2.5m</div>
+        </div>
+        <div class="mettec-step-body">
+          <div class="mettec-slider-group">
+            <div class="mettec-slider-item">
+              <label>Longueur <span id="mettec-val-l">6</span> m</label>
+              <input type="range" class="mettec-slider" min="2.5" max="20" step="0.5" value="6" oninput="mettecUpdateDim('L', this.value)">
+            </div>
+            <div class="mettec-slider-item">
+              <label>Largeur <span id="mettec-val-w">3</span> m</label>
+              <input type="range" class="mettec-slider" min="2" max="10" step="0.5" value="3" oninput="mettecUpdateDim('W', this.value)">
+            </div>
+            <div class="mettec-slider-item">
+              <label>Hauteur <span id="mettec-val-h">2.5</span> m</label>
+              <input type="range" class="mettec-slider" min="2.2" max="4.8" step="0.1" value="2.5" oninput="mettecUpdateDim('H', this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Étape 2: Étages -->
+      <div class="mettec-step" data-step="2">
+        <div class="mettec-step-header" onclick="mettecToggleStep(2)">
+          <div class="mettec-step-num">2</div>
+          <div class="mettec-step-title">Configuration Étages</div>
+          <div class="mettec-step-value" id="mettec-config-value">Plain-pied</div>
+        </div>
+        <div class="mettec-step-body">
+          <div class="mettec-options">
+            <label class="mettec-option selected" onclick="mettecSelectConfig(0, 'Plain-pied', this)">
+              <input type="radio" name="mettec-config" value="0" checked>
+              <span class="mettec-option-main">🏡 Plain-pied</span>
+              <span class="mettec-option-price">Inclus</span>
+            </label>
+            <label class="mettec-option" onclick="mettecSelectConfig(1, 'Duplex S+1', this)">
+              <input type="radio" name="mettec-config" value="1">
+              <span class="mettec-option-main">🏠 Duplex S+1</span>
+              <span class="mettec-option-price">+1 étage</span>
+            </label>
+            <label class="mettec-option" onclick="mettecSelectConfig(2, 'Triplex S+2', this)">
+              <input type="radio" name="mettec-config" value="2">
+              <span class="mettec-option-main">🏢 Triplex S+2</span>
+              <span class="mettec-option-price">+2 étages</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Étape 3: Équipements -->
+      <div class="mettec-step" data-step="3">
+        <div class="mettec-step-header" onclick="mettecToggleStep(3)">
+          <div class="mettec-step-num">3</div>
+          <div class="mettec-step-title">Équipements Premium</div>
+          <div class="mettec-step-value" id="mettec-equip-value">Aucun</div>
+        </div>
+        <div class="mettec-step-body">
+          <div class="mettec-checks">
+            <label class="mettec-check" onclick="mettecToggleEquip(this, 'kitchen')">
+              <input type="checkbox" data-equip="kitchen">
+              <div class="mettec-check-box"></div>
+              <div class="mettec-check-content">
+                <span class="mettec-check-title">🍳 Cuisine Équipée Premium</span>
+                <span class="mettec-check-desc">Plan de travail quartz, électroménager intégré, LED</span>
+              </div>
+            </label>
+            <label class="mettec-check" onclick="mettecToggleEquip(this, 'bathroom')">
+              <input type="checkbox" data-equip="bathroom">
+              <div class="mettec-check-box"></div>
+              <div class="mettec-check-content">
+                <span class="mettec-check-title">🚿 Salle de Bain Complète</span>
+                <span class="mettec-check-desc">Douche italienne, vasque design, chauffe-eau</span>
+              </div>
+            </label>
+            <label class="mettec-check" onclick="mettecToggleEquip(this, 'ac')">
+              <input type="checkbox" data-equip="ac">
+              <div class="mettec-check-box"></div>
+              <div class="mettec-check-content">
+                <span class="mettec-check-title">❄️ Climatisation Inverter</span>
+                <span class="mettec-check-desc">Unité extérieure silencieuse, réversible, A+++</span>
+              </div>
+            </label>
+            <label class="mettec-check" onclick="mettecToggleEquip(this, 'smart')">
+              <input type="checkbox" data-equip="smart">
+              <div class="mettec-check-box"></div>
+              <div class="mettec-check-content">
+                <span class="mettec-check-title">📡 Pack Smart Home IoT</span>
+                <span class="mettec-check-desc">Domotique complète, caméra, capteurs, voice control</span>
+              </div>
+            </label>
+            <label class="mettec-check" onclick="mettecToggleEquip(this, 'solar')">
+              <input type="checkbox" data-equip="solar">
+              <div class="mettec-check-box"></div>
+              <div class="mettec-check-content">
+                <span class="mettec-check-title">☀️ Kit Solaire 3kWc</span>
+                <span class="mettec-check-desc">8 panneaux haute efficacité, onduleur, batteries</span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Étape 4: Finitions -->
+      <div class="mettec-step" data-step="4">
+        <div class="mettec-step-header" onclick="mettecToggleStep(4)">
+          <div class="mettec-step-num">4</div>
+          <div class="mettec-step-title">Finitions Extérieures</div>
+          <div class="mettec-step-value" id="mettec-finish-value">Béton Ciré</div>
+        </div>
+        <div class="mettec-step-body">
+          <div class="mettec-finishes" id="mettec-finish-container"></div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</section>
+
+<!-- Three.js requis -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+// === JAVASCRIPT ISOLÉ POUR CONFIGURATEUR CABINE ===
+// Toutes les variables et fonctions sont préfixées par 'mettec'
+
+(function() {
+  'use strict';
+  
+  // État du configurateur
+  const mettecState = {
+    L: 6, W: 3, H: 2.5,
+    floors: 0,
+    kitchen: false, bathroom: false, ac: false, smart: false, solar: false,
+    finish: 'classique', finishColor: 0xc8c0a0
+  };
+  
+  const mettecFinishes = [
+    { name: 'Béton Ciré', val: 'Standard', color: '#c8c0a0' },
+    { name: 'Bois Naturel', val: 'bois', color: '#8B6914' },
+    { name: 'Anthracite', val: 'anthracite', color: '#3a3d45' },
+    { name: 'Blanc Minéral', val: 'blanc', color: '#e8e4dc' },
+    { name: 'Corten Steel', val: 'corten', color: '#8B4513' },
+    { name: 'Gold Brossé', val: 'gold', color: '#c4ad00' }
+  ];
+  
+  // Three.js variables
+  let mettecScene, mettecCamera, mettecRenderer, mettecCabinGroup;
+  let mettecGroups = {};
+  let mettecAnimatedObjects = { solarPanels: [], acFan: null, smartLed: null };
+  let mettecRadius = 18, mettecTheta = 0.8, mettecPhi = 1.0;
+  let mettecTargetTheta = mettecTheta, mettecTargetPhi = mettecPhi, mettecTargetRadius = mettecRadius;
+  let mettecIsDragging = false, mettecAutoRot = false, mettecTime = 0;
+  let mettecLastX = 0, mettecLastY = 0, mettecIsRightClick = false;
+  let mettecRebuildTimeout;
+  
+  // Initialisation
+  function mettecInit() {
+    const canvas = document.getElementById('mettec-cabin-canvas');
+    if (!canvas) return;
+    
+    // Renderer
+    mettecRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    mettecRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    mettecRenderer.shadowMap.enabled = true;
+    mettecRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    mettecRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+    mettecRenderer.toneMappingExposure = 1.3;
+    mettecRenderer.setClearColor(0x020408, 1);
+    
+    // Scene
+    mettecScene = new THREE.Scene();
+    mettecScene.background = new THREE.Color(0x020408);
+    mettecScene.fog = new THREE.FogExp2(0x020408, 0.006);
+    
+    // Camera
+    mettecCamera = new THREE.PerspectiveCamera(40, 1, 0.1, 120);
+    mettecCamera.position.set(12, 7, 14);
+    mettecCamera.lookAt(0, 2.5, 0);
+    
+    // Lights
+    const ambient = new THREE.AmbientLight(0x2c3e55, 0.3);
+    mettecScene.add(ambient);
+    
+    const sunLight = new THREE.DirectionalLight(0xfff8e7, 2.2);
+    sunLight.position.set(12, 25, 10);
+    sunLight.castShadow = true;
+    sunLight.shadow.mapSize.width = 2048;
+    sunLight.shadow.mapSize.height = 2048;
+    sunLight.shadow.camera.near = 0.5;
+    sunLight.shadow.camera.far = 60;
+    sunLight.shadow.camera.left = -20;
+    sunLight.shadow.camera.right = 20;
+    sunLight.shadow.camera.top = 20;
+    sunLight.shadow.camera.bottom = -20;
+    mettecScene.add(sunLight);
+    
+    const fillLight = new THREE.DirectionalLight(0x5c7aea, 0.5);
+    fillLight.position.set(-10, 10, -10);
+    mettecScene.add(fillLight);
+    
+    // Ground
+    const ground = new THREE.Mesh(
+      new THREE.PlaneGeometry(80, 80),
+      new THREE.MeshStandardMaterial({ color: 0x1a2a1a, roughness: 0.9 })
+    );
+    ground.rotation.x = -Math.PI/2;
+    ground.position.y = -0.02;
+    ground.receiveShadow = true;
+    mettecScene.add(ground);
+    
+    // Grid
+    const grid = new THREE.GridHelper(80, 80, 0x2a3a2a, 0x0f1a0f);
+    grid.position.y = 0.01;
+    grid.material.opacity = 0.2;
+    grid.material.transparent = true;
+    mettecScene.add(grid);
+    
+    // Cabin group
+    mettecCabinGroup = new THREE.Group();
+    mettecScene.add(mettecCabinGroup);
+    
+    // Sub-groups
+    ['base', 'floor1', 'floor2', 'solar', 'smart', 'ac', 'kitchen', 'bathroom'].forEach(name => {
+      mettecGroups[name] = new THREE.Group();
+      mettecCabinGroup.add(mettecGroups[name]);
+      mettecGroups[name].visible = (name === 'base');
+    });
+    
+    // Events
+    window.addEventListener('resize', mettecResize);
+    canvas.addEventListener('mousedown', mettecOnMouseDown);
+    window.addEventListener('mouseup', () => mettecIsDragging = false);
+    window.addEventListener('mousemove', mettecOnMouseMove);
+    canvas.addEventListener('wheel', mettecOnWheel, { passive: false });
+    window.addEventListener('contextmenu', e => e.preventDefault());
+    
+    // Build finishes
+    mettecBuildFinishes();
+    
+    // Initial build
+    mettecResize();
+    mettecRebuildCabin();
+    mettecAnimate();
+  }
+  
+  // Texture generator
+  function mettecCreateTexture(baseColor, style) {
+    const size = 512;
+    const cvs = document.createElement('canvas');
+    cvs.width = size; cvs.height = size;
+    const ctx = cvs.getContext('2d');
+    
+    ctx.fillStyle = '#' + baseColor.toString(16).padStart(6, '0');
+    ctx.fillRect(0, 0, size, size);
+    
+    if (style === 'bois') {
+      for (let i = 0; i < 200; i++) {
+        ctx.strokeStyle = `rgba(60,40,20,${0.05 + Math.random() * 0.1})`;
+        ctx.lineWidth = 1 + Math.random() * 3;
+        ctx.beginPath();
+        const y = Math.random() * size;
+        ctx.moveTo(0, y);
+        ctx.bezierCurveTo(size/3, y + Math.random() * 20 - 10, size*2/3, y + Math.random() * 20 - 10, size, y);
+        ctx.stroke();
+      }
+    } else if (style === 'classique') {
+      for (let i = 0; i < 4000; i++) {
+        ctx.fillStyle = `rgba(0,0,0,${Math.random() * 0.05})`;
+        ctx.fillRect(Math.random() * size, Math.random() * size, 2, 2);
+      }
+    }
+    
+    const tex = new THREE.CanvasTexture(cvs);
+    tex.wrapS = THREE.RepeatWrapping;
+    tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(2, 2);
+    return tex;
+  }
+  
+  // Equipment builders
+  function mettecBuildSolarPanel(x, y, z) {
+    const group = new THREE.Group();
+    
+    // Frame
+    const frame = new THREE.Mesh(
+      new THREE.BoxGeometry(1.65, 0.06, 1.0),
+      new THREE.MeshStandardMaterial({ color: 0xc0c0c0, metalness: 0.9, roughness: 0.2 })
+    );
+    frame.castShadow = true;
+    group.add(frame);
+    
+    // Cells
+    const cells = new THREE.Mesh(
+      new THREE.PlaneGeometry(1.55, 0.9),
+      new THREE.MeshStandardMaterial({
+        color: 0x1a2744,
+        metalness: 0.8,
+        roughness: 0.2,
+        emissive: 0x1a2a4a,
+        emissiveIntensity: 0.2
+      })
+    );
+    cells.rotation.x = -Math.PI/2;
+    cells.position.y = 0.031;
+    group.add(cells);
+    
+    // Legs
+    const legMat = new THREE.MeshStandardMaterial({ color: 0xc0c0c0, metalness: 0.9 });
+    const leg1 = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.4, 0.08), legMat);
+    leg1.position.set(-0.6, -0.2, -0.3);
+    leg1.rotation.x = 0.12;
+    group.add(leg1);
+    
+    const leg2 = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.4, 0.08), legMat);
+    leg2.position.set(0.6, -0.2, -0.3);
+    leg2.rotation.x = 0.12;
+    group.add(leg2);
+    
+    group.position.set(x, y, z);
+    group.rotation.x = 0.12;
+    
+    mettecAnimatedObjects.solarPanels.push({
+      mesh: cells,
+      baseEmissive: 0.2,
+      offset: Math.random() * 100
+    });
+    
+    return group;
+  }
+  
+  function mettecBuildACUnit(x, y, z) {
+    const group = new THREE.Group();
+    
+    // Case
+    const casing = new THREE.Mesh(
+      new THREE.BoxGeometry(0.9, 0.65, 0.35),
+      new THREE.MeshStandardMaterial({ color: 0xf5f5f5, roughness: 0.3 })
+    );
+    casing.castShadow = true;
+    group.add(casing);
+    
+    // Fan
+    const fanGroup = new THREE.Group();
+    const hub = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.06, 0.06, 0.05, 16),
+      new THREE.MeshStandardMaterial({ color: 0x333333 })
+    );
+    hub.rotation.x = Math.PI/2;
+    fanGroup.add(hub);
+    
+    for (let i = 0; i < 5; i++) {
+      const blade = new THREE.Mesh(
+        new THREE.BoxGeometry(0.28, 0.08, 0.01),
+        new THREE.MeshStandardMaterial({ color: 0x444444 })
+      );
+      blade.position.x = 0.14;
+      const pivot = new THREE.Group();
+      pivot.add(blade);
+      pivot.rotation.z = (i / 5) * Math.PI * 2;
+      fanGroup.add(pivot);
+    }
+    
+    fanGroup.position.set(0, 0, 0.18);
+    group.add(fanGroup);
+    group.position.set(x, y, z);
+    
+    mettecAnimatedObjects.acFan = fanGroup;
+    return group;
+  }
+  
+  function mettecBuildSmartSystem(x, y, z) {
+    const group = new THREE.Group();
+    
+    // Pole
+    const pole = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.025, 0.04, 1.2, 12),
+      new THREE.MeshStandardMaterial({ color: 0xccccdd, metalness: 0.9 })
+    );
+    pole.position.y = 0.6;
+    group.add(pole);
+    
+    // Emitter
+    const emitter = new THREE.Mesh(
+      new THREE.SphereGeometry(0.08, 16, 16),
+      new THREE.MeshStandardMaterial({
+        color: 0x00d4ff,
+        emissive: 0x00d4ff,
+        emissiveIntensity: 0.5,
+        transparent: true,
+        opacity: 0.9
+      })
+    );
+    emitter.position.y = 1.15;
+    group.add(emitter);
+    
+    // Signal rings
+    const rings = [];
+    for (let i = 0; i < 3; i++) {
+      const ring = new THREE.Mesh(
+        new THREE.TorusGeometry(0.15 + i * 0.1, 0.005, 8, 32),
+        new THREE.MeshBasicMaterial({ color: 0x00d4ff, transparent: true, opacity: 0.6 - i * 0.15 })
+      );
+      ring.rotation.x = Math.PI/2;
+      ring.position.y = 1.0;
+      ring.visible = false;
+      group.add(ring);
+      rings.push({ mesh: ring, delay: i * 0.5, speed: 2 });
+    }
+    
+    // Camera
+    const cam = new THREE.Mesh(
+      new THREE.BoxGeometry(0.12, 0.08, 0.15),
+      new THREE.MeshStandardMaterial({ color: 0xffffff })
+    );
+    cam.position.set(0.3, 0.4, 0);
+    group.add(cam);
+    
+    const led = new THREE.Mesh(
+      new THREE.SphereGeometry(0.015, 8, 8),
+      new THREE.MeshBasicMaterial({ color: 0xff0000 })
+    );
+    led.position.set(0.35, 0.44, 0.05);
+    group.add(led);
+    
+    group.position.set(x, y, z);
+    
+    mettecAnimatedObjects.smartLed = { emitter, rings, led, time: 0 };
+    return group;
+  }
+  
+  function mettecBuildKitchen(x, y, z) {
+    const group = new THREE.Group();
+    
+    // Counter
+    const counter = new THREE.Mesh(
+      new THREE.BoxGeometry(2.2, 0.05, 0.7),
+      new THREE.MeshStandardMaterial({ color: 0xe8e4dc, roughness: 0.1 })
+    );
+    counter.position.y = 0.9;
+    counter.castShadow = true;
+    group.add(counter);
+    
+    // Cabinets
+    const cabinets = new THREE.Mesh(
+      new THREE.BoxGeometry(2.2, 0.85, 0.65),
+      new THREE.MeshStandardMaterial({ color: 0x4a4a4a, roughness: 0.4 })
+    );
+    cabinets.position.y = 0.425;
+    group.add(cabinets);
+    
+    // Cooktop
+    const cooktop = new THREE.Mesh(
+      new THREE.BoxGeometry(0.6, 0.02, 0.5),
+      new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.1, metalness: 0.5 })
+    );
+    cooktop.position.set(-0.5, 0.93, -0.05);
+    group.add(cooktop);
+    
+    // Hood
+    const hood = new THREE.Mesh(
+      new THREE.ConeGeometry(0.35, 0.4, 4, 1, true),
+      new THREE.MeshStandardMaterial({ color: 0x888888, metalness: 0.7, side: THREE.DoubleSide })
+    );
+    hood.position.set(-0.5, 1.4, -0.05);
+    group.add(hood);
+    
+    // LED strip
+    const led = new THREE.Mesh(
+      new THREE.BoxGeometry(2.0, 0.01, 0.02),
+      new THREE.MeshBasicMaterial({ color: 0xffffee })
+    );
+    led.position.set(0, 0.88, 0.35);
+    group.add(led);
+    
+    group.position.set(x, y, z);
+    return group;
+  }
+  
+  function mettecBuildBathroom(x, y, z) {
+    const group = new THREE.Group();
+    
+    // Shower base
+    const shower = new THREE.Mesh(
+      new THREE.BoxGeometry(1.4, 0.05, 1.2),
+      new THREE.MeshStandardMaterial({ color: 0x2a2a2a, roughness: 0.9 })
+    );
+    shower.position.y = 0.025;
+    group.add(shower);
+    
+    // Glass
+    const glassMat = new THREE.MeshPhysicalMaterial({
+      color: 0xffffff, transmission: 0.9, thickness: 0.02, transparent: true, opacity: 0.3
+    });
+    
+    const glass1 = new THREE.Mesh(new THREE.BoxGeometry(1.4, 2.2, 0.02), glassMat);
+    glass1.position.set(0, 1.1, -0.6);
+    group.add(glass1);
+    
+    const glass2 = new THREE.Mesh(new THREE.BoxGeometry(0.02, 2.2, 1.2), glassMat);
+    glass2.position.set(-0.7, 1.1, 0);
+    group.add(glass2);
+    
+    // Sink
+    const sink = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.25, 0.2, 0.8, 16),
+      new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.1 })
+    );
+    sink.position.set(0.8, 0.4, 0.4);
+    group.add(sink);
+    
+    // Mirror with LED
+    const mirror = new THREE.Mesh(
+      new THREE.BoxGeometry(0.5, 0.6, 0.02),
+      new THREE.MeshStandardMaterial({ color: 0xdddddd, metalness: 0.9 })
+    );
+    mirror.position.set(0.8, 1.4, 0.55);
+    group.add(mirror);
+    
+    const mirrorLed = new THREE.Mesh(
+      new THREE.BoxGeometry(0.52, 0.02, 0.03),
+      new THREE.MeshBasicMaterial({ color: 0xffffee })
+    );
+    mirrorLed.position.set(0.8, 1.7, 0.55);
+    group.add(mirrorLed);
+    
+    group.position.set(x, y, z);
+    return group;
+  }
+  
+  // Window builder
+  function mettecBuildWindow(parent, x, y, z, w, h) {
+    const group = new THREE.Group();
+    
+    const frameMat = new THREE.MeshStandardMaterial({ color: 0x1a1a1a, metalness: 0.8, roughness: 0.2 });
+    const glassMat = new THREE.MeshPhysicalMaterial({
+      color: 0xaaccff, metalness: 0.1, roughness: 0.05, transmission: 0.95, thickness: 0.05, transparent: true, opacity: 0.2
+    });
+    
+    const frame = new THREE.Mesh(new THREE.BoxGeometry(w + 0.12, h + 0.12, 0.08), frameMat);
+    frame.castShadow = true;
+    group.add(frame);
+    
+    const glass = new THREE.Mesh(new THREE.BoxGeometry(w - 0.02, h - 0.02, 0.02), glassMat);
+    glass.position.z = 0.02;
+    group.add(glass);
+    
+    const crossH = new THREE.Mesh(new THREE.BoxGeometry(w - 0.04, 0.03, 0.03), frameMat);
+    group.add(crossH);
+    
+    const crossV = new THREE.Mesh(new THREE.BoxGeometry(0.03, h - 0.04, 0.03), frameMat);
+    group.add(crossV);
+    
+    group.position.set(x, y, z);
+    parent.add(group);
+  }
+  
+  // Main rebuild function
+  function mettecRebuildCabin() {
+    const L = mettecState.L, W = mettecState.W, H = mettecState.H;
+    const hL = L/2, hW = W/2;
+    
+    const wallTex = mettecCreateTexture(mettecState.finishColor, mettecState.finish);
+    const wallMat = new THREE.MeshStandardMaterial({ map: wallTex, roughness: 0.6, metalness: 0.15 });
+    const frameMat = new THREE.MeshStandardMaterial({ color: 0x2a2a2a, metalness: 0.7, roughness: 0.3 });
+    const roofMat = new THREE.MeshStandardMaterial({ color: 0x3a3a3a, metalness: 0.5, roughness: 0.6 });
+    
+    // Clear base
+    while(mettecGroups.base.children.length) mettecGroups.base.remove(mettecGroups.base.children[0]);
+    mettecAnimatedObjects.solarPanels = [];
+    mettecAnimatedObjects.acFan = null;
+    mettecAnimatedObjects.smartLed = null;
+    
+    // Foundation
+    const foundation = new THREE.Mesh(
+      new THREE.BoxGeometry(L + 0.8, 0.2, W + 0.8),
+      new THREE.MeshStandardMaterial({ color: 0x4a4a4a, roughness: 0.9 })
+    );
+    foundation.position.y = -0.1;
+    foundation.receiveShadow = true;
+    mettecGroups.base.add(foundation);
+    
+    // Base wall
+    const baseWall = new THREE.Mesh(
+      new THREE.BoxGeometry(L + 0.2, 0.4, W + 0.2),
+      new THREE.MeshStandardMaterial({ color: 0x5a5a5a })
+    );
+    baseWall.position.y = 0.2;
+    mettecGroups.base.add(baseWall);
+    
+    // Walls
+    const walls = [
+      { pos: [0, H/2 + 0.4, -hW], size: [L, H, 0.15] },
+      { pos: [-hL, H/2 + 0.4, 0], size: [0.15, H, W] },
+      { pos: [hL, H/2 + 0.4, 0], size: [0.15, H, W] }
+    ];
+    
+    walls.forEach(w => {
+      const mesh = new THREE.Mesh(new THREE.BoxGeometry(...w.size), wallMat);
+      mesh.position.set(...w.pos);
+      mesh.castShadow = true;
+      mesh.userData.isWall = true;
+      mettecGroups.base.add(mesh);
+    });
+    
+    // Door
+    const doorW = Math.min(1.0, W * 0.35);
+    const doorH = Math.min(H * 0.9, 2.3);
+    const doorGroup = new THREE.Group();
+    
+    const doorFrame = new THREE.Mesh(new THREE.BoxGeometry(doorW + 0.14, doorH + 0.14, 0.12), frameMat);
+    doorGroup.add(doorFrame);
+    
+    const doorPanel = new THREE.Mesh(
+      new THREE.BoxGeometry(doorW - 0.04, doorH - 0.04, 0.08),
+      new THREE.MeshStandardMaterial({ color: 0x3d3d3d, roughness: 0.4 })
+    );
+    doorGroup.add(doorPanel);
+    
+    const handle = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.02, 0.02, 0.18, 16),
+      new THREE.MeshStandardMaterial({ color: 0xf5da1a, metalness: 1 })
+    );
+    handle.rotation.z = Math.PI/2;
+    handle.position.set(0.32, 0.1, 0.1);
+    doorGroup.add(handle);
+    
+    doorGroup.position.set(0, 0.4 + doorH/2, hW);
+    mettecGroups.base.add(doorGroup);
+    
+    // Windows
+    mettecBuildWindow(mettecGroups.base, 0, H * 0.65 + 0.4, -hW - 0.02, Math.min(L * 0.55, 3.2), H * 0.45);
+    if (L > 4) {
+      mettecBuildWindow(mettecGroups.base, hL + 0.02, H * 0.6 + 0.4, 0, 0.02, H * 0.4);
+      mettecBuildWindow(mettecGroups.base, -hL - 0.02, H * 0.6 + 0.4, 0, 0.02, H * 0.4);
+    }
+    
+    // Roof
+    const roof = new THREE.Mesh(new THREE.BoxGeometry(L + 0.9, 0.18, W + 0.9), roofMat);
+    roof.position.set(0, H + 0.49, 0);
+    roof.castShadow = true;
+    mettecGroups.base.add(roof);
+    
+    // Cornice
+    const cornice = new THREE.Mesh(new THREE.BoxGeometry(L + 1.0, 0.1, W + 1.0), frameMat);
+    cornice.position.set(0, H + 0.35, 0);
+    mettecGroups.base.add(cornice);
+    
+    // Floors
+    mettecGroups.floor1.visible = mettecState.floors >= 1;
+    mettecGroups.floor2.visible = mettecState.floors >= 2;
+    
+    if (mettecState.floors >= 1) mettecBuildFloor(mettecGroups.floor1, H + 0.58, L, W, wallMat, roofMat);
+    if (mettecState.floors >= 2) mettecBuildFloor(mettecGroups.floor2, H * 1.92 + 0.66, L, W, wallMat, roofMat);
+    
+    // Equipment
+    mettecUpdateEquipment();
+  }
+  
+  function mettecBuildFloor(group, baseY, L, W, wallMat, roofMat) {
+    while(group.children.length) group.remove(group.children[0]);
+    const hL = L/2, hW = W/2;
+    const floorHeight = 2.6;
+    
+    const floor = new THREE.Mesh(
+      new THREE.BoxGeometry(L + 0.3, 0.15, W + 0.3),
+      new THREE.MeshStandardMaterial({ color: 0x4a4a4a })
+    );
+    floor.position.y = baseY;
+    group.add(floor);
+    
+    const walls = [
+      { pos: [0, baseY + floorHeight/2, -hW], size: [L, floorHeight, 0.12] },
+      { pos: [-hL, baseY + floorHeight/2, 0], size: [0.12, floorHeight, W] },
+      { pos: [hL, baseY + floorHeight/2, 0], size: [0.12, floorHeight, W] }
+    ];
+    
+    walls.forEach(w => {
+      const mesh = new THREE.Mesh(new THREE.BoxGeometry(...w.size), wallMat);
+      mesh.position.set(...w.pos);
+      mesh.userData.isWall = true;
+      group.add(mesh);
+    });
+    
+    mettecBuildWindow(group, 0, baseY + floorHeight * 0.6, -hW - 0.02, L * 0.7, floorHeight * 0.55);
+    
+    const roof = new THREE.Mesh(new THREE.BoxGeometry(L + 0.7, 0.15, W + 0.7), roofMat);
+    roof.position.y = baseY + floorHeight + 0.075;
+    group.add(roof);
+  }
+  
+  function mettecUpdateEquipment() {
+    // Clear all equipment groups
+    ['solar', 'smart', 'ac', 'kitchen', 'bathroom'].forEach(name => {
+      mettecGroups[name].clear();
+      mettecGroups[name].visible = mettecState[name];
+    });
+    
+    const hL = mettecState.L/2, hW = mettecState.W/2;
+    
+    if (mettecState.solar) {
+      const roofY = mettecState.floors === 0 ? mettecState.H + 0.6 : 
+                    mettecState.floors === 1 ? mettecState.H * 1.92 + 0.75 : 
+                    mettecState.H * 2.84 + 0.9;
+      const rows = Math.floor(mettecState.L / 1.8);
+      const cols = Math.floor(mettecState.W / 1.1);
+      
+      for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+          const panel = mettecBuildSolarPanel(
+            -mettecState.L/2 + 1.0 + i * 1.8,
+            roofY,
+            -mettecState.W/2 + 0.8 + j * 1.1
+          );
+          mettecGroups.solar.add(panel);
+        }
+      }
+    }
+    
+    if (mettecState.smart) {
+      mettecGroups.smart.add(mettecBuildSmartSystem(0, mettecState.H + 0.8, 0));
+    }
+    
+    if (mettecState.ac) {
+      mettecGroups.ac.add(mettecBuildACUnit(mettecState.L/2 + 0.25, mettecState.H * 0.5, -mettecState.W/3));
+      const indoor = new THREE.Mesh(
+        new THREE.BoxGeometry(0.8, 0.25, 0.2),
+        new THREE.MeshStandardMaterial({ color: 0xffffff })
+      );
+      indoor.position.set(0, mettecState.H - 0.3, hW - 0.1);
+      mettecGroups.ac.add(indoor);
+    }
+    
+    if (mettecState.kitchen) {
+      mettecGroups.kitchen.add(mettecBuildKitchen(-mettecState.L/3, 0, hW - 0.5));
+    }
+    
+    if (mettecState.bathroom) {
+      mettecGroups.bathroom.add(mettecBuildBathroom(mettecState.L/3.5, 0, -hW + 0.8));
+    }
+    
+    // Update tags
+    document.querySelectorAll('.mettec-equip-tag').forEach(tag => {
+      const equip = tag.dataset.equip;
+      tag.classList.toggle('active', mettecState[equip]);
+    });
+  }
+  
+  // Animation loop
+  function mettecAnimate() {
+    requestAnimationFrame(mettecAnimate);
+    mettecTime += 0.016;
+    
+    // Camera interpolation
+    mettecTheta += (mettecTargetTheta - mettecTheta) * 0.07;
+    mettecPhi += (mettecTargetPhi - mettecPhi) * 0.07;
+    mettecRadius += (mettecTargetRadius - mettecRadius) * 0.07;
+    
+    if (mettecAutoRot) mettecTargetTheta += 0.002;
+    
+    mettecCamera.position.x = Math.sin(mettecTheta) * Math.sin(mettecPhi) * mettecRadius;
+    mettecCamera.position.y = Math.cos(mettecPhi) * mettecRadius + 2;
+    mettecCamera.position.z = Math.cos(mettecTheta) * Math.sin(mettecPhi) * mettecRadius;
+    mettecCamera.lookAt(0, Math.max(1.5, mettecState.H * 0.5), 0);
+    
+    // Solar panel shimmer
+    mettecAnimatedObjects.solarPanels.forEach(panel => {
+      const intensity = panel.baseEmissive + Math.sin(mettecTime * 2 + panel.offset) * 0.1;
+      panel.mesh.material.emissiveIntensity = Math.max(0.1, intensity);
+    });
+    
+    // AC fan rotation
+    if (mettecAnimatedObjects.acFan) {
+      mettecAnimatedObjects.acFan.rotation.z -= 0.15;
+    }
+    
+    // Smart home effects
+    if (mettecAnimatedObjects.smartLed) {
+      const { emitter, rings, led, time } = mettecAnimatedObjects.smartLed;
+      mettecAnimatedObjects.smartLed.time += 0.016;
+      
+      emitter.material.emissiveIntensity = 0.5 + Math.sin(mettecAnimatedObjects.smartLed.time * 3) * 0.3;
+      led.material.color.setHex(Math.floor(mettecAnimatedObjects.smartLed.time * 2) % 2 === 0 ? 0xff0000 : 0x330000);
+      
+      rings.forEach((ring, i) => {
+        ring.mesh.visible = true;
+        const scale = 1 + (mettecAnimatedObjects.smartLed.time * ring.speed + ring.delay) % 3;
+        ring.mesh.scale.set(scale, scale, 1);
+        ring.mesh.material.opacity = Math.max(0, 0.6 - (scale - 1) * 0.2);
+      });
+    }
+    
+    mettecRenderer.render(mettecScene, mettecCamera);
+  }
+  
+  // Event handlers
+  function mettecResize() {
+    const canvas = document.getElementById('mettec-cabin-canvas');
+    const wrap = canvas.parentElement;
+    const w = wrap.clientWidth - 64;
+    const h = Math.min(w * 0.6, 600);
+    mettecRenderer.setSize(w, h);
+    mettecCamera.aspect = w / h;
+    mettecCamera.updateProjectionMatrix();
+  }
+  
+  function mettecOnMouseDown(e) {
+    mettecIsDragging = true;
+    mettecIsRightClick = e.button === 2;
+    mettecLastX = e.clientX;
+    mettecLastY = e.clientY;
+    mettecAutoRot = false;
+    document.getElementById('mettec-btn-rotate')?.classList.remove('active');
+  }
+  
+  function mettecOnMouseMove(e) {
+    if (!mettecIsDragging) return;
+    const dx = (e.clientX - mettecLastX) * 0.008;
+    const dy = (e.clientY - mettecLastY) * 0.008;
+    
+    if (mettecIsRightClick) {
+      mettecCamera.position.x -= dx * 3;
+      mettecCamera.position.y += dy * 3;
+    } else {
+      mettecTargetTheta -= dx;
+      mettecTargetPhi += dy;
+      mettecTargetPhi = Math.max(0.1, Math.min(1.5, mettecTargetPhi));
+    }
+    mettecLastX = e.clientX;
+    mettecLastY = e.clientY;
+  }
+  
+  function mettecOnWheel(e) {
+    mettecTargetRadius = Math.max(10, Math.min(35, mettecTargetRadius + e.deltaY * 0.025));
+    e.preventDefault();
+  }
+  
+  // UI Functions (exposées globalement)
+  window.mettecToggleStep = function(n) {
+    document.querySelectorAll('.mettec-step').forEach((el, i) => {
+      if (i + 1 === n) el.classList.toggle('active-step');
+      else el.classList.remove('active-step');
+    });
+  };
+  
+  window.mettecUpdateDim = function(axis, val) {
+    const v = parseFloat(val);
+    mettecState[axis] = v;
+    document.getElementById('mettec-val-' + axis.toLowerCase()).textContent = 
+      axis === 'H' ? v.toFixed(1) : v;
+    document.getElementById('mettec-dim-value').textContent = 
+      `${mettecState.L}m × ${mettecState.W}m × ${mettecState.H.toFixed(1)}m`;
+    mettecRequestRebuild();
+  };
+  
+  window.mettecSelectConfig = function(floors, label, el) {
+    document.querySelectorAll('[name="mettec-config"]').forEach((input, i) => {
+      input.checked = (i === floors);
+      input.closest('.mettec-option').classList.toggle('selected', i === floors);
+    });
+    mettecState.floors = floors;
+    document.getElementById('mettec-config-value').textContent = label;
+    mettecRequestRebuild();
+  };
+  
+  window.mettecToggleEquip = function(el, key) {
+    const input = el.querySelector('input');
+    input.checked = !input.checked;
+    el.classList.toggle('checked', input.checked);
+    mettecState[key] = input.checked;
+    
+    const count = document.querySelectorAll('.mettec-check input:checked').length;
+    document.getElementById('mettec-equip-value').textContent = 
+      count > 0 ? `${count} sélectionné(s)` : 'Aucun';
+    mettecRequestRebuild();
+  };
+  
+  window.mettecSetView = function(name, btn) {
+    const views = {
+      perspective: { theta: 0.8, phi: 1.0, r: 18 },
+      front: { theta: 0, phi: 1.4, r: 16 },
+      side: { theta: 1.57, phi: 1.2, r: 18 },
+      top: { theta: 0, phi: 0.05, r: 22 }
+    };
+    const v = views[name];
+    if (v) {
+      mettecTargetTheta = v.theta;
+      mettecTargetPhi = v.phi;
+      mettecTargetRadius = v.r;
+    }
+    document.querySelectorAll('.mettec-controls .mettec-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  };
+  
+  window.mettecSetMode = function(mode) {
+    const wire = mode === 'wire';
+    mettecCabinGroup.traverse(c => {
+      if (c.isMesh && c.material) c.material.wireframe = wire;
+    });
+    document.getElementById('mettec-btn-solid')?.classList.toggle('active', !wire);
+    document.getElementById('mettec-btn-wire')?.classList.toggle('active', wire);
+  };
+  
+  window.mettecAutoRotate = function(btn) {
+    mettecAutoRot = !mettecAutoRot;
+    btn.classList.toggle('active', mettecAutoRot);
+  };
+  
+  window.mettecReset = function() {
+    mettecState.L = 6; mettecState.W = 3; mettecState.H = 2.5;
+    mettecState.floors = 0;
+    mettecState.kitchen = mettecState.bathroom = mettecState.ac = mettecState.smart = mettecState.solar = false;
+    mettecState.finish = 'classique'; mettecState.finishColor = 0xc8c0a0;
+    
+    // Reset UI
+    document.querySelectorAll('.mettec-slider').forEach((s, i) => s.value = [6, 3, 2.5][i]);
+    document.getElementById('mettec-val-l').textContent = '6';
+    document.getElementById('mettec-val-w').textContent = '3';
+    document.getElementById('mettec-val-h').textContent = '2.5';
+    document.getElementById('mettec-dim-value').textContent = '6m × 3m × 2.5m';
+    
+    document.querySelectorAll('.mettec-check').forEach(el => {
+      el.classList.remove('checked');
+      el.querySelector('input').checked = false;
+    });
+    document.getElementById('mettec-equip-value').textContent = 'Aucun';
+    
+    document.querySelectorAll('.mettec-option').forEach((el, i) => {
+      el.classList.toggle('selected', i === 0);
+      el.querySelector('input').checked = (i === 0);
+    });
+    document.getElementById('mettec-config-value').textContent = 'Plain-pied';
+    
+    document.querySelectorAll('.mettec-finish').forEach((el, i) => {
+      el.classList.toggle('selected', i === 0);
+    });
+    document.getElementById('mettec-finish-value').textContent = 'Béton Ciré';
+    
+    mettecRequestRebuild();
+  };
+  
+  function mettecBuildFinishes() {
+    const container = document.getElementById('mettec-finish-container');
+    if (!container) return;
+    
+    mettecFinishes.forEach((f, i) => {
+      const div = document.createElement('div');
+      div.className = 'mettec-finish' + (i === 0 ? ' selected' : '');
+      div.innerHTML = `
+        <div class="mettec-finish-swatch" style="background: ${f.color}"></div>
+        <div class="mettec-finish-name">${f.name}</div>
+      `;
+      div.onclick = () => {
+        document.querySelectorAll('.mettec-finish').forEach(el => el.classList.remove('selected'));
+        div.classList.add('selected');
+        mettecState.finish = f.val;
+        mettecState.finishColor = parseInt(f.color.slice(1), 16);
+        document.getElementById('mettec-finish-value').textContent = f.name;
+        mettecRequestRebuild();
+      };
+      container.appendChild(div);
+    });
+  }
+  
+  function mettecRequestRebuild() {
+    clearTimeout(mettecRebuildTimeout);
+    mettecRebuildTimeout = setTimeout(mettecRebuildCabin, 60);
+  }
+  
+  // Auto-init when DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mettecInit);
+  } else {
+    mettecInit();
+  }
+  
+})();
+</script>
+
+<!-- FIN SECTION CONFIGURATEUR CABINE 3D -->
+
+
+<!-- ============================================
+     TÉMOIGNAGES
+     ============================================ -->
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge reveal">Témoignages clients</div>
+      <h2 class="section-title reveal">Ce que disent <em>nos clients</em></h2>
+    </div>
+    <div class="testi-track">
+      <div class="testi-slider" id="testiSlider">
+        <div class="testi-card"><div class="testi-card-top"><div class="testi-avatar">DT</div><div><div class="testi-name">Direction Technique</div><div class="testi-role">Aéroport International Monastir</div></div><div class="testi-stars">★★★★★</div></div><div class="testi-quote">METTEC a livré notre poste de contrôle en un temps record avec une qualité irréprochable. Les certifications ISO 9001, 14001 et 45001 ont été déterminantes.</div></div>
+        <div class="testi-card"><div class="testi-card-top"><div class="testi-avatar">DG</div><div><div class="testi-name">Directeur Général</div><div class="testi-role">TransMetal Tunisie</div></div><div class="testi-stars">★★★★★</div></div><div class="testi-quote">Le processus en 11 étapes nous a donné une visibilité totale. Le rendu final dépasse nos attentes — structure solide, finitions soignées, délais respectés.</div></div>
+        <div class="testi-card"><div class="testi-card-top"><div class="testi-avatar">FB</div><div><div class="testi-name">Famille Benhassen</div><div class="testi-role">Villa Bekalta</div></div><div class="testi-stars">★★★★★</div></div><div class="testi-quote">Notre villa modulaire S+1 est exactement ce que nous avions imaginé. La garantie sur la structure nous a définitivement convaincus.</div></div>
+      </div>
+    </div>
+    <div class="testi-controls">
+      <button class="testi-btn" id="testiPrev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="testi-btn" id="testiNext"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PARTENAIRES
+     ============================================ -->
+<section class="partners-section" id="partners">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge reveal">Ils nous font confiance</div>
+      <h2 class="section-title reveal">Nos partenaires <em>de référence</em></h2>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-card"><div class="partner-logo-placeholder">✈️</div><div class="partner-name">Aéroport Monastir</div><div class="partner-sector">Infrastructure Aéroportuaire</div><div class="partner-desc">Poste de contrôle livré dans le délai.</div></div>
+      <div class="partner-card"><div class="partner-logo-placeholder">🛫</div><div class="partner-name">Nouvelair</div><div class="partner-sector">Aviation Commerciale</div><div class="partner-desc">Cabines techniques pour opérations aériennes.</div></div>
+      <div class="partner-card"><div class="partner-logo-placeholder">🇯🇵</div><div class="partner-name">Ambassade du Japon</div><div class="partner-sector">Diplomatique & Institutionnel</div><div class="partner-desc">Structures modulaires pour représentation officielle.</div></div>
+      <div class="partner-card"><div class="partner-logo-placeholder">🏨</div><div class="partner-name">Azurex</div><div class="partner-sector">Industrie & Resort</div><div class="partner-desc">Smart Cabin installée, attraction vedette du resort.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SAV & GARANTIE
+     ============================================ -->
+<section class="sav-section" id="sav">
+  <div class="sav-l">
+    <div class="sav-eyebrow"><span class="live-dot"></span> Après-vente & Garantie</div>
+    <h2 class="sav-title">TOUJOURS<br><em>à vos côtés</em></h2>
+    <div class="sav-badge"><div class="sav-badge-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="sav-badge-num">3<sub>ans</sub></div><div class="sav-badge-label">Garantie structure</div><div class="sav-badge-sub">Ossature · Soudures · Enveloppe</div></div></div>
+  </div>
+  <div class="sav-r">
+    <div class="sav-card"><div class="sav-card-num">01</div><div class="sav-card-icon">📞</div><div class="sav-card-title">Hotline Technique <strong>24/7</strong></div><div class="sav-card-desc">Diagnostic à distance, conseils d'entretien, orientation terrain.</div></div>
+    <div class="sav-card"><div class="sav-card-num">02</div><div class="sav-card-icon">📅</div><div class="sav-card-title">Visite de Contrôle Annuelle</div><div class="sav-card-desc">Inspection sur site de l'ossature, soudures, étanchéité. Rapport écrit remis.</div></div>
+    <div class="sav-card"><div class="sav-card-num">03</div><div class="sav-card-icon">⏱️</div><div class="sav-card-title">Intervention sous 7 jours</div><div class="sav-card-desc">Toute anomalie structurelle couverte par garantie prise en charge sans frais.</div></div>
+  </div>
+</section>
+
+<!-- ============================================
+     CTA / CONTACT
+     ============================================ -->
+<section class="cta-section" id="contact">
+  <div class="cta-l">
+    <div class="cta-eyebrow">💬 Démarrer votre projet</div>
+    <h2 class="cta-title">Parlons de<br><em>votre Idée</em></h2>
+    <p class="cta-sub">Partagez votre vision — dimensions, usage, délais. Notre équipe vous répond sous <strong>24h ouvrées</strong> avec un devis technique détaillé.</p>
+    <form class="form" id="mainForm" onsubmit="event.preventDefault(); submitForm(event)">
+      <div class="form-row">
+        <div class="form-field"><label>Nom complet</label><input type="text" placeholder="Votre nom et prénom" required></div>
+        <div class="form-field"><label>Société</label><input type="text" placeholder="Votre entreprise"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Email</label><input type="email" placeholder="contact@entreprise.tn" required></div>
+        <div class="form-field"><label>Téléphone</label><input type="tel" placeholder="+216 XX XXX XXX"></div>
+      </div>
+      <div class="form-field"><label>Votre projet</label><select><option>Standard — Cabine technique / Industriel</option><option>Habitation Comfort — S+0 / S+1 / S+2</option><option>Habitation Smart — Domotique connectée</option><option>Habitation Autonome — Off-grid solaire</option><option>Sécurité — Poste de gardiennage</option><option>Extra — Bar lounge, Coffee shop, Bloc sanitaire...</option></select></div>
+      <div class="form-field"><label>Décrivez votre idée</label><textarea placeholder="Dimensions, usage, contraintes de site, délais, équipements..."></textarea></div>
+      <button type="submit" class="btn btn-primary">Parlons de votre Idée</button>
+      <div class="form-success" id="formSuccess">✅ Votre demande a bien été envoyée ! Nous vous répondrons sous 24h ouvrées.</div>
+    </form>
+  </div>
+<div class="cta-r">
+  <div class="cta-r-top">
+    <h2 class="cta-r-title">Venez nous<br><em>rencontrer</em></h2>
+    <div class="contact-items">
+      <!-- Téléphone -->
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.83a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-title">+216 36 40 58 22</div>
+          <div class="contact-item-val">24/7</div>
+        </div>
+      </div>
+      <!-- Email (affiché en clair) -->
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-title"><a href="mailto:mettec@gbm.tn">mettec@gbm.tn</a></div>
+          <div class="contact-item-val">Réponse sous 24h ouvrées</div>
+        </div>
+      </div>
+      <!-- Usine Monastir - Siège Social -->
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-title">Siège Social - Zone Ind. Manzel Harb</div>
+          <div class="contact-item-val">Monastir, Tunisie</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mettec%2C+Menzel+Harb+5036" target="_blank" class="btn btn-outline" style="background:transparent; border-color:var(--primary); color:var(--primary); width:fit-content; margin-top:0.5rem; padding:0.4rem 0.8rem; font-size:0.85rem;">Itinéraire →</a>
+        </div>
+      </div>
+      <!-- Showroom Ben Arous -->
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-title">Showroom Ben Arous</div>
+          <div class="contact-item-val">Rue de la Zone Industrielle, Ben Arous</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=36.74349341775995, 10.232040092202858" target="_blank" class="btn btn-outline" style="background:transparent; border-color:var(--primary); color:var(--primary); width:fit-content; margin-top:0.5rem; padding:0.4rem 0.8rem; font-size:0.85rem;">Itinéraire →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+     <!-- Newsletter -->
+  <div class="footer-newsletter">
+    <div class="footer-newsletter-eyebrow">✦ Restez informé</div>
+    <p class="footer-newsletter-desc">Découvrez ce que Mettec peut donner comme des solutions pour ces clients — directement dans votre boîte mail.</p>
+    <form class="footer-nl-form" onsubmit="handleNewsletter(event)">
+      <input type="email" class="footer-nl-input" placeholder="votre@email.com" required>
+      <button type="submit" class="footer-nl-btn">S'abonner →</button>
+    </form>
+    <div class="footer-nl-success" id="nlSuccess">✅ Bienvenue ! Vous êtes maintenant abonné.</div>
+    <p class="footer-nl-note">Pas de spam. Désinscription en 1 clic.</p>
+  </div>
+  <div>
+    <a class="footer-logo" href="#"><img src="images/logo-mettec.png" alt="METTEC" class="footer-logo-img"><div><div class="footer-logo-name"></div><span class="footer-logo-sub"></span></div></a>
+    <style>
+        .footer-logo-img {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;   /* garde les proportions sans couper */
+}
+    </style>
+    <p class="footer-tagline">Votre idée, Notre acier.<br>Construit pour l'Éternité.</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/company/mettec-gbm" class="footer-social" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://www.facebook.com/mettec.tn/" class="footer-social" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12v-1a5 5 0 0 1 10 0v4"/><path d="M15 11v6a3 3 0 0 1-6 0v-4"/><path d="M9 16a3 3 0 0 0 6 0"/><path d="M12 5v5"/><circle cx="12" cy="5" r="1"/></svg>
+      </a>
+    </div>
+  </div>
+  <div><div class="footer-col-title">Gammes</div><ul class="footer-links"><li><a href="#gammes">Standard</a></li><li><a href="#gammes">Habitation Comfort</a></li><li><a href="#gammes">Habitation Smart</a></li><li><a href="#gammes">Habitation Autonome</a></li><li><a href="#gammes">Sécurité / Gardiennage</a></li><li><a href="#gammes">Gamme Extra</a></li></ul></div>
+  <div><div class="footer-col-title">Société</div><ul class="footer-links"><li><a href="processus.html">Notre processus</a></li><li><a href="#">Certifications</a></li><li><a href="#partners">Références</a></li><li><a href="#sav">SAV & Garantie</a></li><li><a href="#configurator">Configurateur</a></li></ul></div>
+  <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:+21636405822">+216 36 40 58 22</a></li><li><a href="tel:+21629225405">+216 29 22 54 05</a></li>
+<li>
+  <a href="mailto:mettec@gbm.tn">mettec@gbm.tn</a>
+</li>    <li><a href="#">Monastir, Tunisie</a></li><li><a href="#contact">Parlons de votre Idée</a></li></ul></div>
+ 
+  <div class="footer-bottom"><span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span><span class="footer-copy">Design by <strong>AMH</strong></span><div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
+</footer>
+<style>
+/* ── Footer Newsletter ── */
+.footer-newsletter {
+  padding: 2.5rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: .75rem;
+}
+.footer-newsletter-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.footer-newsletter-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #ffffff;
+  line-height: 1.2;
+}
+.footer-newsletter-title em {
+  color: var(--primary);
+  font-style: italic;
+}
+.footer-newsletter-desc {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  color: rgba(3, 3, 3, 0.45);
+  max-width: 420px;
+  line-height: 1.7;
+}
+.footer-nl-form {
+  display: flex;
+  gap: 0;
+  border-radius: 3rem;
+  overflow: hidden;
+  border: 1.5px solid rgba(245,218,26,0.3);
+  background: rgba(255,255,255,0.04);
+  transition: border-color 0.25s;
+  max-width: 460px;
+  width: 100%;
+}
+.footer-nl-form:focus-within {
+  border-color: var(--primary);
+  background: rgba(245,218,26,0.05);
+}
+.footer-nl-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: .85rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: #ffffff;
+}
+.footer-nl-input::placeholder { color: rgba(255,255,255,0.3); }
+.footer-nl-btn {
+  background: var(--primary);
+  border: none;
+  padding: .85rem 1.6rem;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: #0f0e0a;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+}
+.footer-nl-btn:hover { background: #ffe000; transform: scale(1.03); }
+.footer-nl-success {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  color: #4ade80;
+  background: rgba(74,222,128,0.1);
+  padding: .6rem 1.2rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(74,222,128,0.25);
+}
+.footer-nl-success.show { display: block; }
+.footer-nl-note {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  color: rgba(255,255,255,0.22);
+  letter-spacing: .05em;
+}
+@media (max-width: 600px) {
+  .footer-nl-form { flex-direction: column; border-radius: 1rem; }
+  .footer-nl-btn { border-radius: 0 0 .8rem .8rem; text-align: center; }
+}
+</style>
+<script>
+function handleNewsletter(e) {
+  e.preventDefault();
+  document.getElementById('nlSuccess').classList.add('show');
+  e.target.style.display = 'none';
+}
+</script>
+
+<!-- ============================================
+     SCROLL TO TOP & WHATSAPP
+     ============================================ -->
+<button id="scrollTop"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+<!-- ══════════════════════════════════════
+     CHATBOT BUTTON + CONVERSATION WIDGET
+══════════════════════════════════════ -->
+<style>
+/* ── Chatbot Trigger Button ── */
+#chatbot-btn {
+  position: fixed;
+  bottom: 6rem;
+  right: 2rem;
+  z-index: 9999;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  box-shadow: 0 8px 32px rgba(15,14,10,0.28);
+  transition: transform 0.35s cubic-bezier(.22,.68,0,1.4), box-shadow 0.3s;
+  animation: chatbot-float 3s ease-in-out infinite;
+}
+#chatbot-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 50%;
+}
+#chatbot-btn:hover {
+  transform: scale(1.12) translateY(-4px);
+  box-shadow: 0 16px 48px rgba(245,218,26,0.45);
+  animation: none;
+}
+#chatbot-btn.active {
+  animation: none;
+  transform: scale(0.92) rotate(-8deg);
+}
+@keyframes chatbot-float {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-8px) rotate(2deg); }
+}
+/* ── Notification pulse ring ── */
+#chatbot-btn::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2.5px solid var(--primary);
+  animation: chatbot-ring 2.4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes chatbot-ring {
+  0%   { opacity:1; transform:scale(1); }
+  80%  { opacity:0; transform:scale(1.6); }
+  100% { opacity:0; }
+}
+/* ── Chat Window ── */
+#chatbot-window {
+  position: fixed;
+  bottom: 10rem;
+  right: 2rem;
+  z-index: 9998;
+  width: 360px;
+  max-height: 580px;
+  border-radius: 1.25rem;
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(15,14,10,.15), 0 0 0 1px rgba(220,213,195,0.8);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.88) translateY(24px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.38s cubic-bezier(.22,.68,0,1.25), opacity 0.3s ease;
+  transform-origin: bottom right;
+}
+#chatbot-window.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+/* ── Chat Header ── */
+.cb-header {
+  background: linear-gradient(120deg, #f5da1a 0%, #e8ca00 100%);
+  padding: .85rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.cb-header::before {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cb-header-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.6);
+  object-fit: contain;
+  background: #fff8d0;
+  flex-shrink: 0;
+  animation: cb-avatar-bounce 2s ease infinite;
+}
+@keyframes cb-avatar-bounce {
+  0%,100% { transform: rotate(-3deg); }
+  50%      { transform: rotate(3deg) translateY(-2px); }
+}
+.cb-header-info { flex: 1; }
+.cb-header-name {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .88rem; font-weight: 800;
+  color: #0f0e0a; letter-spacing: -.01em;
+}
+.cb-header-status {
+  display: flex; align-items: center; gap: .35rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .58rem;
+  color: rgba(15,14,10,.55); letter-spacing: .06em;
+  text-transform: uppercase; margin-top: .12rem;
+}
+.cb-status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #16a34a; animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot {
+  0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)}
+}
+.cb-close {
+  background: rgba(15,14,10,.1); border: none;
+  color: rgba(15,14,10,.55); width: 26px; height: 26px;
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem; transition: background 0.2s, color 0.2s; flex-shrink: 0;
+}
+.cb-close:hover { background: rgba(15,14,10,.2); color: #0f0e0a; }
+/* ── Messages Area ── */
+.cb-messages {
+  flex: 1; min-height: 0; overflow-y: auto;
+  padding: 1rem 1rem .8rem;
+  display: flex; flex-direction: column; gap: .65rem;
+  scroll-behavior: smooth; background: #f8f6f0;
+}
+.cb-messages::-webkit-scrollbar { width: 3px; }
+.cb-messages::-webkit-scrollbar-track { background: transparent; }
+.cb-messages::-webkit-scrollbar-thumb { background: #ddd8c8; border-radius: 2px; }
+.cb-msg-bot {
+  display: flex; align-items: flex-end; gap: .45rem;
+  animation: cb-msg-in 0.35s cubic-bezier(.22,.68,0,1.2);
+}
+@keyframes cb-msg-in {
+  from { opacity:0; transform:translateY(10px) scale(.96); }
+  to   { opacity:1; transform:none; }
+}
+.cb-msg-bot-avatar {
+  width: 24px; height: 24px; border-radius: 50%;
+  object-fit: contain; background: #fff8d0;
+  border: 1.5px solid #e8ca00; flex-shrink: 0;
+}
+.cb-bubble-bot {
+  background: #ffffff; color: #2e2b22;
+  border-radius: 1rem 1rem 1rem .25rem;
+  padding: .65rem .9rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .76rem; line-height: 1.65; max-width: 84%;
+  box-shadow: 0 1px 4px rgba(15,14,10,.08), 0 0 0 1px rgba(220,213,195,.5);
+}
+.cb-bubble-bot strong { color: #b49a00; font-weight: 700; }
+.cb-typing { display: flex; align-items: center; gap: .45rem; }
+.cb-typing-dots {
+  background: #ffffff; border-radius: 1rem 1rem 1rem .25rem;
+  padding: .6rem .9rem; display: flex; gap: 4px; align-items: center;
+  box-shadow: 0 1px 4px rgba(15,14,10,.08);
+}
+.cb-typing-dots span {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: #c4b060; animation: typing-bounce 1.2s ease infinite;
+}
+.cb-typing-dots span:nth-child(2) { animation-delay: .2s; }
+.cb-typing-dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes typing-bounce {
+  0%,60%,100% { transform:translateY(0); opacity:.4; }
+  30%          { transform:translateY(-4px); opacity:1; }
+}
+/* ── Questions panel ── */
+.cb-questions {
+  padding: .55rem .8rem .65rem;
+  display: flex; flex-direction: column; gap: .3rem;
+  flex-shrink: 0; max-height: 195px; overflow-y: auto;
+  border-top: 1px solid #e8e0c8; background: #fffdf5;
+}
+.cb-questions::-webkit-scrollbar { width: 3px; }
+.cb-questions::-webkit-scrollbar-track { background: transparent; }
+.cb-questions::-webkit-scrollbar-thumb { background: #e8ca00; border-radius: 2px; }
+.cb-questions-label {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .56rem;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: #a89e7a; margin-bottom: .1rem; flex-shrink: 0;
+}
+.cb-q-btn {
+  display: flex; align-items: center; gap: .5rem;
+  background: #ffffff; color: #2e2b22;
+  border: 1px solid #e8e0c8; border-radius: .6rem;
+  padding: .4rem .7rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .67rem; cursor: pointer; text-align: left;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s;
+  line-height: 1.35; flex-shrink: 0;
+}
+.cb-q-btn:hover { background: #fffbe8; border-color: #e8ca00; transform: translateX(3px); }
+.cb-q-btn .cb-q-icon { font-size: .95rem; flex-shrink: 0; }
+.cb-q-btn.used { opacity: .35; pointer-events: none; transform: none; }
+.cb-msg-user { display: flex; justify-content: flex-end; animation: cb-msg-in 0.3s ease; }
+.cb-bubble-user {
+  background: #f5da1a; color: #0f0e0a;
+  border-radius: 1rem 1rem .25rem 1rem;
+  padding: .55rem .85rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .74rem; line-height: 1.45; max-width: 80%;
+  font-weight: 600; box-shadow: 0 2px 8px rgba(245,218,26,.25);
+}
+.cb-reset {
+  background: none; border: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: .58rem; color: #a89e7a; cursor: pointer;
+  letter-spacing: .1em; text-transform: uppercase;
+  text-align: center; margin-top: .2rem; padding: .2rem 0;
+  transition: color 0.2s; text-decoration: underline; flex-shrink: 0;
+}
+.cb-reset:hover { color: #0f0e0a; }
+@media (max-width: 440px) {
+  #chatbot-window { width: calc(100vw - 2rem); right: 1rem; bottom: 9rem; }
+  #chatbot-btn    { right: 1rem; bottom: 5rem; width: 60px; height: 60px; }
+}
+</style>
+
+<!-- Chatbot Trigger -->
+<button id="chatbot-btn" aria-label="Ouvrir le chatbot METTEC">
+  <img src="images/chatbot.png" alt="GBM Chatbot">
+</button>
+
+<!-- Chat Window -->
+<div id="chatbot-window" role="dialog" aria-label="Assistant METTEC">
+  <div class="cb-header">
+    <img src="images/chatbot.png" alt="Bot" class="cb-header-avatar">
+    <div class="cb-header-info">
+      <div class="cb-header-name">Assistant METTEC</div>
+      <div class="cb-header-status">
+        <span class="cb-status-dot"></span>
+        En ligne · Répond instantanément
+      </div>
+    </div>
+    <button class="cb-close" id="chatbot-close" aria-label="Fermer">✕</button>
+  </div>
+  <div class="cb-messages" id="cb-messages"></div>
+  <div class="cb-questions" id="cb-questions">
+    <div class="cb-questions-label">✦ Choisissez votre question</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const btn    = document.getElementById('chatbot-btn');
+  const win    = document.getElementById('chatbot-window');
+  const closeB = document.getElementById('chatbot-close');
+  const msgBox = document.getElementById('cb-messages');
+  const qBox   = document.getElementById('cb-questions');
+  let opened   = false;
+
+  const questions = [
+    { icon: '🏗️', q: 'Qu\'est-ce que METTEC sait faire en préfabrication ?', a: '<strong>Préfabrication métallique</strong> — notre cœur de métier. Cabines modulaires, capsules Smart connectées, maisonettes clé-en-main, kiosques, vestiaires industriels… Tout fabriqué dans notre atelier de Monastir avec une précision au millimètre. Délai : <strong>3 à 6 semaines</strong>.' },
+    { icon: '🏠', q: 'Vous construisez des bâtiments entiers ?', a: 'Absolument ! Notre pôle <strong>Construction & Installation</strong> prend en charge bâtiments industriels, charpentes métalliques, hangars, habitats et logements. Nos équipes interviennent sur site partout en Tunisie — <strong>un seul interlocuteur.</strong>' },
+    { icon: '🛋️', q: 'Est-ce que vous faites du mobilier sur mesure ?', a: 'Oui et c\'est notre passion secrète ! <strong>Salons, cuisines, dressings, lits, tables, chaises</strong>… Chaque pièce conçue sur mesure : acier, bois massif, cuir, marbre, velours. Livraison et installation incluses. Uniquement <strong>du mobilier unique.</strong>' },
+    { icon: '⏱️', q: 'Quel est votre délai de livraison typique ?', a: 'Selon le projet : <strong>cabine standard</strong> → 3 semaines · <strong>construction</strong> → 2 à 6 mois · <strong>mobilier</strong> → 4 à 8 semaines. Un planning détaillé dès la signature. Chez METTEC, <strong>on respecte les délais</strong> — c\'est une promesse.' },
+    { icon: '💡', q: 'Comment démarrer un projet avec vous ?', a: 'Simple ! <strong>① Contactez-nous</strong> via le formulaire ou WhatsApp (réponse < 2h) · <strong>② Un consultant vous appelle</strong> · <strong>③ Proposition + rendu 3D</strong> sous 48h. Aucun engagement. On aime les idées folles !' },
+    { icon: '🔩', q: 'Quels matériaux utilisez-vous ?', a: '<strong>Acier galvanisé & inoxydable</strong>, <strong>bois massif</strong> (chêne, noyer, hêtre), <strong>marbre & granit</strong>, <strong>cuir pleine fleur</strong>. Quincaillerie premium européenne, peintures époxy — le tout fabriqué pour <strong>durer 20 ans minimum.</strong>' },
+    { icon: '📍', q: 'Où êtes-vous et livrez-vous partout ?', a: 'Atelier principal : <strong>Zone Industrielle, Manzel Harb, Monastir</strong>. Livraison & installation partout en Tunisie. Pour les projets internationaux, on étudie aussi. Appelez le <strong>+216 36 40 58 22</strong> !' }
+  ];
+
+  function renderWelcome() {
+    msgBox.innerHTML = '';
+    qBox.innerHTML = '<div class="cb-questions-label">✦ Choisissez votre question</div>';
+    const w = document.createElement('div');
+    w.className = 'cb-msg-bot';
+    w.innerHTML = `<img src="images/chatbot.png" alt="Bot" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">👋 Bonjour ! Je suis l'assistant de <strong>METTEC</strong>.<br><br>Cabines modulaires, construction, mobilier… je connais chaque boulon !<br><br><strong>Quelle est votre question ?</strong> ✨</div>`;
+    msgBox.appendChild(w);
+    questions.forEach((item, i) => {
+      const b = document.createElement('button');
+      b.className = 'cb-q-btn';
+      b.innerHTML = `<span class="cb-q-icon">${item.icon}</span><span>${item.q}</span>`;
+      b.addEventListener('click', () => handleQ(i, b));
+      qBox.appendChild(b);
+    });
+    const r = document.createElement('button');
+    r.className = 'cb-reset';
+    r.textContent = '↺ Recommencer la conversation';
+    r.addEventListener('click', () => { renderWelcome(); msgBox.scrollTop = 0; });
+    qBox.appendChild(r);
+  }
+
+  function handleQ(index, btnEl) {
+    btnEl.classList.add('used');
+    const um = document.createElement('div');
+    um.className = 'cb-msg-user';
+    um.innerHTML = `<div class="cb-bubble-user">${questions[index].q}</div>`;
+    msgBox.appendChild(um);
+    msgBox.scrollTop = msgBox.scrollHeight;
+    const typing = document.createElement('div');
+    typing.className = 'cb-msg-bot cb-typing';
+    typing.innerHTML = `<img src="images/chatbot.png" alt="" class="cb-msg-bot-avatar"><div class="cb-typing-dots"><span></span><span></span><span></span></div>`;
+    msgBox.appendChild(typing);
+    msgBox.scrollTop = msgBox.scrollHeight;
+    setTimeout(() => {
+      typing.remove();
+      const bm = document.createElement('div');
+      bm.className = 'cb-msg-bot';
+      bm.innerHTML = `<img src="images/chatbot.png" alt="Bot" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">${questions[index].a}</div>`;
+      msgBox.appendChild(bm);
+      msgBox.scrollTop = msgBox.scrollHeight;
+    }, 950);
+  }
+
+  btn.addEventListener('click', () => {
+    opened = !opened;
+    win.classList.toggle('open', opened);
+    btn.classList.toggle('active', opened);
+    if (opened && msgBox.children.length === 0) renderWelcome();
+  });
+  closeB.addEventListener('click', () => { opened = false; win.classList.remove('open'); btn.classList.remove('active'); });
+  document.addEventListener('click', (e) => {
+    if (opened && !win.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+      opened = false; win.classList.remove('open'); btn.classList.remove('active');
+    }
+  });
+})();
+</script>
+
+<script src="script1.js"></script>
+</body>
+</html>

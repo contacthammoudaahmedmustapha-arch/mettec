@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Réalisations — METTEC | 500+ Projets Livrés</title>
+<meta name="description" content="Découvrez les réalisations METTEC : villas modulaires, cabines Smart, postes de gardiennage, Coffee Shops. 500+ projets livrés en Tunisie et Afrique du Nord."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style1.css">
+<style>
+/* ============================================
+   VARIABLES COMPLÉMENTAIRES (alias pour style1.css)
+   ============================================ */
+:root {
+  /* Alias pour compatibilité avec le HTML existant */
+  --gold: var(--primary);
+  --ink: var(--accent);
+  --ink2: #1c1a14;
+  --ink3: #2e2b22;
+  --mist: var(--gray-600);
+  --sand: #a8996e;
+  --linen: var(--gray-200);
+  --paper: var(--gray-100);
+  --cream: var(--white);
+  --gd: var(--primary-dark);
+  --gl: var(--primary-light);
+  
+  /* Tailles de typo spécifiques */
+  --t2xs: clamp(.56rem,.38vw + .36rem,.7rem);
+  --txs: clamp(.66rem,.48vw + .42rem,.8rem);
+  --tsm: clamp(.78rem,.6vw + .48rem,.95rem);
+  --tmd: clamp(.9rem,.7vw + .56rem,1.1rem);
+  --tlg: clamp(1.4rem,2.2vw + .5rem,2.6rem);
+  --txl: clamp(2rem,4vw + .4rem,5rem);
+  --t2xl: clamp(2.6rem,5.8vw + .6rem,7.2rem);
+  
+  /* Espacements */
+  --sxs: clamp(.5rem,.8vw,.8rem);
+  --ssm: clamp(.8rem,1.4vw,1.2rem);
+  --smd: clamp(1.2rem,2.4vw,2rem);
+  --slg: clamp(2rem,4vw,4rem);
+  --sxl: clamp(3rem,6vw,6rem);
+  
+  --line: rgba(15,14,10,.1);
+}
+
+/* ============================================
+   HERO STATS (spécifique realisations.html)
+   ============================================ */
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(32px,5vw,80px);
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat-num {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: clamp(2rem,5vw,3.5rem);
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+
+.hero-stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin-top: .3rem;
+}
+
+/* ============================================
+   3D SLIDER SECTION
+   ============================================ */
+.real-section {
+  padding: var(--sxl) 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(245,218,26,.1);
+  background: var(--accent);
+}
+
+.real-bg-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  opacity: .55;
+}
+
+.real-header {
+  text-align: center;
+  padding: 0 var(--smd);
+  margin-bottom: clamp(40px,7vw,72px);
+  position: relative;
+  z-index: 2;
+}
+
+.real-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: var(--ssm);
+}
+
+.real-eyebrow-bar {
+  display: inline-block;
+  width: clamp(20px,3vw,40px);
+  height: 1px;
+  background: var(--primary);
+  opacity: .5;
+}
+
+.real-title {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: var(--txl);
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: var(--ssm);
+}
+
+.real-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--primary);
+}
+
+.real-subtitle {
+  font-family: var(--font-mono);
+  font-size: var(--txs);
+  color: var(--gray-600);
+  letter-spacing: .06em;
+}
+
+.real-stage {
+  position: relative;
+  z-index: 2;
+  perspective: 1400px;
+  perspective-origin: 50% 40%;
+  height: clamp(380px,55vw,640px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.real-cards-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.real-card {
+  position: absolute;
+  width: clamp(220px,26vw,380px);
+  height: clamp(290px,38vw,520px);
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .75s cubic-bezier(.34,1.04,.64,1), opacity .55s ease, box-shadow .4s ease;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.real-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--ink3);
+}
+
+.real-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity .4s ease;
+  z-index: 1;
+}
+
+.real-img-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.real-grad {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(180deg,transparent 35%,rgba(15,14,10,.92) 100%);
+}
+
+.real-card-meta {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  padding: clamp(12px,2vw,22px);
+  transform: translateY(8px);
+  opacity: 0;
+  transition: transform .4s ease, opacity .4s ease;
+}
+
+.real-card-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--primary);
+  border: 1px solid rgba(245,218,26,.4);
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin-bottom: 6px;
+}
+
+.real-card-title {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: var(--tsm);
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.real-card-location {
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  color: rgba(245,218,26,.5);
+  margin-top: 3px;
+}
+
+.real-card-num {
+  position: absolute;
+  top: clamp(10px,1.5vw,18px);
+  right: clamp(10px,1.5vw,18px);
+  z-index: 4;
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: var(--tlg);
+  color: rgba(255,255,255,.08);
+  letter-spacing: -.04em;
+}
+
+.real-card-btn {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  z-index: 5;
+  background: var(--primary);
+  color: var(--accent);
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: var(--t2xs);
+  letter-spacing: .06em;
+  border: none;
+  border-radius: 2px;
+  padding: 8px 14px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .35s, transform .35s, background .2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.real-card-btn:hover {
+  background: var(--gl);
+}
+
+.real-card.r-active .real-card-meta {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.real-card.r-active .real-card-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.real-card.r-active {
+  box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 0 1.5px rgba(245,218,26,.25);
+  z-index: 10 !important;
+}
+
+.real-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(40px,5vw,56px);
+  height: clamp(40px,5vw,56px);
+  background: rgba(250,246,236,.06);
+  border: 1.5px solid rgba(245,218,26,.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: background .2s, border-color .2s, transform .2s;
+  color: var(--white);
+}
+
+.real-nav-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.real-nav-btn:hover svg {
+  stroke: var(--accent);
+}
+
+.real-nav-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--white);
+}
+
+.real-prev { left: clamp(8px,3vw,40px); }
+.real-next { right: clamp(8px,3vw,40px); }
+
+.real-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-top: clamp(24px,4vw,40px);
+  position: relative;
+  z-index: 2;
+}
+
+.real-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.real-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(245,218,26,.25);
+  cursor: pointer;
+  transition: width .3s, background .3s, border-radius .3s;
+}
+
+.real-dot.active {
+  width: 28px;
+  border-radius: 3px;
+  background: var(--primary);
+}
+
+.real-counter {
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  color: var(--gray-600);
+  letter-spacing: .12em;
+}
+
+#realCur {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.real-counter-sep {
+  margin: 0 4px;
+  opacity: .4;
+}
+
+/* ============================================
+   PROJECTS GRID
+   ============================================ */
+.projects-section {
+  padding: var(--sxl) clamp(1.5rem,5vw,5rem);
+  border-bottom: 1px solid rgba(245,218,26,.1);
+  background: var(--accent);
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: var(--slg);
+}
+
+.projects-header h2 {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: var(--txl);
+  color: var(--white);
+  line-height: .92;
+  letter-spacing: -.05em;
+}
+
+.projects-header h2 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--primary);
+}
+
+.projects-header p {
+  font-family: var(--font-mono);
+  font-size: var(--tsm);
+  color: var(--gray-600);
+  margin-top: var(--ssm);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px;
+}
+
+@media(max-width:900px) {
+  .projects-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media(max-width:560px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}
+
+.proj-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--ink2);
+  border: 1px solid rgba(245,218,26,.07);
+  transition: border-color .3s;
+}
+
+.proj-card:hover {
+  border-color: rgba(245,218,26,.25);
+}
+
+.proj-card-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform .5s;
+}
+
+.proj-card:hover .proj-card-img {
+  transform: scale(1.04);
+}
+
+.proj-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+.proj-card-emoji {
+  font-size: 3.5rem;
+  opacity: .3;
+  position: relative;
+  z-index: 1;
+}
+
+.proj-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,transparent 50%,rgba(15,14,10,.9) 100%);
+  z-index: 2;
+}
+
+.proj-card-type {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(15,14,10,.75);
+  border: 1px solid rgba(245,218,26,.3);
+  padding: 3px 8px;
+  border-radius: 2px;
+  backdrop-filter: blur(4px);
+}
+
+.proj-card-body {
+  padding: clamp(16px,2.5vw,24px);
+}
+
+.proj-card-title {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: clamp(14px,1.8vw,20px);
+  color: var(--white);
+  letter-spacing: -.02em;
+  margin-bottom: 4px;
+}
+
+.proj-card-loc {
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  color: var(--gray-600);
+  margin-bottom: var(--ssm);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.proj-card-loc::before {
+  content: '📍';
+  font-size: .8em;
+}
+
+.proj-card-specs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: var(--ssm);
+}
+
+.proj-chip {
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  color: rgba(245,218,26,.6);
+  background: rgba(245,218,26,.06);
+  border: 1px solid rgba(245,218,26,.15);
+  padding: 3px 8px;
+  border-radius: 2px;
+  letter-spacing: .08em;
+}
+
+.proj-card-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--ssm);
+  border-top: 1px solid rgba(245,218,26,.08);
+}
+
+.proj-card-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: var(--txs);
+  color: var(--primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: .04em;
+  padding: 0;
+  transition: gap .2s;
+}
+
+.proj-card-cta-btn:hover {
+  gap: 10px;
+}
+
+.proj-card-cta-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--primary);
+  fill: none;
+  transition: transform .2s;
+}
+
+.proj-card-cta-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.proj-card-year {
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  color: rgba(168,153,110,.4);
+}
+
+/* ============================================
+   MODAL
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  background: rgba(10,9,6,.92);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px,3vw,40px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: var(--ink2);
+  border: 1px solid rgba(245,218,26,.15);
+  border-radius: 4px;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  transform: scale(.94) translateY(20px);
+  transition: transform .4s cubic-bezier(.22,.68,0,1.25);
+}
+
+.modal-overlay.open .modal {
+  transform: scale(1) translateY(0);
+}
+
+@media(max-width:720px) {
+  .modal { grid-template-columns: 1fr; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(245,218,26,.1);
+  border: 1px solid rgba(245,218,26,.2);
+  color: var(--primary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+}
+
+.modal-close:hover {
+  background: var(--primary);
+  color: var(--accent);
+}
+
+.modal-gallery {
+  position: relative;
+  background: var(--accent);
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.modal-gallery-main {
+  width: 100%;
+  height: clamp(260px,40vw,480px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.modal-gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-gallery-emoji {
+  font-size: 6rem;
+  opacity: .15;
+}
+
+.modal-gallery-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(15,14,10,.8);
+  border: 1px solid rgba(245,218,26,.3);
+  padding: 4px 10px;
+  border-radius: 2px;
+  backdrop-filter: blur(4px);
+}
+
+.modal-gallery-num {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: var(--tlg);
+  color: rgba(245,218,26,.15);
+  letter-spacing: -.04em;
+}
+
+.modal-details {
+  padding: clamp(24px,3.5vw,40px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--smd);
+  overflow-y: auto;
+}
+
+.modal-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.modal-title {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: clamp(18px,2.5vw,28px);
+  color: var(--white);
+  letter-spacing: -.03em;
+  line-height: 1.1;
+}
+
+.modal-loc {
+  font-family: var(--font-mono);
+  font-size: var(--txs);
+  color: var(--gray-600);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.modal-desc {
+  font-family: var(--font-mono);
+  font-size: var(--txs);
+  color: var(--gray-600);
+  line-height: 1.9;
+}
+
+.modal-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.modal-spec-item {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(245,218,26,.08);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.modal-spec-key {
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+.modal-spec-val {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: clamp(11px,1.4vw,14px);
+  color: var(--white);
+}
+
+.modal-features {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: var(--txs);
+  color: var(--gray-600);
+}
+
+.modal-feature::before {
+  content: '▸';
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.modal-quote {
+  background: rgba(245,218,26,.04);
+  border-left: 3px solid var(--primary);
+  padding: 16px 20px;
+  border-radius: 0 4px 4px 0;
+}
+
+.modal-quote-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(13px,1.6vw,17px);
+  color: var(--white);
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.modal-quote-author {
+  font-family: var(--font-mono);
+  font-size: var(--t2xs);
+  color: var(--primary);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.modal-cta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modal-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  color: var(--accent);
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: var(--txs);
+  letter-spacing: .05em;
+  padding: 10px 20px;
+  border-radius: 2px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.modal-btn-primary:hover {
+  background: var(--gl);
+}
+
+.modal-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--primary);
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: var(--txs);
+  letter-spacing: .05em;
+  padding: 10px 20px;
+  border-radius: 2px;
+  border: 1.5px solid rgba(245,218,26,.3);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+
+.modal-btn-secondary:hover {
+  border-color: var(--primary);
+  background: rgba(245,218,26,.05);
+}
+
+/* ============================================
+   UTILITAIRES
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(245,218,26,.25);
+  border-radius: 2px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background: rgba(245,218,26,.2);
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="pageLoader">
+  <img src="images/mascotte-mettec.png" alt="METTEC" class="loader-mascot" onerror="this.style.opacity='0'">
+  <div class="loader-dots"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div>
+  <div class="loader-tagline">500+ Projets · Bâtis pour l'Éternité</div>
+</div>
+
+<!-- CURSOR -->
+<div id="cur"></div><div id="curR"></div>
+<!-- GRAIN -->
+<canvas id="grain"></canvas>
+<!-- PROGRESS -->
+<div id="tpb"><div id="tpbF"></div></div>
+<!-- BTT -->
+<button id="btt" onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="Haut"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+<!-- NAVBAR -->
+<div id="navOverlay" class="nav-overlay"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo-mettec.png" alt="METTEC" class="nav-logo-img">
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <button class="menu-close" id="menuClose" aria-label="Fermer">✕</button>
+      <li><a href="apropos.html" class="nav-link">A propos</a></li>
+      <li class="nav-dropdown">
+        <span class="nav-link nav-dropdown-toggle">Gammes <span class="chevron">▾</span></span>
+        <div class="nav-dropdown-menu">
+          <a href="index.html#gammes" class="nav-dropdown-item">
+            <div class="item-icon">🏗️</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Classique</div><div style="font-size:.72rem">Industriel · Gardiennage</div></div>
+          </a>
+          <a href="index.html#gammes" class="nav-dropdown-item">
+            <div class="item-icon">🏠</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Habitation</div><div style="font-size:.72rem">Comfort · Smart · Autonome</div></div>
+          </a>
+          <a href="index.html#gammes" class="nav-dropdown-item">
+            <div class="item-icon">🛡️</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Sécurité</div><div style="font-size:.72rem">Postes de garde · Contrôle</div></div>
+          </a>
+          <a href="index.html#gammes" class="nav-dropdown-item">
+            <div class="item-icon">✨</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Extra</div><div style="font-size:.72rem">Bar · Coffee shop · Sanitaire</div></div>
+          </a>
+        </div>
+      </li>
+      <li><a href="processus.html" class="nav-link">Processus</a></li>
+      <li><a href="realisations.html" class="nav-link active">Réalisations</a></li>
+      <li><a href="activite.html" class="nav-link">Activités</a></li>
+      <li><a href="faq.html" class="nav-link">FAQ</a></li>
+      <li><a href="index.html#blog" class="nav-link">Blog</a></li>
+      <li><a href="index.html#contact" class="nav-link nav-cta">Parlons de Votre Idée →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">500+ projets livrés.<em>Chaque cabine, une histoire.</em></h1>
+    <p class="hero-description">De la villa modulaire au kiosque Coffee Shop, du poste de gardiennage à la Smart Cabin connectée — découvrez ce que METTEC construit pour ses clients.</p>
+    <div class="hero-certs">
+      <span class="cert-chip">🏅 ISO 9001</span>
+      <span class="cert-chip">🛡️ Garantie 3 ans</span>
+      <span class="cert-chip">⚡ Livraison Clé en Main</span>
+      <span class="cert-chip">📐 Sur Mesure</span>
+    </div>
+    <div class="hero-buttons">
+      <a href="index.html#contact" class="btn btn-white btn-lg">Parlons de votre Idée</a>
+      <a href="#realSection" class="btn btn-outline btn-lg">Explorer les réalisations</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat reveal"><div class="hero-stat-num" data-count="500">0</div><div class="hero-stat-label">Projets livrés</div></div>
+      <div class="hero-stat reveal"><div class="hero-stat-num">15<small style="font-size:.5em">ans</small></div><div class="hero-stat-label">D'expertise</div></div>
+      <div class="hero-stat reveal"><div class="hero-stat-num">3<small style="font-size:.5em">ans</small></div><div class="hero-stat-label">Garantie</div></div>
+      <div class="hero-stat reveal"><div class="hero-stat-num">100<small style="font-size:.5em">%</small></div><div class="hero-stat-label">Clé en main</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll" onclick="document.getElementById('realSection').scrollIntoView({behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>
+    Défiler
+  </div>
+</section>
+
+<!-- 3D SLIDER -->
+<section class="real-section" id="realSection">
+  <div class="real-bg-noise"></div>
+  <div class="real-header">
+    <div class="real-eyebrow reveal">
+      <span class="real-eyebrow-bar"></span>Projets en vedette<span class="real-eyebrow-bar"></span>
+    </div>
+    <h2 class="real-title reveal">Survolez pour<br><em>voir le projet</em></h2>
+    <p class="real-subtitle reveal">Cliquez sur «&nbsp;Plus de détails&nbsp;» pour explorer chaque réalisation</p>
+  </div>
+
+  <div class="real-stage">
+    <div class="real-cards-wrap" id="realCards">
+      <div class="real-card" data-proj="0">
+        <div class="real-card-inner">
+          <div class="real-img-placeholder" style="background:linear-gradient(135deg,#1a1508,#2e2412)">
+            <img src="images/mettec-villa-bekalta.jpg" class="real-img" alt="Villa S+1 Bekalta" loading="lazy" onerror="this.style.display='none'">
+            <span style="font-size:5rem;opacity:.2;position:relative;z-index:0">🏠</span>
+          </div>
+          <div class="real-grad"></div>
+          <div class="real-card-meta">
+            <span class="real-card-tag">Habitation Comfort</span>
+            <h3 class="real-card-title">Villa Modulaire S+1</h3>
+            <div class="real-card-location">Bekalta, Monastir</div>
+          </div>
+          <div class="real-card-num">01</div>
+          <button class="real-card-btn" onclick="openModal(0)">Plus de détails <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="real-card" data-proj="1">
+        <div class="real-card-inner">
+          <div class="real-img-placeholder" style="background:linear-gradient(135deg,#060d1f,#0d1c35)">
+            <img src="images/slide8.webp" class="real-img" alt="Smart Cabin Hammamet" loading="lazy" onerror="this.style.display='none'">
+            <span style="font-size:5rem;opacity:.2;position:relative;z-index:0">📡</span>
+          </div>
+          <div class="real-grad"></div>
+          <div class="real-card-meta">
+            <span class="real-card-tag">Smart Cabin IoT</span>
+            <h3 class="real-card-title">Cabine Connectée Premium</h3>
+            <div class="real-card-location">Resort Azurex, Hammamet</div>
+          </div>
+          <div class="real-card-num">02</div>
+          <button class="real-card-btn" onclick="openModal(1)">Plus de détails <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="real-card" data-proj="2">
+        <div class="real-card-inner">
+          <div class="real-img-placeholder" style="background:linear-gradient(135deg,#091a0f,#0e2818)">
+            <img src="images/slide7.webp" class="real-img" alt="Habitation off-grid" loading="lazy" onerror="this.style.display='none'">
+            <span style="font-size:5rem;opacity:.2;position:relative;z-index:0">☀️</span>
+          </div>
+          <div class="real-grad"></div>
+          <div class="real-card-meta">
+            <span class="real-card-tag">Off-Grid Autonome</span>
+            <h3 class="real-card-title">Habitation Solaire 100%</h3>
+            <div class="real-card-location">Tozeur, Tunisie</div>
+          </div>
+          <div class="real-card-num">03</div>
+          <button class="real-card-btn" onclick="openModal(2)">Plus de détails <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="real-card" data-proj="3">
+        <div class="real-card-inner">
+          <div class="real-img-placeholder" style="background:linear-gradient(135deg,#1a0f06,#2e1a0e)">
+            <img src="images/slide6.webp" class="real-img" alt="Salle de classe" loading="lazy" onerror="this.style.display='none'">
+            <span style="font-size:5rem;opacity:.2;position:relative;z-index:0">🏫</span>
+          </div>
+          <div class="real-grad"></div>
+          <div class="real-card-meta">
+            <span class="real-card-tag">Extra — Éducation</span>
+            <h3 class="real-card-title">Salles de Classe Modulaires</h3>
+            <div class="real-card-location">Sfax, Tunisie</div>
+          </div>
+          <div class="real-card-num">04</div>
+          <button class="real-card-btn" onclick="openModal(3)">Plus de détails <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="real-card" data-proj="4">
+        <div class="real-card-inner">
+          <div class="real-img-placeholder" style="background:linear-gradient(135deg,#1a0606,#2e0e0e)">
+            <img src="images/slide4.webp" class="real-img" alt="Poste gardiennage aéroport" loading="lazy" onerror="this.style.display='none'">
+            <span style="font-size:5rem;opacity:.2;position:relative;z-index:0">🛡️</span>
+          </div>
+          <div class="real-grad"></div>
+          <div class="real-card-meta">
+            <span class="real-card-tag">Gamme Sécurité</span>
+            <h3 class="real-card-title">Poste de Contrôle</h3>
+            <div class="real-card-location">Aéroport Monastir</div>
+          </div>
+          <div class="real-card-num">05</div>
+          <button class="real-card-btn" onclick="openModal(4)">Plus de détails <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="real-card" data-proj="5">
+        <div class="real-card-inner">
+          <div class="real-img-placeholder" style="background:linear-gradient(135deg,#1a1008,#2e1c10)">
+            <img src="images/slide5.webp" class="real-img" alt="Coffee Shop kiosque" loading="lazy" onerror="this.style.display='none'">
+            <span style="font-size:5rem;opacity:.2;position:relative;z-index:0">☕</span>
+          </div>
+          <div class="real-grad"></div>
+          <div class="real-card-meta">
+            <span class="real-card-tag">Gamme Extra</span>
+            <h3 class="real-card-title">Coffee Shop Kiosque</h3>
+            <div class="real-card-location">Avenue Bourguiba, Tunis</div>
+          </div>
+          <div class="real-card-num">06</div>
+          <button class="real-card-btn" onclick="openModal(5)">Plus de détails <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <button class="real-nav-btn real-prev" id="realPrev" aria-label="Précédent">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="real-nav-btn real-next" id="realNext" aria-label="Suivant">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <div class="real-footer">
+    <div class="real-dots" id="realDots">
+      <span class="real-dot active" data-di="0"></span>
+      <span class="real-dot" data-di="1"></span>
+      <span class="real-dot" data-di="2"></span>
+      <span class="real-dot" data-di="3"></span>
+      <span class="real-dot" data-di="4"></span>
+      <span class="real-dot" data-di="5"></span>
+    </div>
+    <div class="real-counter"><span id="realCur">01</span><span class="real-counter-sep">/</span><span>06</span></div>
+  </div>
+</section>
+
+<!-- PROJECT GRID -->
+<section class="projects-section">
+  <div class="projects-header">
+    <h2 class="reveal">Tous nos <em>projets</em></h2>
+    <p class="reveal">Explorez chaque réalisation en détail — dimensions, équipements, délais et témoignage client.</p>
+  </div>
+  <div class="projects-grid" id="projectsGrid"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-newsletter">
+    <div class="footer-newsletter-eyebrow">✦ Restez informé</div>
+    <p class="footer-newsletter-desc">Nouveautés, projets réalisés, conseils techniques et offres exclusives — directement dans votre boîte mail.</p>
+    <form class="footer-nl-form" onsubmit="handleNewsletter(event)">
+      <input type="email" class="footer-nl-input" placeholder="votre@email.com" required>
+      <button type="submit" class="footer-nl-btn">S'abonner →</button>
+    </form>
+    <div class="footer-nl-success" id="nlSuccess">✅ Bienvenue ! Vous êtes maintenant abonné.</div>
+    <p class="footer-nl-note">Pas de spam. Désinscription en 1 clic.</p>
+  </div>
+  <div>
+    <a class="footer-logo" href="index.html"><img src="images/logo-mettec.png" alt="METTEC" class="footer-logo-img"></a>
+    <p class="footer-tagline">Votre idée, Notre acier.<br>Bâti pour l'Éternité.</p>
+    <div class="footer-socials">
+      <a href="#" class="footer-social"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="#" class="footer-social"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+    </div>
+  </div>
+  <div><div class="footer-col-title">Gammes</div><ul class="footer-links"><li><a href="index.html#gammes">Classique 6×3×2.4m</a></li><li><a href="index.html#gammes">Habitation Comfort</a></li><li><a href="index.html#gammes">Habitation Smart</a></li><li><a href="index.html#gammes">Habitation Autonome</a></li><li><a href="index.html#gammes">Sécurité / Gardiennage</a></li><li><a href="index.html#gammes">Gamme Extra</a></li></ul></div>
+  <div><div class="footer-col-title">Société</div><ul class="footer-links"><li><a href="processus.html">Notre processus</a></li><li><a href="#">Certifications</a></li><li><a href="index.html#partners">Références</a></li><li><a href="index.html#sav">SAV & Garantie</a></li><li><a href="index.html#configurator">Configurateur</a></li></ul></div>
+  <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:+21636405822">+216 36 40 58 22</a></li><li><a href="tel:+21629225405">+216 29 22 54 05</a></li><li><a href="mailto:contact@mettec.tn">contact@mettec.tn</a></li><li><a href="#">Monastir, Tunisie</a></li><li><a href="index.html#contact">Parlons de votre Idée</a></li></ul></div>
+  <div class="footer-bottom"><span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span><span class="footer-copy">Design by <strong>AMH</strong></span><div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Fermer">✕</button>
+    <div class="modal-gallery" id="modalGallery">
+      <div class="modal-gallery-main" id="modalImg">
+        <span class="modal-gallery-emoji" id="modalEmoji">🏠</span>
+      </div>
+      <div class="modal-gallery-tag" id="modalTag"></div>
+      <div class="modal-gallery-num" id="modalNum"></div>
+    </div>
+    <div class="modal-details">
+      <div class="modal-eyebrow" id="modalEyebrow"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-loc" id="modalLoc"></div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-specs" id="modalSpecs"></div>
+      <div>
+        <div style="font-family:var(--font-mono);font-size:var(--t2xs);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin-bottom:10px">Équipements inclus</div>
+        <div class="modal-features" id="modalFeatures"></div>
+      </div>
+      <div class="modal-quote" id="modalQuote">
+        <div class="modal-quote-text" id="modalQuoteText"></div>
+        <div class="modal-quote-author" id="modalQuoteAuthor"></div>
+      </div>
+      <div class="modal-cta">
+        <a href="index.html#cta" class="modal-btn-primary">Demander un projet similaire →</a>
+        <a href="index.html#configurator" class="modal-btn-secondary">Configurateur →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHATBOT -->
+<button id="chatbot-btn" aria-label="Ouvrir le chatbot METTEC">
+  <img src="images/chatbot.png" alt="Assistant METTEC">
+</button>
+<div id="chatbot-window" role="dialog" aria-label="Assistant METTEC">
+  <div class="cb-header">
+    <img src="images/chatbot.png" alt="Bot" class="cb-header-avatar">
+    <div class="cb-header-info">
+      <div class="cb-header-name">Assistant METTEC</div>
+      <div class="cb-header-status"><span class="cb-status-dot"></span>En ligne · Répond instantanément</div>
+    </div>
+    <button class="cb-close" id="chatbot-close" aria-label="Fermer">✕</button>
+  </div>
+  <div class="cb-messages" id="cb-messages"></div>
+  <div class="cb-questions" id="cb-questions"><div class="cb-questions-label">✦ Choisissez votre question</div></div>
+</div>
+
+<script>
+/* PROJECT DATA */
+const PROJECTS = [
+  {
+    id: 0, num: '01', emoji: '🏠',
+    tag: 'Habitation Comfort',
+    title: 'Villa Modulaire S+1',
+    location: 'Bekalta, Monastir',
+    year: '2024',
+    image: 'images/mettec-villa-bekalta.jpg',
+    desc: "Villa résidentielle sur mesure avec étage complet, livrée clé en main en 5 semaines. Conçue pour une famille de 5 personnes avec salon principal, 3 chambres, 2 salles de bain et une cuisine entièrement équipée. Design intérieur coordonné par nos équipes.",
+    specs: [
+      {k:'Dimensions', v:'8m × 5m × 5.2m'},
+      {k:'Configuration', v:'S+1 — Plain-pied + Étage'},
+      {k:'Surface totale', v:'80 m²'},
+      {k:'Structure', v:'Acier S355 galvanisé'},
+      {k:'Isolation', v:'PU 100mm (R>5)'},
+      {k:'Délai livraison', v:'5 semaines'},
+    ],
+    features: ['Cuisine équipée complète', '2 Salles de bain avec douche', 'Climatisation split x4', 'Électricité + domotique partielle', 'Escalier acier intégré', 'Bardage bois composite extérieur', 'Fenêtres oscillo-battantes PVC'],
+    quote: "Notre villa est exactement ce que nous avions imaginé. L'équipe METTEC a su transformer nos exigences les plus précises en réalité, avec une rapidité d'exécution impressionnante.",
+    author: "Famille Benhassen · Bekalta, Monastir"
+  },
+  {
+    id: 1, num: '02', emoji: '📡',
+    tag: 'Smart Cabin IoT',
+    title: 'Cabine Connectée Premium',
+    location: 'Resort Azurex, Hammamet',
+    year: '2024',
+    image: 'images/slide8.webp',
+    desc: "Smart Cabin déployée au cœur du resort Azurex — une attraction qui combine hébergement de luxe et technologie de pointe. Contrôle total depuis smartphone : éclairage, climatisation, sécurité biométrique, monitoring en temps réel.",
+    specs: [
+      {k:'Dimensions', v:'7m × 4m × 2.8m'},
+      {k:'Configuration', v:'S+0 — Plain-pied'},
+      {k:'Surface', v:'28 m²'},
+      {k:'Domotique', v:'IoT full-stack'},
+      {k:'Connexion', v:'4G/WiFi redondant'},
+      {k:'Délai livraison', v:'6 semaines'},
+    ],
+    features: ['Contrôle total via app iOS/Android', 'Serrure biométrique + badge', 'Caméras IP HD vision nocturne', 'Alarme avec notification push', 'Éclairage ambiance programmable', 'Climatisation intelligente', 'Monitoring température/humidité', 'Accès multi-utilisateurs'],
+    quote: "La Smart Cabin est devenue l'attraction phare de notre resort. Les clients sont fascinés par la technologie — METTEC a littéralement inventé quelque chose de nouveau ici.",
+    author: "Directeur Hébergement · Resort Azurex, Hammamet"
+  },
+  {
+    id: 2, num: '03', emoji: '☀️',
+    tag: 'Off-Grid Autonome',
+    title: 'Habitation Solaire 100%',
+    location: 'Tozeur, Tunisie',
+    year: '2023',
+    image: 'images/slide7.webp',
+    desc: "Première habitation modulaire autonome déployée dans le désert tunisien. Zéro raccordement au réseau électrique ou d'eau. Panneaux solaires intégrés à la toiture, batteries LiFePO4 pour 3 jours d'autonomie, système de récupération d'eau pluviale.",
+    specs: [
+      {k:'Dimensions', v:'6m × 4m × 2.6m'},
+      {k:'Configuration', v:'S+0 avec terrasse'},
+      {k:'Énergie solaire', v:'6 kWc panneaux PV'},
+      {k:'Stockage', v:'Batteries 20 kWh LiFePO4'},
+      {k:'Autonomie eau', v:'500L / citerne'},
+      {k:'Délai livraison', v:'7 semaines'},
+    ],
+    features: ['6 panneaux photovoltaïques 400Wc', 'Batteries LiFePO4 20 kWh', 'Régulateur MPPT + onduleur hybride', 'Monitoring production solaire', 'Citerne eau + filtre UV', 'Isolation renforcée (désert)', 'Ventilation naturelle passive'],
+    quote: "Nous avions besoin d'une habitation fonctionnelle au milieu du désert, sans aucune infrastructure. METTEC a livré une maison complète, confortable, totalement autonome.",
+    author: "Responsable Projet · Station Écotouristique, Tozeur"
+  },
+  {
+    id: 3, num: '04', emoji: '🏫',
+    tag: 'Extra — Éducation',
+    title: 'Salles de Classe Modulaires',
+    location: 'École Privée, Sfax',
+    year: '2024',
+    image: 'images/slide6.webp',
+    desc: "Déploiement de 4 salles de classe modulaires pour une école privée en expansion. Installées en 3 semaines pendant les vacances scolaires, prêtes à accueillir 120 élèves dès la rentrée. Acoustique traitée, isolation thermique premium.",
+    specs: [
+      {k:'Nombre de modules', v:'4 salles de classe'},
+      {k:'Surface par module', v:'30 m² (6m × 5m)'},
+      {k:'Surface totale', v:'120 m²'},
+      {k:'Capacité', v:'30 élèves / salle'},
+      {k:'Acoustique', v:'Traitement phonique'},
+      {k:'Délai installation', v:'3 semaines'},
+    ],
+    features: ['Isolation phonique renforcée', 'Éclairage LED anti-éblouissement', 'Climatisation réversible', 'Tableau blanc intégré', 'Électricité pédagogique', 'Ventilation double-flux', 'Accès PMR (rampes)'],
+    quote: "Nos élèves ont retrouvé des salles modernes, silencieuses et climatisées. L'installation s'est faite en 3 semaines sans perturber l'école. Un travail remarquable.",
+    author: "Direction Pédagogique · École Privée, Sfax"
+  },
+  {
+    id: 4, num: '05', emoji: '🛡️',
+    tag: 'Gamme Sécurité',
+    title: 'Poste de Contrôle Aéroportuaire',
+    location: 'Aéroport International, Monastir',
+    year: '2023',
+    image: 'images/slide4.webp',
+    desc: "Poste de contrôle d'accès pour l'aéroport international de Monastir — client emblématique. Structure certifiée EN 1090, vitrage sécurisé anti-effraction, contrôle d'accès biométrique, caméras PTZ extérieures. Livré et certifié conforme en 4 semaines.",
+    specs: [
+      {k:'Dimensions', v:'4m × 3m × 2.4m'},
+      {k:'Certification', v:'EN 1090 EXC2'},
+      {k:'Vitrage', v:'Feuilleté sécurisé P4A'},
+      {k:'Accès', v:'Biométrique + badge RF'},
+      {k:'Caméras', v:'PTZ HD 360°'},
+      {k:'Délai livraison', v:'4 semaines'},
+    ],
+    features: ['Structure EN 1090 certifiée', 'Vitrage anti-effraction P4A', 'Volet roulant blindé motorisé', 'Contrôle accès biométrique', 'Caméras PTZ extérieures', 'Climatisation renforcée 24/7', 'Alimentaton secourue (onduleur)', 'Interphonie IP'],
+    quote: "La certification EN 1090 a été déterminante dans notre choix de METTEC. Le poste a été livré en temps record avec une qualité irréprochable — conforme à toutes nos exigences aéroportuaires.",
+    author: "Direction Technique · Aéroport International Monastir"
+  },
+  {
+    id: 5, num: '06', emoji: '☕',
+    tag: 'Gamme Extra',
+    title: 'Coffee Shop Kiosque Design',
+    location: 'Avenue Habib Bourguiba, Tunis',
+    year: '2024',
+    image: 'images/slide5.webp',
+    desc: "Kiosque Coffee Shop haut de gamme déployé sur l'avenue principale de Tunis. Design architectural signé par notre bureau d'études, bardage Corten brossé, éclairage architectural LED, comptoir en acier et marbre. Attraction visuelle et commerciale.",
+    specs: [
+      {k:'Dimensions', v:'5m × 3m × 2.8m'},
+      {k:'Bardage ext.', v:'Corten brossé + verre'},
+      {k:'Comptoir', v:'Acier + marbre Calacatta'},
+      {k:'Éclairage', v:'Architectural LED DMX'},
+      {k:'Surface vente', v:'15 m²'},
+      {k:'Délai livraison', v:'5 semaines'},
+    ],
+    features: ['Bardage Corten brossé haut de gamme', 'Comptoir acier + marbre Calacatta', 'Éclairage architectural DMX', 'Vitrine réfrigérée intégrée', 'Électricité trifase cuisine', 'Store banne motorisé', 'Signalétique personnalisée', 'Terrasse structure acier'],
+    quote: "Notre Coffee Shop est devenu un point de repère sur l'avenue. Chaque détail est soigné — c'est à la fois un outil commercial et une œuvre architecturale. Merci METTEC !",
+    author: "Propriétaire · Coffee Shop Design, Tunis"
+  }
+];
+
+/* RENDER PROJECT GRID */
+(function renderGrid(){
+  const grid = document.getElementById('projectsGrid');
+  if(!grid) return;
+  PROJECTS.forEach(p => {
+    grid.innerHTML += `
+      <div class="proj-card reveal" onclick="openModal(${p.id})">
+        <div class="proj-card-img">
+          <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.style.display='none'">
+          <span class="proj-card-emoji">${p.emoji}</span>
+          <div class="proj-card-overlay"></div>
+          <div class="proj-card-type">${p.tag}</div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-title">${p.title}</div>
+          <div class="proj-card-loc">${p.location}</div>
+          <div class="proj-card-specs">
+            ${p.specs.slice(0,3).map(s=>`<span class="proj-chip">${s.v}</span>`).join('')}
+          </div>
+          <div class="proj-card-cta">
+            <button class="proj-card-cta-btn">Plus de détails <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <span class="proj-card-year">${p.year}</span>
+          </div>
+        </div>
+      </div>`;
+  });
+})();
+
+/* MODAL */
+function openModal(id) {
+  const p = PROJECTS[id];
+  if(!p) return;
+  document.getElementById('modalEmoji').textContent = p.emoji;
+  document.getElementById('modalTag').textContent = p.tag;
+  document.getElementById('modalNum').textContent = p.num;
+  document.getElementById('modalEyebrow').textContent = p.location + ' — ' + p.year;
+  document.getElementById('modalTitle').textContent = p.title;
+  document.getElementById('modalLoc').textContent = p.location;
+  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalSpecs').innerHTML = p.specs.map(s=>`
+    <div class="modal-spec-item">
+      <span class="modal-spec-key">${s.k}</span>
+      <span class="modal-spec-val">${s.v}</span>
+    </div>`).join('');
+  document.getElementById('modalFeatures').innerHTML = p.features.map(f=>`<div class="modal-feature">${f}</div>`).join('');
+  document.getElementById('modalQuoteText').textContent = '"' + p.quote + '"';
+  document.getElementById('modalQuoteAuthor').textContent = p.author;
+  const imgEl = document.getElementById('modalImg');
+  imgEl.innerHTML = `<span class="modal-gallery-emoji">${p.emoji}</span>`;
+  if(p.image) {
+    const img = new Image();
+    img.onload = () => { imgEl.innerHTML = ''; imgEl.appendChild(img); img.style.cssText='width:100%;height:100%;object-fit:cover'; };
+    img.src = p.image;
+  }
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOnOverlay(e) {
+  if(e.target === document.getElementById('modalOverlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+/* 3D SLIDER */
+(function(){
+  const cards  = Array.from(document.querySelectorAll('.real-card'));
+  const dots   = Array.from(document.querySelectorAll('.real-dot'));
+  const prevBtn= document.getElementById('realPrev');
+  const nextBtn= document.getElementById('realNext');
+  const curEl  = document.getElementById('realCur');
+  const wrap   = document.getElementById('realCards');
+  if(!cards.length||!wrap) return;
+  const TOTAL=cards.length;
+  let active=0,autoTimer,isPaused=false;
+  const CONFIG={
+    '-2':{x:-95,z:-380,ry:28,sc:.58,op:.22,zi:1},
+    '-1':{x:-52,z:-200,ry:18,sc:.78,op:.65,zi:5},
+    '0' :{x:0,  z:0,   ry:0, sc:1.0,op:1.0,zi:10},
+    '1' :{x:52, z:-200,ry:-18,sc:.78,op:.65,zi:5},
+    '2' :{x:95, z:-380,ry:-28,sc:.58,op:.22,zi:1},
+  };
+  function getOffset(idx){ let o=idx-active; if(o>TOTAL/2)o-=TOTAL; if(o<-TOTAL/2)o+=TOTAL; return o; }
+  function apply(){
+    cards.forEach((card,idx)=>{
+      const off=getOffset(idx),cl=Math.max(-2,Math.min(2,off)),C=CONFIG[String(cl)],h=Math.abs(off)>2;
+      card.style.transform=`translateX(${C.x}%) translateZ(${C.z}px) rotateY(${C.ry}deg) scale(${C.sc})`;
+      card.style.opacity=h?0:C.op; card.style.zIndex=h?0:C.zi;
+      card.style.pointerEvents=h?'none':'auto';
+      card.classList.toggle('r-active',off===0);
+    });
+    dots.forEach((d,i)=>d.classList.toggle('active',i===active));
+    if(curEl) curEl.textContent=String(active+1).padStart(2,'0');
+  }
+  function goTo(n){ active=((n%TOTAL)+TOTAL)%TOTAL; apply(); }
+  function start(){ clearInterval(autoTimer); if(!isPaused) autoTimer=setInterval(()=>goTo(active+1),5500); }
+  function pause(){ isPaused=true; clearInterval(autoTimer); }
+  function resume(){ isPaused=false; start(); }
+  prevBtn.addEventListener('click',()=>{goTo(active-1);start()});
+  nextBtn.addEventListener('click',()=>{goTo(active+1);start()});
+  dots.forEach((d,i)=>d.addEventListener('click',()=>{goTo(i);start()}));
+  cards.forEach((c,i)=>{ c.addEventListener('click',()=>{ if(!c.classList.contains('r-active')){goTo(i);start()} }); });
+  cards.forEach(c=>{ c.addEventListener('mouseenter',pause); c.addEventListener('mouseleave',()=>setTimeout(()=>{if(!wrap.matches(':hover'))resume()},300)); });
+  let tx0=0;
+  wrap.addEventListener('touchstart',e=>{tx0=e.touches[0].clientX;pause()},{passive:true});
+  wrap.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx0;if(Math.abs(dx)>48)goTo(dx<0?active+1:active-1);setTimeout(resume,1000)},{passive:true});
+  apply(); start();
+})();
+
+/* REVEAL */
+const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+/* COUNT UP */
+const countObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&e.target.dataset.count){const t=parseInt(e.target.dataset.count);let v=0;const s=t/50;const ti=setInterval(()=>{v=Math.min(v+s,t);e.target.textContent=Math.round(v)+'+';if(v>=t)clearInterval(ti)},30);countObs.unobserve(e.target)}})},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
+
+/* SCROLL */
+const tpbF=document.getElementById('tpbF'),bttEl=document.getElementById('btt');
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY,mx=document.body.scrollHeight-window.innerHeight;
+  if(tpbF) tpbF.style.width=(mx>0?s/mx*100:0)+'%';
+  if(bttEl) bttEl.classList.toggle('show',s>400);
+},{passive:true});
+
+/* BURGER / MENU MOBILE */
+const menuToggle = document.getElementById('menuToggle');
+const menuClose = document.getElementById('menuClose');
+const navLinks = document.getElementById('navLinks');
+const navOverlay = document.getElementById('navOverlay');
+if(menuToggle && navLinks) {
+  function openMenu() { navLinks.classList.add('open'); navOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { navLinks.classList.remove('open'); navOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+  menuToggle.addEventListener('click', openMenu);
+  if(menuClose) menuClose.addEventListener('click', closeMenu);
+  navOverlay.addEventListener('click', closeMenu);
+}
+
+/* GRAIN */
+const cv=document.getElementById('grain'),gx=cv?cv.getContext('2d'):null;
+if(cv&&gx){ function rsz(){cv.width=innerWidth;cv.height=innerHeight}rsz();window.addEventListener('resize',rsz,{passive:true});(function g(){const w=cv.width,h=cv.height,id=gx.createImageData(w,h),d=id.data;for(let i=0;i<d.length;i+=4){const v=(Math.random()-.5)*255*.08;d[i]=d[i+1]=d[i+2]=128+v;d[i+3]=Math.abs(v)*1.2}gx.putImageData(id,0,0);requestAnimationFrame(g)})(); }
+
+/* CURSOR */
+const dotEl=document.getElementById('cur'),ringEl=document.getElementById('curR');
+if(dotEl&&ringEl){ let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});(function cl(){dotEl.style.left=mx+'px';dotEl.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ringEl.style.left=rx+'px';ringEl.style.top=ry+'px';requestAnimationFrame(cl)})(); }
+
+/* LOADER */
+window.addEventListener('load',()=>setTimeout(()=>{ const l=document.getElementById('pageLoader'); if(l){l.classList.add('hide');setTimeout(()=>l.remove(),700)} },1800));
+
+/* NEWSLETTER */
+function handleNewsletter(e) {
+  e.preventDefault();
+  document.getElementById('nlSuccess').classList.add('show');
+  e.target.style.display = 'none';
+}
+
+/* CHATBOT */
+(function(){
+  const btn=document.getElementById('chatbot-btn'),win=document.getElementById('chatbot-window'),closeB=document.getElementById('chatbot-close'),msgBox=document.getElementById('cb-messages'),qBox=document.getElementById('cb-questions');
+  let opened=false;
+  const questions=[
+    {icon:'🏗️',q:"Qu'est-ce que METTEC sait faire en préfabrication ?",a:"<strong>Préfabrication métallique</strong> — notre cœur de métier. Cabines modulaires, capsules Smart, kiosques… fabriqués à Monastir avec précision millimétrique. Délai : <strong>3 à 6 semaines</strong>."},
+    {icon:'💰',q:"Quel est le prix d'une cabine ?",a:"À partir de <strong>13 000 TND TTC</strong> pour une cabine 6×3m. Le prix varie selon les dimensions et équipements. Utilisez notre <strong>configurateur en ligne</strong> pour une estimation instantanée."},
+    {icon:'📐',q:"Peut-on tout personnaliser ?",a:"<strong>Absolument tout</strong> — dimensions, finitions, équipements, agencement. Chaque cabine est unique. Nous livrons un <strong>rendu 3D gratuit</strong> avant validation."},
+    {icon:'⏱️',q:"Quels sont vos délais de livraison ?",a:"<strong>Cabine standard :</strong> 3 sem · <strong>Habitation :</strong> 4-6 sem · <strong>Projet complexe :</strong> 6-10 sem. Planning détaillé remis dès signature."},
+    {icon:'🔄',q:"Puis-je voir d'autres réalisations ?",a:"Vous êtes déjà sur notre page Réalisations ! Cliquez sur <strong>«&nbsp;Plus de détails&nbsp;»</strong> sur chaque projet pour tout voir. Ou contactez-nous pour un portfolio complet."}
+  ];
+  function renderWelcome(){
+    msgBox.innerHTML=''; qBox.innerHTML='<div class="cb-questions-label">✦ Choisissez votre question</div>';
+    const w=document.createElement('div'); w.className='cb-msg-bot';
+    w.innerHTML=`<img src="images/chatbot.png" alt="" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">👋 Bonjour ! Je suis l'assistant <strong>METTEC</strong>.<br><br>Vous consultez nos réalisations — des questions ?<br><strong>Je suis là.</strong> ✨</div>`;
+    msgBox.appendChild(w);
+    questions.forEach((item,i)=>{ const b=document.createElement('button'); b.className='cb-q-btn'; b.innerHTML=`<span class="cb-q-icon">${item.icon}</span><span>${item.q}</span>`; b.addEventListener('click',()=>handleQ(i,b)); qBox.appendChild(b); });
+    const r=document.createElement('button'); r.className='cb-reset'; r.textContent='↺ Recommencer'; r.addEventListener('click',()=>{renderWelcome();msgBox.scrollTop=0}); qBox.appendChild(r);
+  }
+  function handleQ(i,b){
+    b.classList.add('used');
+    const um=document.createElement('div'); um.className='cb-msg-user'; um.innerHTML=`<div class="cb-bubble-user">${questions[i].q}</div>`; msgBox.appendChild(um); msgBox.scrollTop=msgBox.scrollHeight;
+    const t=document.createElement('div'); t.className='cb-msg-bot'; t.innerHTML=`<img src="images/chatbot.png" alt="" class="cb-msg-bot-avatar"><div class="cb-typing-dots"><span></span><span></span><span></span></div>`; msgBox.appendChild(t); msgBox.scrollTop=msgBox.scrollHeight;
+    setTimeout(()=>{ t.remove(); const bm=document.createElement('div'); bm.className='cb-msg-bot'; bm.innerHTML=`<img src="images/chatbot.png" alt="" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">${questions[i].a}</div>`; msgBox.appendChild(bm); msgBox.scrollTop=msgBox.scrollHeight; },900);
+  }
+  if(btn) btn.addEventListener('click',()=>{ opened=!opened; win.classList.toggle('open',opened); btn.classList.toggle('active',opened); if(opened&&msgBox.children.length===0)renderWelcome(); });
+  if(closeB) closeB.addEventListener('click',()=>{ opened=false; win.classList.remove('open'); btn.classList.remove('active'); });
+  document.addEventListener('click',e=>{ if(opened&&!win.contains(e.target)&&e.target!==btn&&!btn.contains(e.target)){ opened=false; win.classList.remove('open'); btn.classList.remove('active'); } });
+})();
+</script>
+</body>
+</html>

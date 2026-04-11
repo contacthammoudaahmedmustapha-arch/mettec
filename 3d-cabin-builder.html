@@ -1,0 +1,708 @@
+<style>
+/* ========== STYLES DÉDIÉS ========== */
+:root{
+  --ink:#050505; --ink2:#0a0908; --ink3:#151310;
+  --mist:#5c5644; --sand:#9a8b5e;
+  --linen:#e8e0c8; --paper:#f4eedc; --cream:#faf6ec;
+  --gold:#f5da1a; --gd:#c4ad00; --gl:#fef48a;
+  --accent:#ff6b35; --accent2:#e85d04;
+  --iot:#00d4ff; --solar:#00e676; --energy:#ffd600;
+  --t2xs:clamp(.56rem,.38vw + .36rem,.7rem);
+  --txs:clamp(.66rem,.48vw + .42rem,.8rem);
+  --tsm:clamp(.78rem,.6vw + .48rem,.95rem);
+  --tmd:clamp(.9rem,.7vw + .56rem,1.1rem);
+  --tlg:clamp(1.4rem,2.2vw + .5rem,2.6rem);
+  --txl:clamp(2rem,4vw + .4rem,5rem);
+  --t2xl:clamp(2.6rem,5.8vw + .6rem,7.2rem);
+  --sxs:clamp(.5rem,.8vw,.8rem); --ssm:clamp(.8rem,1.4vw,1.2rem);
+  --smd:clamp(1.2rem,2.4vw,2rem); --slg:clamp(2rem,4vw,4rem);
+  --sxl:clamp(3rem,6vw,6rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Space Mono',monospace;background:var(--ink);color:var(--cream);overflow-x:hidden}
+
+/* Section principale - sans header ni loader */
+#cabin-builder{
+  background:var(--ink);
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  min-height:100svh;
+  overflow:hidden;
+  position:relative;
+}
+.cb3-left{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:center;
+  padding:var(--sxl) clamp(1rem,3vw,2.5rem) var(--ssm);
+  background:radial-gradient(ellipse at 30% 40%, #0a1018 0%, #020408 50%, #000000 100%);
+}
+.cb3-canvas-wrap{
+  position:relative;
+  width:100%;overflow:hidden;border-radius:28px;
+  box-shadow:
+    0 0 0 1px rgba(245,218,26,.2),
+    0 0 80px rgba(245,218,26,.08),
+    0 30px 100px -30px rgba(0,0,0,.9);
+  background:linear-gradient(135deg, rgba(245,218,26,.03) 0%, transparent 50%);
+}
+#cabinCanvas{
+  display:block;width:100%!important;
+  height:clamp(360px,62vh,680px);
+  cursor:grab;touch-action:none;
+}
+#cabinCanvas:active{cursor:grabbing;}
+
+.cb3-badge{
+  position:absolute;top:24px;left:24px;
+  display:flex;align-items:center;gap:10px;
+  font-size:var(--t2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);background:rgba(5,8,12,.95);
+  border:1px solid rgba(245,218,26,.3);border-radius:40px;
+  padding:12px 20px;backdrop-filter:blur(12px);
+  pointer-events:none;z-index:5;
+  box-shadow:0 4px 30px rgba(0,0,0,.4);
+}
+.cb3-badge-dot{width:10px;height:10px;border-radius:50%;background:#00e676;
+  animation:livePulse 1.5s infinite;box-shadow:0 0 15px #00e676;
+}
+@keyframes livePulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(0.8);opacity:0.6;}}
+
+.cb3-equip-status{
+  position:absolute;top:24px;right:24px;z-index:5;
+  display:flex;flex-direction:column;gap:8px;
+  max-width:200px;
+}
+.cb3-equip-tag{
+  background:rgba(5,8,12,.95);border:1px solid rgba(245,218,26,.2);
+  border-radius:30px;padding:8px 16px;font-size:var(--t2xs);
+  display:flex;align-items:center;gap:8px;backdrop-filter:blur(12px);
+  transform:translateX(100px);opacity:0;transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.cb3-equip-tag.active{transform:translateX(0);opacity:1;}
+.cb3-equip-tag.solar{border-color:var(--solar);color:var(--solar);}
+.cb3-equip-tag.smart{border-color:var(--iot);color:var(--iot);}
+.cb3-equip-tag.ac{border-color:var(--energy);color:var(--energy);}
+.cb3-equip-tag.kitchen{border-color:#ff8a65;color:#ff8a65;}
+.cb3-equip-tag.bathroom{border-color:#4fc3f7;color:#4fc3f7;}
+
+.cb3-controls{
+  display:flex;align-items:center;gap:12px;
+  margin-top:24px;flex-wrap:wrap;
+  padding:20px;background:rgba(245,218,26,.04);
+  border-radius:20px;border:1px solid rgba(245,218,26,.1);
+}
+.cb3-btn{
+  background:rgba(245,218,26,.06);border:1px solid rgba(245,218,26,.2);
+  color:var(--gold);font-size:var(--t2xs);letter-spacing:.1em;text-transform:uppercase;
+  padding:12px 20px;border-radius:30px;cursor:pointer;transition:all .25s ease;
+  font-family:'Space Mono',monospace;font-weight:700;
+}
+.cb3-btn:hover{
+  background:rgba(245,218,26,.15);border-color:rgba(245,218,26,.4);
+  transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,218,26,.15);
+}
+.cb3-btn.active{
+  background:var(--gold);color:var(--ink);border-color:var(--gold);
+  box-shadow:0 6px 25px rgba(245,218,26,.4);
+}
+.cb3-hint{
+  font-size:var(--t2xs);color:rgba(245,218,26,.5);
+  margin-top:16px;letter-spacing:.1em;display:flex;align-items:center;gap:10px;
+}
+
+.cb3-right{
+  display:flex;flex-direction:column;
+  padding:var(--sxl) clamp(1.5rem,4vw,3rem) var(--slg);
+  overflow-y:auto;
+  background:linear-gradient(145deg, #080a06 0%, #050704 100%);
+  border-left:1px solid rgba(245,218,26,.08);
+}
+.cb3-eyebrow{
+  display:flex;align-items:center;gap:12px;
+  font-size:var(--t2xs);letter-spacing:.3em;color:var(--sand);
+  margin-bottom:var(--smd);text-transform:uppercase;
+}
+.cb3-eyebrow::before{
+  content:"";width:40px;height:1px;background:linear-gradient(90deg, var(--gold), transparent);
+}
+.cb3-title{
+  font-family:'Syne';font-weight:800;font-size:var(--t2xl);
+  line-height:.95;letter-spacing:-.04em;color:var(--cream);
+  margin-bottom:var(--ssm);
+}
+.cb3-title em{font-family:'DM Serif Display';font-style:italic;color:var(--gold);display:block;font-weight:400;}
+.cb3-subtitle{
+  font-size:var(--tsm);color:var(--mist);max-width:460px;
+  margin-bottom:var(--slg);line-height:1.7;
+}
+
+.cb3-steps{display:flex;flex-direction:column;gap:var(--smd);}
+.cb3-step{
+  background:linear-gradient(145deg, rgba(20,22,18,.9) 0%, rgba(12,14,10,.7) 100%);
+  border:1px solid rgba(245,218,26,.1);
+  border-radius:28px;backdrop-filter:blur(10px);
+  overflow:hidden;transition:all 0.3s ease;
+}
+.cb3-step:hover{border-color:rgba(245,218,26,.2);}
+.cb3-step.active-step{
+  border-color:rgba(245,218,26,.6);
+  background:linear-gradient(145deg, rgba(30,32,26,.95) 0%, rgba(18,20,14,.8) 100%);
+  box-shadow:0 15px 50px rgba(245,218,26,.12);
+}
+.cb3-step-head{
+  display:flex;align-items:center;gap:16px;padding:22px 26px;
+  cursor:pointer;transition:background 0.2s;
+}
+.cb3-step-head:hover{background:rgba(245,218,26,.03);}
+.cb3-step-num{
+  width:40px;height:40px;border-radius:50%;border:2px solid rgba(245,218,26,.4);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:1rem;transition:all 0.3s;
+  background:rgba(245,218,26,.05);
+}
+.cb3-step.active-step .cb3-step-num{
+  background:var(--gold);border-color:var(--gold);color:var(--ink);
+  box-shadow:0 0 25px rgba(245,218,26,.5);
+}
+.cb3-step-title{font-family:'Syne';font-weight:700;font-size:var(--tsm);letter-spacing:-0.01em;}
+.cb3-step-val{
+  margin-left:auto;background:rgba(245,218,26,.12);border-radius:30px;
+  padding:8px 18px;font-size:var(--t2xs);color:var(--gold);font-weight:700;
+  border:1px solid rgba(245,218,26,.2);
+}
+.cb3-step-body{
+  max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+  padding:0 26px;
+}
+.cb3-step.active-step .cb3-step-body{
+  max-height:600px;padding:0 26px 26px;
+}
+
+.cb3-slider-group{display:flex;flex-direction:column;gap:24px}
+.cb3-slider-item{position:relative;}
+.cb3-slider-item label{
+  display:flex;justify-content:space-between;font-size:var(--txs);
+  color:var(--linen);margin-bottom:12px;font-weight:700;
+}
+.cb3-slider-item label span{color:var(--gold);font-family:'Syne';font-weight:800;font-size:1.1em;}
+.cb3-range{-webkit-appearance:none;width:100%;height:8px;background:rgba(245,218,26,.1);border-radius:8px;outline:none;}
+.cb3-range::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;background:var(--gold);border-radius:50%;cursor:pointer;border:4px solid var(--ink);box-shadow:0 0 20px rgba(245,218,26,.6);transition:transform 0.1s;}
+.cb3-range::-webkit-slider-thumb:hover{transform:scale(1.15);}
+
+.cb3-options{display:flex;flex-direction:column;gap:12px;}
+.cb3-opt{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px;background:rgba(255,255,255,.03);
+  border:1px solid rgba(245,218,26,.12);border-radius:18px;cursor:pointer;
+  transition:all 0.3s;
+}
+.cb3-opt:hover{background:rgba(245,218,26,.06);border-color:rgba(245,218,26,.25);transform:translateX(5px);}
+.cb3-opt.sel{
+  border-color:var(--gd);background:linear-gradient(135deg, rgba(196,173,0,.2) 0%, rgba(196,173,0,.05) 100%);
+  box-shadow:0 6px 25px rgba(196,173,0,.15);
+}
+.cb3-opt input{display:none;}
+.cb3-opt-main{display:flex;align-items:center;gap:14px;font-weight:700;font-size:var(--tsm);}
+.cb3-opt-price{font-size:var(--t2xs);color:var(--sand);background:rgba(245,218,26,.1);padding:6px 14px;border-radius:20px;font-weight:700;}
+
+.cb3-checks{display:flex;flex-direction:column;gap:12px;}
+.cb3-check{
+  display:flex;align-items:center;gap:16px;padding:16px 20px;
+  border-radius:16px;cursor:pointer;transition:all 0.3s;
+  border:1px solid transparent;background:rgba(255,255,255,.01);
+}
+.cb3-check:hover{background:rgba(245,218,26,.04);transform:translateX(5px);}
+.cb3-check.checked-item{
+  background:linear-gradient(135deg, rgba(245,218,26,.15) 0%, rgba(245,218,26,.03) 100%);
+  border-color:rgba(245,218,26,.3);
+}
+.cb3-check input{display:none;}
+.cb3-check-box{
+  width:26px;height:26px;border:2px solid rgba(245,218,26,.4);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;transition:all 0.3s;
+  position:relative;
+}
+.cb3-check.checked-item .cb3-check-box{
+  background:var(--gold);border-color:var(--gold);
+  box-shadow:0 0 20px rgba(245,218,26,.4);
+}
+.cb3-check-box::after{
+  content:"✓";color:var(--ink);font-weight:800;font-size:14px;opacity:0;transform:scale(0);transition:all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.cb3-check.checked-item .cb3-check-box::after{opacity:1;transform:scale(1);}
+.cb3-check-content{flex:1;}
+.cb3-check-title{font-size:var(--tsm);font-weight:700;display:block;margin-bottom:4px;}
+.cb3-check-desc{font-size:var(--t2xs);color:var(--mist);}
+
+.cb3-finishes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cb3-finish{
+  border:1px solid rgba(245,218,26,.15);border-radius:24px;
+  padding:20px 14px;cursor:pointer;text-align:center;background:rgba(0,0,0,.4);
+  transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.cb3-finish:hover{transform:translateY(-6px) scale(1.02);border-color:rgba(245,218,26,.3);}
+.cb3-finish.sel{
+  border-color:var(--gd);background:linear-gradient(180deg, rgba(196,173,0,.25) 0%, rgba(196,173,0,.08) 100%);
+  box-shadow:0 12px 40px rgba(196,173,0,.2);
+  transform:translateY(-6px);
+}
+.cb3-finish-swatch{
+  height:64px;border-radius:16px;margin-bottom:14px;
+  box-shadow:inset 0 3px 6px rgba(0,0,0,.5),0 6px 12px rgba(0,0,0,.4);
+  position:relative;overflow:hidden;
+}
+.cb3-finish-swatch::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:50%;
+  background:linear-gradient(180deg, rgba(255,255,255,.25) 0%, transparent 100%);
+}
+.cb3-finish-name{font-size:var(--t2xs);font-weight:700;color:var(--linen);}
+
+/* Message simple à la place du summary budget */
+.cb3-info-message{
+  margin-top:var(--smd);
+  background:linear-gradient(145deg, rgba(245,218,26,.12) 0%, rgba(245,218,26,.03) 100%);
+  border:1px solid rgba(245,218,26,.25);
+  border-radius:32px;
+  padding:28px;
+  text-align:center;
+  font-size:var(--tsm);
+  color:var(--sand);
+}
+.cb3-info-message strong{
+  color:var(--gold);
+  display:block;
+  margin-bottom:8px;
+}
+
+@media(max-width:1200px){
+  #cabin-builder{grid-template-columns:1fr;}
+  .cb3-left{border-right:none;border-bottom:1px solid rgba(245,218,26,.1);padding-top:90px;}
+  .cb3-right{border-left:none;}
+  .cb3-equip-status{display:none;}
+}
+@media(max-width:640px){
+  .cb3-finishes{grid-template-columns:repeat(2,1fr);}
+  .cb3-controls{gap:8px;}
+  .cb3-btn{padding:10px 16px;font-size:10px;}
+}
+</style>
+
+
+<section id="cabin-builder">
+  <div class="cb3-left">
+    <div class="cb3-canvas-wrap">
+      <canvas id="cabinCanvas"></canvas>
+      <div class="cb3-badge">
+        <span class="cb3-badge-dot"></span>
+        Rendu Temps Réel · RTX · PBR
+      </div>
+      
+      <div class="cb3-equip-status" id="equipStatus">
+        <div class="cb3-equip-tag solar" data-tag="solar">☀️ Solaire 3kWc</div>
+        <div class="cb3-equip-tag smart" data-tag="smart">📡 Smart Home</div>
+        <div class="cb3-equip-tag ac" data-tag="ac">❄️ Climatisation</div>
+        <div class="cb3-equip-tag kitchen" data-tag="kitchen">🍳 Cuisine</div>
+        <div class="cb3-equip-tag bathroom" data-tag="bathroom">🚿 Salle de bain</div>
+      </div>
+    </div>
+    
+    <div class="cb3-controls">
+      <button class="cb3-btn active" onclick="setView('perspective',this)">Vue 3D</button>
+      <button class="cb3-btn" onclick="setView('front',this)">Façade</button>
+      <button class="cb3-btn" onclick="setView('side',this)">Profil</button>
+      <button class="cb3-btn" onclick="setView('top',this)">Plan</button>
+      <div style="width:1px;height:28px;background:rgba(245,218,26,.2);margin:0 8px;"></div>
+      <button class="cb3-btn active" id="btnSolid" onclick="setMode('solid')">Texturé</button>
+      <button class="cb3-btn" id="btnWire" onclick="setMode('wire')">Filaire</button>
+      <button class="cb3-btn" onclick="autoRotate()" id="btnRotate">⟳ Auto</button>
+      <button class="cb3-btn" onclick="resetConfig()" style="margin-left:auto;border-color:#ff6b35;color:#ff6b35;">↺ Reset</button>
+    </div>
+    <p class="cb3-hint">🖱️ Glisser pour tourner · Molette zoom · Clic droit panoramique</p>
+  </div>
+  
+  <div class="cb3-right">
+    <div class="cb3-eyebrow">Configurateur Architecte 3D</div>
+    <p class="cb3-subtitle">Personnalisez chaque détail de votre studio cabine avec des équipements haut de gamme visualisés en temps réel.</p>
+    
+    <div class="cb3-steps">
+      <div class="cb3-step active-step" id="step1" onclick="toggleStep(1)">
+        <div class="cb3-step-head">
+          <div class="cb3-step-num">1</div>
+          <div class="cb3-step-title">Dimensions Structure</div>
+          <div class="cb3-step-val" id="dimVal">6m × 3m × 2.5m</div>
+        </div>
+        <div class="cb3-step-body">
+          <div class="cb3-slider-group">
+            <div class="cb3-slider-item">
+              <label>Longueur <span id="vL">6</span> m</label>
+              <input type="range" class="cb3-range" id="sL" min="2.5" max="20" step="0.5" value="6" oninput="updateSlider('L',this.value)">
+            </div>
+            <div class="cb3-slider-item">
+              <label>Largeur <span id="vW">3</span> m</label>
+              <input type="range" class="cb3-range" id="sW" min="2" max="10" step="0.5" value="3" oninput="updateSlider('W',this.value)">
+            </div>
+            <div class="cb3-slider-item">
+              <label>Hauteur <span id="vH">2.5</span> m</label>
+              <input type="range" class="cb3-range" id="sH" min="2.2" max="4.8" step="0.1" value="2.5" oninput="updateSlider('H',this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cb3-step" id="step2" onclick="toggleStep(2)">
+        <div class="cb3-step-head">
+          <div class="cb3-step-num">2</div>
+          <div class="cb3-step-title">Configuration Étages</div>
+          <div class="cb3-step-val" id="configVal">Plain-pied</div>
+        </div>
+        <div class="cb3-step-body">
+          <div class="cb3-options">
+            <label class="cb3-opt sel" onclick="selectConfig(0, 'Plain-pied', this)">
+              <input type="radio" name="cfg" value="0" checked>
+              <div class="cb3-opt-main">🏡 Plain-pied</div>
+              <div class="cb3-opt-price">Standard</div>
+            </label>
+            <label class="cb3-opt" onclick="selectConfig(1, 'Duplex S+1', this)">
+              <input type="radio" name="cfg" value="1">
+              <div class="cb3-opt-main">🏠 Duplex S+1</div>
+              <div class="cb3-opt-price">Étage +1</div>
+            </label>
+            <label class="cb3-opt" onclick="selectConfig(2, 'Triplex S+2', this)">
+              <input type="radio" name="cfg" value="2">
+              <div class="cb3-opt-main">🏢 Triplex S+2</div>
+              <div class="cb3-opt-price">Étage +2</div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="cb3-step" id="step3" onclick="toggleStep(3)">
+        <div class="cb3-step-head">
+          <div class="cb3-step-num">3</div>
+          <div class="cb3-step-title">Équipements Premium</div>
+          <div class="cb3-step-val" id="equipVal">Sélectionner...</div>
+        </div>
+        <div class="cb3-step-body">
+          <div class="cb3-checks">
+            <label class="cb3-check" onclick="toggleEquip(this, 'kitchen')">
+              <input type="checkbox" data-key="kitchen">
+              <div class="cb3-check-box"></div>
+              <div class="cb3-check-content">
+                <span class="cb3-check-title">🍳 Cuisine Équipée Premium</span>
+                <span class="cb3-check-desc">Plan de travail quartz, électroménager intégré, LED</span>
+              </div>
+            </label>
+            <label class="cb3-check" onclick="toggleEquip(this, 'bathroom')">
+              <input type="checkbox" data-key="bathroom">
+              <div class="cb3-check-box"></div>
+              <div class="cb3-check-content">
+                <span class="cb3-check-title">🚿 Salle de Bain Complète</span>
+                <span class="cb3-check-desc">Douche italienne, vasque design, chauffe-eau</span>
+              </div>
+            </label>
+            <label class="cb3-check" onclick="toggleEquip(this, 'electric')">
+              <input type="checkbox" data-key="electric">
+              <div class="cb3-check-box"></div>
+              <div class="cb3-check-content">
+                <span class="cb3-check-title">⚡ Installation Électrique Normée</span>
+                <span class="cb3-check-desc">Tableau divisionnaire, prises USB, éclairage LED</span>
+              </div>
+            </label>
+            <label class="cb3-check" onclick="toggleEquip(this, 'ac')">
+              <input type="checkbox" data-key="ac">
+              <div class="cb3-check-box"></div>
+              <div class="cb3-check-content">
+                <span class="cb3-check-title">❄️ Climatisation Inverter</span>
+                <span class="cb3-check-desc">Unité extérieure silencieuse, réversible, A+++</span>
+              </div>
+            </label>
+            <label class="cb3-check" onclick="toggleEquip(this, 'smart')">
+              <input type="checkbox" data-key="smart">
+              <div class="cb3-check-box"></div>
+              <div class="cb3-check-content">
+                <span class="cb3-check-title">📡 Pack Smart Home IoT</span>
+                <span class="cb3-check-desc">Domotique complète, caméra, capteurs, voice control</span>
+              </div>
+            </label>
+            <label class="cb3-check" onclick="toggleEquip(this, 'solar')">
+              <input type="checkbox" data-key="solar">
+              <div class="cb3-check-box"></div>
+              <div class="cb3-check-content">
+                <span class="cb3-check-title">☀️ Kit Solaire 3kWc</span>
+                <span class="cb3-check-desc">8 panneaux haute efficacité, onduleur, batteries</span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="cb3-step" id="step4" onclick="toggleStep(4)">
+        <div class="cb3-step-head">
+          <div class="cb3-step-num">4</div>
+          <div class="cb3-step-title">Finitions Extérieures</div>
+          <div class="cb3-step-val" id="finishVal">Béton Ciré</div>
+        </div>
+        <div class="cb3-step-body">
+          <div class="cb3-finishes" id="finishContainer"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message informatif simple (aucun budget) -->
+    <div class="cb3-info-message">
+      <strong>✨ Visualisation interactive</strong>
+      Modifiez librement les dimensions, étages, équipements et finitions. La scène 3D s'adapte en temps réel.
+    </div>
+  </div>
+</section>
+
+<script>
+/* ========== THREE.JS SETUP (sans loader ni budget) ========== */
+const canvas = document.getElementById('cabinCanvas');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:"high-performance"});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.3;
+renderer.setClearColor(0x020408, 1);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x020408);
+scene.fog = new THREE.FogExp2(0x020408, 0.006);
+
+const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 120);
+camera.position.set(12, 7, 14);
+camera.lookAt(0, 2.5, 0);
+
+let radius = 18, theta = 0.8, phi = 1.0, targetTheta = theta, targetPhi = phi, targetRadius = radius;
+let isDragging = false, lastX = 0, lastY = 0, isRightClick = false;
+let autoRotFlag = false;
+let time = 0;
+
+// Éclairage
+const ambient = new THREE.AmbientLight(0x2c3e55, 0.3);
+scene.add(ambient);
+const sunLight = new THREE.DirectionalLight(0xfff8e7, 2.2);
+sunLight.position.set(12, 25, 10);
+sunLight.castShadow = true;
+sunLight.shadow.mapSize.width = 4096;
+sunLight.shadow.mapSize.height = 4096;
+sunLight.shadow.camera.near = 0.5;
+sunLight.shadow.camera.far = 60;
+sunLight.shadow.camera.left = -20;
+sunLight.shadow.camera.right = 20;
+sunLight.shadow.camera.top = 20;
+sunLight.shadow.camera.bottom = -20;
+sunLight.shadow.bias = -0.00005;
+scene.add(sunLight);
+const fillLight = new THREE.DirectionalLight(0x5c7aea, 0.5);
+fillLight.position.set(-10, 10, -10);
+scene.add(fillLight);
+const rimLight = new THREE.SpotLight(0xffaa44, 1.2);
+rimLight.position.set(0, 10, -15);
+rimLight.lookAt(0, 0, 0);
+scene.add(rimLight);
+
+// Sol
+const groundGeo = new THREE.PlaneGeometry(80, 80, 128, 128);
+const groundMat = new THREE.MeshStandardMaterial({ color: 0x1a2a1a, roughness: 0.9, metalness: 0.05 });
+const ground = new THREE.Mesh(groundGeo, groundMat);
+ground.rotation.x = -Math.PI/2;
+ground.position.y = -0.02;
+ground.receiveShadow = true;
+scene.add(ground);
+const gridHelper = new THREE.GridHelper(80, 80, 0x2a3a2a, 0x0f1a0f);
+gridHelper.position.y = 0.01;
+gridHelper.material.opacity = 0.2;
+gridHelper.material.transparent = true;
+scene.add(gridHelper);
+
+const cabinGroup = new THREE.Group();
+scene.add(cabinGroup);
+const groups = {
+  base: new THREE.Group(), floor1: new THREE.Group(), floor2: new THREE.Group(),
+  solar: new THREE.Group(), smart: new THREE.Group(), ac: new THREE.Group(),
+  kitchen: new THREE.Group(), bathroom: new THREE.Group(), details: new THREE.Group()
+};
+Object.values(groups).forEach(g => { cabinGroup.add(g); g.visible = false; });
+groups.base.visible = true;
+groups.details.visible = true;
+
+let params = {
+  L: 6, W: 3, H: 2.5, floors: 0,
+  kitchen: false, bathroom: false, electric: false,
+  ac: false, smart: false, solar: false,
+  finish: 'classique', finishColor: 0xc8c0a0
+};
+
+const animatedObjects = { solarPanels: [], acFan: null, smartLed: null };
+
+function createProceduralTexture(baseColor, style) {
+  const size = 1024;
+  const cvs = document.createElement('canvas');
+  cvs.width = size; cvs.height = size;
+  const ctx = cvs.getContext('2d');
+  ctx.fillStyle = '#' + baseColor.toString(16).padStart(6, '0');
+  ctx.fillRect(0, 0, size, size);
+  if (style === 'classique') {
+    for (let i = 0; i < 8000; i++) { ctx.fillStyle = `rgba(0,0,0,${Math.random() * 0.08})`; ctx.fillRect(Math.random() * size, Math.random() * size, 2, 2); }
+  } else if (style === 'bois') {
+    for (let i = 0; i < 400; i++) {
+      ctx.strokeStyle = `rgba(60,40,20,${0.05 + Math.random() * 0.15})`;
+      ctx.lineWidth = 1 + Math.random() * 4;
+      ctx.beginPath(); const y = Math.random() * size;
+      ctx.moveTo(0, y); ctx.bezierCurveTo(size/3, y + Math.random() * 30 - 15, size*2/3, y + Math.random() * 30 - 15, size, y + Math.random() * 20 - 10);
+      ctx.stroke();
+    }
+  } else if (style === 'anthracite') {
+    ctx.fillStyle = '#2a2d33'; ctx.fillRect(0, 0, size, size);
+    for (let i = 0; i < 2000; i++) { ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.03})`; ctx.fillRect(Math.random() * size, Math.random() * size, 20, 2); }
+  } else if (style === 'corten') {
+    for (let i = 0; i < size; i++) for (let j = 0; j < size; j++) { /* simplifié */ }
+  } else if (style === 'gold') {
+    const grad = ctx.createLinearGradient(0, 0, size, size);
+    grad.addColorStop(0, '#D4AF37'); grad.addColorStop(0.5, '#C5A028'); grad.addColorStop(1, '#B8941F');
+    ctx.fillStyle = grad; ctx.fillRect(0, 0, size, size);
+  }
+  const tex = new THREE.CanvasTexture(cvs);
+  tex.wrapS = THREE.RepeatWrapping; tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(2, 2);
+  return tex;
+}
+
+function buildSolarPanelDetailed(x, y, z, rotX = 0.15) {
+  const group = new THREE.Group();
+  const frameMat = new THREE.MeshStandardMaterial({ color: 0xc0c0c0, metalness: 0.9, roughness: 0.2 });
+  const frame = new THREE.Mesh(new THREE.BoxGeometry(1.65, 0.06, 1.0), frameMat);
+  frame.castShadow = true; group.add(frame);
+  const cellTex = (() => { const c = document.createElement('canvas'); c.width = 256; c.height = 256; const ctx = c.getContext('2d'); ctx.fillStyle = '#1a2744'; ctx.fillRect(0,0,256,256); return new THREE.CanvasTexture(c); })();
+  const cells = new THREE.Mesh(new THREE.PlaneGeometry(1.55, 0.9), new THREE.MeshStandardMaterial({ map: cellTex, color: 0x2a3a5a, metalness: 0.8, roughness: 0.2, emissive: 0x1a2a4a, emissiveIntensity: 0.2 }));
+  cells.rotation.x = -Math.PI/2; cells.position.y = 0.031; group.add(cells);
+  group.position.set(x, y, z); group.rotation.x = rotX;
+  animatedObjects.solarPanels.push({ mesh: cells, baseEmissive: 0.2, timeOffset: Math.random() * 100 });
+  return group;
+}
+function buildACUnitDetailed(x, y, z) {
+  const group = new THREE.Group();
+  const casing = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.65, 0.35), new THREE.MeshStandardMaterial({ color: 0xf5f5f5, roughness: 0.3 }));
+  casing.castShadow = true; group.add(casing);
+  const fanGroup = new THREE.Group();
+  for (let i = 0; i < 5; i++) { const blade = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.08, 0.01), new THREE.MeshStandardMaterial({ color: 0x444444 })); blade.position.x = 0.14; const pivot = new THREE.Group(); pivot.add(blade); pivot.rotation.z = (i / 5) * Math.PI * 2; fanGroup.add(pivot); }
+  fanGroup.position.z = 0.15; group.add(fanGroup);
+  group.position.set(x, y, z);
+  animatedObjects.acFan = fanGroup;
+  return group;
+}
+function buildSmartHomeSystem(x, y, z) {
+  const group = new THREE.Group();
+  const emitter = new THREE.Mesh(new THREE.SphereGeometry(0.08, 16, 16), new THREE.MeshStandardMaterial({ color: 0x00d4ff, emissive: 0x00d4ff, emissiveIntensity: 0.5 }));
+  emitter.position.y = 1.15; group.add(emitter);
+  group.position.set(x, y, z);
+  animatedObjects.smartLed = { emitter, time: 0 };
+  return group;
+}
+function buildKitchenDetailed(x, y, z) { const g = new THREE.Group(); g.position.set(x, y, z); return g; }
+function buildBathroomDetailed(x, y, z) { const g = new THREE.Group(); g.position.set(x, y, z); return g; }
+
+function createWindowDetailed(parent, x, y, z, w, h, isSide = false) {
+  const frameMat = new THREE.MeshStandardMaterial({ color: 0x1a1a1a, metalness: 0.8 });
+  const glassMat = new THREE.MeshPhysicalMaterial({ color: 0xaaccff, transmission: 0.95, transparent: true, opacity: 0.2 });
+  const frame = new THREE.Mesh(new THREE.BoxGeometry(w + 0.12, h + 0.12, 0.08), frameMat);
+  frame.castShadow = true; parent.add(frame);
+  const glass = new THREE.Mesh(new THREE.BoxGeometry(w - 0.02, h - 0.02, 0.02), glassMat);
+  glass.position.z = 0.02; parent.add(glass);
+}
+
+function rebuildCabin() {
+  const L = params.L, W = params.W, H = params.H;
+  const hL = L/2, hW = W/2;
+  const wallTex = createProceduralTexture(params.finishColor, params.finish);
+  const wallMat = new THREE.MeshStandardMaterial({ map: wallTex, roughness: 0.6, metalness: 0.15 });
+  while(groups.base.children.length) groups.base.remove(groups.base.children[0]);
+  animatedObjects.solarPanels = []; animatedObjects.acFan = null; animatedObjects.smartLed = null;
+  
+  const foundation = new THREE.Mesh(new THREE.BoxGeometry(L + 0.8, 0.2, W + 0.8), new THREE.MeshStandardMaterial({ color: 0x4a4a4a }));
+  foundation.position.y = -0.1; foundation.receiveShadow = true; groups.base.add(foundation);
+  const baseWall = new THREE.Mesh(new THREE.BoxGeometry(L + 0.2, 0.4, W + 0.2), new THREE.MeshStandardMaterial({ color: 0x5a5a5a }));
+  baseWall.position.y = 0.2; baseWall.castShadow = true; groups.base.add(baseWall);
+  const walls = [
+    { pos: [0, H/2 + 0.4, -hW], size: [L, H, 0.15] },
+    { pos: [-hL, H/2 + 0.4, 0], size: [0.15, H, W] },
+    { pos: [hL, H/2 + 0.4, 0], size: [0.15, H, W] }
+  ];
+  walls.forEach(w => { const mesh = new THREE.Mesh(new THREE.BoxGeometry(...w.size), wallMat); mesh.position.set(...w.pos); mesh.castShadow = true; mesh.receiveShadow = true; groups.base.add(mesh); });
+  
+  const doorW = Math.min(1.0, W * 0.35), doorH = Math.min(H * 0.9, 2.3);
+  const doorGroup = new THREE.Group();
+  const doorFrame = new THREE.Mesh(new THREE.BoxGeometry(doorW + 0.14, doorH + 0.14, 0.12), new THREE.MeshStandardMaterial({ color: 0x2a2a2a }));
+  doorFrame.castShadow = true; doorGroup.add(doorFrame);
+  const doorPanel = new THREE.Mesh(new THREE.BoxGeometry(doorW - 0.04, doorH - 0.04, 0.08), new THREE.MeshStandardMaterial({ color: 0x3d3d3d }));
+  doorGroup.add(doorPanel);
+  doorGroup.position.set(0, 0.4 + doorH/2, hW);
+  groups.base.add(doorGroup);
+  
+  createWindowDetailed(groups.base, 0, H * 0.65 + 0.4, -hW - 0.02, Math.min(L * 0.55, 3.2), H * 0.45);
+  if (L > 4) createWindowDetailed(groups.base, hL + 0.02, H * 0.6 + 0.4, 0, 0.02, H * 0.4, true);
+  
+  const roof = new THREE.Mesh(new THREE.BoxGeometry(L + 0.9, 0.18, W + 0.9), new THREE.MeshStandardMaterial({ color: 0x3a3a3a }));
+  roof.position.set(0, H + 0.49, 0); roof.castShadow = true; groups.base.add(roof);
+  
+  groups.floor1.visible = params.floors >= 1; groups.floor2.visible = params.floors >= 2;
+  function buildFloorLevel(group, baseY, L, W) { while(group.children.length) group.remove(group.children[0]); const floor = new THREE.Mesh(new THREE.BoxGeometry(L + 0.3, 0.15, W + 0.3), new THREE.MeshStandardMaterial({ color: 0x4a4a4a })); floor.position.y = baseY; floor.castShadow = true; group.add(floor); }
+  if (params.floors >= 1) buildFloorLevel(groups.floor1, H + 0.58, L, W);
+  if (params.floors >= 2) buildFloorLevel(groups.floor2, H * 1.92 + 0.66, L, W);
+  
+  groups.solar.clear(); groups.smart.clear(); groups.ac.clear(); groups.kitchen.clear(); groups.bathroom.clear();
+  groups.solar.visible = params.solar;
+  if (params.solar) { const roofY = params.floors === 0 ? H + 0.6 : (params.floors === 1 ? H * 1.92 + 0.75 : H * 2.84 + 0.9); for(let i=0;i<2;i++) for(let j=0;j<2;j++) groups.solar.add(buildSolarPanelDetailed(-L/2+1.0+i*1.8, roofY, -W/2+0.8+j*1.1, 0.12)); }
+  groups.smart.visible = params.smart; if(params.smart) groups.smart.add(buildSmartHomeSystem(0, H + 0.8, 0));
+  groups.ac.visible = params.ac; if(params.ac) groups.ac.add(buildACUnitDetailed(L/2 + 0.25, H * 0.5, -W/3));
+  groups.kitchen.visible = params.kitchen; if(params.kitchen) groups.kitchen.add(buildKitchenDetailed(-L/3, 0, hW - 0.5));
+  groups.bathroom.visible = params.bathroom; if(params.bathroom) groups.bathroom.add(buildBathroomDetailed(L/3.5, 0, -hW + 0.8));
+  
+  document.querySelectorAll('.cb3-equip-tag').forEach(tag => { tag.classList.toggle('active', params[tag.dataset.tag]); });
+}
+
+// UI sans budget
+function updateSlider(axis, val) {
+  const v = parseFloat(val);
+  if(axis === 'L'){ params.L = v; document.getElementById('vL').textContent = v; }
+  else if(axis === 'W'){ params.W = v; document.getElementById('vW').textContent = v; }
+  else{ params.H = v; document.getElementById('vH').textContent = v.toFixed(1); }
+  document.getElementById('dimVal').textContent = `${params.L}m × ${params.W}m × ${params.H.toFixed(1)}m`;
+  rebuildCabin();
+}
+function toggleStep(n) { document.querySelectorAll('.cb3-step').forEach((el,i) => el.classList.toggle('active-step', i+1 === n && !el.classList.contains('active-step'))); }
+function selectConfig(level, label, el) { document.querySelectorAll('#step2 .cb3-opt').forEach(opt => opt.classList.remove('sel')); el.classList.add('sel'); el.querySelector('input').checked = true; params.floors = level; document.getElementById('configVal').textContent = label; rebuildCabin(); }
+function toggleEquip(el, key) { const input = el.querySelector('input'); input.checked = !input.checked; el.classList.toggle('checked-item', input.checked); params[key] = input.checked; const count = document.querySelectorAll('.cb3-check input:checked').length; document.getElementById('equipVal').textContent = count > 0 ? `${count} équipement(s)` : 'Sélectionner...'; rebuildCabin(); }
+
+const finishes = [
+  { name: 'Béton Ciré', val: 'classique', color: '#c8c0a0' }, { name: 'Bois Naturel', val: 'bois', color: '#8B6914' },
+  { name: 'Anthracite', val: 'anthracite', color: '#3a3d45' }, { name: 'Blanc Minéral', val: 'blanc', color: '#e8e4dc' },
+  { name: 'Corten Steel', val: 'corten', color: '#8B4513' }, { name: 'Gold Brossé', val: 'gold', color: '#c4ad00' }
+];
+const finishContainer = document.getElementById('finishContainer');
+finishes.forEach((f,i) => { const div = document.createElement('div'); div.className = 'cb3-finish' + (i===0 ? ' sel' : ''); div.innerHTML = `<div class="cb3-finish-swatch" style="background: ${f.color}"></div><div class="cb3-finish-name">${f.name}</div>`; div.onclick = () => { document.querySelectorAll('.cb3-finish').forEach(el => el.classList.remove('sel')); div.classList.add('sel'); params.finish = f.val; params.finishColor = parseInt(f.color.slice(1),16); document.getElementById('finishVal').textContent = f.name; rebuildCabin(); }; finishContainer.appendChild(div); });
+
+function setView(name, btn) { const views = { perspective:{theta:0.8,phi:1.0,r:18}, front:{theta:0,phi:1.4,r:16}, side:{theta:1.57,phi:1.2,r:18}, top:{theta:0,phi:0.05,r:22} }; const v=views[name]; if(v){ targetTheta=v.theta; targetPhi=v.phi; targetRadius=v.r; } document.querySelectorAll('.cb3-controls .cb3-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
+function setMode(mode) { const wire = mode === 'wire'; cabinGroup.traverse(c=>{ if(c.isMesh && c.material) c.material.wireframe = wire; }); document.getElementById('btnSolid').classList.toggle('active',!wire); document.getElementById('btnWire').classList.toggle('active',wire); }
+function autoRotate() { autoRotFlag = !autoRotFlag; document.getElementById('btnRotate').classList.toggle('active', autoRotFlag); }
+function resetConfig() { params = { L:6, W:3, H:2.5, floors:0, kitchen:false, bathroom:false, electric:false, ac:false, smart:false, solar:false, finish:'classique', finishColor:0xc8c0a0 }; ['L','W','H'].forEach(axis=>{ document.getElementById('s'+axis).value = params[axis]; document.getElementById('v'+axis).textContent = params[axis]; }); document.getElementById('dimVal').textContent = '6m × 3m × 2.5m'; document.querySelectorAll('.cb3-check').forEach(el=>{ el.classList.remove('checked-item'); el.querySelector('input').checked = false; }); document.getElementById('equipVal').textContent = 'Sélectionner...'; document.querySelectorAll('.cb3-opt').forEach((el,i)=>{ el.classList.toggle('sel',i===0); if(i===0) el.querySelector('input').checked=true; }); document.getElementById('configVal').textContent = 'Plain-pied'; document.querySelectorAll('.cb3-finish').forEach((el,i)=>{ el.classList.toggle('sel',i===0); }); document.getElementById('finishVal').textContent = 'Béton Ciré'; rebuildCabin(); }
+
+function resizeCanvas() { const w = canvas.parentElement.clientWidth; const h = Math.min(w * 0.65, 700); renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+window.addEventListener('resize', resizeCanvas);
+canvas.addEventListener('mousedown', e => { isDragging=true; isRightClick=e.button===2; lastX=e.clientX; lastY=e.clientY; autoRotFlag=false; document.getElementById('btnRotate').classList.remove('active'); });
+window.addEventListener('mouseup', () => isDragging=false);
+window.addEventListener('contextmenu', e => e.preventDefault());
+window.addEventListener('mousemove', e => { if(!isDragging) return; const dx=(e.clientX-lastX)*0.008, dy=(e.clientY-lastY)*0.008; if(isRightClick){ camera.position.x -= dx*3; camera.position.y += dy*3; }else{ targetTheta -= dx; targetPhi += dy; targetPhi = Math.max(0.1, Math.min(1.5, targetPhi)); } lastX=e.clientX; lastY=e.clientY; });
+canvas.addEventListener('wheel', e => { targetRadius = Math.max(10, Math.min(35, targetRadius + e.deltaY * 0.025)); e.preventDefault(); }, { passive: false });
+
+function animate() { requestAnimationFrame(animate); time += 0.016; theta += (targetTheta - theta) * 0.07; phi += (targetPhi - phi) * 0.07; radius += (targetRadius - radius) * 0.07; if(autoRotFlag) targetTheta += 0.002; camera.position.x = Math.sin(theta)*Math.sin(phi)*radius; camera.position.y = Math.cos(phi)*radius+2; camera.position.z = Math.cos(theta)*Math.sin(phi)*radius; camera.lookAt(0, Math.max(1.5, params.H*0.5), 0); animatedObjects.solarPanels.forEach((p,i)=>{ p.mesh.material.emissiveIntensity = p.baseEmissive + Math.sin(time*2 + p.timeOffset)*0.1; }); if(animatedObjects.acFan) animatedObjects.acFan.rotation.z -= 0.15; if(animatedObjects.smartLed) animatedObjects.smartLed.emitter.material.emissiveIntensity = 0.5 + Math.sin(time*3)*0.3; renderer.render(scene, camera); }
+
+resizeCanvas();
+rebuildCabin();
+animate();
+</script>

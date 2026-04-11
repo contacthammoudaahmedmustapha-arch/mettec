@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notre Processus — METTEC | 11 Étapes vers l'Indestructible</title>
+  <meta name="description" content="Découvrez les 11 étapes du processus METTEC : de l'analyse du cahier des charges à la remise des clés. Fabrication certifiée, précision millimétrique, Monastir, Tunisie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style1.css">
+
+<style>
+/* ═══════════════════════════════════════
+   CSS VARS (mirrors style1.css)
+═══════════════════════════════════════ */
+:root {
+  --primary:#f5da1a; --primary-dark:#c4ad00; --primary-light:#fef48a;
+  --accent:#0f0e0a; --cream:#faf6ec; --white:#faf6ec; --black:#0f0e0a;
+  --gray-100:#f4eedc; --gray-200:#e8e0c8; --gray-300:#d9d0b5;
+  --gray-600:#6b6550; --gray-700:#2e2b22; --gray-800:#2f2b20;
+  --font-main:'Syne','Inter',sans-serif;
+  --font-mono:'Space Mono',monospace;
+  --font-serif:'DM Serif Display',Georgia,serif;
+  --transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+
+/* ═══════════════════════════════════════
+   LOADER
+═══════════════════════════════════════ */
+#pageLoader {
+  position:fixed; inset:0; z-index:99999;
+  background:var(--cream);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px;
+  transition:opacity .6s ease, transform .5s ease;
+}
+#pageLoader.hide { opacity:0; pointer-events:none; transform:scale(1.04); }
+.loader-mascot {
+  width:clamp(160px,14vw,220px);
+  animation:mascotBounce 1.4s ease infinite;
+  filter:drop-shadow(0 8px 24px rgba(15,14,10,.12));
+}
+@keyframes mascotBounce {
+  0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-12px) rotate(2deg)}
+}
+.loader-dots{display:flex;gap:8px;align-items:center;}
+.loader-dot{width:8px;height:8px;border-radius:50%;background:var(--primary);animation:ldot 1.2s ease infinite;}
+.loader-dot:nth-child(2){animation-delay:.2s;width:10px;height:10px;}
+.loader-dot:nth-child(3){animation-delay:.4s;}
+@keyframes ldot{0%,80%,100%{transform:scale(.6);background:var(--gray-200)}40%{transform:scale(1.2);background:var(--primary)}}
+.loader-tagline{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-600);}
+.loader-progress{width:200px;height:3px;background:var(--gray-200);border-radius:2px;overflow:hidden;}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--primary),var(--primary-dark));width:0%;border-radius:2px;transition:width .3s ease;}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.proc-hero {
+  position:relative; min-height:72vh;
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--gray-800) 50%, #1a1506 100%);
+  overflow:hidden; padding:8rem 1.5rem 5rem;
+}
+.proc-hero::before {
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(245,218,26,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(245,218,26,.05) 1px,transparent 1px);
+  background-size:52px 52px; pointer-events:none;
+}
+.proc-hero::after {
+  content:'';position:absolute;bottom:-2px;left:0;right:0;height:100px;
+  background:linear-gradient(to bottom,transparent,var(--cream));pointer-events:none;
+}
+/* big decorative text */
+.proc-hero-deco {
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:var(--font-serif);
+  font-size:clamp(80px,18vw,240px);
+  color:rgba(245,218,26,.04);
+  white-space:nowrap;letter-spacing:-.04em;pointer-events:none;
+  user-select:none;
+}
+.proc-hero-content {
+  position:relative;z-index:2;text-align:center;max-width:800px;color:var(--white);
+}
+.proc-hero-badge {
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(245,218,26,.1);border:1px solid rgba(245,218,26,.3);
+  padding:.5rem 1.25rem;border-radius:50px;
+  font-family:var(--font-mono);font-size:.75rem;
+  font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:1.5rem;backdrop-filter:blur(10px);
+}
+.proc-hero-badge .dot {
+  width:8px;height:8px;border-radius:50%;background:#4ade80;
+  animation:pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.proc-hero-title {
+  font-family:var(--font-serif);
+  font-size:clamp(2.2rem,5vw,4rem);
+  font-weight:400;line-height:1.1;margin-bottom:1.4rem;
+}
+.proc-hero-title em {
+  font-style:italic;color:var(--primary);display:block;
+}
+.proc-hero-desc {
+  font-family:var(--font-mono);font-size:clamp(.8rem,1.5vw,.98rem);
+  opacity:.8;max-width:600px;margin:0 auto 2.5rem;line-height:1.9;
+}
+.proc-hero-stats {
+  display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;
+}
+.proc-stat { text-align:center; }
+.proc-stat-num {
+  font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);
+  color:var(--primary);display:block;line-height:1;
+}
+.proc-stat-label {
+  font-family:var(--font-mono);font-size:.62rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(250,246,236,.5);margin-top:.3rem;display:block;
+}
+.proc-hero-scroll {
+  position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  color:rgba(255,255,255,.4);font-family:var(--font-mono);
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  animation:bounce-scroll 2s ease infinite;cursor:pointer;
+}
+.proc-hero-scroll svg{width:18px;height:18px;stroke:currentColor;}
+@keyframes bounce-scroll{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+
+/* ═══════════════════════════════════════
+   INTRO STRIP
+═══════════════════════════════════════ */
+.proc-intro-strip {
+  background:var(--primary);padding:2rem 0;text-align:center;
+  position:relative;overflow:hidden;
+}
+.proc-intro-strip::before {
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    -45deg,transparent,transparent 10px,
+    rgba(15,14,10,.03) 10px,rgba(15,14,10,.03) 20px
+  );pointer-events:none;
+}
+.proc-intro-strip p {
+  font-family:var(--font-mono);font-size:.82rem;
+  color:var(--accent);letter-spacing:.08em;
+  max-width:700px;margin:0 auto;padding:0 2rem;
+  position:relative;z-index:1;
+}
+.proc-intro-strip strong{font-weight:700;}
+
+/* ═══════════════════════════════════════
+   MAIN PROCESS SECTION
+═══════════════════════════════════════ */
+.proc-main {
+  padding:6rem 0 8rem;background:var(--cream);
+  position:relative;
+}
+.proc-main::before {
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--primary),var(--primary-dark),var(--primary));
+}
+.proc-inner {max-width:1320px;margin:0 auto;padding:0 2rem;}
+
+.proc-section-head {
+  text-align:center;margin-bottom:5rem;
+}
+.proc-section-badge {
+  display:inline-block;background:var(--primary);color:var(--accent);
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.2em;
+  text-transform:uppercase;padding:.35rem .9rem;border-radius:2rem;
+  font-weight:700;margin-bottom:1.2rem;
+}
+.proc-section-title {
+  font-family:var(--font-serif);
+  font-size:clamp(1.8rem,3.5vw,3rem);color:var(--accent);line-height:1.1;
+  margin-bottom:1rem;
+}
+.proc-section-title em{color:var(--primary-dark);font-style:italic;}
+.proc-section-sub {
+  font-family:var(--font-mono);font-size:.82rem;
+  color:var(--gray-600);max-width:520px;margin:0 auto;line-height:1.8;
+}
+
+/* ── Timeline connector line ── */
+.proc-grid-wrap {position:relative;}
+.proc-grid-wrap::before {
+  content:'';
+  position:absolute;top:0;bottom:0;
+  left:50%;transform:translateX(-50%);
+  width:1px;background:linear-gradient(to bottom,transparent,var(--gray-200) 8%,var(--gray-200) 92%,transparent);
+  pointer-events:none;
+}
+
+/* ── Grid ── */
+.proc-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+
+/* ── Process Card ── */
+.proc-card {
+  background:#fff;
+  border:1.5px solid var(--gray-200);
+  border-radius:1.25rem;
+  padding:2rem 1.75rem 1.6rem;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  transition:transform .35s cubic-bezier(.22,.68,0,1.2),
+             box-shadow .35s,border-color .35s;
+  cursor:default;
+}
+.proc-card::before {
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--gray-200);
+  transition:background .3s;
+}
+.proc-card:hover {
+  transform:translateY(-6px);
+  box-shadow:0 20px 50px rgba(15,14,10,.1);
+  border-color:var(--primary);
+}
+.proc-card:hover::before {background:var(--primary);}
+
+.proc-card-header {
+  display:flex;align-items:flex-start;justify-content:space-between;
+  margin-bottom:1.2rem;
+}
+.proc-card-num {
+  font-family:var(--font-serif);
+  font-size:clamp(2.5rem,4vw,3.5rem);
+  color:var(--gray-200);line-height:1;font-weight:400;
+  transition:color .3s;
+}
+.proc-card:hover .proc-card-num{color:rgba(245,218,26,.4);}
+.proc-card-icon {
+  font-size:2rem;
+  background:var(--gray-100);
+  width:52px;height:52px;border-radius:1rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s,transform .3s;
+  flex-shrink:0;
+}
+.proc-card:hover .proc-card-icon {
+  background:var(--primary);
+  transform:rotate(-6deg) scale(1.05);
+}
+.proc-card-title {
+  font-family:var(--font-main);
+  font-size:1.05rem;font-weight:800;
+  color:var(--accent);margin-bottom:.65rem;letter-spacing:-.01em;
+}
+.proc-card-text {
+  font-family:var(--font-mono);font-size:.76rem;
+  color:var(--gray-600);line-height:1.75;flex:1;margin-bottom:1.4rem;
+}
+
+/* ── En savoir plus button ── */
+.proc-card-btn {
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--accent);color:var(--primary);
+  border:none;border-radius:.65rem;
+  padding:.55rem 1.1rem;
+  font-family:var(--font-mono);font-size:.68rem;
+  font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;transition:var(--transition);
+  width:fit-content;align-self:flex-start;
+}
+.proc-card-btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;transition:transform .25s;}
+.proc-card-btn:hover{background:var(--primary);color:var(--accent);}
+.proc-card-btn:hover svg{transform:translateX(3px);}
+
+/* ── Step connector dot ── */
+.proc-card-step-dot {
+  position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);
+  width:16px;height:16px;border-radius:50%;
+  background:var(--gray-200);border:3px solid var(--cream);
+  transition:background .3s;
+}
+.proc-card:hover .proc-card-step-dot{background:var(--primary);}
+
+/* ═══════════════════════════════════════
+   CTA BAND
+═══════════════════════════════════════ */
+.proc-cta {
+  background:var(--accent);padding:5rem 0;text-align:center;
+  position:relative;overflow:hidden;
+}
+.proc-cta::before {
+  content:'METTEC';
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:var(--font-serif);font-size:clamp(80px,20vw,220px);
+  color:rgba(245,218,26,.05);pointer-events:none;white-space:nowrap;letter-spacing:-.04em;
+}
+.proc-cta-inner{position:relative;z-index:1;max-width:620px;margin:0 auto;padding:0 2rem;}
+.proc-cta h2{
+  font-family:var(--font-serif);font-size:clamp(1.8rem,3.5vw,3rem);
+  color:var(--cream);margin-bottom:1rem;line-height:1.1;
+}
+.proc-cta h2 em{color:var(--primary);font-style:italic;}
+.proc-cta p{color:rgba(250,246,236,.6);font-family:var(--font-mono);font-size:.85rem;line-height:1.8;margin-bottom:2.5rem;}
+.proc-cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-proc-yellow{
+  background:var(--primary);color:var(--accent);
+  padding:.9rem 2.2rem;border-radius:.65rem;
+  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:700;transition:var(--transition);text-decoration:none;
+}
+.btn-proc-yellow:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,218,26,.35);}
+.btn-proc-outline{
+  background:transparent;color:var(--cream);
+  padding:.9rem 2.2rem;border-radius:.65rem;
+  border:2px solid rgba(250,246,236,.3);
+  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:700;transition:var(--transition);text-decoration:none;
+}
+.btn-proc-outline:hover{border-color:var(--primary);color:var(--primary);}
+
+/* ── Reveal ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+/* ═══════════════════════════════════════
+   MODAL
+═══════════════════════════════════════ */
+.modal-overlay {
+  position:fixed;inset:0;z-index:99000;
+  background:rgba(15,14,10,.72);
+  backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+
+.modal-box {
+  background:#fff;border-radius:1.5rem;
+  max-width:660px;width:100%;
+  max-height:90vh;overflow:hidden;
+  display:flex;flex-direction:column;
+  box-shadow:0 40px 100px rgba(15,14,10,.35);
+  transform:scale(.93) translateY(20px);
+  transition:transform .35s cubic-bezier(.22,.68,0,1.2);
+  position:relative;
+}
+.modal-overlay.open .modal-box{transform:scale(1) translateY(0);}
+
+.modal-img-wrap {
+  position:relative;height:260px;flex-shrink:0;overflow:hidden;
+  background:var(--gray-100);
+}
+.modal-img-wrap img {
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s ease;
+}
+.modal-box:hover .modal-img-wrap img{transform:scale(1.04);}
+.modal-img-overlay {
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 40%,rgba(15,14,10,.6));
+}
+.modal-step-badge {
+  position:absolute;top:1.2rem;left:1.2rem;
+  background:var(--primary);color:var(--accent);
+  font-family:var(--font-serif);font-size:1.4rem;font-weight:400;
+  width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(245,218,26,.4);
+}
+.modal-icon-badge {
+  position:absolute;bottom:1.2rem;left:1.2rem;
+  font-size:2.2rem;
+}
+
+.modal-body {padding:2rem 2rem 1.8rem;overflow-y:auto;}
+.modal-eyebrow {
+  font-family:var(--font-mono);font-size:.6rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--primary-dark);margin-bottom:.5rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.modal-eyebrow::before{content:'';display:block;width:28px;height:2px;background:var(--primary);}
+.modal-title {
+  font-family:var(--font-serif);
+  font-size:clamp(1.4rem,3vw,2rem);
+  color:var(--accent);line-height:1.15;margin-bottom:1rem;
+}
+.modal-desc {
+  font-family:var(--font-mono);font-size:.82rem;
+  color:var(--gray-600);line-height:1.85;margin-bottom:1.5rem;
+}
+.modal-tags {
+  display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem;
+}
+.modal-tag {
+  font-family:var(--font-mono);font-size:.62rem;
+  color:var(--gray-600);background:var(--gray-100);
+  padding:.28rem .7rem;border-radius:2rem;letter-spacing:.04em;
+}
+.modal-close {
+  position:absolute;top:1rem;right:1rem;z-index:10;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(15,14,10,.5);border:none;
+  color:#fff;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background .2s,transform .2s;
+  backdrop-filter:blur(4px);
+}
+.modal-close:hover{background:var(--primary);color:var(--accent);transform:rotate(90deg);}
+
+.modal-footer {
+  padding:0 2rem 1.8rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  border-top:1px solid var(--gray-200);padding-top:1.2rem;
+}
+.modal-nav {display:flex;gap:.5rem;}
+.modal-nav-btn {
+  width:36px;height:36px;border-radius:50%;
+  border:1.5px solid var(--gray-200);background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:var(--transition);color:var(--accent);
+}
+.modal-nav-btn svg{width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none;}
+.modal-nav-btn:hover:not(:disabled){background:var(--primary);border-color:var(--primary);}
+.modal-nav-btn:disabled{opacity:.3;cursor:not-allowed;}
+.modal-counter {
+  font-family:var(--font-mono);font-size:.68rem;
+  color:var(--gray-600);letter-spacing:.1em;
+}
+.modal-cta-link {
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:var(--accent);color:var(--primary);
+  padding:.55rem 1.2rem;border-radius:.6rem;
+  font-family:var(--font-mono);font-size:.68rem;
+  font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  text-decoration:none;transition:var(--transition);
+}
+.modal-cta-link:hover{background:var(--primary);color:var(--accent);}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media(max-width:1024px){
+  .proc-grid{grid-template-columns:repeat(2,1fr);}
+  .proc-grid-wrap::before{display:none;}
+}
+@media(max-width:640px){
+  .proc-grid{grid-template-columns:1fr;}
+  .proc-hero-stats{gap:1.5rem;}
+  .modal-img-wrap{height:200px;}
+  .modal-body{padding:1.5rem 1.5rem 1rem;}
+  .modal-footer{padding:1rem 1.5rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ LOADER ══════════════ -->
+<div id="pageLoader">
+  <img src="images/mascotte-mettec.png" alt="METTEC" class="loader-mascot" onerror="this.style.opacity='0'">
+  <div class="loader-dots">
+    <div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div>
+  </div>
+  <div class="loader-tagline">Bâti pour l'Éternité</div>
+  <div class="loader-progress"><div class="progress-bar" id="loaderBar"></div></div>
+</div>
+
+<!-- ══════════════ NAV ══════════════ -->
+<div id="navOverlay" class="nav-overlay"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo-mettec.png" alt="METTEC" class="nav-logo-img" style="height:80px;width:80px;object-fit:contain;">
+      <div><div class="nav-logo-text"></div><span class="nav-logo-sub"></span></div>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <button class="menu-close" id="menuClose" aria-label="Fermer">✕</button>
+      <li><a href="index.html" class="nav-link">Accueil</a></li>
+      <li><a href="apropos.html" class="nav-link">A propos</a></li>
+      <li class="nav-dropdown">
+        <span class="nav-link nav-dropdown-toggle">Gammes <span class="chevron">▾</span></span>
+        <div class="nav-dropdown-menu">
+          <a href="gammes.html" class="nav-dropdown-item">
+            <div class="item-icon">🏗️</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Standard</div><div style="font-size:.72rem">Industriel · Gardiennage</div></div>
+          </a>
+          <a href="gammes.html" class="nav-dropdown-item">
+            <div class="item-icon">🏠</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Habitation</div><div style="font-size:.72rem">Comfort · Smart · Autonome</div></div>
+          </a>
+          <a href="gammes.html" class="nav-dropdown-item">
+            <div class="item-icon">🛡️</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Sécurité</div><div style="font-size:.72rem">Postes de garde · Contrôle</div></div>
+          </a>
+          <a href="gammes.html" class="nav-dropdown-item">
+            <div class="item-icon">✨</div>
+            <div><div style="font-weight:700;font-size:.85rem">Gamme Extra</div><div style="font-size:.72rem">Bar · Coffee shop · Sanitaire</div></div>
+          </a>
+        </div>
+      </li>
+      <li><a href="processus.html" class="nav-link" style="color:var(--primary-dark);font-weight:700;">Processus</a></li>
+      
+      <li><a href="realisations.html" class="nav-link">Réalisations</a></li>
+      <li><a href="activite.html" class="nav-link">Activités</a></li>
+      <li><a href="faq.html" class="nav-link">FAQ</a></li>
+      <li><a href="vision.html" class="nav-link">Vision</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="index.html#contact" class="nav-link nav-cta"> Parlons de Votre Idée →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="proc-hero">
+  <div class="proc-hero-deco">PROCESSUS</div>
+  <div class="proc-hero-content">
+    <div class="proc-hero-badge">
+      <span class="dot"></span>
+      Notre méthode · Certifiée ISO 9001
+    </div>
+    <h1 class="proc-hero-title">
+      11 étapes
+      <em>vers l'indestructible</em>
+    </h1>
+    <p class="proc-hero-desc">
+      De l'analyse du cahier des charges à la remise des clés, vous êtes aux commandes. Chaque étape est documentée, contrôlée et validée. Aucun compromis sur la qualité.
+    </p>
+    <div class="proc-hero-stats">
+      <div class="proc-stat">
+        <span class="proc-stat-num">500+</span>
+        <span class="proc-stat-label">Projets livrés</span>
+      </div>
+      <div class="proc-stat">
+        <span class="proc-stat-num">3 ans</span>
+        <span class="proc-stat-label">Garantie offerte</span>
+      </div>
+      <div class="proc-stat">
+        <span class="proc-stat-num">0.1mm</span>
+        <span class="proc-stat-label">Précision découpe</span>
+      </div>
+      <div class="proc-stat">
+        <span class="proc-stat-num">100%</span>
+        <span class="proc-stat-label">CND Ultrason</span>
+      </div>
+    </div>
+  </div>
+  <div class="proc-hero-scroll" onclick="document.querySelector('.proc-main').scrollIntoView({behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>
+    Découvrir
+  </div>
+</section>
+
+<!-- ══════════════ INTRO STRIP ══════════════ -->
+<div class="proc-intro-strip">
+  <p>
+    Chaque projet METTEC suit un protocole rigoureux en <strong>11 étapes immuables</strong> —
+    de la conception BIM à la remise contradictoire. Cliquez sur <strong>« En savoir plus »</strong> pour explorer chaque phase.
+  </p>
+</div>
+
+<!-- ══════════════ PROCESS GRID ══════════════ -->
+<section class="proc-main" id="processus">
+  <div class="proc-inner">
+
+    <div class="proc-section-head reveal">
+      <div class="proc-section-badge">Notre méthode</div>
+      <h2 class="proc-section-title">Le processus <em>METTEC</em></h2>
+      <p class="proc-section-sub">Transparence totale, du premier trait de crayon jusqu'au trousseau de clés.</p>
+    </div>
+
+    <div class="proc-grid-wrap">
+      <div class="proc-grid">
+
+        <!-- Card 01 -->
+        <div class="proc-card reveal" data-step="0">
+          <div class="proc-card-header">
+            <div class="proc-card-num">01</div>
+            <div class="proc-card-icon">📋</div>
+          </div>
+          <div class="proc-card-title">Analyse & Cahier des charges</div>
+          <div class="proc-card-text">Étude complète de vos besoins, contraintes de site, normes applicables.</div>
+          <button class="proc-card-btn" onclick="openModal(0)">
+            En savoir plus
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="proc-card-step-dot"></div>
+        </div>
+
+        <!-- Card 02 -->
+        <div class="proc-card reveal" data-step="1" style="transition-delay:.06s">
+          <div class="proc-card-header">
+            <div class="proc-card-num">02</div>
+            <div class="proc-card-icon">✏️</div>
+          </div>
+          <div class="proc-card-title">Plans techniques 2D</div>
+          <div class="proc-card-text">Dessins cotés selon normes, calculs structure aux Eurocodes.</div>
+          <button class="proc-card-btn" onclick="openModal(1)">
+            En savoir plus
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="proc-card-step-dot"></div>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="proc-card reveal" data-step="2" style="transition-delay:.12s">
+          <div class="proc-card-header">
+            <div class="proc-card-num">03</div>
+            <div class="proc-card-icon">🖥️</div>
+          </div>
+          <div class="proc-card-title">Modélisation 3D BIM</div>
+          <div class="proc-card-text">Maquette numérique, visite virtuelle, détection de conflits.</div>
+          <button class="proc-card-btn" onclick="openModal(2)">
+            En savoir plus
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="proc-card-step-dot"></div>
+        </div>
+
+        <!-- Card 04 -->
+        <div class="proc-card reveal" data-step="3" style="transition-delay:.18s">
+          <div class="proc-card-header">
+            <div class="proc-card-num">04</div>
+            <div class="proc-card-icon">⚙️</div>
+          </div>
+          <div class="proc-card-title">Découpe acier S355</div>
+          <div class="proc-card-text">Découpe plasma/laser, précision &lt; 0.1mm, contrôle dimensionnel.</div>
+          <button class="proc-card-btn" onclick="openModal(3)">
+            En savoir plus
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="proc-card-step-dot"></div>
+        </div>
+
+        <!-- Card 05 -->
+        <div class="proc-card reveal" data-step="4" style="transition-delay:.24s">
+          <div class="proc-card-header">
+            <div class="proc-card-num">05</div>
+            <div class="proc-card-icon">🔥</div>
+          </div>
+          <div class="proc-card-title">Soudure certifiée</div>
+          <div class="proc-card-text">Soudeurs qualifiés ISO 9606, CND Ultrason 100% des cordons.</div>
+          <button class="proc-card-btn" onclick="openModal(4)">
+            En savoir plus
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="proc-card-step-dot"></div>
+        </div>
+
+        <!-- Card 06 -->
+        <div class="proc-card reveal" data-step="5" style="transition-delay:.30s">
+          <div class="proc-card-header">
+            <div class="proc-card-num">06</div>
+            <div class="proc-card-icon">🛡️</div>
+          </div>
+          <div class="proc-card-title">Galvanisation 87μm</div>
+          <div class="proc-card-text">Protection anticorrosion, grenaillage SA 2.5, contrôle épaisseur.</div>
+          <button class="proc-card-btn" onclick="openModal(5)">
+            En savoir plus
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="proc-card-step-dot"></div>
+        </div>
+
+        <!-- Card 07 -->
+        <div class="proc-card reveal" data-step="6" style="transition-delay:.36s">
+          <div class="proc-card-header">
+            <div class="proc-card-num">07</div>
+            <div class="proc-card-icon">🏗️</div>
+          </div>
+          <div class="proc-card-title">Panneaux sandwich PU</div>
+          <div class="proc-card-text">Isolation 100mm, R &gt; 5 m².K/W, étanchéité à l'air.</div>
+          <button class="proc-card-btn" onclick="openModal(6)">
+            En savoir plus
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="proc-card-step-dot"></div>
+        </div>
+
+        <!-- Card 08 -->
+        <div class="proc-card reveal" data-step="7" style="transition-delay:.42s">
+          <div class="proc-card-header">
+            <div class="proc-card-num">08</div>
+            <div class="proc-card-icon">💡</div>
+          </div>
+          <div class="proc-card-title">Installations techniques</div>
+          <div class="proc-card-text">Électricité, plomberie, VMC, climatisation — intégral.</div>
+          <button class="proc-card-btn" onclick="openModal(7)">
+            En savoir plus
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="proc-card-step-dot"></div>
+        </div>
+
+        <!-- Card 09 -->
+        <div class="proc-card reveal" data-step="8" style="transition-delay:.48s">
+          <div class="proc-card-header">
+            <div class="proc-card-num">09</div>
+            <div class="proc-card-icon">🚪</div>
+          </div>
+          <div class="proc-card-title">Menuiseries & accès</div>
+          <div class="proc-card-text">Portes et fenêtres sur mesure, signalétique, accès sécurisé.</div>
+          <button class="proc-card-btn" onclick="openModal(8)">
+            En savoir plus
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="proc-card-step-dot"></div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="proc-card reveal" data-step="9" style="transition-delay:.54s">
+          <div class="proc-card-header">
+            <div class="proc-card-num">10</div>
+            <div class="proc-card-icon">✅</div>
+          </div>
+          <div class="proc-card-title">Contrôle 360° final</div>
+          <div class="proc-card-text">Inspection finale, dossier des ouvrages, garantie 3 ans.</div>
+          <button class="proc-card-btn" onclick="openModal(9)">
+            En savoir plus
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="proc-card-step-dot"></div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="proc-card reveal" data-step="10" style="transition-delay:.60s">
+          <div class="proc-card-header">
+            <div class="proc-card-num">11</div>
+            <div class="proc-card-icon">🔑</div>
+          </div>
+          <div class="proc-card-title">Remise des clés</div>
+          <div class="proc-card-text">Réception contradictoire, documentation complète, SAV & hotline.</div>
+          <button class="proc-card-btn" onclick="openModal(10)">
+            En savoir plus
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="proc-card-step-dot"></div>
+        </div>
+
+      </div><!-- /proc-grid -->
+    </div><!-- /proc-grid-wrap -->
+
+  </div><!-- /proc-inner -->
+</section>
+
+<!-- ══════════════ CTA BAND ══════════════ -->
+<div class="proc-cta">
+  <div class="proc-cta-inner">
+    <h2>Votre projet,<br><em>notre prochain chef-d'œuvre.</em></h2>
+    <p>Chaque étape de notre processus est pensée pour vous offrir une cabine qui traversera les décennies. Démarrez dès maintenant — sans engagement.</p>
+    <div class="proc-cta-btns">
+      <a href="index.html#contact" class="btn-proc-yellow">Parlons de votre projet →</a>
+      <a href="activite.html" class="btn-proc-outline">Voir nos activités</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+     <!-- Newsletter -->
+  <div class="footer-newsletter">
+    <div class="footer-newsletter-eyebrow">✦ Restez informé</div>
+    <p class="footer-newsletter-desc">Découvrez ce que Mettec peut donner comme des solutions pour ces clients — directement dans votre boîte mail.</p>
+    <form class="footer-nl-form" onsubmit="handleNewsletter(event)">
+      <input type="email" class="footer-nl-input" placeholder="votre@email.com" required>
+      <button type="submit" class="footer-nl-btn">S'abonner →</button>
+    </form>
+    <div class="footer-nl-success" id="nlSuccess">✅ Bienvenue ! Vous êtes maintenant abonné.</div>
+    <p class="footer-nl-note">Pas de spam. Désinscription en 1 clic.</p>
+  </div>
+  <div>
+    <a class="footer-logo" href="#"><img src="images/logo-mettec.png" alt="METTEC" class="footer-logo-img"><div><div class="footer-logo-name"></div><span class="footer-logo-sub"></span></div></a>
+    <style>
+        .footer-logo-img {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;   /* garde les proportions sans couper */
+}
+    </style>
+    <p class="footer-tagline">Votre idée, Notre acier.<br>Bâti pour l'Éternité.</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/company/mettec-gbm" class="footer-social" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://www.facebook.com/mettec.tn/" class="footer-social" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12v-1a5 5 0 0 1 10 0v4"/><path d="M15 11v6a3 3 0 0 1-6 0v-4"/><path d="M9 16a3 3 0 0 0 6 0"/><path d="M12 5v5"/><circle cx="12" cy="5" r="1"/></svg>
+      </a>
+    </div>
+  </div>
+  <div><div class="footer-col-title">Gammes</div><ul class="footer-links"><li><a href="#gammes">Standard</a></li><li><a href="#gammes">Habitation Comfort</a></li><li><a href="#gammes">Habitation Smart</a></li><li><a href="#gammes">Habitation Autonome</a></li><li><a href="#gammes">Sécurité / Gardiennage</a></li><li><a href="#gammes">Gamme Extra</a></li></ul></div>
+  <div><div class="footer-col-title">Société</div><ul class="footer-links"><li><a href="processus.html">Notre processus</a></li><li><a href="#">Certifications</a></li><li><a href="#partners">Références</a></li><li><a href="#sav">SAV & Garantie</a></li><li><a href="#configurator">Configurateur</a></li></ul></div>
+  <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:+21636405822">+216 36 40 58 22</a></li><li><a href="tel:+21629225405">+216 29 22 54 05</a></li>
+<li>
+  <a href="mailto:mettec@gbm.tn">mettec@gbm.tn</a>
+</li>    <li><a href="#">Monastir, Tunisie</a></li><li><a href="index.html#contact">Parlons de votre Idée</a></li></ul></div>
+ 
+  <div class="footer-bottom"><span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span><span class="footer-copy">Design by <strong>AMH</strong></span><div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
+</footer>
+<style>
+/* ── Footer Newsletter ── */
+.footer-newsletter {
+  padding: 2.5rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: .75rem;
+}
+.footer-newsletter-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.footer-newsletter-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #ffffff;
+  line-height: 1.2;
+}
+.footer-newsletter-title em {
+  color: var(--primary);
+  font-style: italic;
+}
+.footer-newsletter-desc {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  color: rgba(3, 3, 3, 0.45);
+  max-width: 420px;
+  line-height: 1.7;
+}
+.footer-nl-form {
+  display: flex;
+  gap: 0;
+  border-radius: 3rem;
+  overflow: hidden;
+  border: 1.5px solid rgba(245,218,26,0.3);
+  background: rgba(255,255,255,0.04);
+  transition: border-color 0.25s;
+  max-width: 460px;
+  width: 100%;
+}
+.footer-nl-form:focus-within {
+  border-color: var(--primary);
+  background: rgba(245,218,26,0.05);
+}
+.footer-nl-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: .85rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: #ffffff;
+}
+.footer-nl-input::placeholder { color: rgba(255,255,255,0.3); }
+.footer-nl-btn {
+  background: var(--primary);
+  border: none;
+  padding: .85rem 1.6rem;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: #0f0e0a;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+}
+.footer-nl-btn:hover { background: #ffe000; transform: scale(1.03); }
+.footer-nl-success {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  color: #4ade80;
+  background: rgba(74,222,128,0.1);
+  padding: .6rem 1.2rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(74,222,128,0.25);
+}
+.footer-nl-success.show { display: block; }
+.footer-nl-note {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  color: rgba(255,255,255,0.22);
+  letter-spacing: .05em;
+}
+@media (max-width: 600px) {
+  .footer-nl-form { flex-direction: column; border-radius: 1rem; }
+  .footer-nl-btn { border-radius: 0 0 .8rem .8rem; text-align: center; }
+}
+</style>
+
+<!-- ══════════════ SCROLL TOP + CHATBOT ══════════════ -->
+<button id="scrollTop"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+<style>
+#chatbot-btn{position:fixed;bottom:6rem;right:2rem;z-index:9999;width:68px;height:68px;border-radius:50%;border:none;cursor:pointer;background:transparent;padding:0;box-shadow:0 8px 32px rgba(15,14,10,.28);transition:transform .35s cubic-bezier(.22,.68,0,1.4),box-shadow .3s;animation:chatbot-float 3s ease-in-out infinite;}
+#chatbot-btn img{width:100%;height:100%;object-fit:contain;display:block;border-radius:50%;}
+#chatbot-btn:hover{transform:scale(1.12) translateY(-4px);box-shadow:0 16px 48px rgba(245,218,26,.45);animation:none;}
+#chatbot-btn.active{animation:none;transform:scale(.92) rotate(-8deg);}
+@keyframes chatbot-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+#chatbot-btn::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2.5px solid var(--primary);animation:chatbot-ring 2.4s ease-out infinite;pointer-events:none;}
+@keyframes chatbot-ring{0%{opacity:1;transform:scale(1)}80%{opacity:0;transform:scale(1.6)}100%{opacity:0}}
+#chatbot-window{position:fixed;bottom:10rem;right:2rem;z-index:9998;width:360px;max-height:580px;border-radius:1.25rem;background:#fff;box-shadow:0 20px 60px rgba(15,14,10,.15),0 0 0 1px rgba(220,213,195,.8);display:flex;flex-direction:column;overflow:hidden;transform:scale(.88) translateY(24px);opacity:0;pointer-events:none;transition:transform .38s cubic-bezier(.22,.68,0,1.25),opacity .3s ease;transform-origin:bottom right;}
+#chatbot-window.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}
+.cb-header{background:linear-gradient(120deg,#f5da1a 0%,#e8ca00 100%);padding:.85rem 1.2rem;display:flex;align-items:center;gap:.75rem;flex-shrink:0;position:relative;overflow:hidden;}
+.cb-header::before{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.25) 0%,transparent 70%);pointer-events:none;}
+.cb-header-avatar{width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,.6);object-fit:contain;background:#fff8d0;flex-shrink:0;animation:cb-avatar-bounce 2s ease infinite;}
+@keyframes cb-avatar-bounce{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg) translateY(-2px)}}
+.cb-header-info{flex:1;}
+.cb-header-name{font-family:var(--font-main);font-size:.88rem;font-weight:800;color:#0f0e0a;letter-spacing:-.01em;}
+.cb-header-status{display:flex;align-items:center;gap:.35rem;font-family:var(--font-mono);font-size:.58rem;color:rgba(15,14,10,.55);letter-spacing:.06em;text-transform:uppercase;margin-top:.12rem;}
+.cb-status-dot{width:6px;height:6px;border-radius:50%;background:#16a34a;animation:pulse-dot 2s ease infinite;}
+.cb-close{background:rgba(15,14,10,.1);border:none;color:rgba(15,14,10,.55);width:26px;height:26px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:background .2s,color .2s;flex-shrink:0;}
+.cb-close:hover{background:rgba(15,14,10,.2);color:#0f0e0a;}
+.cb-messages{flex:1;min-height:0;overflow-y:auto;padding:1rem 1rem .8rem;display:flex;flex-direction:column;gap:.65rem;scroll-behavior:smooth;background:#f8f6f0;}
+.cb-messages::-webkit-scrollbar{width:3px;}.cb-messages::-webkit-scrollbar-track{background:transparent;}.cb-messages::-webkit-scrollbar-thumb{background:#ddd8c8;border-radius:2px;}
+.cb-msg-bot{display:flex;align-items:flex-end;gap:.45rem;animation:cb-msg-in .35s cubic-bezier(.22,.68,0,1.2);}
+@keyframes cb-msg-in{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+.cb-msg-bot-avatar{width:24px;height:24px;border-radius:50%;object-fit:contain;background:#fff8d0;border:1.5px solid #e8ca00;flex-shrink:0;}
+.cb-bubble-bot{background:#fff;color:#2e2b22;border-radius:1rem 1rem 1rem .25rem;padding:.65rem .9rem;font-family:var(--font-mono);font-size:.76rem;line-height:1.65;max-width:84%;box-shadow:0 1px 4px rgba(15,14,10,.08),0 0 0 1px rgba(220,213,195,.5);}
+.cb-bubble-bot strong{color:#b49a00;font-weight:700;}
+.cb-typing{display:flex;align-items:center;gap:.45rem;}
+.cb-typing-dots{background:#fff;border-radius:1rem 1rem 1rem .25rem;padding:.6rem .9rem;display:flex;gap:4px;align-items:center;box-shadow:0 1px 4px rgba(15,14,10,.08);}
+.cb-typing-dots span{width:5px;height:5px;border-radius:50%;background:#c4b060;animation:typing-bounce 1.2s ease infinite;}
+.cb-typing-dots span:nth-child(2){animation-delay:.2s;}.cb-typing-dots span:nth-child(3){animation-delay:.4s;}
+@keyframes typing-bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}
+.cb-questions{padding:.55rem .8rem .65rem;display:flex;flex-direction:column;gap:.3rem;flex-shrink:0;max-height:195px;overflow-y:auto;border-top:1px solid #e8e0c8;background:#fffdf5;}
+.cb-questions::-webkit-scrollbar{width:3px;}.cb-questions::-webkit-scrollbar-track{background:transparent;}.cb-questions::-webkit-scrollbar-thumb{background:#e8ca00;border-radius:2px;}
+.cb-questions-label{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:#a89e7a;margin-bottom:.1rem;flex-shrink:0;}
+.cb-q-btn{display:flex;align-items:center;gap:.5rem;background:#fff;color:#2e2b22;border:1px solid #e8e0c8;border-radius:.6rem;padding:.4rem .7rem;font-family:var(--font-mono);font-size:.67rem;cursor:pointer;text-align:left;transition:background .18s,border-color .18s,transform .18s;line-height:1.35;flex-shrink:0;}
+.cb-q-btn:hover{background:#fffbe8;border-color:#e8ca00;transform:translateX(3px);}
+.cb-q-btn .cb-q-icon{font-size:.95rem;flex-shrink:0;}
+.cb-q-btn.used{opacity:.35;pointer-events:none;transform:none;}
+.cb-msg-user{display:flex;justify-content:flex-end;animation:cb-msg-in .3s ease;}
+.cb-bubble-user{background:#f5da1a;color:#0f0e0a;border-radius:1rem 1rem .25rem 1rem;padding:.55rem .85rem;font-family:var(--font-mono);font-size:.74rem;line-height:1.45;max-width:80%;font-weight:600;box-shadow:0 2px 8px rgba(245,218,26,.25);}
+.cb-reset{background:none;border:none;font-family:var(--font-mono);font-size:.58rem;color:#a89e7a;cursor:pointer;letter-spacing:.1em;text-transform:uppercase;text-align:center;margin-top:.2rem;padding:.2rem 0;transition:color .2s;text-decoration:underline;flex-shrink:0;}
+.cb-reset:hover{color:#0f0e0a;}
+@media(max-width:440px){#chatbot-window{width:calc(100vw - 2rem);right:1rem;bottom:9rem;}#chatbot-btn{right:1rem;bottom:5rem;width:60px;height:60px;}}
+</style>
+
+<button id="chatbot-btn" aria-label="Ouvrir le chatbot METTEC">
+  <img src="images/chatbot.png" alt="GBM Chatbot">
+</button>
+<div id="chatbot-window" role="dialog" aria-label="Assistant METTEC">
+  <div class="cb-header">
+    <img src="images/chatbot.png" alt="Bot" class="cb-header-avatar">
+    <div class="cb-header-info">
+      <div class="cb-header-name">Assistant METTEC</div>
+      <div class="cb-header-status"><span class="cb-status-dot"></span>En ligne · Répond instantanément</div>
+    </div>
+    <button class="cb-close" id="chatbot-close" aria-label="Fermer">✕</button>
+  </div>
+  <div class="cb-messages" id="cb-messages"></div>
+  <div class="cb-questions" id="cb-questions">
+    <div class="cb-questions-label">✦ Choisissez votre question</div>
+  </div>
+</div>
+
+<!-- ══════════════ MODAL ══════════════ -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close" id="modalClose" aria-label="Fermer">✕</button>
+    <div class="modal-img-wrap">
+      <img id="modalImg" src="" alt="">
+      <div class="modal-img-overlay"></div>
+      <div class="modal-step-badge" id="modalNum"></div>
+      <div class="modal-icon-badge" id="modalIconBig"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-eyebrow" id="modalEyebrow"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-tags" id="modalTags"></div>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-nav">
+        <button class="modal-nav-btn" id="modalPrev" aria-label="Étape précédente">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <span class="modal-counter" id="modalCounter"></span>
+        <button class="modal-nav-btn" id="modalNext" aria-label="Étape suivante">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <a href="index.html#contact" class="modal-cta-link">Démarrer mon projet →</a>
+    </div>
+  </div>
+</div>
+
+<script src="script1.js"></script>
+<script>
+/* ═══════════════════════════════════════
+   LOADER
+═══════════════════════════════════════ */
+(function(){
+  const bar = document.getElementById('loaderBar');
+  let w = 0;
+  const iv = setInterval(() => {
+    w = Math.min(w + Math.random() * 18, 92);
+    if(bar) bar.style.width = w + '%';
+  }, 120);
+  window.addEventListener('load', () => {
+    clearInterval(iv);
+    if(bar) bar.style.width = '100%';
+    setTimeout(() => {
+      const l = document.getElementById('pageLoader');
+      if(l) l.classList.add('hide');
+    }, 350);
+  });
+})();
+
+/* ═══════════════════════════════════════
+   REVEAL ON SCROLL
+═══════════════════════════════════════ */
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => obs.observe(el));
+})();
+
+/* ═══════════════════════════════════════
+   SCROLL TOP
+═══════════════════════════════════════ */
+(function(){
+  const btn = document.getElementById('scrollTop');
+  if(!btn) return;
+  window.addEventListener('scroll', () => btn.classList.toggle('visible', window.pageYOffset > 400));
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
+/* ═══════════════════════════════════════
+   MODAL DATA
+═══════════════════════════════════════ */
+const steps = [
+  {
+    num: '01', icon: '📋',
+    label: 'Phase 1 — Conception',
+    title: 'Analyse & Cahier des charges',
+    desc: 'Tout commence par une écoute approfondie. Nos ingénieurs analysent vos besoins spécifiques, les contraintes du site (topographie, accès, réseaux), les normes applicables (ISO 9001, ISO 14001, ISO 45001 et les normes locales) et les exigences fonctionnelles. Un cahier des charges détaillé est co-rédigé avec vous et validé avant tout démarrage de conception. C\'est la fondation de tout projet réussi.',
+    tags: ['Audit de site','ISO 9001','Cahier des charges','Co-conception'],
+    img: 'images/step1.webp'
+  },
+  {
+    num: '02', icon: '✏️',
+    label: 'Phase 2 — Conception',
+    title: 'Plans techniques 2D',
+    desc: 'Nos bureaux d\'études produisent des dessins techniques cotés conformes aux normes en vigueur. Les calculs de structure sont réalisés selon les Eurocodes (EC3 pour l\'acier). Chaque plan est vérifié et contre-vérifié avant validation. Vous disposez d\'un dossier technique complet : plans de coffrage, plans de ferraillage, coupes détaillées, nomenclatures.',
+    tags: ['Eurocodes EC3','Calcul structure','Plans cotés','Nomenclatures','Vérification indépendante'],
+    img: 'images/step2.webp'
+  },
+  {
+    num: '03', icon: '🖥️',
+    label: 'Phase 3 — Conception',
+    title: 'Modélisation 3D BIM',
+    desc: 'La maquette numérique BIM (Building Information Modeling) permet une visualisation complète de votre projet avant toute fabrication. Vous bénéficiez d\'une visite virtuelle immersive, d\'une détection automatique de conflits entre corps d\'état, et d\'une coordination parfaite entre structure, enveloppe et installations techniques. Zéro surprise sur chantier.',
+    tags: ['BIM niveau 2','Visite virtuelle','Clash detection','Coordination MEP','Revit / Tekla'],
+    img: 'images/step3.webp'
+  },
+  {
+    num: '04', icon: '⚙️',
+    label: 'Phase 4 — Fabrication',
+    title: 'Découpe acier S355',
+    desc: 'L\'acier S355 haute résistance est découpé dans notre atelier par découpe plasma et laser avec une précision inférieure à 0.1mm. Chaque pièce est identifiée, tracée et contrôlée dimensionnellement avant assemblage. Nos machines CNC garantissent une répétabilité parfaite sur toute la série. Le contrôle dimensionnel est 100% — aucune pièce non conforme ne passe à l\'étape suivante.',
+    tags: ['Acier S355','Découpe plasma','Découpe laser','Précision < 0.1mm','CNC','Traçabilité'],
+    img: 'images/step4.webp'
+  },
+  {
+    num: '05', icon: '🔥',
+    label: 'Phase 5 — Fabrication',
+    title: 'Soudure certifiée ISO 9606',
+    desc: 'Nos soudeurs sont qualifiés selon la norme ISO 9606 (qualification des soudeurs) et opèrent selon des procédures de soudage qualifiées (QMOS/DMOS). 100% des cordons structurels sont soumis au Contrôle Non Destructif par ultrasons (CND US). Les rapports d\'inspection sont intégrés au dossier d\'ouvrages remis avec la cabine. Qualité certifiée, tracée, garantie.',
+    tags: ['ISO 9606','CND Ultrasons','QMOS certifiées','100% contrôle','Traçabilité cordons'],
+    img: 'images/step5.webp'
+  },
+  {
+    num: '06', icon: '🛡️',
+    label: 'Phase 6 — Traitement de surface',
+    title: 'Galvanisation 87μm',
+    desc: 'La protection anticorrosion est critique pour la durabilité de votre structure. Après un grenaillage SA 2.5 qui prépare parfaitement la surface, nous appliquons une galvanisation à chaud garantissant une épaisseur minimale de 87 microns. L\'épaisseur est contrôlée par mesure ultrasonique point par point. Cette protection assure plus de 25 ans de résistance à la corrosion même en environnement agressif.',
+    tags: ['Galvanisation à chaud','Grenaillage SA 2.5','87μm minimum','Contrôle ultrasonique','25 ans anticorrosion'],
+    img: 'images/step6.webp'
+  },
+  {
+    num: '07', icon: '🏗️',
+    label: 'Phase 7 — Enveloppe',
+    title: 'Panneaux sandwich PU',
+    desc: 'L\'isolation thermique et phonique est assurée par des panneaux sandwich polyuréthane de 100mm d\'épaisseur, offrant une résistance thermique R supérieure à 5 m².K/W. Les panneaux sont assemblés avec des joints à rupture de pont thermique. L\'étanchéité à l\'air est testée par dépressurisation. Résultat : une cabine confortable en toutes saisons, des économies d\'énergie significatives.',
+    tags: ['PU 100mm','R > 5 m².K/W','Pont thermique 0','Étanchéité à l\'air','Test dépressurisation'],
+    img: 'images/step7.webp'
+  },
+  {
+    num: '08', icon: '💡',
+    label: 'Phase 8 — Installations',
+    title: 'Installations techniques complètes',
+    desc: 'Toutes les installations techniques sont intégrées en atelier avant livraison : tableau électrique aux normes, câblage NF C 15-100, plomberie sanitaire complète, Ventilation Mécanique Contrôlée (VMC), climatisation réversible, éclairage LED. Chaque installation est testée fonctionnellement avant expédition. Vous branchez, vous habitez — c\'est clé en main.',
+    tags: ['NF C 15-100','VMC double flux','Climatisation','Plomberie complète','LED','Test fonctionnel'],
+    img: 'images/step8.webp'
+  },
+  {
+    num: '09', icon: '🚪',
+    label: 'Phase 9 — Finitions',
+    title: 'Menuiseries & accès',
+    desc: 'Les menuiseries sont conçues et fabriquées sur mesure : portes d\'entrée sécurisées, fenêtres à double vitrage, portes de service, accès handicapé si requis. La signalétique, les protections contre les effractions et les systèmes de contrôle d\'accès sont intégrés. Chaque ouverture est réglée et testée. Les finitions intérieures et extérieures sont réalisées avec les matériaux choisis ensemble.',
+    tags: ['Double vitrage','Sécurité anti-effraction','Contrôle d\'accès','PMR si requis','Signalétique','Finitions sur mesure'],
+    img: 'images/step9.webp'
+  },
+  {
+    num: '10', icon: '✅',
+    label: 'Phase 10 — Contrôle qualité',
+    title: 'Contrôle 360° final',
+    desc: 'Avant toute expédition, la cabine est soumise à une inspection finale exhaustive : contrôle visuel complet, vérification de tous les équipements, test des installations électriques et hydrauliques, contrôle d\'étanchéité, vérification des cotes, test de fonctionnement de toutes les ouvrants. Le dossier des ouvrages est constitué avec l\'ensemble des PV de contrôle, fiches techniques et certificats. La garantie 3 ans est activée.',
+    tags: ['PV de réception','Test étanchéité','Garantie 3 ans','Dossier des ouvrages','Certificats matières'],
+    img: 'images/step10.webp'
+  },
+  {
+    num: '11', icon: '🔑',
+    label: 'Phase 11 — Livraison',
+    title: 'Remise des clés',
+    desc: 'La livraison est organisée selon vos contraintes : transport spécialisé, pose par grue, installation sur fondations ou plots réglables. La réception contradictoire se fait avec vous ou votre représentant. Vous recevez la documentation complète : plans de recollement, certificats, notices de maintenance, numéros SAV. Notre hotline est disponible 6j/7 pour répondre à toutes vos questions post-livraison.',
+    tags: ['Transport spécialisé','Pose par grue','Réception contradictoire','Hotline SAV','Documentation complète','Maintenance'],
+    img: 'images/step11.webp'
+  }
+];
+
+/* ═══════════════════════════════════════
+   MODAL LOGIC
+═══════════════════════════════════════ */
+let currentStep = 0;
+
+function openModal(index) {
+  currentStep = index;
+  renderModal();
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderModal() {
+  const s = steps[currentStep];
+  document.getElementById('modalImg').src = s.img;
+  document.getElementById('modalImg').alt = s.title;
+  document.getElementById('modalNum').textContent = s.num;
+  document.getElementById('modalIconBig').textContent = s.icon;
+  document.getElementById('modalEyebrow').textContent = s.label;
+  document.getElementById('modalTitle').textContent = s.title;
+  document.getElementById('modalDesc').textContent = s.desc;
+  document.getElementById('modalCounter').textContent = (currentStep + 1) + ' / ' + steps.length;
+  // Tags
+  const tagsEl = document.getElementById('modalTags');
+  tagsEl.innerHTML = s.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+  // Nav buttons
+  document.getElementById('modalPrev').disabled = currentStep === 0;
+  document.getElementById('modalNext').disabled = currentStep === steps.length - 1;
+}
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if(e.target === this) closeModal();
+});
+document.getElementById('modalPrev').addEventListener('click', () => {
+  if(currentStep > 0) { currentStep--; renderModal(); }
+});
+document.getElementById('modalNext').addEventListener('click', () => {
+  if(currentStep < steps.length - 1) { currentStep++; renderModal(); }
+});
+document.addEventListener('keydown', (e) => {
+  const o = document.getElementById('modalOverlay');
+  if(!o.classList.contains('open')) return;
+  if(e.key === 'Escape') closeModal();
+  if(e.key === 'ArrowLeft' && currentStep > 0) { currentStep--; renderModal(); }
+  if(e.key === 'ArrowRight' && currentStep < steps.length - 1) { currentStep++; renderModal(); }
+});
+
+/* ═══════════════════════════════════════
+   CHATBOT
+═══════════════════════════════════════ */
+(function(){
+  const btn=document.getElementById('chatbot-btn'),win=document.getElementById('chatbot-window'),
+        closeB=document.getElementById('chatbot-close'),msgBox=document.getElementById('cb-messages'),
+        qBox=document.getElementById('cb-questions');
+  let opened=false;
+  const questions=[
+    {icon:'🏗️',q:'Qu\'est-ce que METTEC sait faire en préfabrication ?',a:'<strong>Préfabrication métallique</strong> — notre cœur de métier. Cabines modulaires, capsules Smart connectées, maisonettes clé-en-main, kiosques, vestiaires industriels… Tout fabriqué dans notre atelier de Monastir avec une précision au millimètre. Délai : <strong>3 à 6 semaines</strong>.'},
+    {icon:'⏱️',q:'Quel est votre délai de livraison typique ?',a:'<strong>Cabine standard</strong> → 3 semaines · <strong>Construction</strong> → 2 à 6 mois · <strong>Mobilier</strong> → 4 à 8 semaines. Planning détaillé fourni dès la signature. Chez METTEC, <strong>on respecte les délais.</strong>'},
+    {icon:'💡',q:'Comment démarrer un projet avec vous ?',a:'<strong>3 étapes :</strong> ① Contactez-nous (réponse &lt; 24h) · ② Appel avec un consultant · ③ <strong>Proposition sous 48h.'},
+    {icon:'🔩',q:'Quels matériaux utilisez-vous ?',a:'<strong>Acier S355 galvanisé</strong>, <strong>bois massif</strong> (chêne, noyer), <strong>marbre & granit</strong>, <strong>cuir pleine fleur</strong>. Quincaillerie premium européenne — fabriqué pour <strong>durer 20 ans minimum.</strong>'},
+    {icon:'📍',q:'Où êtes-vous et livrez-vous partout ?',a:'Atelier : <strong>Zone Industrielle, Manzel Harb, Monastir</strong>. Livraison & installation partout en Tunisie et à l\'international. Appelez le <strong>+216 36 40 58 22</strong> !'}
+  ];
+  function renderWelcome(){
+    msgBox.innerHTML='';qBox.innerHTML='<div class="cb-questions-label">✦ Choisissez votre question</div>';
+    const w=document.createElement('div');w.className='cb-msg-bot';
+    w.innerHTML=`<img src="images/chatbot.png" alt="Bot" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">👋 Bonjour ! Je suis l'assistant de <strong>METTEC</strong>.<br><br>Je peux vous expliquer chaque étape de notre processus ou répondre à vos questions !<br><br><strong>Par où commençons-nous ?</strong> ✨</div>`;
+    msgBox.appendChild(w);
+    questions.forEach((item,i)=>{const b=document.createElement('button');b.className='cb-q-btn';b.innerHTML=`<span class="cb-q-icon">${item.icon}</span><span>${item.q}</span>`;b.addEventListener('click',()=>handleQ(i,b));qBox.appendChild(b);});
+    const r=document.createElement('button');r.className='cb-reset';r.textContent='↺ Recommencer';r.addEventListener('click',()=>{renderWelcome();msgBox.scrollTop=0;});qBox.appendChild(r);
+  }
+  function handleQ(index,btnEl){
+    btnEl.classList.add('used');
+    const um=document.createElement('div');um.className='cb-msg-user';um.innerHTML=`<div class="cb-bubble-user">${questions[index].q}</div>`;msgBox.appendChild(um);msgBox.scrollTop=msgBox.scrollHeight;
+    const typing=document.createElement('div');typing.className='cb-msg-bot cb-typing';typing.innerHTML=`<img src="images/chatbot.png" alt="" class="cb-msg-bot-avatar"><div class="cb-typing-dots"><span></span><span></span><span></span></div>`;msgBox.appendChild(typing);msgBox.scrollTop=msgBox.scrollHeight;
+    setTimeout(()=>{typing.remove();const bm=document.createElement('div');bm.className='cb-msg-bot';bm.innerHTML=`<img src="images/chatbot.png" alt="Bot" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">${questions[index].a}</div>`;msgBox.appendChild(bm);msgBox.scrollTop=msgBox.scrollHeight;},950);
+  }
+  btn.addEventListener('click',()=>{opened=!opened;win.classList.toggle('open',opened);btn.classList.toggle('active',opened);if(opened&&msgBox.children.length===0)renderWelcome();});
+  closeB.addEventListener('click',()=>{opened=false;win.classList.remove('open');btn.classList.remove('active');});
+  document.addEventListener('click',(e)=>{if(opened&&!win.contains(e.target)&&e.target!==btn&&!btn.contains(e.target)){opened=false;win.classList.remove('open');btn.classList.remove('active');}});
+})();
+</script>
+</body>
+</html>

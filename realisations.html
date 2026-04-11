@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Réalisations — METTEC | 500+ Projets Livrés</title>
+<meta name="description" content="Découvrez les réalisations METTEC : villas modulaires, cabines Smart, postes de gardiennage, Coffee Shops. 500+ projets livrés en Tunisie et Afrique du Nord."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+:root{
+  --ink:#0f0e0a;--ink2:#1c1a14;--ink3:#2e2b22;
+  --mist:#6b6550;--sand:#a8996e;
+  --linen:#e8e0c8;--paper:#f4eedc;--cream:#faf6ec;
+  --gold:#f5da1a;--gd:#c4ad00;--gl:#fef48a;
+  --line:rgba(15,14,10,.1);
+  --t2xs:clamp(.56rem,.38vw + .36rem,.7rem);
+  --txs:clamp(.66rem,.48vw + .42rem,.8rem);
+  --tsm:clamp(.78rem,.6vw + .48rem,.95rem);
+  --tmd:clamp(.9rem,.7vw + .56rem,1.1rem);
+  --tlg:clamp(1.4rem,2.2vw + .5rem,2.6rem);
+  --txl:clamp(2rem,4vw + .4rem,5rem);
+  --t2xl:clamp(2.6rem,5.8vw + .6rem,7.2rem);
+  --sxs:clamp(.5rem,.8vw,.8rem);--ssm:clamp(.8rem,1.4vw,1.2rem);
+  --smd:clamp(1.2rem,2.4vw,2rem);--slg:clamp(2rem,4vw,4rem);
+  --sxl:clamp(3rem,6vw,6rem);--nav:clamp(54px,7.5vw,68px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--ink);color:var(--cream);font-family:'Space Mono',monospace;overflow-x:hidden;cursor:none}
+
+/* LOADER */
+#loader{position:fixed;inset:0;z-index:99999;background:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .6s ease,transform .5s ease}
+#loader.hide{opacity:0;pointer-events:none;transform:scale(1.04)}
+.loader-mascot{width:clamp(200px,18vw,260px);height:auto;animation:mascotBounce 1.4s ease infinite;filter:drop-shadow(0 8px 24px rgba(15,14,10,.12))}
+@keyframes mascotBounce{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+.loader-dots{display:flex;gap:8px;align-items:center}
+.loader-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:ldot 1.2s ease infinite}
+.loader-dot:nth-child(2){animation-delay:.2s;width:10px;height:10px}
+.loader-dot:nth-child(3){animation-delay:.4s}
+@keyframes ldot{0%,80%,100%{transform:scale(.6);background:var(--linen)}40%{transform:scale(1.2);background:var(--gold)}}
+.loader-tagline{font-family:'Space Mono';font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+
+/* CURSOR */
+#cur,#curR{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur{width:7px;height:7px;background:var(--gold);transition:transform .15s}
+#curR{width:26px;height:26px;border:1.5px solid rgba(155,134,50,.8);z-index:9998;transition:width .2s,height .2s,background .2s}
+body:has(a:hover,button:hover) #cur{transform:translate(-50%,-50%) scale(0)}
+body:has(a:hover,button:hover) #curR{width:44px;height:44px;background:var(--gold);opacity:.7}
+@media(hover:none){#cur,#curR{display:none}body{cursor:auto}}
+
+/* GRAIN */
+#grain{position:fixed;inset:0;z-index:8000;pointer-events:none;opacity:.18;mix-blend-mode:multiply}
+
+/* PROGRESS */
+#tpb{position:fixed;top:0;left:0;right:0;height:3px;z-index:1001;pointer-events:none;background:transparent}
+#tpbF{height:100%;background:var(--gold);width:0%;transition:width .4s cubic-bezier(.4,0,.2,1)}
+
+/* BTT */
+#btt{position:fixed;bottom:clamp(16px,2.5vw,28px);right:clamp(16px,2.5vw,28px);z-index:950;width:50px;height:50px;background:var(--ink);color:var(--gold);border:none;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(15,14,10,.3);opacity:0;transform:translateY(10px);transition:opacity .35s,transform .35s,background .2s;pointer-events:none}
+#btt.show{opacity:1;transform:translateY(0);pointer-events:all}
+#btt:hover{background:var(--gold);color:var(--ink)}
+#btt svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.5}
+
+/* WHATSAPP */
+#wa{position:fixed;bottom:clamp(76px,10vw,96px);right:clamp(16px,2.5vw,28px);z-index:950;width:50px;height:50px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.35);text-decoration:none;transition:transform .25s;animation:waPulse 2.5s ease infinite}
+#wa:hover{transform:scale(1.1)}
+#wa svg{width:26px;height:26px;fill:white}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.35)}50%{box-shadow:0 4px 32px rgba(37,211,102,.6)}}
+
+/* NAV */
+nav#nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,4rem);background:var(--cream);backdrop-filter:blur(12px);border-bottom:1px solid rgba(245,218,26,.12);transition:box-shadow .3s}
+nav#nav.on{box-shadow:0 4px 32px rgba(0,0,0,.4)}
+.logo{display:flex;align-items:center;gap:var(--ssm);text-decoration:none}
+.logo-img{height:80px;width:80px;object-fit:contain;}
+.navL{display:flex;align-items:center;gap:clamp(12px,2vw,26px);list-style:none}
+.navL a{font-family:'Space Mono';font-size:var(--txs);letter-spacing:.08em;color:rgba(0, 0, 0, 0.5);text-decoration:none;text-transform:uppercase;transition:color .2s;position:relative}
+.navL a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--gold);transform:scaleX(0);transition:transform .25s;transform-origin:left}
+.navL a:hover,.navL a.active{color:var(--gold)}
+.navL a.active::after,.navL a:hover::after{transform:scaleX(1)}
+.nCta{background:var(--gold)!important;color:var(--ink)!important;padding:7px 18px!important;font-family:'Syne'!important;font-weight:800!important;border-radius:2px!important;letter-spacing:.04em!important}
+.nCta::after{display:none!important}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.burger span{display:block;width:22px;height:1.5px;background:var(--gold);transition:.3s}
+.mob{display:none;position:fixed;inset:0;top:var(--nav);background:var(--ink);border-top:1px solid rgba(245,218,26,.12);z-index:850;flex-direction:column;align-items:center;justify-content:center;gap:clamp(18px,4vw,36px)}
+.mob.open{display:flex}
+.mob a{font-family:'Syne';font-weight:800;font-size:clamp(22px,6vw,44px);color:var(--cream);text-decoration:none}
+.mob a:hover{color:var(--gold)}
+@media(max-width:768px){.navL{display:none}.burger{display:flex}}
+
+/* HERO */
+.real-hero{padding:calc(var(--nav) + var(--sxl)) clamp(1.5rem,5vw,5rem) var(--slg);text-align:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(245,218,26,.1)}
+.real-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(245, 219, 26, 0.258) 0%,transparent 70%);pointer-events:none}
+.real-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:'Space Mono';font-size:var(--t2xs);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:var(--ssm)}
+.real-hero-eyebrow-bar{display:inline-block;width:clamp(20px,3vw,40px);height:1px;background:var(--gold);opacity:.5}
+.real-hero-title{font-family:'Syne';font-weight:800;font-size:var(--t2xl);color:var(--cream);line-height:.92;letter-spacing:-.05em;margin-bottom:var(--smd);position:relative;z-index:1}
+.real-hero-title em{font-family:'DM Serif Display';font-style:italic;color:var(--gold);display:block}
+.real-hero-sub{font-family:'Space Mono';font-size:var(--tsm);color:var(--mist);max-width:520px;margin:0 auto var(--slg);line-height:1.9}
+.real-hero-stats{display:flex;justify-content:center;gap:clamp(24px,5vw,72px);flex-wrap:wrap}
+.real-hero-stat{text-align:center}
+.real-hero-stat-num{font-family:'Syne';font-weight:800;font-size:clamp(2rem,5vw,3.5rem);color:var(--gold);line-height:1;letter-spacing:-.04em}
+.real-hero-stat-label{font-family:'Space Mono';font-size:var(--t2xs);letter-spacing:.18em;text-transform:uppercase;color:var(--mist);margin-top:.3rem}
+
+/* 3D SLIDER */
+.real-section{padding:var(--sxl) 0;position:relative;overflow:hidden;border-bottom:1px solid rgba(245,218,26,.1)}
+.real-bg-noise{position:absolute;inset:0;pointer-events:none;z-index:0;background: var(--cream);}
+.real-header{text-align:center;padding:0 var(--smd);margin-bottom:clamp(40px,7vw,72px);position:relative;z-index:2}
+.real-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:'Space Mono';font-size:var(--t2xs);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:var(--ssm)}
+.real-eyebrow-bar{display:inline-block;width:clamp(20px,3vw,40px);height:1px;background:var(--gold);opacity:.5}
+.real-title{font-family:'Syne';font-weight:800;font-size:var(--txl);color:var(--cream);line-height:1.1;margin-bottom:var(--ssm)}
+.real-title em{font-family:'DM Serif Display';font-style:italic;color:var(--gold)}
+.real-subtitle{font-family:'Space Mono';font-size:var(--txs);color:var(--mist);letter-spacing:.06em}
+.real-stage{position:relative;z-index:2;perspective:1400px;perspective-origin:50% 40%;height:clamp(380px,55vw,640px);display:flex;align-items:center;justify-content:center}
+.real-cards-wrap{position:relative;width:100%;height:100%;transform-style:preserve-3d;display:flex;align-items:center;justify-content:center}
+.real-card{position:absolute;width:clamp(220px,26vw,380px);height:clamp(290px,38vw,520px);border-radius:3px;overflow:hidden;cursor:pointer;transition:transform .75s cubic-bezier(.34,1.04,.64,1),opacity .55s ease,box-shadow .4s ease;transform-origin:center center;will-change:transform,opacity}
+.real-card-inner{position:relative;width:100%;height:100%;background:var(--ink3)}
+.real-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s ease;z-index:1}
+.real-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1}
+.real-grad{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,transparent 35%,rgba(15,14,10,.92) 100%)}
+.real-card-meta{position:absolute;bottom:0;left:0;right:0;z-index:4;padding:clamp(12px,2vw,22px);transform:translateY(8px);opacity:0;transition:transform .4s ease,opacity .4s ease}
+.real-card-tag{display:inline-block;font-family:'Space Mono';font-size:var(--t2xs);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(245,218,26,.4);padding:3px 8px;border-radius:2px;margin-bottom:6px}
+.real-card-title{font-family:'Syne';font-weight:800;font-size:var(--tsm);color:var(--cream);line-height:1.2}
+.real-card-location{font-family:'Space Mono';font-size:var(--t2xs);color:rgba(245,218,26,.5);margin-top:3px}
+.real-card-num{position:absolute;top:clamp(10px,1.5vw,18px);right:clamp(10px,1.5vw,18px);z-index:4;font-family:'Syne';font-weight:800;font-size:var(--tlg);color:rgba(255,255,255,.08);letter-spacing:-.04em}
+/* Details button */
+.real-card-btn{position:absolute;bottom:14px;right:14px;z-index:5;background:var(--gold);color:var(--ink);font-family:'Syne';font-weight:800;font-size:var(--t2xs);letter-spacing:.06em;border:none;border-radius:2px;padding:8px 14px;cursor:pointer;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s,background .2s;display:flex;align-items:center;gap:6px}
+.real-card-btn:hover{background:var(--gl)}
+.real-card.r-active .real-card-meta{transform:translateY(0);opacity:1}
+.real-card.r-active .real-card-btn{opacity:1;transform:translateY(0)}
+.real-card.r-active{box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1.5px rgba(245,218,26,.25);z-index:10!important}
+/* Nav */
+.real-nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:clamp(40px,5vw,56px);height:clamp(40px,5vw,56px);background:rgba(250,246,236,.06);border:1.5px solid rgba(245,218,26,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:20;transition:background .2s,border-color .2s,transform .2s;color:var(--cream)}
+.real-nav-btn:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-50%) scale(1.08)}
+.real-nav-btn:hover svg{stroke:var(--ink)}
+.real-nav-btn svg{width:20px;height:20px;stroke:var(--cream)}
+.real-prev{left:clamp(8px,3vw,40px)}
+.real-next{right:clamp(8px,3vw,40px)}
+.real-footer{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:clamp(24px,4vw,40px);position:relative;z-index:2}
+.real-dots{display:flex;gap:8px;align-items:center}
+.real-dot{width:6px;height:6px;border-radius:50%;background:rgba(245,218,26,.25);cursor:pointer;transition:width .3s,background .3s,border-radius .3s}
+.real-dot.active{width:28px;border-radius:3px;background:var(--gold)}
+.real-counter{font-family:'Space Mono';font-size:var(--t2xs);color:var(--mist);letter-spacing:.12em}
+#realCur{color:var(--gold);font-weight:700}
+.real-counter-sep{margin:0 4px;opacity:.4}
+
+/* PROJECT GRID */
+.projects-section{padding:var(--sxl) clamp(1.5rem,5vw,5rem);border-bottom:1px solid rgba(245,218,26,.1)}
+.projects-header{text-align:center;margin-bottom:var(--slg)}
+.projects-header h2{font-family:'Syne';font-weight:800;font-size:var(--txl);color:var(--cream);line-height:.92;letter-spacing:-.05em}
+.projects-header h2 em{font-family:'DM Serif Display';font-style:italic;color:var(--gold);display:block}
+.projects-header p{font-family:'Space Mono';font-size:var(--tsm);color:var(--mist);margin-top:var(--ssm);max-width:500px;margin-left:auto;margin-right:auto;line-height:1.8}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:900px){.projects-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.projects-grid{grid-template-columns:1fr}}
+.proj-card{position:relative;overflow:hidden;cursor:pointer;background:var(--ink2);border:1px solid rgba(245,218,26,.07);transition:border-color .3s}
+.proj-card:hover{border-color:rgba(245,218,26,.25)}
+.proj-card-img{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:transform .5s}
+.proj-card:hover .proj-card-img{transform:scale(1.04)}
+.proj-card-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.proj-card-emoji{font-size:3.5rem;opacity:.3;position:relative;z-index:1}
+.proj-card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(15,14,10,.9) 100%);z-index:2}
+.proj-card-type{position:absolute;top:12px;left:12px;z-index:3;font-family:'Space Mono';font-size:var(--t2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:rgba(15,14,10,.75);border:1px solid rgba(245,218,26,.3);padding:3px 8px;border-radius:2px;backdrop-filter:blur(4px)}
+.proj-card-body{padding:clamp(16px,2.5vw,24px)}
+.proj-card-title{font-family:'Syne';font-weight:800;font-size:clamp(14px,1.8vw,20px);color:var(--cream);letter-spacing:-.02em;margin-bottom:4px}
+.proj-card-loc{font-family:'Space Mono';font-size:var(--t2xs);color:var(--mist);margin-bottom:var(--ssm);display:flex;align-items:center;gap:6px}
+.proj-card-loc::before{content:'📍';font-size:.8em}
+.proj-card-specs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:var(--ssm)}
+.proj-chip{font-family:'Space Mono';font-size:var(--t2xs);color:rgba(245,218,26,.6);background:rgba(245,218,26,.06);border:1px solid rgba(245,218,26,.15);padding:3px 8px;border-radius:2px;letter-spacing:.08em}
+.proj-card-cta{display:flex;align-items:center;justify-content:space-between;padding-top:var(--ssm);border-top:1px solid rgba(245,218,26,.08)}
+.proj-card-cta-btn{display:inline-flex;align-items:center;gap:6px;font-family:'Syne';font-weight:800;font-size:var(--txs);color:var(--gold);background:none;border:none;cursor:pointer;letter-spacing:.04em;padding:0;transition:gap .2s}
+.proj-card-cta-btn:hover{gap:10px}
+.proj-card-cta-btn svg{width:14px;height:14px;stroke:var(--gold);fill:none;transition:transform .2s}
+.proj-card-cta-btn:hover svg{transform:translateX(3px)}
+.proj-card-year{font-family:'Space Mono';font-size:var(--t2xs);color:rgba(168,153,110,.4)}
+
+/* ══════════════ MODAL ══════════════ */
+.modal-overlay{position:fixed;inset:0;z-index:9500;background:rgba(10,9,6,.92);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:clamp(16px,3vw,40px);opacity:0;pointer-events:none;transition:opacity .35s ease}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--ink2);border:1px solid rgba(245,218,26,.15);border-radius:4px;width:100%;max-width:1000px;max-height:90vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;position:relative;transform:scale(.94) translateY(20px);transition:transform .4s cubic-bezier(.22,.68,0,1.25)}
+.modal-overlay.open .modal{transform:scale(1) translateY(0)}
+@media(max-width:720px){.modal{grid-template-columns:1fr}}
+.modal-close{position:absolute;top:16px;right:16px;z-index:10;width:36px;height:36px;border-radius:50%;background:rgba(245,218,26,.1);border:1px solid rgba(245,218,26,.2);color:var(--gold);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.modal-close:hover{background:var(--gold);color:var(--ink)}
+/* Modal left — image gallery */
+.modal-gallery{position:relative;background:var(--ink);overflow:hidden;min-height:300px}
+.modal-gallery-main{width:100%;height:clamp(260px,40vw,480px);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.modal-gallery-main img{width:100%;height:100%;object-fit:cover}
+.modal-gallery-emoji{font-size:6rem;opacity:.15}
+.modal-gallery-tag{position:absolute;top:16px;left:16px;font-family:'Space Mono';font-size:var(--t2xs);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:rgba(15,14,10,.8);border:1px solid rgba(245,218,26,.3);padding:4px 10px;border-radius:2px;backdrop-filter:blur(4px)}
+.modal-gallery-num{position:absolute;bottom:16px;right:16px;font-family:'Syne';font-weight:800;font-size:var(--tlg);color:rgba(245,218,26,.15);letter-spacing:-.04em}
+/* Modal right — details */
+.modal-details{padding:clamp(24px,3.5vw,40px);display:flex;flex-direction:column;gap:var(--smd);overflow-y:auto}
+.modal-eyebrow{font-family:'Space Mono';font-size:var(--t2xs);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.modal-title{font-family:'Syne';font-weight:800;font-size:clamp(18px,2.5vw,28px);color:var(--cream);letter-spacing:-.03em;line-height:1.1}
+.modal-loc{font-family:'Space Mono';font-size:var(--txs);color:var(--mist);display:flex;align-items:center;gap:6px}
+.modal-desc{font-family:'Space Mono';font-size:var(--txs);color:var(--mist);line-height:1.9}
+/* Specs table */
+.modal-specs{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.modal-spec-item{background:rgba(255,255,255,.03);border:1px solid rgba(245,218,26,.08);padding:10px 14px;display:flex;flex-direction:column;gap:3px}
+.modal-spec-key{font-family:'Space Mono';font-size:var(--t2xs);letter-spacing:.12em;text-transform:uppercase;color:var(--sand)}
+.modal-spec-val{font-family:'Syne';font-weight:800;font-size:clamp(11px,1.4vw,14px);color:var(--cream)}
+/* Features */
+.modal-features{display:flex;flex-direction:column;gap:6px}
+.modal-feature{display:flex;align-items:center;gap:10px;font-family:'Space Mono';font-size:var(--txs);color:var(--mist)}
+.modal-feature::before{content:'▸';color:var(--gold);flex-shrink:0}
+/* Quote */
+.modal-quote{background:rgba(245,218,26,.04);border-left:3px solid var(--gold);padding:16px 20px;border-radius:0 4px 4px 0}
+.modal-quote-text{font-family:'DM Serif Display';font-style:italic;font-size:clamp(13px,1.6vw,17px);color:var(--cream);line-height:1.6;margin-bottom:6px}
+.modal-quote-author{font-family:'Space Mono';font-size:var(--t2xs);color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+/* CTA */
+.modal-cta{display:flex;gap:10px;flex-wrap:wrap}
+.modal-btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--ink);font-family:'Syne';font-weight:800;font-size:var(--txs);letter-spacing:.05em;padding:10px 20px;border-radius:2px;text-decoration:none;border:none;cursor:pointer;transition:background .2s}
+.modal-btn-primary:hover{background:var(--gl)}
+.modal-btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--gold);font-family:'Syne';font-weight:800;font-size:var(--txs);letter-spacing:.05em;padding:10px 20px;border-radius:2px;border:1.5px solid rgba(245,218,26,.3);text-decoration:none;cursor:pointer;transition:border-color .2s,background .2s}
+.modal-btn-secondary:hover{border-color:var(--gold);background:rgba(245,218,26,.05)}
+
+/* FOOTER */
+footer{background:var(--cream);border-top:1px solid rgba(245,218,26,.1);padding:var(--slg) clamp(1.5rem,5vw,5rem);display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:var(--slg)}
+.footer-logo{display:flex;align-items:center;gap:var(--ssm);text-decoration:none;margin-bottom:var(--smd)}
+.footer-logo-img{height:80px;width:80px;object-fit:contain;}
+.footer-tagline{font-family:'DM Serif Display';font-style:italic;font-size:clamp(14px,1.6vw,18px);color:rgba(250,246,236,.7);line-height:1.5;max-width:240px;margin-bottom:var(--smd)}
+.footer-socials{display:flex;gap:8px}
+.footer-social{width:36px;height:36px;background:rgba(245,218,26,.06);border:1.5px solid rgba(245,218,26,.15);border-radius:2px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;text-decoration:none}
+.footer-social:hover{background:var(--gold);border-color:var(--gold)}
+.footer-social svg{width:16px;height:16px;fill:none;stroke:var(--sand);stroke-width:1.5}
+.footer-social:hover svg{stroke:var(--ink)}
+.footer-col-title{font-family:'Syne';font-weight:800;font-size:var(--tsm);color:var(--cream);margin-bottom:var(--smd);letter-spacing:-.02em}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-family:'Space Mono';font-size:var(--txs);color:var(--mist);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{grid-column:1/-1;border-top:1px solid rgba(245,218,26,.08);padding-top:var(--ssm);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-copy{font-family:'Space Mono';font-size:var(--t2xs);color:var(--mist)}
+.footer-legal{display:flex;gap:var(--smd)}
+.footer-legal a{font-family:'Space Mono';font-size:var(--t2xs);color:var(--mist);text-decoration:none}
+.footer-legal a:hover{color:var(--gold)}
+@media(max-width:900px){footer{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){footer{grid-template-columns:1fr}}
+
+/* CHATBOT */
+#chatbot-btn{position:fixed;bottom:6rem;right:2rem;z-index:9999;width:68px;height:68px;border-radius:50%;border:none;cursor:pointer;background:transparent;padding:0;box-shadow:0 8px 32px rgba(15,14,10,.28);animation:chatbot-float 3s ease-in-out infinite}
+#chatbot-btn img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+#chatbot-btn:hover{transform:scale(1.12) translateY(-4px);animation:none}
+#chatbot-btn.active{animation:none;transform:scale(0.92) rotate(-8deg)}
+#chatbot-btn::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2.5px solid var(--gold);animation:chatbot-ring 2.4s ease-out infinite;pointer-events:none}
+@keyframes chatbot-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+@keyframes chatbot-ring{0%{opacity:1;transform:scale(1)}80%{opacity:0;transform:scale(1.6)}100%{opacity:0}}
+#chatbot-window{position:fixed;bottom:10rem;right:2rem;z-index:9998;width:360px;max-height:580px;border-radius:1.25rem;background:#fff;box-shadow:0 20px 60px rgba(15,14,10,.15),0 0 0 1px rgba(220,213,195,.8);display:flex;flex-direction:column;overflow:hidden;transform:scale(.88) translateY(24px);opacity:0;pointer-events:none;transition:transform .38s cubic-bezier(.22,.68,0,1.25),opacity .3s ease;transform-origin:bottom right}
+#chatbot-window.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+.cb-header{background:linear-gradient(120deg,#f5da1a,#e8ca00);padding:.85rem 1.2rem;display:flex;align-items:center;gap:.75rem;flex-shrink:0;position:relative;overflow:hidden}
+.cb-header-avatar{width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,.6);object-fit:contain;background:#fff8d0;flex-shrink:0}
+.cb-header-info{flex:1}
+.cb-header-name{font-family:'Syne';font-size:.88rem;font-weight:800;color:#0f0e0a}
+.cb-header-status{display:flex;align-items:center;gap:.35rem;font-family:'Space Mono';font-size:.58rem;color:rgba(15,14,10,.55);letter-spacing:.06em;text-transform:uppercase;margin-top:.1rem}
+.cb-status-dot{width:6px;height:6px;border-radius:50%;background:#16a34a;animation:pulse-dot 2s ease infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.5}}
+.cb-close{background:rgba(15,14,10,.1);border:none;color:rgba(15,14,10,.55);width:26px;height:26px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.cb-close:hover{background:rgba(15,14,10,.2);color:#0f0e0a}
+.cb-messages{flex:1;min-height:0;overflow-y:auto;padding:1rem 1rem .8rem;display:flex;flex-direction:column;gap:.65rem;scroll-behavior:smooth;background:#f8f6f0}
+.cb-msg-bot{display:flex;align-items:flex-end;gap:.45rem;animation:cb-msg-in .35s ease}
+@keyframes cb-msg-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.cb-msg-bot-avatar{width:24px;height:24px;border-radius:50%;object-fit:contain;background:#fff8d0;border:1.5px solid #e8ca00;flex-shrink:0}
+.cb-bubble-bot{background:#fff;color:#2e2b22;border-radius:1rem 1rem 1rem .25rem;padding:.65rem .9rem;font-family:'Space Mono';font-size:.76rem;line-height:1.65;max-width:84%;box-shadow:0 1px 4px rgba(15,14,10,.08)}
+.cb-bubble-bot strong{color:#b49a00}
+.cb-typing-dots{background:#fff;border-radius:1rem 1rem 1rem .25rem;padding:.6rem .9rem;display:flex;gap:4px;align-items:center}
+.cb-typing-dots span{width:5px;height:5px;border-radius:50%;background:#c4b060;animation:typing-bounce 1.2s ease infinite}
+.cb-typing-dots span:nth-child(2){animation-delay:.2s}
+.cb-typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes typing-bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}
+.cb-questions{padding:.55rem .8rem .65rem;display:flex;flex-direction:column;gap:.3rem;flex-shrink:0;max-height:195px;overflow-y:auto;border-top:1px solid #e8e0c8;background:#fffdf5}
+.cb-questions-label{font-family:'Space Mono';font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:#a89e7a;margin-bottom:.1rem;flex-shrink:0}
+.cb-q-btn{display:flex;align-items:center;gap:.5rem;background:#fff;color:#2e2b22;border:1px solid #e8e0c8;border-radius:.6rem;padding:.4rem .7rem;font-family:'Space Mono';font-size:.67rem;cursor:pointer;text-align:left;transition:background .18s,border-color .18s,transform .18s;line-height:1.35;flex-shrink:0}
+.cb-q-btn:hover{background:#fffbe8;border-color:#e8ca00;transform:translateX(3px)}
+.cb-q-btn .cb-q-icon{font-size:.95rem;flex-shrink:0}
+.cb-q-btn.used{opacity:.35;pointer-events:none}
+.cb-msg-user{display:flex;justify-content:flex-end;animation:cb-msg-in .3s ease}
+.cb-bubble-user{background:#f5da1a;color:#0f0e0a;border-radius:1rem 1rem .25rem 1rem;padding:.55rem .85rem;font-family:'Space Mono';font-size:.74rem;line-height:1.45;max-width:80%;font-weight:600}
+.cb-reset{background:none;border:none;font-family:'Space Mono';font-size:.58rem;color:#a89e7a;cursor:pointer;letter-spacing:.1em;text-transform:uppercase;text-align:center;margin-top:.2rem;padding:.2rem 0;transition:color .2s;text-decoration:underline;flex-shrink:0}
+@media(max-width:440px){#chatbot-window{width:calc(100vw - 2rem);right:1rem;bottom:9rem}#chatbot-btn{right:1rem;bottom:5rem;width:60px;height:60px}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(245,218,26,.25);border-radius:2px}
+.modal::-webkit-scrollbar-thumb{background:rgba(245,218,26,.2)}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <img src="images/mascotte-mettec.png" alt="METTEC" class="loader-mascot" onerror="this.style.opacity='0'">
+  <div class="loader-dots"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div>
+  <div class="loader-tagline">500+ Projets · Bâtis pour l'Éternité</div>
+</div>
+
+<!-- CURSOR -->
+<div id="cur"></div><div id="curR"></div>
+<!-- GRAIN -->
+<canvas id="grain"></canvas>
+<!-- PROGRESS -->
+<div id="tpb"><div id="tpbF"></div></div>
+<!-- BTT -->
+<button id="btt" onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="Haut"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="logo" href="index.html">
+    <img src="images/logo-mettec.png" alt="METTEC" class="logo-img" onerror="this.style.display='none'">
+  </a>
+  <ul class="navL">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="apropos.html">A propos</a></li>
+    <li><a href="gammes.html">Gammes</a></li>
+    <li><a href="processus.html">Processus</a></li>
+    <li><a href="realisations.html" class="active">Réalisations</a></li>
+    <li><a href="activite.html">Activités</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="vision.html">Vision</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="index.html#contact" class="nCta">Parlons de votre Idée</a></li>
+  </ul>
+  <button class="burger" id="burg" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob" id="mob">
+  <a href="index.html">Accueil</a>
+  <a href="gammes.html">Gammes</a>
+  <a href="processus.html">Processus</a>
+  <a href="realisations.html" style="color:var(--gold)">Réalisations</a>
+  <a href="faq.html">FAQ</a>
+  <a href="index.html#cta" style="color:var(--gold)">Parlons de votre Idée</a>
+</div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="real-hero">
+  <div class="real-hero-eyebrow reveal">
+    <span class="real-hero-eyebrow-bar"></span>
+    Nos Réalisations
+    <span class="real-hero-eyebrow-bar"></span>
+  </div>
+  <h1 class="real-hero-title reveal">
+    500+ projets livrés.
+    <em>Chaque cabine, une histoire.</em>
+  </h1>
+  <p class="real-hero-sub reveal">De la villa modulaire au kiosque Coffee Shop, du poste de gardiennage à la Smart Cabin connectée — découvrez ce que METTEC construit pour ses clients.</p>
+  <div class="real-hero-stats">
+    <div class="real-hero-stat reveal">
+      <div class="real-hero-stat-num" data-count="500">0</div>
+      <div class="real-hero-stat-label">Projets livrés</div>
+    </div>
+    <div class="real-hero-stat reveal" style="transition-delay:.1s">
+      <div class="real-hero-stat-num">15<span style="font-size:.5em">ans</span></div>
+      <div class="real-hero-stat-label">D'expertise</div>
+    </div>
+    <div class="real-hero-stat reveal" style="transition-delay:.2s"> 
+  <div class="real-hero-stat-num">6</div>
+  <div class="real-hero-stat-label">
+    Pays desservis
+  </div>
+</div>
+    <div class="real-hero-stat reveal" style="transition-delay:.3s">
+      <div class="real-hero-stat-num">100<span style="font-size:.5em">%</span></div>
+      <div class="real-hero-stat-label">Clé en main</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 3D SLIDER ══════════════ -->
+<section class="real-section">
+  <div class="real-bg-noise"></div>
+  <div class="real-header">
+    <div class="real-eyebrow reveal">
+      <span class="real-eyebrow-bar"></span>Projets en vedette<span class="real-eyebrow-bar"></span>
+    </div>
+    <h2 class="real-title reveal">Survolez pour<br><em>voir le projet</em></h2>
+  </div>
+
+  <div class="real-stage">
+    <div class="real-cards-wrap" id="realCards">
+
+      <div class="real-card" data-proj="0">
+        <div class="real-card-inner">
+          <div class="real-img-placeholder" style="background:linear-gradient(135deg,#1a1508,#2e2412)">
+            <img src="images/mettec-villa-bekalta.jpg" class="real-img" alt="Villa S+1 Bekalta" loading="lazy" onerror="this.style.display='none'">
+            <span style="font-size:5rem;opacity:.2;position:relative;z-index:0">🏠</span>
+          </div>
+          <div class="real-grad"></div>
+          <div class="real-card-meta">
+            <span class="real-card-tag">Habitation Comfort</span>
+            <h3 class="real-card-title">Projet Villa Bekalta</h3>
+            <div class="real-card-location">Bekalta, Monastir</div>
+          </div>
+          <div class="real-card-num">01</div>
+        </div>
+      </div>
+
+      <div class="real-card" data-proj="1">
+        <div class="real-card-inner">
+          <div class="real-img-placeholder" style="background:linear-gradient(135deg,#060d1f,#0d1c35)">
+            <img src="images/slide7.webp" class="real-img" alt="Smart Cabin Hammamet" loading="lazy" onerror="this.style.display='none'">
+            <span style="font-size:5rem;opacity:.2;position:relative;z-index:0">📡</span>
+          </div>
+          <div class="real-grad"></div>
+          <div class="real-card-meta">
+            <span class="real-card-tag">Habitation</span>
+            <h3 class="real-card-title">Projet Villa Ariana</h3>
+            <div class="real-card-location">Ariana</div>
+          </div>
+          <div class="real-card-num">02</div>
+        </div>
+      </div>
+
+      <div class="real-card" data-proj="2">
+        <div class="real-card-inner">
+          <div class="real-img-placeholder" style="background:linear-gradient(135deg,#091a0f,#0e2818)">
+            <img src="images/projet_innovation_city_enfidha.jpg" class="real-img" alt="Habitation off-grid" loading="lazy" onerror="this.style.display='none'">
+            <span style="font-size:5rem;opacity:.2;position:relative;z-index:0">☀️</span>
+          </div>
+          <div class="real-grad"></div>
+          <div class="real-card-meta">
+            <span class="real-card-tag">Off-Grid Autonome</span>
+            <h3 class="real-card-title">Habitation Solaire 100%</h3>
+            <div class="real-card-location">Enfidha, Tunisie</div>
+          </div>
+          <div class="real-card-num">03</div>
+        </div>
+      </div>
+
+      <div class="real-card" data-proj="3">
+        <div class="real-card-inner">
+          <div class="real-img-placeholder" style="background:linear-gradient(135deg,#1a0f06,#2e1a0e)">
+            <img src="images/slide6.webp" class="real-img" alt="Salle de classe" loading="lazy" onerror="this.style.display='none'">
+            <span style="font-size:5rem;opacity:.2;position:relative;z-index:0">🏫</span>
+          </div>
+          <div class="real-grad"></div>
+          <div class="real-card-meta">
+            <span class="real-card-tag">Extra — Éducation</span>
+            <h3 class="real-card-title">Salles de Classe Modulaires</h3>
+          </div>
+          <div class="real-card-num">04</div>
+
+        </div>
+      </div>
+
+      <div class="real-card" data-proj="4">
+        <div class="real-card-inner">
+          <div class="real-img-placeholder" style="background:linear-gradient(135deg,#1a0606,#2e0e0e)">
+            <img src="images/slide5.webp" class="real-img" alt="Poste gardiennage aéroport" loading="lazy" onerror="this.style.display='none'">
+            <span style="font-size:5rem;opacity:.2;position:relative;z-index:0">🛡️</span>
+          </div>
+          <div class="real-grad"></div>
+          <div class="real-card-meta">
+            <span class="real-card-tag">Gamme Sécurité</span>
+            <h3 class="real-card-title">Poste de Contrôle</h3>
+            <div class="real-card-location">Aéroport Monastir</div>
+          </div>
+          <div class="real-card-num">05</div>
+        </div>
+      </div>
+
+      <div class="real-card" data-proj="5">
+        <div class="real-card-inner">
+          <div class="real-img-placeholder" style="background:linear-gradient(135deg,#1a1008,#2e1c10)">
+            <img src="images/projet_buvette.jpg" class="real-img" alt="Coffee Shop kiosque" loading="lazy" onerror="this.style.display='none'">
+            <span style="font-size:5rem;opacity:.2;position:relative;z-index:0">☕</span>
+          </div>
+          <div class="real-grad"></div>
+          <div class="real-card-meta">
+            <span class="real-card-tag">Gamme Extra</span>
+            <h3 class="real-card-title">Coffee Shop Kiosque</h3>
+            <div class="real-card-location">Avenue Bourguiba, Tunis</div>
+          </div>
+          <div class="real-card-num">06</div>
+        </div>
+      </div>
+
+    </div>
+    <button class="real-nav-btn real-prev" id="realPrev" aria-label="Précédent">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="real-nav-btn real-next" id="realNext" aria-label="Suivant">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <div class="real-footer">
+    <div class="real-dots" id="realDots">
+      <span class="real-dot active" data-di="0"></span>
+      <span class="real-dot" data-di="1"></span>
+      <span class="real-dot" data-di="2"></span>
+      <span class="real-dot" data-di="3"></span>
+      <span class="real-dot" data-di="4"></span>
+      <span class="real-dot" data-di="5"></span>
+    </div>
+    <div class="real-counter"><span id="realCur">01</span><span class="real-counter-sep">/</span><span>06</span></div>
+  </div>
+</section>
+
+<!-- ══════════════ PROJECT GRID ══════════════ -->
+<section class="projects-section">
+  <div class="projects-header">
+    <h2 class="reveal">Tous nos <em>projets</em></h2>
+    <p class="reveal">Explorez chaque réalisation en détail — dimensions, équipements, délais et témoignage client.</p>
+  </div>
+  <div class="projects-grid" id="projectsGrid">
+    <!-- Generated by JS -->
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+     <!-- Newsletter -->
+  <div class="footer-newsletter">
+    <div class="footer-newsletter-eyebrow">✦ Restez informé</div>
+    <p class="footer-newsletter-desc">Découvrez ce que Mettec peut donner comme des solutions pour ces clients — directement dans votre boîte mail.</p>
+    <form class="footer-nl-form" onsubmit="handleNewsletter(event)">
+      <input type="email" class="footer-nl-input" placeholder="votre@email.com" required>
+      <button type="submit" class="footer-nl-btn">S'abonner →</button>
+    </form>
+    <div class="footer-nl-success" id="nlSuccess">✅ Bienvenue ! Vous êtes maintenant abonné.</div>
+    <p class="footer-nl-note">Pas de spam. Désinscription en 1 clic.</p>
+  </div>
+  <div>
+    <a class="footer-logo" href="#"><img src="images/logo-mettec.png" alt="METTEC" class="footer-logo-img"><div><div class="footer-logo-name"></div><span class="footer-logo-sub"></span></div></a>
+    <style>
+        .footer-logo-img {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;   /* garde les proportions sans couper */
+}
+    </style>
+    <p class="footer-tagline">Votre idée, Notre acier.<br>Construit pour l'Éternité.</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/company/mettec-gbm" class="footer-social" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://www.facebook.com/mettec.tn/" class="footer-social" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12v-1a5 5 0 0 1 10 0v4"/><path d="M15 11v6a3 3 0 0 1-6 0v-4"/><path d="M9 16a3 3 0 0 0 6 0"/><path d="M12 5v5"/><circle cx="12" cy="5" r="1"/></svg>
+      </a>
+    </div>
+  </div>
+  <div><div class="footer-col-title">Gammes</div><ul class="footer-links"><li><a href="#gammes">Standard</a></li><li><a href="#gammes">Habitation Comfort</a></li><li><a href="#gammes">Habitation Smart</a></li><li><a href="#gammes">Habitation Autonome</a></li><li><a href="#gammes">Sécurité / Gardiennage</a></li><li><a href="#gammes">Gamme Extra</a></li></ul></div>
+  <div><div class="footer-col-title">Société</div><ul class="footer-links"><li><a href="processus.html">Notre processus</a></li><li><a href="#">Certifications</a></li><li><a href="#partners">Références</a></li><li><a href="#sav">SAV & Garantie</a></li><li><a href="#configurator">Configurateur</a></li></ul></div>
+  <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:+21636405822">+216 36 40 58 22</a></li><li><a href="tel:+21629225405">+216 29 22 54 05</a></li>
+<li>
+  <a href="mailto:mettec@gbm.tn">mettec@gbm.tn</a>
+</li>    <li><a href="#">Monastir, Tunisie</a></li><li><a href="#contact">Parlons de votre Idée</a></li></ul></div>
+ 
+  <div class="footer-bottom"><span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span><span class="footer-copy">Design by <strong>AMH</strong></span><div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
+</footer>
+<style>
+/* ── Footer Newsletter ── */
+.footer-newsletter {
+  padding: 2.5rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: .75rem;
+}
+.footer-newsletter-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.footer-newsletter-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #ffffff;
+  line-height: 1.2;
+}
+.footer-newsletter-title em {
+  color: var(--primary);
+  font-style: italic;
+}
+.footer-newsletter-desc {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  color: rgba(3, 3, 3, 0.45);
+  max-width: 420px;
+  line-height: 1.7;
+}
+.footer-nl-form {
+  display: flex;
+  gap: 0;
+  border-radius: 3rem;
+  overflow: hidden;
+  border: 1.5px solid rgba(245,218,26,0.3);
+  background: rgba(255,255,255,0.04);
+  transition: border-color 0.25s;
+  max-width: 460px;
+  width: 100%;
+}
+.footer-nl-form:focus-within {
+  border-color: var(--primary);
+  background: rgba(245,218,26,0.05);
+}
+.footer-nl-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: .85rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: #ffffff;
+}
+.footer-nl-input::placeholder { color: rgba(255,255,255,0.3); }
+.footer-nl-btn {
+  background: var(--primary);
+  border: none;
+  padding: .85rem 1.6rem;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: #0f0e0a;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+}
+.footer-nl-btn:hover { background: #ffe000; transform: scale(1.03); }
+.footer-nl-success {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  color: #4ade80;
+  background: rgba(74,222,128,0.1);
+  padding: .6rem 1.2rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(74,222,128,0.25);
+}
+.footer-nl-success.show { display: block; }
+.footer-nl-note {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  color: rgba(255,255,255,0.22);
+  letter-spacing: .05em;
+}
+@media (max-width: 600px) {
+  .footer-nl-form { flex-direction: column; border-radius: 1rem; }
+  .footer-nl-btn { border-radius: 0 0 .8rem .8rem; text-align: center; }
+}
+</style>
+<script>
+function handleNewsletter(e) {
+  e.preventDefault();
+  document.getElementById('nlSuccess').classList.add('show');
+  e.target.style.display = 'none';
+}
+</script>
+
+<!-- ══════════════ MODALS ══════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Fermer">✕</button>
+    <div class="modal-gallery" id="modalGallery">
+      <div class="modal-gallery-main" id="modalImg">
+        <span class="modal-gallery-emoji" id="modalEmoji">🏠</span>
+      </div>
+      <div class="modal-gallery-tag" id="modalTag"></div>
+      <div class="modal-gallery-num" id="modalNum"></div>
+    </div>
+    <div class="modal-details">
+      <div class="modal-eyebrow" id="modalEyebrow"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-loc" id="modalLoc"></div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-specs" id="modalSpecs"></div>
+      <div>
+        <div style="font-family:'Space Mono';font-size:var(--t2xs);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin-bottom:10px">Équipements inclus</div>
+        <div class="modal-features" id="modalFeatures"></div>
+      </div>
+      <div class="modal-quote" id="modalQuote">
+        <div class="modal-quote-text" id="modalQuoteText"></div>
+        <div class="modal-quote-author" id="modalQuoteAuthor"></div>
+      </div>
+      <div class="modal-cta">
+        <a href="index.html#cta" class="modal-btn-primary">Demander un projet similaire →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHATBOT BUTTON -->
+<button id="chatbot-btn" aria-label="Ouvrir le chatbot METTEC">
+  <img src="images/chatbot.png" alt="Assistant METTEC">
+</button>
+<div id="chatbot-window" role="dialog" aria-label="Assistant METTEC">
+  <div class="cb-header">
+    <img src="images/chatbot.png" alt="Bot" class="cb-header-avatar">
+    <div class="cb-header-info">
+      <div class="cb-header-name">Assistant METTEC</div>
+      <div class="cb-header-status"><span class="cb-status-dot"></span>En ligne · Répond instantanément</div>
+    </div>
+    <button class="cb-close" id="chatbot-close" aria-label="Fermer">✕</button>
+  </div>
+  <div class="cb-messages" id="cb-messages"></div>
+  <div class="cb-questions" id="cb-questions"><div class="cb-questions-label">✦ Choisissez votre question</div></div>
+</div>
+
+<script>
+/* ════════════ PROJECT DATA ════════════ */
+const PROJECTS = [
+  {
+    id: 0, num: '01', emoji: '🏠',
+    tag: 'Habitation Comfort',
+    title: 'Projet Villa Bekalta',
+    location: 'Bekalta, Monastir',
+    year: '2025',
+    image: 'images/mettec-villa-bekalta.jpg',
+    desc: "Villa résidentielle sur mesure avec étage complet, livrée clé en main en 6 semaines. Conçue pour une famille de 5 personnes avec salon principal, 3 chambres, 2 salles de bain et une cuisine entièrement équipée. Design intérieur coordonné par nos équipes.",
+    specs: [
+
+      {k:'Surface totale', v:'109 m²'},
+      {k:'Structure', v:'Acier S355 galvanisé'},
+      {k:'Isolation', v:'PU 100mm (R>5)'},
+      
+    ],
+    features: ['Cuisine équipée complète', '2 Salles de bain avec douche', 'Climatisation split x4', 'Électricité + domotique partielle', 'Escalier acier intégré', 'Bardage bois composite extérieur', 'Fenêtres oscillo-battantes PVC'],
+    quote: "Notre villa est exactement ce que nous avions imaginé. L'équipe METTEC a su transformer nos exigences les plus précises en réalité, avec une rapidité d'exécution impressionnante.",
+   
+  },
+  {
+    id: 1, num: '02', emoji: '📡',
+    tag: 'Projet Villa Ariana',
+    title: 'Habitation Comfort',
+    location: 'Ariana',
+    year: '2024',
+    image: 'images/slide8.webp',
+    desc: "Une habitation qui combine hébergement de luxe et technologie de pointe.",
+    specs: [
+
+      {k:'Surface', v:'57 m²'},
+      {k:'Délai livraison', v:'6 semaines'},
+    ],
+ 
+  },
+  {
+    id: 2, num: '03', emoji: '☀️',
+    tag: 'Off-Grid Autonome',
+    title: 'Habitation Solaire 100%',
+    location: 'Enfidha, Sousse',
+    year: '2023',
+    image: 'images/projet_innovation_city_enfidha.jpg',
+    desc: "Première habitation modulaire autonome déployée dans le désert tunisien. Zéro raccordement au réseau électrique ou d'eau. Panneaux solaires intégrés à la toiture, batteries LiFePO4 pour 3 jours d'autonomie, système de récupération d'eau pluviale.",
+    specs: [
+      {k:'Dimensions', v:'6m × 4m × 2.6m'},
+      {k:'Configuration', v:'S+0 avec terrasse'},
+      {k:'Énergie solaire', v:'2 kWc panneaux PV'},
+      {k:'Délai livraison', v:'5 semaines'},
+    ],
+    features: ['6 panneaux photovoltaïques 400Wc', 'Batteries LiFePO4 20 kWh', 'Régulateur MPPT + onduleur hybride', 'Monitoring production solaire', 'Citerne eau + filtre UV', 'Isolation renforcée (désert)', 'Ventilation naturelle passive'],
+    quote: "Nous avions besoin d'une habitation fonctionnelle au milieu du désert, sans aucune infrastructure. METTEC a livré une maison complète, confortable, totalement autonome.",
+    author: "Responsable Projet · Station Écotouristique, Tozeur"
+  },
+  {
+    id: 3, num: '04', emoji: '🏫',
+    tag: 'Extra — Éducation',
+    title: 'Salles de Classe Modulaires',
+    location: 'École Privée, Sfax',
+    year: '2024',
+    image: 'images/slide6.webp',
+    desc: "Déploiement de 4 salles de classe modulaires pour une école privée en expansion. Installées en 3 semaines pendant les vacances scolaires, prêtes à accueillir 120 élèves dès la rentrée. Acoustique traitée, isolation thermique premium.",
+    specs: [
+      {k:'Nombre de modules', v:'4 salles de classe'},
+      {k:'Surface par module', v:'30 m² (6m × 5m)'},
+      {k:'Surface totale', v:'120 m²'},
+      {k:'Capacité', v:'30 élèves / salle'},
+      {k:'Acoustique', v:'Traitement phonique'},
+      {k:'Délai installation', v:'3 semaines'},
+    ],
+    features: ['Isolation phonique renforcée', 'Éclairage LED anti-éblouissement', 'Climatisation réversible', 'Tableau blanc intégré', 'Électricité pédagogique', 'Ventilation double-flux', 'Accès PMR (rampes)'],
+    quote: "Nos élèves ont retrouvé des salles modernes, silencieuses et climatisées. L'installation s'est faite en 3 semaines sans perturber l'école. Un travail remarquable.",
+    author: "Direction Pédagogique · École Privée, Sfax"
+  },
+  {
+    id: 4, num: '05', emoji: '🛡️',
+    tag: 'Gamme Sécurité',
+    title: 'Poste de Contrôle Aéroportuaire',
+    location: 'Aéroport International, Monastir',
+    year: '2023',
+    image: 'images/slide5.webp',
+    desc: "Poste de contrôle d'accès pour l'aéroport international de Monastir — client emblématique. Structure certifiée, vitrage sécurisé anti-effraction, contrôle d'accès biométrique, caméras PTZ extérieures. Livré et certifié conforme en 4 semaines.",
+    specs: [
+      {k:'Vitrage', v:'Feuilleté sécurisé P4A'},
+      {k:'Accès', v:'Biométrique + badge RF'},
+      {k:'Caméras', v:'PTZ HD 360°'},
+      {k:'Délai livraison', v:'4 semaines'},
+    ],
+    features: ['Structure certifiée', 'Vitrage anti-effraction P4A', 'Volet roulant blindé motorisé', 'Contrôle accès biométrique', 'Caméras PTZ extérieures', 'Climatisation renforcée 24/7', 'Alimentaton secourue (onduleur)', 'Interphonie IP'],
+    quote: "Les certifications ont été déterminantes dans notre choix de METTEC. Le poste a été livré en temps record avec une qualité irréprochable — conforme à toutes nos exigences aéroportuaires.",
+    author: "Direction Technique · Aéroport International Monastir"
+  },
+  {
+    id: 5, num: '06', emoji: '☕',
+    tag: 'Gamme Extra',
+    title: 'Coffee Shop Kiosque Design',
+    location: 'Avenue Habib Bourguiba, Tunis',
+    year: '2024',
+    image: 'images/projet_buvette.jpg',
+    desc: "Kiosque Coffee Shop haut de gamme. Design architectural signé par notre bureau d'études, éclairage architectural LED, comptoir en acier et marbre. Attraction visuelle et commerciale.",
+    specs: [
+      {k:'Dimensions', v:'5m × 7m × 2.8m'},
+      {k:'Comptoir', v:'Acier + marbre Calacatta'},
+      {k:'Éclairage', v:'Architectural LED DMX'},
+      {k:'Délai livraison', v:'5 semaines'},
+    ],
+    features: [ 'Comptoir acier + marbre Calacatta', 'Éclairage architectural DMX', 'Vitrine réfrigérée intégrée', 'Électricité trifase cuisine', 'Store banne motorisé', 'Signalétique personnalisée', 'Terrasse structure acier'],
+    quote: "Notre Coffee Shop est devenu un point de repère sur l'avenue. Chaque détail est soigné — c'est à la fois un outil commercial et une œuvre architecturale. Merci METTEC !",
+    author: "Propriétaire · Coffee Shop Design, Tunis"
+  }
+];
+
+/* ════════════ RENDER PROJECT GRID ════════════ */
+(function renderGrid(){
+  const grid = document.getElementById('projectsGrid');
+  if(!grid) return;
+  PROJECTS.forEach(p => {
+    grid.innerHTML += `
+      <div class="proj-card reveal" onclick="openModal(${p.id})">
+        <div class="proj-card-img">
+          <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.style.display='none'">
+          <span class="proj-card-emoji">${p.emoji}</span>
+          <div class="proj-card-overlay"></div>
+          <div class="proj-card-type">${p.tag}</div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-title">${p.title}</div>
+          <div class="proj-card-loc">${p.location}</div>
+          <div class="proj-card-specs">
+            ${p.specs.slice(0,3).map(s=>`<span class="proj-chip">${s.v}</span>`).join('')}
+          </div>
+          <div class="proj-card-cta">
+            <span class="proj-card-year">${p.year}</span>
+          </div>
+        </div>
+      </div>`;
+  });
+})();
+
+/* ════════════ MODAL ════════════ */
+function openModal(id) {
+  const p = PROJECTS[id];
+  if(!p) return;
+  // Populate
+  document.getElementById('modalEmoji').textContent = p.emoji;
+  document.getElementById('modalTag').textContent = p.tag;
+  document.getElementById('modalNum').textContent = p.num;
+  document.getElementById('modalEyebrow').textContent = p.location + ' — ' + p.year;
+  document.getElementById('modalTitle').textContent = p.title;
+  document.getElementById('modalLoc').textContent = p.location;
+  document.getElementById('modalDesc').textContent = p.desc;
+  // Specs
+  document.getElementById('modalSpecs').innerHTML = p.specs.map(s=>`
+    <div class="modal-spec-item">
+      <span class="modal-spec-key">${s.k}</span>
+      <span class="modal-spec-val">${s.v}</span>
+    </div>`).join('');
+  // Features
+  document.getElementById('modalFeatures').innerHTML = p.features.map(f=>`<div class="modal-feature">${f}</div>`).join('');
+  // Quote
+  document.getElementById('modalQuoteText').textContent = '"' + p.quote + '"';
+  document.getElementById('modalQuoteAuthor').textContent = p.author;
+  // Try image
+  const imgEl = document.getElementById('modalImg');
+  imgEl.innerHTML = `<span class="modal-gallery-emoji">${p.emoji}</span>`;
+  if(p.image) {
+    const img = new Image();
+    img.onload = () => { imgEl.innerHTML = ''; imgEl.appendChild(img); img.style.cssText='width:100%;height:100%;object-fit:cover'; };
+    img.src = p.image;
+  }
+  // Open
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOnOverlay(e) {
+  if(e.target === document.getElementById('modalOverlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+/* ════════════ 3D SLIDER ════════════ */
+(function(){
+  const cards  = Array.from(document.querySelectorAll('.real-card'));
+  const dots   = Array.from(document.querySelectorAll('.real-dot'));
+  const prevBtn= document.getElementById('realPrev');
+  const nextBtn= document.getElementById('realNext');
+  const curEl  = document.getElementById('realCur');
+  const wrap   = document.getElementById('realCards');
+  if(!cards.length||!wrap) return;
+  const TOTAL=cards.length;
+  let active=0,autoTimer,isPaused=false;
+  const CONFIG={
+    '-2':{x:-95,z:-380,ry:28,sc:.58,op:.22,zi:1},
+    '-1':{x:-52,z:-200,ry:18,sc:.78,op:.65,zi:5},
+    '0' :{x:0,  z:0,   ry:0, sc:1.0,op:1.0,zi:10},
+    '1' :{x:52, z:-200,ry:-18,sc:.78,op:.65,zi:5},
+    '2' :{x:95, z:-380,ry:-28,sc:.58,op:.22,zi:1},
+  };
+  function getOffset(idx){ let o=idx-active; if(o>TOTAL/2)o-=TOTAL; if(o<-TOTAL/2)o+=TOTAL; return o; }
+  function apply(){
+    cards.forEach((card,idx)=>{
+      const off=getOffset(idx),cl=Math.max(-2,Math.min(2,off)),C=CONFIG[String(cl)],h=Math.abs(off)>2;
+      card.style.transform=`translateX(${C.x}%) translateZ(${C.z}px) rotateY(${C.ry}deg) scale(${C.sc})`;
+      card.style.opacity=h?0:C.op; card.style.zIndex=h?0:C.zi;
+      card.style.pointerEvents=h?'none':'auto';
+      card.classList.toggle('r-active',off===0);
+    });
+    dots.forEach((d,i)=>d.classList.toggle('active',i===active));
+    if(curEl) curEl.textContent=String(active+1).padStart(2,'0');
+  }
+  function goTo(n){ active=((n%TOTAL)+TOTAL)%TOTAL; apply(); }
+  function start(){ clearInterval(autoTimer); if(!isPaused) autoTimer=setInterval(()=>goTo(active+1),5500); }
+  function pause(){ isPaused=true; clearInterval(autoTimer); }
+  function resume(){ isPaused=false; start(); }
+  prevBtn.addEventListener('click',()=>{goTo(active-1);start()});
+  nextBtn.addEventListener('click',()=>{goTo(active+1);start()});
+  dots.forEach((d,i)=>d.addEventListener('click',()=>{goTo(i);start()}));
+  cards.forEach((c,i)=>{ c.addEventListener('click',()=>{ if(!c.classList.contains('r-active')){goTo(i);start()} }); });
+  cards.forEach(c=>{ c.addEventListener('mouseenter',pause); c.addEventListener('mouseleave',()=>setTimeout(()=>{if(!wrap.matches(':hover'))resume()},300)); });
+  let tx0=0;
+  wrap.addEventListener('touchstart',e=>{tx0=e.touches[0].clientX;pause()},{passive:true});
+  wrap.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx0;if(Math.abs(dx)>48)goTo(dx<0?active+1:active-1);setTimeout(resume,1000)},{passive:true});
+  apply(); start();
+})();
+
+/* ════════════ REVEAL ════════════ */
+const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+/* COUNT UP */
+const countObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&e.target.dataset.count){const t=parseInt(e.target.dataset.count);let v=0;const s=t/50;const ti=setInterval(()=>{v=Math.min(v+s,t);e.target.textContent=Math.round(v)+'+';if(v>=t)clearInterval(ti)},30);countObs.unobserve(e.target)}})},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
+
+/* SCROLL */
+const tpbF=document.getElementById('tpbF'),navEl=document.getElementById('nav'),bttEl=document.getElementById('btt');
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY,mx=document.body.scrollHeight-window.innerHeight;
+  if(tpbF) tpbF.style.width=(mx>0?s/mx*100:0)+'%';
+  if(navEl) navEl.classList.toggle('on',s>50);
+  if(bttEl) bttEl.classList.toggle('show',s>400);
+},{passive:true});
+
+/* BURGER */
+const burg=document.getElementById('burg'),mob=document.getElementById('mob');
+if(burg&&mob){ burg.addEventListener('click',()=>{burg.classList.toggle('open');mob.classList.toggle('open');document.body.style.overflow=mob.classList.contains('open')?'hidden':''}); mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burg.classList.remove('open');mob.classList.remove('open');document.body.style.overflow=''})); }
+
+/* GRAIN */
+const cv=document.getElementById('grain'),gx=cv?cv.getContext('2d'):null;
+if(cv&&gx){ function rsz(){cv.width=innerWidth;cv.height=innerHeight}rsz();window.addEventListener('resize',rsz,{passive:true});(function g(){const w=cv.width,h=cv.height,id=gx.createImageData(w,h),d=id.data;for(let i=0;i<d.length;i+=4){const v=(Math.random()-.5)*255*.08;d[i]=d[i+1]=d[i+2]=128+v;d[i+3]=Math.abs(v)*1.2}gx.putImageData(id,0,0);requestAnimationFrame(g)})(); }
+
+/* CURSOR */
+const dotEl=document.getElementById('cur'),ringEl=document.getElementById('curR');
+if(dotEl&&ringEl){ let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});(function cl(){dotEl.style.left=mx+'px';dotEl.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ringEl.style.left=rx+'px';ringEl.style.top=ry+'px';requestAnimationFrame(cl)})(); }
+
+/* LOADER */
+window.addEventListener('load',()=>setTimeout(()=>{ const l=document.getElementById('loader'); if(l){l.classList.add('hide');setTimeout(()=>l.remove(),700)} },1800));
+
+/* CHATBOT */
+(function(){
+  const btn=document.getElementById('chatbot-btn'),win=document.getElementById('chatbot-window'),closeB=document.getElementById('chatbot-close'),msgBox=document.getElementById('cb-messages'),qBox=document.getElementById('cb-questions');
+  let opened=false;
+  const questions=[
+    {icon:'🏗️',q:"Qu'est-ce que METTEC sait faire en préfabrication ?",a:"<strong>Préfabrication métallique</strong> — notre cœur de métier. Cabines modulaires, capsules Smart, kiosques… fabriqués à Monastir avec précision millimétrique. Délai : <strong>3 à 6 semaines</strong>."},
+    {icon:'💰',q:"Quel est le prix d'une cabine ?",a:"À partir de <strong>13 000 TND TTC</strong> pour une cabine 6×3m. Le prix varie selon les dimensions et équipements. Utilisez notre <strong>configurateur en ligne</strong> pour une estimation instantanée."},
+    {icon:'📐',q:"Peut-on tout personnaliser ?",a:"<strong>Absolument tout</strong> — dimensions, finitions, équipements, agencement. Chaque cabine est unique. Nous livrons un <strong>rendu 3D</strong> avant validation."},
+    {icon:'⏱️',q:"Quels sont vos délais de livraison ?",a:"<strong>Cabine standard :</strong> 3 sem · <strong>Habitation :</strong> 4-6 sem · <strong>Projet complexe :</strong> 6-10 sem. Planning détaillé remis dès signature."},
+    {icon:'🔄',q:"Puis-je voir d'autres réalisations ?",a:"Vous êtes déjà sur notre page Réalisations ! contactez-nous pour plus d'informations."}
+  ];
+  function renderWelcome(){
+    msgBox.innerHTML=''; qBox.innerHTML='<div class="cb-questions-label">✦ Choisissez votre question</div>';
+    const w=document.createElement('div'); w.className='cb-msg-bot';
+    w.innerHTML=`<img src="images/chatbot.png" alt="" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">👋 Bonjour ! Je suis l'assistant <strong>METTEC</strong>.<br><br>Vous consultez nos réalisations — des questions ?<br><strong>Je suis là.</strong> ✨</div>`;
+    msgBox.appendChild(w);
+    questions.forEach((item,i)=>{ const b=document.createElement('button'); b.className='cb-q-btn'; b.innerHTML=`<span class="cb-q-icon">${item.icon}</span><span>${item.q}</span>`; b.addEventListener('click',()=>handleQ(i,b)); qBox.appendChild(b); });
+    const r=document.createElement('button'); r.className='cb-reset'; r.textContent='↺ Recommencer'; r.addEventListener('click',()=>{renderWelcome();msgBox.scrollTop=0}); qBox.appendChild(r);
+  }
+  function handleQ(i,b){
+    b.classList.add('used');
+    const um=document.createElement('div'); um.className='cb-msg-user'; um.innerHTML=`<div class="cb-bubble-user">${questions[i].q}</div>`; msgBox.appendChild(um); msgBox.scrollTop=msgBox.scrollHeight;
+    const t=document.createElement('div'); t.className='cb-msg-bot'; t.innerHTML=`<img src="images/chatbot.png" alt="" class="cb-msg-bot-avatar"><div class="cb-typing-dots"><span></span><span></span><span></span></div>`; msgBox.appendChild(t); msgBox.scrollTop=msgBox.scrollHeight;
+    setTimeout(()=>{ t.remove(); const bm=document.createElement('div'); bm.className='cb-msg-bot'; bm.innerHTML=`<img src="images/chatbot.png" alt="" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">${questions[i].a}</div>`; msgBox.appendChild(bm); msgBox.scrollTop=msgBox.scrollHeight; },900);
+  }
+  if(btn) btn.addEventListener('click',()=>{ opened=!opened; win.classList.toggle('open',opened); btn.classList.toggle('active',opened); if(opened&&msgBox.children.length===0)renderWelcome(); });
+  if(closeB) closeB.addEventListener('click',()=>{ opened=false; win.classList.remove('open'); btn.classList.remove('active'); });
+  document.addEventListener('click',e=>{ if(opened&&!win.contains(e.target)&&e.target!==btn&&!btn.contains(e.target)){ opened=false; win.classList.remove('open'); btn.classList.remove('active'); } });
+})();
+</script>
+</body>
+</html>
