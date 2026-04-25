@@ -8,7 +8,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style1.css">
-
+ <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGallery",
+    "name": "Vidéos METTEC — Fabrication de Cabines Modulaires",
+    "description": "Galerie vidéo METTEC : timelapses de fabrication, installations sur chantier et visite d'atelier à Monastir.",
+    "url": "https://mettec.com.tn/videos.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://mettec.com.tn/"},
+        {"@type": "ListItem", "position": 2, "name": "Vidéos", "item": "https://mettec.com.tn/videos.html"}
+      ]
+    },
+    "publisher": {"@type": "Organization", "name": "METTEC", "url": "https://mettec.com.tn"}
+  }
+  </script>
 <style>
 /* ============================================
    VIDEOS PAGE — Styles spécifiques
@@ -921,9 +937,6 @@
 </head>
 <body>
 
-<!-- ============================================
-     PAGE LOADER
-     ============================================ -->
 <div id="pageLoader">
   <img src="images/mascotte-mettec.png" alt="METTEC" class="loader-mascot" onerror="this.style.opacity='0'">
   <div class="loader-dots">
@@ -931,11 +944,79 @@
     <div class="loader-dot"></div>
     <div class="loader-dot"></div>
   </div>
-  <div class="loader-tagline">Préparez le popcorn…</div>
+  <div class="loader-tagline">Construit pour l'Éternité</div>
   <div class="loader-progress">
     <div class="progress-bar"></div>
   </div>
 </div>
+<style>
+#pageLoader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  transition: opacity 0.6s ease, transform 0.5s ease;
+}
+#pageLoader.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.04);
+}
+.loader-mascot {
+  width: clamp(200px, 18vw, 260px);
+  height: auto;
+  animation: mascotBounce 1.4s ease infinite;
+  filter: drop-shadow(0 8px 24px rgba(15,14,10,.12));
+}
+@keyframes mascotBounce {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+.loader-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.loader-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: ldot 1.2s ease infinite;
+}
+.loader-dot:nth-child(2) { animation-delay: .2s; width: 10px; height: 10px; }
+.loader-dot:nth-child(3) { animation-delay: .4s; }
+@keyframes ldot {
+  0%,80%,100% { transform: scale(.6); background: var(--linen); }
+  40% { transform: scale(1.2); background: var(--gold); }
+}
+.loader-tagline {
+  font-family: 'Raleway', sans-serif;
+  font-size: var(--t2xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.loader-progress {
+  width: 200px;
+  height: 3px;
+  background: var(--gray-200);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  width: 0%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+</style>
 
 <!-- ============================================
      NAVIGATION (identique à vision.html)
@@ -1006,50 +1087,21 @@
     </p>
     <div class="videos-hero-stats">
       <div class="videos-hero-stat">
-        <div class="videos-hero-stat-num">6</div>
-        <div class="videos-hero-stat-label">Vidéos</div>
+        <div class="videos-hero-stat-num"></div>
+        <div class="videos-hero-stat-label"></div>
       </div>
       <div class="videos-hero-stat">
         <div class="videos-hero-stat-num">500+</div>
         <div class="videos-hero-stat-label">Projets réalisés</div>
       </div>
       <div class="videos-hero-stat">
-        <div class="videos-hero-stat-num">20+</div>
+        <div class="videos-hero-stat-num">15+</div>
         <div class="videos-hero-stat-label">Ans d'expertise</div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================
-       FILTER BAR
-       ============================================ -->
-  <div class="filter-bar-section" id="filterBarSection">
-    <div class="filter-bar">
-      <span class="filter-label">Filtrer</span>
-      <div class="filter-divider"></div>
-      <button class="filter-btn active" data-filter="all">
-        Tout voir <span class="filter-count">6</span>
-      </button>
-      <button class="filter-btn" data-filter="chantier">
-        🏗️ Réalisations <span class="filter-count">3</span>
-      </button>
-      <button class="filter-btn" data-filter="fabrication">
-        🔩 Cabines & Bureaux <span class="filter-count">2</span>
-      </button>
-      <button class="filter-btn" data-filter="installation">
-        🍹 Buvette <span class="filter-count">1</span>
-      </button>
 
-      <!-- Search -->
-      <div class="video-search-wrap" style="margin-left:auto;">
-        <svg class="video-search-icon" viewBox="0 0 24 24" stroke-width="2">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-        <input type="text" class="video-search-input" id="videoSearch"
-               placeholder="Rechercher une vidéo…">
-      </div>
-    </div>
-  </div>
 
   <!-- ============================================
        MAIN CONTENT
@@ -1069,9 +1121,9 @@
            data-category="chantier"
            data-title="Projet Ain Zaghouan — Chalet en forêt"
            data-desc="Un chalet d'exception niché dans la forêt d'Ain Zaghouan : revêtement bois intérieur et extérieur, cuisine entièrement équipée, chambres avec lits et accessoires, salon aménagé, terrasse panoramique. Un design profondément inspiré de la nature."
-           data-embed="https://drive.google.com/uc?export=download&id=1DALbEBpTIdFu514m5sQiAHyx5J6JdQTC">
+           data-embed="videos/projet ain zaghouan.mp4">
         <div class="video-thumb-wrap">
-          <video class="video-thumb-video" src="https://drive.google.com/uc?export=download&id=1DALbEBpTIdFu514m5sQiAHyx5J6JdQTC" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <video class="video-thumb-video" src="videos/projet ain zaghouan.mp4" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
           <div class="video-thumb-overlay">
             <div class="play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -1098,9 +1150,9 @@
            data-category="chantier"
            data-title="Projet Dar Bekalta — Habitation de luxe"
            data-desc="Une habitation modulaire luxueuse à Dar Bekalta : piscine privée, design moderne épuré, finitions premium et aménagements haut de gamme. L'alliance parfaite du modulaire et du luxe."
-           data-embed="https://drive.google.com/uc?export=download&id=1tsGBM3kIlrZm3M4zllcqddcs9nhErW0j">
+           data-embed="videos/projet dar bekalta.mp4">
         <div class="video-thumb-wrap">
-          <video class="video-thumb-video" src="https://drive.google.com/uc?export=download&id=1tsGBM3kIlrZm3M4zllcqddcs9nhErW0j" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <video class="video-thumb-video" src="videos/projet dar bekalta.mp4" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
           <div class="video-thumb-overlay">
             <div class="play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -1126,9 +1178,9 @@
            data-category="chantier"
            data-title="Projet Hergla — Espace de prière design artisanal tunisien"
            data-desc="Un espace de prière unique à Hergla, alliant architecture modulaire et artisanat tunisien authentique. Design décoratif traditionnel, zellij, motifs locaux et matériaux nobles pour un lieu de recueillement d'exception."
-           data-embed="https://drive.google.com/uc?export=download&id=1oEKdAH8cEYZ2b8CQHxum63jwQCtyXLjt">
+           data-embed="videos/projet hergla.mp4">
         <div class="video-thumb-wrap">
-          <video class="video-thumb-video" src="https://drive.google.com/uc?export=download&id=1oEKdAH8cEYZ2b8CQHxum63jwQCtyXLjt" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <video class="video-thumb-video" src="videos/projet hergla.mp4" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
           <div class="video-thumb-overlay">
             <div class="play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -1154,9 +1206,9 @@
            data-category="chantier"
            data-title="Projet Enfidha — Cabine revêtement bois"
            data-desc="Une cabine modulaire à Enfidha entièrement habillée en bois : revêtement extérieur et intérieur en bois naturel, style chaleureux et contemporain. Un rendu élégant qui démontre la polyvalence des finitions METTEC."
-           data-embed="https://drive.google.com/uc?export=download&id=1TCUm6f-HbS2Rw1amsOw5B3GIbxw1AsMz">
+           data-embed="videos/enfidha.mp4">
         <div class="video-thumb-wrap">
-          <video class="video-thumb-video" src="https://drive.google.com/uc?export=download&id=1TCUm6f-HbS2Rw1amsOw5B3GIbxw1AsMz" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <video class="video-thumb-video" src="videos/enfidha.mp4" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
           <div class="video-thumb-overlay">
             <div class="play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -1182,9 +1234,9 @@
            data-category="fabrication"
            data-title="Projet Paolo — Cabines de bureaux industriels"
            data-desc="Des cabines de bureaux intégrées dans une usine pour les employés : style professionnel et confortable, espaces de travail bien conçus, isolation phonique, climatisation et éclairage adaptés à un environnement industriel exigeant."
-           data-embed="https://drive.google.com/uc?export=download&id=1rVzEpAl68YABLo_aIsLilktegR_WzjcQ">
+           data-embed="videos/paolo.mp4">
         <div class="video-thumb-wrap">
-          <video class="video-thumb-video" src="https://drive.google.com/uc?export=download&id=1rVzEpAl68YABLo_aIsLilktegR_WzjcQ" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <video class="video-thumb-video" src="videos/paolo.mp4" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
           <div class="video-thumb-overlay">
             <div class="play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -1210,9 +1262,9 @@
            data-category="fabrication"
            data-title="Buvette modulaire METTEC"
            data-desc="Une buvette modulaire clé en main : comptoir intégré, zone service, habillage esthétique, raccordements eau et électricité inclus. Rapide à installer, facile à déplacer, idéale pour les espaces publics, clubs sportifs et événements."
-           data-embed="https://drive.google.com/uc?export=download&id=1t9P4wShQBneJogiThH4f3I8Ew1QagiIf">
+           data-embed="videos/buvette.mp4">
         <div class="video-thumb-wrap">
-          <video class="video-thumb-video" src="https://drive.google.com/uc?export=download&id=1t9P4wShQBneJogiThH4f3I8Ew1QagiIf" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <video class="video-thumb-video" src="videos/buvette.mp4" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
           <div class="video-thumb-overlay">
             <div class="play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -1277,7 +1329,7 @@
       <style>.footer-logo-img{height:100px;width:100px;object-fit:contain}</style>
       <div><div class="footer-logo-name"></div><span class="footer-logo-sub"></span></div>
     </a>
-    <p class="footer-tagline">Votre idée, Notre acier.<br>Bâti pour l'Éternité.</p>
+    <p class="footer-tagline">Votre idée, Notre acier.<br>Construit pour l'Éternité.</p>
     <div class="footer-socials">
       <a href="https://www.linkedin.com/company/mettec-gbm" class="footer-social" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
@@ -1318,9 +1370,9 @@
     <div class="footer-col-title">Contact</div>
     <ul class="footer-links">
       <li><a href="tel:+21636405822">+216 36 40 58 22</a></li>
-      <li><a href="tel:+21629225405">+216 29 22 54 05</a></li>
+      <li><a href="tel:+21629225405">+216 28 10 60 22</a></li>
       <li><a href="mailto:mettec@gbm.tn">mettec@gbm.tn</a></li>
-      <li>Monastir, Tunisie</li>
+      <li><a href="mailto:amani.megdiche@gbm.tn">amani.megdiche@gbm.tn</a></li>
       <li><a href="index.html#contact">Parlons de votre Idée</a></li>
     </ul>
   </div>

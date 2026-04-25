@@ -3,151 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vision — METTEC | Construire l'indestructible, pour demain et pour toujours</title>
-  <meta name="description" content="La vision METTEC : bâtir des espaces modulaires durables, évolutifs et accessibles. Innovation, impact sociétal et excellence intemporelle — notre cap pour les 20 prochaines années.">
+ 
+  <title>Notre Vision — METTEC | Construction Modulaire Durable & Innovation Tunisie</title>
+  <meta name="description" content="La vision de METTEC : démocratiser la construction modulaire écologique, durable et accessible en Tunisie et Afrique du Nord. Innovation, développement durable et excellence au cœur de notre stratégie.">
+  <meta name="keywords" content="vision METTEC, construction modulaire durable Tunisie, innovation cabines préfabriquées, habitat écologique Tunisie, construction verte Tunisie, développement durable construction">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="author" content="METTEC GBM">
+  <link rel="canonical" href="https://mettec.com.tn/vision.html">
+ 
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_TN">
+  <meta property="og:site_name" content="METTEC">
+  <meta property="og:title" content="Notre Vision — METTEC | Construction Modulaire Durable & Innovation">
+  <meta property="og:description" content="METTEC vise à démocratiser la construction modulaire écologique en Tunisie et Afrique du Nord. Innovation et durabilité au cœur de notre ADN.">
+  <meta property="og:image" content="https://mettec.com.tn/images/og-vision.jpg">
+  <meta property="og:url" content="https://mettec.com.tn/vision.html">
+ 
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vision METTEC — Construction Durable Tunisie">
+  <meta name="twitter:description" content="Innovation et construction modulaire écologique en Tunisie et Afrique du Nord.">
+  <meta name="twitter:image" content="https://mettec.com.tn/images/og-vision.jpg">
+ 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Notre Vision — METTEC",
+    "description": "La vision de METTEC : démocratiser la construction modulaire écologique, durable et accessible en Tunisie et Afrique du Nord.",
+    "url": "https://mettec.com.tn/vision.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://mettec.com.tn/"},
+        {"@type": "ListItem", "position": 2, "name": "Notre Vision", "item": "https://mettec.com.tn/vision.html"}
+      ]
+    },
+    "publisher": {"@type": "Organization", "name": "METTEC", "url": "https://mettec.com.tn"}
+  }
+  </script>
+ 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style1.css">
+
   <style>
-    /* ==================================================
-       BASE & VARIABLES (reprise exacte du style METTEC)
-    ================================================== */
+    /* Styles spécifiques à la page Vision (ne touche pas à la navbar) */
     :root {
       --primary: #f5da1a;
       --primary-dark: #c4ad00;
-      --primary-light: #fef48a;
       --accent: #0f0e0a;
       --cream: #faf6ec;
-      --white: #faf6ec;
-      --black: #0f0e0a;
-      --gray-100: #f4eedc;
       --gray-200: #e8e0c8;
-      --gray-300: #d9d0b5;
       --gray-600: #6b6550;
-      --gray-700: #2e2b22;
-      --gray-800: #2f2b20;
-      --font-main: 'Syne', 'Inter', sans-serif;
-      --font-mono: 'Space Mono', monospace;
-      --font-serif: 'DM Serif Display', Georgia, serif;
-      --transition: all .3s cubic-bezier(.4,0,.2,1);
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       background: var(--cream);
       color: var(--accent);
       font-family: var(--font-mono);
       overflow-x: hidden;
-      cursor: none;
     }
-
-    /* Loader */
-    #pageLoader {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      background: var(--cream);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      transition: opacity 0.6s ease, transform 0.5s ease;
-    }
-    #pageLoader.hide {
-      opacity: 0;
-      pointer-events: none;
-      transform: scale(1.04);
-    }
-    .loader-mascot {
-      width: clamp(200px, 18vw, 260px);
-      animation: mascotBounce 1.4s ease infinite;
-      filter: drop-shadow(0 8px 24px rgba(15,14,10,.12));
-    }
-    @keyframes mascotBounce {
-      0%,100% { transform: translateY(0) rotate(-2deg); }
-      50% { transform: translateY(-12px) rotate(2deg); }
-    }
-    .loader-dots {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    .loader-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--primary);
-      animation: ldot 1.2s ease infinite;
-    }
-    .loader-dot:nth-child(2) { animation-delay: .2s; width: 10px; height: 10px; }
-    .loader-dot:nth-child(3) { animation-delay: .4s; }
-    @keyframes ldot {
-      0%,80%,100% { transform: scale(.6); background: var(--gray-200); }
-      40% { transform: scale(1.2); background: var(--primary); }
-    }
-    .loader-tagline {
-      font-family: var(--font-mono);
-      font-size: .72rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--gray-600);
-    }
-    .loader-progress {
-      width: 200px;
-      height: 3px;
-      background: var(--gray-200);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-      width: 0%;
-      border-radius: 2px;
-      transition: width 0.3s ease;
-    }
-
-    /* Cursor personnalisé */
-    #custom-cursor, #custom-cursor-ring {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-    }
-    #custom-cursor {
-      width: 7px;
-      height: 7px;
-      background: var(--primary);
-      transition: transform .15s;
-    }
-    #custom-cursor-ring {
-      width: 26px;
-      height: 26px;
-      border: 1.5px solid rgba(245,218,26,.8);
-      z-index: 9998;
-      transition: width .2s, height .2s, background .2s;
-    }
-    body:has(a:hover, button:hover) #custom-cursor {
-      transform: translate(-50%, -50%) scale(0);
-    }
-    body:has(a:hover, button:hover) #custom-cursor-ring {
-      width: 44px;
-      height: 44px;
-      background: var(--primary);
-      opacity: .7;
-    }
-    @media (hover: none) {
-      #custom-cursor, #custom-cursor-ring { display: none; }
-      body { cursor: auto; }
-    }
-
-    /* Grain texture */
+    /* Grain texture (optionnel) */
     #grainCanvas {
       position: fixed;
       inset: 0;
@@ -156,7 +72,6 @@
       opacity: .12;
       mix-blend-mode: multiply;
     }
-
     /* Scroll progress */
     #scrollProgress {
       position: fixed;
@@ -174,12 +89,11 @@
       width: 0%;
       transition: width 0.2s cubic-bezier(.4,0,.2,1);
     }
-
     /* Back to top */
     #backToTop {
       position: fixed;
-      bottom: clamp(16px, 2.5vw, 28px);
-      right: clamp(16px, 2.5vw, 28px);
+      bottom: 28px;
+      right: 28px;
       z-index: 950;
       width: 50px;
       height: 50px;
@@ -194,7 +108,7 @@
       box-shadow: 0 4px 20px rgba(15,14,10,.3);
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity .35s, transform .35s, background .2s;
+      transition: opacity .35s, transform .35s;
       pointer-events: none;
     }
     #backToTop.show {
@@ -213,368 +127,7 @@
       stroke: currentColor;
       stroke-width: 2.5;
     }
-
-    /* Navbar (identique aux autres pages) */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 900;
-      height: clamp(54px, 7.5vw, 80px);
-      background: var(--cream);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(245,218,26,.12);
-      transition: box-shadow .3s;
-    }
-    .navbar.scrolled {
-      box-shadow: 0 4px 32px rgba(0,0,0,.05);
-    }
-    .nav-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 clamp(1rem, 4vw, 4rem);
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-    .nav-logo-img {
-      height: 80px;
-      width: 80px;
-      object-fit: contain;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: clamp(12px, 2vw, 26px);
-      list-style: none;
-    }
-    .nav-link {
-      font-family: var(--font-mono);
-      font-size: .7rem;
-      letter-spacing: .08em;
-      color: rgba(0,0,0,0.5);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color .2s;
-      position: relative;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      right: 0;
-      height: 1.5px;
-      background: var(--primary);
-      transform: scaleX(0);
-      transition: transform .25s;
-      transform-origin: left;
-    }
-    .nav-link:hover, .nav-link.active {
-      color: var(--primary-dark);
-    }
-    .nav-link.active::after, .nav-link:hover::after {
-      transform: scaleX(1);
-    }
-    .nav-cta {
-      background: var(--primary);
-      color: var(--accent) !important;
-      padding: 7px 18px;
-      border-radius: 2px;
-      font-weight: 800;
-      font-family: var(--font-main);
-    }
-    .nav-cta::after { display: none; }
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 5px;
-      z-index: 901;
-    }
-    .menu-toggle span {
-      width: 22px;
-      height: 1.5px;
-      background: var(--primary);
-      transition: .3s;
-    }
-    .nav-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15,14,10,.8);
-      z-index: 800;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .3s;
-    }
-    .nav-overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-    /* Cache le bouton de fermeture sur desktop */
-    .menu-close {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 80%;
-        max-width: 320px;
-        background: var(--accent);
-        flex-direction: column;
-        justify-content: center;
-        gap: 28px;
-        transform: translateX(100%);
-        transition: transform .4s cubic-bezier(.22,.68,0,1);
-        z-index: 850;
-        padding: 2rem;
-        list-style: none;
-      }
-      .nav-links.open {
-        transform: translateX(0);
-      }
-      .menu-close {
-        display: block;
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-        background: none;
-        border: none;
-        color: var(--cream);
-        font-size: 1.8rem;
-        cursor: pointer;
-        line-height: 1;
-        font-weight: 300;
-      }
-      .menu-toggle {
-        display: flex;
-      }
-      .nav-link {
-        color: var(--cream);
-        font-size: .9rem;
-      }
-      .nav-cta {
-        background: var(--primary);
-        color: var(--accent) !important;
-      }
-    }
-
-    /* Footer (version cream) */
-    footer {
-      background: var(--cream);
-      border-top: 1px solid var(--gray-200);
-      padding: 4rem clamp(1.5rem,5vw,5rem);
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 3rem;
-    }
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      margin-bottom: 1.5rem;
-    }
-    .footer-logo-img {
-      height: 100px;
-      width: 100px;
-      object-fit: contain;
-    }
-    .footer-tagline {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--gray-600);
-      line-height: 1.5;
-      max-width: 240px;
-      margin-bottom: 1.5rem;
-    }
-    .footer-socials {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .footer-social {
-      width: 36px;
-      height: 36px;
-      background: var(--gray-100);
-      border: 1.5px solid var(--gray-200);
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all .2s;
-      text-decoration: none;
-    }
-    .footer-social svg {
-      width: 16px;
-      height: 16px;
-      stroke: var(--gray-600);
-      stroke-width: 1.5;
-      fill: none;
-    }
-    .footer-social:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-    }
-    .footer-social:hover svg {
-      stroke: var(--accent);
-    }
-    .footer-col-title {
-      font-family: var(--font-main);
-      font-weight: 800;
-      font-size: .9rem;
-      color: var(--accent);
-      margin-bottom: 1.2rem;
-      letter-spacing: -.02em;
-    }
-    .footer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .footer-links a {
-      font-family: var(--font-mono);
-      font-size: .7rem;
-      color: var(--gray-600);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    .footer-links a:hover {
-      color: var(--primary-dark);
-    }
-    .footer-bottom {
-      grid-column: 1/-1;
-      border-top: 1px solid var(--gray-200);
-      padding-top: 1.2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .footer-copy {
-      font-family: var(--font-mono);
-      font-size: .6rem;
-      color: var(--gray-600);
-    }
-    .footer-legal {
-      display: flex;
-      gap: 1.5rem;
-    }
-    .footer-legal a {
-      font-family: var(--font-mono);
-      font-size: .6rem;
-      color: var(--gray-600);
-      text-decoration: none;
-    }
-    @media (max-width: 900px) {
-      footer { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 560px) {
-      footer { grid-template-columns: 1fr; }
-      .footer-socials { justify-content: center; }
-    }
-
-    /* Newsletter footer */
-    .footer-newsletter {
-      padding: 2rem 2rem;
-      border-top: 1px solid var(--gray-200);
-      grid-column: 1 / -1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: .75rem;
-    }
-    .footer-newsletter-eyebrow {
-      font-family: var(--font-mono);
-      font-size: .7rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--primary-dark);
-    }
-    .footer-newsletter-desc {
-      font-family: var(--font-main);
-      font-size: .9rem;
-      color: var(--gray-600);
-      max-width: 420px;
-      line-height: 1.7;
-    }
-    .footer-nl-form {
-      display: flex;
-      gap: 0;
-      border-radius: 3rem;
-      overflow: hidden;
-      border: 1.5px solid var(--gray-300);
-      background: #ffffff;
-      max-width: 460px;
-      width: 100%;
-    }
-    .footer-nl-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      padding: .85rem 1.4rem;
-      font-family: var(--font-mono);
-      font-size: .78rem;
-      color: var(--accent);
-      outline: none;
-    }
-    .footer-nl-input::placeholder {
-      color: var(--gray-600);
-    }
-    .footer-nl-btn {
-      background: var(--primary);
-      border: none;
-      padding: .85rem 1.6rem;
-      font-family: var(--font-mono);
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      color: var(--accent);
-      cursor: pointer;
-    }
-    .footer-nl-success {
-      display: none;
-      font-family: var(--font-mono);
-      font-size: .74rem;
-      color: #4ade80;
-      background: rgba(74,222,128,0.1);
-      padding: .6rem 1.2rem;
-      border-radius: 2rem;
-    }
-    .footer-nl-success.show { display: block; }
-
-    /* Reveal animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ==================================================
-       VISION PAGE SPECIFIC STYLES
-    ================================================== */
+    /* VISION HERO */
     .vision-hero {
       position: relative;
       min-height: 80vh;
@@ -646,8 +199,7 @@
       line-height: 1.9;
       color: rgba(255,255,255,.7);
     }
-
-    /* Mission statement */
+    /* Mission */
     .mission-block {
       background: var(--cream);
       padding: 5rem 1.5rem;
@@ -677,7 +229,6 @@
       max-width: 700px;
       margin: 0 auto;
     }
-
     /* Manifesto */
     .manifesto-section {
       background: var(--accent);
@@ -705,8 +256,7 @@
       text-transform: uppercase;
       opacity: .6;
     }
-
-    /* Engagements (timeline) */
+    /* Engagements */
     .commitments-section {
       padding: 5rem 1.5rem;
       background: var(--cream);
@@ -769,910 +319,155 @@
       color: var(--gray-600);
       line-height: 1.7;
     }
-
-    /* Responsive adjustments */
-    @media (max-width: 1200px) {
-      .vision-hero {
-        min-height: 70vh;
-      }
-    }
-    @media (max-width: 768px) {
-      .vision-hero {
-        min-height: 60vh;
-        padding: 6rem 1rem 3rem;
-      }
-      .mission-block, .manifesto-section, .commitments-section {
-        padding: 3rem 1rem;
-      }
-      .commitment-item {
-        padding: 1.2rem;
-      }
-      .vision-hero-desc {
-        font-size: .9rem;
-      }
-    }
-
-    /* Chatbot (identique aux autres pages) */
-    #chatbot-btn {
-      position: fixed;
-      bottom: 6rem;
-      right: 2rem;
-      z-index: 9999;
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      background: transparent;
-      padding: 0;
-      box-shadow: 0 8px 32px rgba(15,14,10,0.28);
-      transition: transform .35s cubic-bezier(.22,.68,0,1.4);
-      animation: chatbot-float 3s ease-in-out infinite;
-    }
-    #chatbot-btn img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 50%;
-    }
-    #chatbot-btn:hover {
-      transform: scale(1.12) translateY(-4px);
-      animation: none;
-    }
-    @keyframes chatbot-float {
-      0%,100% { transform: translateY(0) rotate(-2deg); }
-      50% { transform: translateY(-8px) rotate(2deg); }
-    }
-    #chatbot-btn::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 2.5px solid var(--primary);
-      animation: chatbot-ring 2.4s ease-out infinite;
-      pointer-events: none;
-    }
-    @keyframes chatbot-ring {
-      0% { opacity:1; transform:scale(1); }
-      80% { opacity:0; transform:scale(1.6); }
-      100% { opacity:0; }
-    }
-    #chatbot-window {
-      position: fixed;
-      bottom: 10rem;
-      right: 2rem;
-      z-index: 9998;
-      width: 360px;
-      max-height: 580px;
-      border-radius: 1.25rem;
-      background: #ffffff;
-      box-shadow: 0 20px 60px rgba(15,14,10,.15), 0 0 0 1px rgba(220,213,195,0.8);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transform: scale(0.88) translateY(24px);
+    /* Reveal animation */
+    .reveal {
       opacity: 0;
-      pointer-events: none;
-      transition: transform .38s cubic-bezier(.22,.68,0,1.25), opacity .3s ease;
-      transform-origin: bottom right;
+      transform: translateY(28px);
+      transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1);
     }
-    #chatbot-window.open {
-      transform: scale(1) translateY(0);
+    .reveal.visible {
       opacity: 1;
-      pointer-events: all;
+      transform: translateY(0);
     }
-    .cb-header {
-      background: linear-gradient(120deg, #f5da1a, #e8ca00);
-      padding: .85rem 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      flex-shrink: 0;
+    /* Responsive */
+    @media (max-width: 768px) {
+      .vision-hero { min-height: 60vh; padding: 6rem 1rem 3rem; }
+      .mission-block, .manifesto-section, .commitments-section { padding: 3rem 1rem; }
+      .commitment-item { padding: 1.2rem; }
     }
-    .cb-header-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: contain;
-      background: #fff8d0;
-      border: 2px solid rgba(255,255,255,.6);
-    }
-    .cb-header-info {
-      flex: 1;
-    }
-    .cb-header-name {
-      font-family: var(--font-main);
-      font-weight: 800;
-      color: #0f0e0a;
-      font-size: .88rem;
-    }
-    .cb-header-status {
-      display: flex;
-      align-items: center;
-      gap: .35rem;
-      font-family: var(--font-mono);
-      font-size: .58rem;
-      color: rgba(15,14,10,.55);
-    }
-    .cb-status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #16a34a;
-      animation: pulse-dot 2s ease infinite;
-    }
-    @keyframes pulse-dot {
-      0%,100% { opacity:1; }
-      50% { opacity:.5; }
-    }
-    .cb-close {
-      background: rgba(15,14,10,.1);
-      border: none;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: .9rem;
-      transition: background .2s;
-    }
-    .cb-close:hover {
-      background: rgba(15,14,10,.2);
-    }
-    .cb-messages {
-      flex: 1;
-      min-height: 0;
-      overflow-y: auto;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: .65rem;
-      background: #f8f6f0;
-    }
-    .cb-msg-bot {
-      display: flex;
-      align-items: flex-end;
-      gap: .45rem;
-      animation: cb-msg-in .35s ease;
-    }
-    @keyframes cb-msg-in {
-      from { opacity:0; transform:translateY(8px); }
-      to { opacity:1; transform:none; }
-    }
-    .cb-msg-bot-avatar {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      object-fit: contain;
-      background: #fff8d0;
-      border: 1.5px solid #e8ca00;
-    }
-    .cb-bubble-bot {
-      background: #ffffff;
-      color: #2e2b22;
-      border-radius: 1rem 1rem 1rem .25rem;
-      padding: .65rem .9rem;
-      font-family: var(--font-mono);
-      font-size: .76rem;
-      line-height: 1.65;
-      max-width: 84%;
-      box-shadow: 0 1px 4px rgba(15,14,10,.08);
-    }
-    .cb-bubble-bot strong {
-      color: #b49a00;
-    }
-    .cb-typing-dots {
-      background: #ffffff;
-      border-radius: 1rem 1rem 1rem .25rem;
-      padding: .6rem .9rem;
-      display: flex;
-      gap: 4px;
-      align-items: center;
-    }
-    .cb-typing-dots span {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #c4b060;
-      animation: typing-bounce 1.2s ease infinite;
-    }
-    .cb-typing-dots span:nth-child(2) { animation-delay: .2s; }
-    .cb-typing-dots span:nth-child(3) { animation-delay: .4s; }
-    @keyframes typing-bounce {
-      0%,60%,100% { transform:translateY(0); opacity:.4; }
-      30% { transform:translateY(-4px); opacity:1; }
-    }
-    .cb-questions {
-      padding: .55rem .8rem .65rem;
-      display: flex;
-      flex-direction: column;
-      gap: .3rem;
-      flex-shrink: 0;
-      max-height: 195px;
-      overflow-y: auto;
-      border-top: 1px solid #e8e0c8;
-      background: #fffdf5;
-    }
-    .cb-questions-label {
-      font-family: var(--font-mono);
-      font-size: .56rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: #a89e7a;
-      margin-bottom: .1rem;
-    }
-    .cb-q-btn {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      background: #ffffff;
-      color: #2e2b22;
-      border: 1px solid #e8e0c8;
-      border-radius: .6rem;
-      padding: .4rem .7rem;
-      font-family: var(--font-mono);
-      font-size: .67rem;
-      cursor: pointer;
-      text-align: left;
-      transition: background 0.18s, border-color 0.18s;
-    }
-    .cb-q-btn:hover {
-      background: #fffbe8;
-      border-color: #e8ca00;
-    }
-    .cb-q-btn .cb-q-icon {
-      font-size: .95rem;
-      flex-shrink: 0;
-    }
-    .cb-q-btn.used {
-      opacity: .35;
-      pointer-events: none;
-    }
-    .cb-msg-user {
-      display: flex;
-      justify-content: flex-end;
-      animation: cb-msg-in .3s ease;
-    }
-    .cb-bubble-user {
-      background: #f5da1a;
-      color: #0f0e0a;
-      border-radius: 1rem 1rem .25rem 1rem;
-      padding: .55rem .85rem;
-      font-family: var(--font-mono);
-      font-size: .74rem;
-      line-height: 1.45;
-      max-width: 80%;
-      font-weight: 600;
-    }
-    .cb-reset {
-      background: none;
-      border: none;
-      font-family: var(--font-mono);
-      font-size: .58rem;
-      color: #a89e7a;
-      cursor: pointer;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      text-align: center;
-      margin-top: .2rem;
-      padding: .2rem 0;
-      transition: color 0.2s;
-      text-decoration: underline;
-    }
-    .cb-reset:hover {
-      color: #0f0e0a;
-    }
-    @media (max-width: 440px) {
-      #chatbot-window { width: calc(100vw - 2rem); right: 1rem; bottom: 9rem; }
-      #chatbot-btn { right: 1rem; bottom: 5rem; width: 60px; height: 60px; }
+    @media (max-width: 480px) {
+      .vision-hero-desc { font-size: .85rem; }
+      .mission-quote { font-size: 1.4rem; }
+      .commitment-title { font-size: 1rem; }
     }
   </style>
-  <style>
-/* === CSS ISOLÉ POUR CONFIGURATEUR CABINE === */
-/* Tous les sélecteurs sont préfixés par .mettec-cabin- pour éviter les conflits */
-
-.mettec-cabin-section {
-  --mtc-ink:#050505;
-  --mtc-ink2:#0a0908;
-  --mtc-gold:#f5da1a;
-  --mtc-gold-dark:#c4ad00;
-  --mtc-gold-light:#fef48a;
-  --mtc-sand:#9a8b5e;
-  --mtc-linen:#e8e0c8;
-  --mtc-mist:#5c5644;
-  --mtc-cream:#faf6ec;
-  --mtc-iot:#00d4ff;
-  --mtc-solar:#00e676;
-  --mtc-energy:#ffd600;
-  
-  font-family:'Space Mono',monospace;
-  background:var(--mtc-ink);
-  color:var(--mtc-cream);
-  position:relative;
-  width:100%;
-  min-height:100vh;
-  overflow:hidden;
-  display:grid;
-  grid-template-columns:1.3fr 1fr;
-}
-
-.mettec-canvas-wrap {
-  position:relative;
-  width:100%;
-  height:100%;
-  min-height:600px;
-  background:radial-gradient(ellipse at 30% 40%, #0a1018 0%, #020408 50%, #000000 100%);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:2rem;
-}
-
-#mettec-cabin-canvas {
-  display:block;
-  width:100% !important;
-  height:clamp(400px, 60vh, 700px);
-  border-radius:24px;
-  cursor:grab;
-  touch-action:none;
-  box-shadow:0 0 0 1px rgba(245,218,26,.2), 0 0 80px rgba(245,218,26,.08), 0 30px 100px -30px rgba(0,0,0,.9);
-}
-
-#mettec-cabin-canvas:active { cursor:grabbing; }
-
-.mettec-badge {
-  position:absolute;
-  top:2rem;
-  left:2rem;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:11px;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  color:var(--mtc-gold);
-  background:rgba(5,8,12,.95);
-  border:1px solid rgba(245,218,26,.3);
-  border-radius:40px;
-  padding:12px 20px;
-  backdrop-filter:blur(12px);
-  pointer-events:none;
-  z-index:10;
-}
-
-.mettec-badge-dot {
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:#00e676;
-  animation:mettec-pulse 1.5s infinite;
-  box-shadow:0 0 15px #00e676;
-}
-
-@keyframes mettec-pulse {
-  0%,100% { transform:scale(1); opacity:1; }
-  50% { transform:scale(0.8); opacity:0.6; }
-}
-
-.mettec-equip-status {
-  position:absolute;
-  top:2rem;
-  right:2rem;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  z-index:10;
-}
-
-.mettec-equip-tag {
-  background:rgba(5,8,12,.95);
-  border:1px solid rgba(245,218,26,.2);
-  border-radius:30px;
-  padding:8px 16px;
-  font-size:11px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  backdrop-filter:blur(12px);
-  transform:translateX(120px);
-  opacity:0;
-  transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  color:var(--mtc-linen);
-}
-
-.mettec-equip-tag.active {
-  transform:translateX(0);
-  opacity:1;
-}
-
-.mettec-equip-tag.solar { border-color:var(--mtc-solar); color:var(--mtc-solar); }
-.mettec-equip-tag.smart { border-color:var(--mtc-iot); color:var(--mtc-iot); }
-.mettec-equip-tag.ac { border-color:var(--mtc-energy); color:var(--mtc-energy); }
-.mettec-equip-tag.kitchen { border-color:#ff8a65; color:#ff8a65; }
-.mettec-equip-tag.bathroom { border-color:#4fc3f7; color:#4fc3f7; }
-
-.mettec-controls {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-top:1.5rem;
-  flex-wrap:wrap;
-  padding:20px;
-  background:rgba(245,218,26,.04);
-  border-radius:20px;
-  border:1px solid rgba(245,218,26,.1);
-  justify-content:center;
-}
-
-.mettec-btn {
-  background:rgba(245,218,26,.06);
-  border:1px solid rgba(245,218,26,.2);
-  color:var(--mtc-gold);
-  font-size:11px;
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-  padding:12px 20px;
-  border-radius:30px;
-  cursor:pointer;
-  transition:all .25s ease;
-  font-family:'Space Mono',monospace;
-  font-weight:700;
-}
-
-.mettec-btn:hover {
-  background:rgba(245,218,26,.15);
-  border-color:rgba(245,218,26,.4);
-  transform:translateY(-2px);
-  box-shadow:0 6px 20px rgba(245,218,26,.15);
-}
-
-.mettec-btn.active {
-  background:var(--mtc-gold);
-  color:var(--mtc-ink);
-  border-color:var(--mtc-gold);
-  box-shadow:0 6px 25px rgba(245,218,26,.4);
-}
-
-.mettec-hint {
-  font-size:11px;
-  color:rgba(245,218,26,.5);
-  margin-top:1rem;
-  letter-spacing:0.05em;
-  text-align:center;
-}
-
-/* Panneau de configuration */
-.mettec-config-panel {
-  background:linear-gradient(145deg, #080a06 0%, #050704 100%);
-  border-left:1px solid rgba(245,218,26,.08);
-  padding:3rem 2rem;
-  overflow-y:auto;
-  max-height:100vh;
-}
-
-.mettec-eyebrow {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:11px;
-  letter-spacing:0.3em;
-  color:var(--mtc-sand);
-  margin-bottom:1.5rem;
-  text-transform:uppercase;
-}
-
-.mettec-eyebrow::before {
-  content:"";
-  width:40px;
-  height:1px;
-  background:linear-gradient(90deg, var(--mtc-gold), transparent);
-}
-
-.mettec-title {
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-  font-size:clamp(2rem, 4vw, 3.5rem);
-  line-height:0.95;
-  letter-spacing:-0.04em;
-  color:var(--mtc-cream);
-  margin-bottom:1rem;
-}
-
-.mettec-title em {
-  font-family:'DM Serif Display', serif;
-  font-style:italic;
-  color:var(--mtc-gold);
-  display:block;
-  font-weight:400;
-  margin-top:0.2em;
-}
-
-.mettec-subtitle {
-  font-size:14px;
-  color:var(--mtc-mist);
-  margin-bottom:3rem;
-  line-height:1.7;
-  max-width:400px;
-}
-
-/* Étapes */
-.mettec-steps {
-  display:flex;
-  flex-direction:column;
-  gap:1rem;
-}
-
-.mettec-step {
-  background:linear-gradient(145deg, rgba(20,22,18,.9) 0%, rgba(12,14,10,.7) 100%);
-  border:1px solid rgba(245,218,26,.1);
-  border-radius:24px;
-  backdrop-filter:blur(10px);
-  overflow:hidden;
-  transition:all 0.3s ease;
-}
-
-.mettec-step:hover { border-color:rgba(245,218,26,.2); }
-.mettec-step.active-step {
-  border-color:rgba(245,218,26,.6);
-  background:linear-gradient(145deg, rgba(30,32,26,.95) 0%, rgba(18,20,14,.8) 100%);
-  box-shadow:0 15px 50px rgba(245,218,26,.12);
-}
-
-.mettec-step-header {
-  display:flex;
-  align-items:center;
-  gap:16px;
-  padding:20px 24px;
-  cursor:pointer;
-  transition:background 0.2s;
-}
-
-.mettec-step-header:hover { background:rgba(245,218,26,.03); }
-
-.mettec-step-num {
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  border:2px solid rgba(245,218,26,.4);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-  font-size:14px;
-  transition:all 0.3s;
-  background:rgba(245,218,26,.05);
-  flex-shrink:0;
-}
-
-.mettec-step.active-step .mettec-step-num {
-  background:var(--mtc-gold);
-  border-color:var(--mtc-gold);
-  color:var(--mtc-ink);
-  box-shadow:0 0 20px rgba(245,218,26,.5);
-}
-
-.mettec-step-title {
-  font-family:'Syne', sans-serif;
-  font-weight:700;
-  font-size:15px;
-  flex:1;
-}
-
-.mettec-step-value {
-  background:rgba(245,218,26,.12);
-  border-radius:20px;
-  padding:6px 14px;
-  font-size:11px;
-  color:var(--mtc-gold);
-  font-weight:700;
-  border:1px solid rgba(245,218,26,.2);
-}
-
-.mettec-step-body {
-  max-height:0;
-  overflow:hidden;
-  transition:max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
-  padding:0 24px;
-}
-
-.mettec-step.active-step .mettec-step-body {
-  max-height:500px;
-  padding:0 24px 24px;
-}
-
-/* Sliders */
-.mettec-slider-group {
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-
-.mettec-slider-item label {
-  display:flex;
-  justify-content:space-between;
-  font-size:13px;
-  color:var(--mtc-linen);
-  margin-bottom:10px;
-  font-weight:700;
-}
-
-.mettec-slider-item label span {
-  color:var(--mtc-gold);
-  font-family:'Syne', sans-serif;
-  font-weight:800;
-}
-
-.mettec-slider {
-  -webkit-appearance:none;
-  width:100%;
-  height:6px;
-  background:rgba(245,218,26,.1);
-  border-radius:6px;
-  outline:none;
-}
-
-.mettec-slider::-webkit-slider-thumb {
-  -webkit-appearance:none;
-  width:24px;
-  height:24px;
-  background:var(--mtc-gold);
-  border-radius:50%;
-  cursor:pointer;
-  border:3px solid var(--mtc-ink);
-  box-shadow:0 0 15px rgba(245,218,26,.6);
-}
-
-/* Options */
-.mettec-options {
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.mettec-option {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:16px 20px;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(245,218,26,.12);
-  border-radius:16px;
-  cursor:pointer;
-  transition:all 0.3s;
-}
-
-.mettec-option:hover {
-  background:rgba(245,218,26,.06);
-  border-color:rgba(245,218,26,.25);
-  transform:translateX(5px);
-}
-
-.mettec-option.selected {
-  border-color:var(--mtc-gold-dark);
-  background:linear-gradient(135deg, rgba(196,173,0,.2) 0%, rgba(196,173,0,.05) 100%);
-}
-
-.mettec-option input { display:none; }
-
-.mettec-option-main {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:700;
-  font-size:14px;
-}
-
-.mettec-option-price {
-  font-size:11px;
-  color:var(--mtc-sand);
-  background:rgba(245,218,26,.1);
-  padding:4px 12px;
-  border-radius:20px;
-}
-
-/* Checkboxes équipements */
-.mettec-checks {
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.mettec-check {
-  display:flex;
-  align-items:center;
-  gap:14px;
-  padding:14px 18px;
-  border-radius:14px;
-  cursor:pointer;
-  transition:all 0.3s;
-  border:1px solid transparent;
-  background:rgba(255,255,255,.01);
-}
-
-.mettec-check:hover {
-  background:rgba(245,218,26,.04);
-  transform:translateX(5px);
-}
-
-.mettec-check.checked {
-  background:linear-gradient(135deg, rgba(245,218,26,.15) 0%, rgba(245,218,26,.03) 100%);
-  border-color:rgba(245,218,26,.3);
-}
-
-.mettec-check input { display:none; }
-
-.mettec-check-box {
-  width:22px;
-  height:22px;
-  border:2px solid rgba(245,218,26,.4);
-  border-radius:6px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:all 0.3s;
-  flex-shrink:0;
-}
-
-.mettec-check.checked .mettec-check-box {
-  background:var(--mtc-gold);
-  border-color:var(--mtc-gold);
-  box-shadow:0 0 15px rgba(245,218,26,.4);
-}
-
-.mettec-check-box::after {
-  content:"✓";
-  color:var(--mtc-ink);
-  font-weight:800;
-  font-size:12px;
-  opacity:0;
-  transform:scale(0);
-  transition:all 0.3s;
-}
-
-.mettec-check.checked .mettec-check-box::after {
-  opacity:1;
-  transform:scale(1);
-}
-
-.mettec-check-content { flex:1; }
-.mettec-check-title {
-  font-size:14px;
-  font-weight:700;
-  display:block;
-  margin-bottom:4px;
-}
-.mettec-check-desc {
-  font-size:11px;
-  color:var(--mtc-mist);
-}
-
-/* Finitions */
-.mettec-finishes {
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:12px;
-}
-
-.mettec-finish {
-  border:1px solid rgba(245,218,26,.15);
-  border-radius:20px;
-  padding:16px 12px;
-  cursor:pointer;
-  text-align:center;
-  background:rgba(0,0,0,.4);
-  transition:all 0.4s;
-}
-
-.mettec-finish:hover {
-  transform:translateY(-4px);
-  border-color:rgba(245,218,26,.3);
-}
-
-.mettec-finish.selected {
-  border-color:var(--mtc-gold-dark);
-  background:linear-gradient(180deg, rgba(196,173,0,.2) 0%, rgba(196,173,0,.05) 100%);
-  box-shadow:0 8px 30px rgba(196,173,0,.15);
-  transform:translateY(-4px);
-}
-
-.mettec-finish-swatch {
-  height:50px;
-  border-radius:12px;
-  margin-bottom:10px;
-  box-shadow:inset 0 2px 4px rgba(0,0,0,.5), 0 4px 8px rgba(0,0,0,.3);
-  position:relative;
-  overflow:hidden;
-}
-
-.mettec-finish-swatch::after {
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:50%;
-  background:linear-gradient(180deg, rgba(255,255,255,.2) 0%, transparent 100%);
-}
-
-.mettec-finish-name {
-  font-size:11px;
-  font-weight:700;
-  color:var(--mtc-linen);
-}
-
-/* Responsive */
-@media (max-width:1200px) {
-  .mettec-cabin-section {
-    grid-template-columns:1fr;
-  }
-  .mettec-config-panel {
-    border-left:none;
-    border-top:1px solid rgba(245,218,26,.1);
-    max-height:none;
-  }
-  .mettec-equip-status { display:none; }
-}
-
-@media (max-width:640px) {
-  .mettec-finishes { grid-template-columns:repeat(2, 1fr); }
-  .mettec-canvas-wrap { padding:1rem; min-height:400px; }
-  #mettec-cabin-canvas { height:350px; }
-}
-</style>
 </head>
 <body>
 
-<!-- LOADER -->
+
+<!-- ============================================
+     PAGE LOADER
+     ============================================ -->
 <div id="pageLoader">
   <img src="images/mascotte-mettec.png" alt="METTEC" class="loader-mascot" onerror="this.style.opacity='0'">
-  <div class="loader-dots"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div>
-  <div class="loader-tagline">Bâti pour l'Éternité</div>
-  <div class="loader-progress"><div class="progress-bar"></div></div>
+  <div class="loader-dots">
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+  </div>
+  <div class="loader-tagline">Construit pour l'Éternité</div>
+  <div class="loader-progress">
+    <div class="progress-bar"></div>
+  </div>
 </div>
+<style>
+#pageLoader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  transition: opacity 0.6s ease, transform 0.5s ease;
+}
+#pageLoader.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.04);
+}
+.loader-mascot {
+  width: clamp(200px, 18vw, 260px);
+  height: auto;
+  animation: mascotBounce 1.4s ease infinite;
+  filter: drop-shadow(0 8px 24px rgba(15,14,10,.12));
+}
+@keyframes mascotBounce {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+.loader-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.loader-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: ldot 1.2s ease infinite;
+}
+.loader-dot:nth-child(2) { animation-delay: .2s; width: 10px; height: 10px; }
+.loader-dot:nth-child(3) { animation-delay: .4s; }
+@keyframes ldot {
+  0%,80%,100% { transform: scale(.6); background: var(--linen); }
+  40% { transform: scale(1.2); background: var(--gold); }
+}
+.loader-tagline {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--t2xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.loader-progress {
+  width: 200px;
+  height: 3px;
+  background: var(--gray-200);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  width: 0%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+</style>
 
-<!-- CUSTOM CURSOR -->
-<div id="custom-cursor"></div>
-<div id="custom-cursor-ring"></div>
 <canvas id="grainCanvas"></canvas>
-
-<!-- SCROLL PROGRESS -->
 <div id="scrollProgress"><div id="scrollProgressBar"></div></div>
-
-<!-- BACK TO TOP -->
 <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></button>
 
-<!-- NAVIGATION -->
+<!-- NAVIGATION (identique style1.css) -->
 <div id="navOverlay" class="nav-overlay"></div>
-<nav class="navbar" id="navbar">
+<nav class="navbar">
   <div class="nav-container">
     <a href="index.html" class="nav-logo">
-      <img src="images/logo-mettec.png" alt="METTEC" class="nav-logo-img">
+      <img src="images/logo-mettec.png" alt="METTEC" class="nav-logo-img" style="height:80px;width:80px;object-fit:contain;">
       <div><div class="nav-logo-text"></div><span class="nav-logo-sub"></span></div>
     </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+    
     <ul class="nav-links" id="navLinks">
       <button class="menu-close" id="menuClose" aria-label="Fermer">✕</button>
-      
       <li><a href="index.html" class="nav-link">Accueil</a></li>
-      <li><a href="apropos.html" class="nav-link">À propos</a></li>
-      <li><a href="gammes.html" class="nav-link">Gammes</a></li>
+      <li><a href="apropos.html" class="nav-link">A propos</a></li>
+      <li class="nav-dropdown">
+        <span class="nav-link nav-dropdown-toggle">Gammes <span class="chevron">▾</span></span>
+        <div class="nav-dropdown-menu">
+          <a href="gammes.html" class="nav-dropdown-item"><div class="item-icon">🏗️</div><div><div style="font-weight:700;font-size:.85rem">Gamme Standard</div><div style="font-size:.72rem">Industriel · Gardiennage</div></div></a>
+          <a href="gammes.html" class="nav-dropdown-item"><div class="item-icon">🏠</div><div><div style="font-weight:700;font-size:.85rem">Gamme Habitation</div><div style="font-size:.72rem">Comfort · Smart · Autonome</div></div></a>
+          <a href="gammes.html" class="nav-dropdown-item"><div class="item-icon">🛡️</div><div><div style="font-weight:700;font-size:.85rem">Gamme Sécurité</div><div style="font-size:.72rem">Postes de garde · Contrôle</div></div></a>
+          <a href="gammes.html" class="nav-dropdown-item"><div class="item-icon">✨</div><div><div style="font-weight:700;font-size:.85rem">Gamme Extra</div><div style="font-size:.72rem">Bar · Coffee shop · Sanitaire</div></div></a>
+        </div>
+      </li>
       <li><a href="processus.html" class="nav-link">Processus</a></li>
       <li><a href="realisations.html" class="nav-link">Réalisations</a></li>
       <li><a href="activite.html" class="nav-link">Activités</a></li>
       <li><a href="faq.html" class="nav-link">FAQ</a></li>
       <li><a href="vision.html" class="nav-link active">Vision</a></li>
       <li><a href="videos.html" class="nav-link">Videos</a></li>
-      <li><a href="index.html#contact" class="nav-link nav-cta">Parlons de votre Idée →</a></li>
+      <li><a href="index.html#contact" class="nav-link nav-cta">Parlons de Votre Idée →</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO VISION -->
+<!-- VISION HERO -->
 <section class="vision-hero">
   <div class="vision-hero-content">
     <div class="vision-hero-badge">✦ Notre cap pour les 20 prochaines années</div>
@@ -1681,7 +476,7 @@
   </div>
 </section>
 
-<!-- MISSION STATEMENT -->
+<!-- MISSION -->
 <div class="mission-block">
   <div class="mission-inner reveal">
     <div class="mission-quote">« Notre mission : <em>rendre le modulaire durable, accessible et intemporel.</em> »</div>
@@ -1699,7 +494,7 @@
   </div>
 </section>
 
-<!-- ENGAGEMENTS FUTURS (feuille de route) -->
+<!-- ENGAGEMENTS -->
 <section class="commitments-section">
   <div class="section-header reveal">
     <div class="section-badge">Feuille de route</div>
@@ -1707,38 +502,31 @@
   </div>
   <div class="commitments-grid">
     <div class="commitment-item reveal"><div class="commitment-year">2026</div><div class="commitment-title">100% off-grid ready</div><div class="commitment-desc">Toutes nos habitations pourront être configurées en version autonome (solaire + batterie + récupération d’eau) avec une garantie de performance sur 10 ans.</div></div>
-    <div class="commitment-item reveal"><div class="commitment-year">2027</div><div class="commitment-title">METTEC Europe & Afrique</div><div class="commitment-desc">Déploiement de hubs logistiques en France, en Italie et en Côte d’Ivoire pour livrer des solutions modulaires en moins de 10 jours sur tout le pourtour méditerranéen et ouest-africain.</div></div>
-    <div class="commitment-item reveal"><div class="commitment-year">2028</div><div class="commitment-title">Atelier à zéro déchet</div><div class="commitment-desc">Valorisation de 100% des chutes d’acier, recyclage des panneaux sandwich en fin de vie, réduction de 40% de l’empreinte carbone de notre production.</div></div>
+    <div class="commitment-item reveal"><div class="commitment-year">2027</div><div class="commitment-title">METTEC Europe & Afrique</div><div class="commitment-desc">Déploiement de hubs logistiques en France, Italie et Côte d’Ivoire pour livrer des solutions modulaires en moins de 10 jours.</div></div>
+    <div class="commitment-item reveal"><div class="commitment-year">2028</div><div class="commitment-title">Atelier à zéro déchet</div><div class="commitment-desc">Valorisation de 100% des chutes d’acier, recyclage des panneaux sandwich, réduction de 40% de l’empreinte carbone.</div></div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER (identique aux autres pages) -->
 <footer>
   <div class="footer-newsletter">
     <div class="footer-newsletter-eyebrow">✦ Restez informé</div>
-    <p class="footer-newsletter-desc">Recevez nos actualités, innovations et études de cas — directement dans votre boîte mail.</p>
+    <p class="footer-newsletter-desc">Découvrez ce que Mettec peut donner comme des solutions pour ces clients — directement dans votre boîte mail.</p>
     <form class="footer-nl-form" onsubmit="handleNewsletter(event)">
       <input type="email" class="footer-nl-input" placeholder="votre@email.com" required>
       <button type="submit" class="footer-nl-btn">S'abonner →</button>
     </form>
     <div class="footer-nl-success" id="nlSuccess">✅ Bienvenue ! Vous êtes maintenant abonné.</div>
+    <p class="footer-nl-note">Pas de spam. Désinscription en 1 clic.</p>
   </div>
   <div>
     <a class="footer-logo" href="#"><img src="images/logo-mettec.png" alt="METTEC" class="footer-logo-img"><div><div class="footer-logo-name"></div><span class="footer-logo-sub"></span></div></a>
-    <p class="footer-tagline">Votre idée, Notre acier.<br>Bâti pour l'Éternité.</p>
+    <p class="footer-tagline">Votre idée, Notre acier.<br>Construits pour l'Éternité.</p>
     <div class="footer-socials">
-      <a href="https://www.linkedin.com/company/mettec-gbm" class="footer-social" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-      <a href="https://www.facebook.com/mettec.tn/" class="footer-social" aria-label="Facebook">
-        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      </a>
-      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="TikTok">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12v-1a5 5 0 0 1 10 0v4"/><path d="M15 11v6a3 3 0 0 1-6 0v-4"/><path d="M9 16a3 3 0 0 0 6 0"/><path d="M12 5v5"/><circle cx="12" cy="5" r="1"/></svg>
-      </a>
+      <a href="https://www.linkedin.com/company/mettec-gbm" class="footer-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://www.facebook.com/mettec.tn/" class="footer-social" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12v-1a5 5 0 0 1 10 0v4"/><path d="M15 11v6a3 3 0 0 1-6 0v-4"/><path d="M9 16a3 3 0 0 0 6 0"/><path d="M12 5v5"/><circle cx="12" cy="5" r="1"/></svg></a>
     </div>
   </div>
   <div><div class="footer-col-title">Gammes</div><ul class="footer-links"><li><a href="gammes.html">Standard</a></li><li><a href="gammes.html">Habitation Comfort</a></li><li><a href="gammes.html">Habitation Smart</a></li><li><a href="gammes.html">Habitation Autonome</a></li><li><a href="gammes.html">Sécurité / Gardiennage</a></li><li><a href="gammes.html">Gamme Extra</a></li></ul></div>
@@ -1747,182 +535,430 @@
   <div class="footer-bottom"><span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span><span class="footer-copy">Designed by <strong>AMH</strong></span><div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
 </footer>
 
-<!-- CHATBOT -->
-<button id="chatbot-btn" aria-label="Chatbot METTEC"><img src="images/chatbot.png" alt="Assistant"></button>
-<div id="chatbot-window">
+<!-- CHATBOT (identique) -->
+<style>
+#chatbot-btn {
+  position: fixed;
+  bottom: 6rem;
+  right: 2rem;
+  z-index: 9999;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  box-shadow: 0 8px 32px rgba(15,14,10,0.28);
+  transition: transform 0.35s cubic-bezier(.22,.68,0,1.4), box-shadow 0.3s;
+  animation: chatbot-float 3s ease-in-out infinite;
+}
+#chatbot-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 50%;
+}
+#chatbot-btn:hover {
+  transform: scale(1.12) translateY(-4px);
+  box-shadow: 0 16px 48px rgba(245,218,26,0.45);
+  animation: none;
+}
+#chatbot-btn.active {
+  animation: none;
+  transform: scale(0.92) rotate(-8deg);
+}
+@keyframes chatbot-float {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-8px) rotate(2deg); }
+}
+#chatbot-btn::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2.5px solid var(--primary);
+  animation: chatbot-ring 2.4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes chatbot-ring {
+  0%   { opacity:1; transform:scale(1); }
+  80%  { opacity:0; transform:scale(1.6); }
+  100% { opacity:0; }
+}
+#chatbot-window {
+  position: fixed;
+  bottom: 10rem;
+  right: 2rem;
+  z-index: 9998;
+  width: 360px;
+  max-height: 580px;
+  border-radius: 1.25rem;
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(15,14,10,.15), 0 0 0 1px rgba(220,213,195,0.8);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.88) translateY(24px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.38s cubic-bezier(.22,.68,0,1.25), opacity 0.3s ease;
+  transform-origin: bottom right;
+}
+#chatbot-window.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+.cb-header {
+  background: linear-gradient(120deg, #f5da1a 0%, #e8ca00 100%);
+  padding: .85rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-shrink: 0;
+}
+.cb-header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.6);
+  object-fit: contain;
+  background: #fff8d0;
+  flex-shrink: 0;
+}
+.cb-header-info { flex: 1; }
+.cb-header-name {
+  font-family: var(--font-main);
+  font-size: .88rem;
+  font-weight: 800;
+  color: #0f0e0a;
+}
+.cb-header-status {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  color: rgba(15,14,10,.55);
+  text-transform: uppercase;
+}
+.cb-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #16a34a;
+  animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot {
+  0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)}
+}
+.cb-close {
+  background: rgba(15,14,10,.1);
+  border: none;
+  color: rgba(15,14,10,.55);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  transition: background 0.2s;
+}
+.cb-close:hover {
+  background: rgba(15,14,10,.2);
+  color: #0f0e0a;
+}
+.cb-messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  background: #f8f6f0;
+}
+.cb-messages::-webkit-scrollbar { width: 3px; }
+.cb-messages::-webkit-scrollbar-track { background: transparent; }
+.cb-messages::-webkit-scrollbar-thumb { background: #ddd8c8; border-radius: 2px; }
+.cb-msg-bot {
+  display: flex;
+  align-items: flex-end;
+  gap: .45rem;
+  animation: cb-msg-in 0.35s ease;
+}
+@keyframes cb-msg-in {
+  from { opacity:0; transform:translateY(8px); }
+  to   { opacity:1; transform:none; }
+}
+.cb-msg-bot-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #fff8d0;
+  border: 1.5px solid #e8ca00;
+  flex-shrink: 0;
+}
+.cb-bubble-bot {
+  background: #ffffff;
+  color: #2e2b22;
+  border-radius: 1rem 1rem 1rem .25rem;
+  padding: .65rem .9rem;
+  font-family: var(--font-mono);
+  font-size: .76rem;
+  line-height: 1.65;
+  max-width: 84%;
+  box-shadow: 0 1px 4px rgba(15,14,10,.08);
+}
+.cb-bubble-bot strong { color: #b49a00; }
+.cb-typing-dots {
+  background: #ffffff;
+  border-radius: 1rem 1rem 1rem .25rem;
+  padding: .6rem .9rem;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.cb-typing-dots span {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #c4b060;
+  animation: typing-bounce 1.2s ease infinite;
+}
+.cb-typing-dots span:nth-child(2) { animation-delay: .2s; }
+.cb-typing-dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes typing-bounce {
+  0%,60%,100% { transform:translateY(0); opacity:.4; }
+  30%          { transform:translateY(-4px); opacity:1; }
+}
+.cb-questions {
+  padding: .55rem .8rem .65rem;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  flex-shrink: 0;
+  max-height: 195px;
+  overflow-y: auto;
+  border-top: 1px solid #e8e0c8;
+  background: #fffdf5;
+}
+.cb-questions::-webkit-scrollbar { width: 3px; }
+.cb-questions::-webkit-scrollbar-track { background: transparent; }
+.cb-questions::-webkit-scrollbar-thumb { background: #e8ca00; border-radius: 2px; }
+.cb-questions-label {
+  font-family: var(--font-mono);
+  font-size: .56rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #a89e7a;
+  margin-bottom: .1rem;
+  flex-shrink: 0;
+}
+.cb-q-btn {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: #ffffff;
+  color: #2e2b22;
+  border: 1px solid #e8e0c8;
+  border-radius: .6rem;
+  padding: .4rem .7rem;
+  font-family: var(--font-mono);
+  font-size: .67rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.18s, border-color 0.18s;
+  line-height: 1.35;
+  flex-shrink: 0;
+}
+.cb-q-btn:hover {
+  background: #fffbe8;
+  border-color: #e8ca00;
+}
+.cb-q-btn .cb-q-icon { font-size: .95rem; flex-shrink: 0; }
+.cb-q-btn.used { opacity: .35; pointer-events: none; }
+.cb-msg-user {
+  display: flex;
+  justify-content: flex-end;
+  animation: cb-msg-in 0.3s ease;
+}
+.cb-bubble-user {
+  background: #f5da1a;
+  color: #0f0e0a;
+  border-radius: 1rem 1rem .25rem 1rem;
+  padding: .55rem .85rem;
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  line-height: 1.45;
+  max-width: 80%;
+  font-weight: 600;
+}
+.cb-reset {
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  color: #a89e7a;
+  cursor: pointer;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: .2rem;
+  padding: .2rem 0;
+  transition: color 0.2s;
+  text-decoration: underline;
+  flex-shrink: 0;
+}
+.cb-reset:hover { color: #0f0e0a; }
+@media (max-width: 440px) {
+  #chatbot-window { width: calc(100vw - 2rem); right: 1rem; bottom: 9rem; }
+  #chatbot-btn    { right: 1rem; bottom: 5rem; width: 60px; height: 60px; }
+}
+</style>
+
+<button id="chatbot-btn" aria-label="Ouvrir le chatbot METTEC">
+  <img src="images/chatbot.png" alt="GBM Chatbot">
+</button>
+<div id="chatbot-window" role="dialog" aria-label="Assistant METTEC">
   <div class="cb-header">
     <img src="images/chatbot.png" alt="Bot" class="cb-header-avatar">
     <div class="cb-header-info">
       <div class="cb-header-name">Assistant METTEC</div>
       <div class="cb-header-status"><span class="cb-status-dot"></span>En ligne · Répond instantanément</div>
     </div>
-    <button class="cb-close" id="chatbotClose">✕</button>
+    <button class="cb-close" id="chatbot-close" aria-label="Fermer">✕</button>
   </div>
-  <div class="cb-messages" id="cbMessages"></div>
-  <div class="cb-questions" id="cbQuestions"><div class="cb-questions-label">✦ Choisissez votre question</div></div>
+  <div class="cb-messages" id="cb-messages"></div>
+  <div class="cb-questions" id="cb-questions"><div class="cb-questions-label">✦ Choisissez votre question</div></div>
 </div>
 
 <script>
-  // Loader
-  (function() {
-    const loader = document.getElementById('pageLoader');
-    const bar = document.querySelector('.progress-bar');
-    let w = 0;
-    const iv = setInterval(() => {
-      w = Math.min(w + Math.random() * 18 + 5, 95);
-      if(bar) bar.style.width = w + '%';
-    }, 120);
-    window.addEventListener('load', () => {
-      clearInterval(iv);
-      if(bar) bar.style.width = '100%';
-      setTimeout(() => { loader.classList.add('hide'); }, 400);
-    });
-  })();
-
-  // Nav mobile
-  const toggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
-  const closeNav = document.getElementById('menuClose');
-  const overlay = document.getElementById('navOverlay');
-  if(toggle && navLinks) {
-    toggle.addEventListener('click', () => {
-      navLinks.classList.add('open');
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-    closeNav.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-    overlay.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  }
-
-  // Scroll progress + navbar shadow
-  const progressBar = document.getElementById('scrollProgressBar');
-  const navbar = document.getElementById('navbar');
-  const btt = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    if(progressBar) progressBar.style.width = (max ? (scrolled / max) * 100 : 0) + '%';
-    if(navbar) navbar.classList.toggle('scrolled', scrolled > 50);
-    if(btt) btt.classList.toggle('show', scrolled > 400);
+// Loader
+(function() {
+  const loader = document.getElementById('pageLoader');
+  const bar = document.querySelector('.progress-bar');
+  let w = 0;
+  const iv = setInterval(() => {
+    w = Math.min(w + Math.random() * 18 + 5, 95);
+    if(bar) bar.style.width = w + '%';
+  }, 120);
+  window.addEventListener('load', () => {
+    clearInterval(iv);
+    if(bar) bar.style.width = '100%';
+    setTimeout(() => { loader.classList.add('hide'); }, 400);
   });
+})();
 
-  // Grain texture
-  const grainCanvas = document.getElementById('grainCanvas');
-  if(grainCanvas) {
-    const ctx = grainCanvas.getContext('2d');
-    function resizeGrain() { grainCanvas.width = window.innerWidth; grainCanvas.height = window.innerHeight; }
-    resizeGrain();
-    window.addEventListener('resize', resizeGrain);
-    function drawGrain() {
-      const w = grainCanvas.width, h = grainCanvas.height;
-      const imgData = ctx.createImageData(w, h);
-      for(let i = 0; i < imgData.data.length; i += 4) {
-        const v = (Math.random() - 0.5) * 255 * 0.08;
-        imgData.data[i] = imgData.data[i+1] = imgData.data[i+2] = 128 + v;
-        imgData.data[i+3] = Math.abs(v) * 1.2;
-      }
-      ctx.putImageData(imgData, 0, 0);
-      requestAnimationFrame(drawGrain);
+// Scroll progress + back to top + navbar shadow
+const progressBar = document.getElementById('scrollProgressBar');
+const navbar = document.querySelector('.navbar');
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  if(progressBar) progressBar.style.width = (max ? (scrolled / max) * 100 : 0) + '%';
+  if(navbar) navbar.classList.toggle('scrolled', scrolled > 50);
+  if(btt) btt.classList.toggle('show', scrolled > 400);
+});
+
+// Grain texture
+const grainCanvas = document.getElementById('grainCanvas');
+if(grainCanvas) {
+  const ctx = grainCanvas.getContext('2d');
+  function resizeGrain() { grainCanvas.width = window.innerWidth; grainCanvas.height = window.innerHeight; }
+  resizeGrain();
+  window.addEventListener('resize', resizeGrain);
+  function drawGrain() {
+    const w = grainCanvas.width, h = grainCanvas.height;
+    const imgData = ctx.createImageData(w, h);
+    for(let i = 0; i < imgData.data.length; i += 4) {
+      const v = (Math.random() - 0.5) * 255 * 0.08;
+      imgData.data[i] = imgData.data[i+1] = imgData.data[i+2] = 128 + v;
+      imgData.data[i+3] = Math.abs(v) * 1.2;
     }
-    drawGrain();
+    ctx.putImageData(imgData, 0, 0);
+    requestAnimationFrame(drawGrain);
   }
+  drawGrain();
+}
 
-  // Custom cursor
-  const cursorDot = document.getElementById('custom-cursor');
-  const cursorRing = document.getElementById('custom-cursor-ring');
-  if(cursorDot && cursorRing) {
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    function animateCursor() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      cursorDot.style.left = mx + 'px';
-      cursorDot.style.top = my + 'px';
-      cursorRing.style.left = rx + 'px';
-      cursorRing.style.top = ry + 'px';
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-  }
+// Reveal on scroll
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+revealElements.forEach(el => revealObserver.observe(el));
 
-  // Reveal on scroll
-  const revealElements = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
-  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-  revealElements.forEach(el => revealObserver.observe(el));
+// Newsletter
+window.handleNewsletter = function(e) {
+  e.preventDefault();
+  const successDiv = document.getElementById('nlSuccess');
+  successDiv.classList.add('show');
+  e.target.style.display = 'none';
+};
 
-  // Newsletter
-  window.handleNewsletter = function(e) {
-    e.preventDefault();
-    const successDiv = document.getElementById('nlSuccess');
-    successDiv.classList.add('show');
-    e.target.style.display = 'none';
-  };
-
-  // Chatbot
-  (function() {
-    const btn = document.getElementById('chatbot-btn');
-    const win = document.getElementById('chatbot-window');
-    const closeBtn = document.getElementById('chatbotClose');
-    const msgBox = document.getElementById('cbMessages');
-    const qBox = document.getElementById('cbQuestions');
-    let opened = false;
-    const questions = [
-      { icon: '🏗️', q: "Qu'est-ce que la vision de METTEC ?", a: "Notre vision : bâtir des espaces modulaires durables, évolutifs et accessibles. Nous investissons dans l’innovation durable, l’impact sociétal et l’excellence intemporelle pour des structures qui traversent les générations." },
-      { icon: '🌍', q: "Comment METTEC s'engage pour l'environnement ?", a: "Acier 100% recyclable, panneaux sandwich à haute isolation, option off-grid solaire, objectif atelier zéro déchet en 2028. Nous concevons pour durer, pas pour jeter." },
-      { icon: '🔩', q: "Quels sont vos engagements qualité ?", a: "Certifications ISO 9001, 14001, 45001, soudure ISO 9606, galvanisation 87µm, garantie 3 ans sur structure. Nous refusons tout compromis sur la robustesse." },
-      { icon: '🏡', q: "Puis-je vraiment personnaliser ma cabine ?", a: "Absolument. Dimensions, agencement, équipements, finitions — chaque projet est unique. Nous livrons un rendu 3D avant fabrication." }
-    ];
-    function renderWelcome() {
-      msgBox.innerHTML = '';
-      qBox.innerHTML = '<div class="cb-questions-label">✦ Choisissez votre question</div>';
-      const welcome = document.createElement('div');
-      welcome.className = 'cb-msg-bot';
-      welcome.innerHTML = `<img src="images/chatbot.png" alt="Bot" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">👋 Bonjour ! Je suis l'assistant METTEC. Vous découvrez notre vision — une question ?</div>`;
-      msgBox.appendChild(welcome);
-      questions.forEach((item, i) => {
-        const btnQ = document.createElement('button');
-        btnQ.className = 'cb-q-btn';
-        btnQ.innerHTML = `<span class="cb-q-icon">${item.icon}</span><span>${item.q}</span>`;
-        btnQ.onclick = () => {
-          const userMsg = document.createElement('div'); userMsg.className = 'cb-msg-user'; userMsg.innerHTML = `<div class="cb-bubble-user">${item.q}</div>`;
-          msgBox.appendChild(userMsg);
-          const typing = document.createElement('div'); typing.className = 'cb-msg-bot'; typing.innerHTML = `<div class="cb-typing-dots"><span></span><span></span><span></span></div>`;
-          msgBox.appendChild(typing);
+// Chatbot (identique aux autres pages)
+(function() {
+  const btn    = document.getElementById('chatbot-btn');
+  const win    = document.getElementById('chatbot-window');
+  const closeB = document.getElementById('chatbot-close');
+  const msgBox = document.getElementById('cb-messages');
+  const qBox   = document.getElementById('cb-questions');
+  let opened   = false;
+  const questions = [
+    { icon: '🏗️', q: "Qu'est-ce que la vision de METTEC ?", a: "Notre vision : bâtir des espaces modulaires durables, évolutifs et accessibles. Nous investissons dans l’innovation durable, l’impact sociétal et l’excellence intemporelle." },
+    { icon: '🌍', q: "Comment METTEC s'engage pour l'environnement ?", a: "Acier 100% recyclable, panneaux sandwich à haute isolation, option off-grid solaire, objectif atelier zéro déchet en 2028." },
+    { icon: '🔩', q: "Quels sont vos engagements qualité ?", a: "Certifications ISO 9001, 14001, 45001, soudure ISO 9606, galvanisation 87µm, garantie 3 ans sur structure." },
+    { icon: '🏡', q: "Puis-je vraiment personnaliser ma cabine ?", a: "Absolument. Dimensions, agencement, équipements, finitions — chaque projet est unique. Nous livrons un rendu 3D avant fabrication." }
+  ];
+  function renderWelcome() {
+    msgBox.innerHTML = '';
+    qBox.innerHTML = '<div class="cb-questions-label">✦ Choisissez votre question</div>';
+    const w = document.createElement('div');
+    w.className = 'cb-msg-bot';
+    w.innerHTML = `<img src="images/chatbot.png" alt="Bot" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">👋 Bonjour ! Je suis l'assistant METTEC. Vous découvrez notre vision — une question ?</div>`;
+    msgBox.appendChild(w);
+    questions.forEach((item, i) => {
+      const b = document.createElement('button');
+      b.className = 'cb-q-btn';
+      b.innerHTML = `<span class="cb-q-icon">${item.icon}</span><span>${item.q}</span>`;
+      b.onclick = () => {
+        const userMsg = document.createElement('div'); userMsg.className = 'cb-msg-user'; userMsg.innerHTML = `<div class="cb-bubble-user">${item.q}</div>`;
+        msgBox.appendChild(userMsg);
+        const typing = document.createElement('div'); typing.className = 'cb-msg-bot'; typing.innerHTML = `<div class="cb-typing-dots"><span></span><span></span><span></span></div>`;
+        msgBox.appendChild(typing);
+        msgBox.scrollTop = msgBox.scrollHeight;
+        setTimeout(() => {
+          typing.remove();
+          const botMsg = document.createElement('div'); botMsg.className = 'cb-msg-bot'; botMsg.innerHTML = `<img src="images/chatbot.png" alt="" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">${item.a}</div>`;
+          msgBox.appendChild(botMsg);
           msgBox.scrollTop = msgBox.scrollHeight;
-          setTimeout(() => {
-            typing.remove();
-            const botMsg = document.createElement('div'); botMsg.className = 'cb-msg-bot'; botMsg.innerHTML = `<img src="images/chatbot.png" alt="" class="cb-msg-bot-avatar"><div class="cb-bubble-bot">${item.a}</div>`;
-            msgBox.appendChild(botMsg);
-            msgBox.scrollTop = msgBox.scrollHeight;
-          }, 800);
-        };
-        qBox.appendChild(btnQ);
-      });
-      const reset = document.createElement('button'); reset.className = 'cb-reset'; reset.textContent = '↺ Recommencer'; reset.onclick = () => { renderWelcome(); };
-      qBox.appendChild(reset);
+        }, 800);
+      };
+      qBox.appendChild(b);
+    });
+    const reset = document.createElement('button'); reset.className = 'cb-reset'; reset.textContent = '↺ Recommencer'; reset.onclick = () => { renderWelcome(); };
+    qBox.appendChild(reset);
+  }
+  btn.addEventListener('click', () => {
+    opened = !opened;
+    win.classList.toggle('open', opened);
+    if(opened && msgBox.children.length === 0) renderWelcome();
+  });
+  closeB.addEventListener('click', () => { opened = false; win.classList.remove('open'); });
+  document.addEventListener('click', (e) => {
+    if(opened && !win.contains(e.target) && !btn.contains(e.target)) {
+      opened = false; win.classList.remove('open');
     }
-    btn.addEventListener('click', () => {
-      opened = !opened;
-      win.classList.toggle('open', opened);
-      if(opened && msgBox.children.length === 0) renderWelcome();
-    });
-    closeBtn.addEventListener('click', () => { opened = false; win.classList.remove('open'); });
-    document.addEventListener('click', (e) => {
-      if(opened && !win.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
-        opened = false; win.classList.remove('open');
-      }
-    });
-  })();
+  });
+})();
 </script>
+
+<script src="script1.js"></script>
 </body>
 </html>

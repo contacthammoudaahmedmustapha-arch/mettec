@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Bloquer les fichiers inutiles pour le SEO
+Disallow: /style1.css
+Disallow: /images/
+
+# Sitemap
+Sitemap: http://mettec.groupe-bayoudh.com/sitemap.xml

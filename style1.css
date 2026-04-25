@@ -2227,3 +2227,513 @@ footer {
     border-color: var(--danger) !important;
     background: rgba(239, 68, 68, 0.04) !important;
 }
+
+/* ============================================================
+   METTEC — MOBILE RESPONSIVE FIX
+   À ajouter à la FIN de style1.css
+   Couvre tous les problèmes observés sur mobile (< 480px)
+   ============================================================ */
+
+/* ─── HERO ─────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .hero {
+    padding: 5rem 1.25rem 3.5rem;
+    min-height: 100svh; /* safe viewport height sur iOS */
+    align-items: flex-start;
+    padding-top: 5.5rem;
+  }
+
+  .hero-content {
+    text-align: left;
+    padding: 0;
+  }
+
+  .hero-badge {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.9rem, 8vw, 2.4rem);
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .hero-description {
+    font-size: 0.82rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  /* Certs — empilés verticalement sur très petit écran */
+  .hero-certs {
+    justify-content: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cert-chip {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.7rem;
+  }
+
+  /* Boutons — pleine largeur sur mobile */
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.9rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* Masquer le scroll indicator sur mobile */
+  .hero-scroll {
+    display: none;
+  }
+}
+
+/* ─── NAVBAR ────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .nav-container {
+    padding: 0 1rem;
+  }
+
+  nav {
+    height: 58px;
+  }
+
+  .nav-logo img {
+    height: 36px;
+  }
+
+  .nav-links {
+    width: 100%;
+    right: -100%;
+    border-radius: 0;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+}
+
+/* ─── MARQUEE ───────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .marquee-band {
+    height: 36px;
+  }
+
+  .marquee-inner span {
+    font-size: 9px;
+    padding: 0 12px;
+    gap: 8px;
+  }
+}
+
+/* ─── STATS BAND ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .stats-band {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat-item {
+    padding: 1.25rem 1rem;
+    border-bottom: 1px solid rgba(245, 218, 26, 0.12);
+  }
+
+  .stat-item:nth-child(2n) {
+    border-right: none;
+  }
+
+  .stat-number {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+  }
+
+  .stat-sub {
+    font-size: 0.62rem;
+  }
+}
+
+/* ─── SECTIONS COMMUNES ─────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  section {
+    padding: 3rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+  }
+
+  .section-subtitle {
+    font-size: 0.875rem;
+    text-align: left;
+  }
+
+  .section-badge {
+    font-size: 0.65rem;
+    padding: 0.4rem 1rem;
+  }
+}
+
+/* ─── GAMMES ────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .gamme-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .gamme-card-top {
+    padding: 1.25rem 1.25rem 1rem;
+  }
+
+  .gamme-card-body {
+    padding: 0 1.25rem 1.25rem;
+  }
+}
+
+/* ─── CONFIGURATEUR 3D ──────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .cfg-wrapper {
+    grid-template-columns: 1fr;
+    border-radius: var(--radius-lg);
+  }
+
+  .cfg-form {
+    padding: 1.5rem 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .cfg-result {
+    padding: 1.5rem 1.25rem;
+    position: static;
+  }
+
+  /* Boutons vue 3D — scroll horizontal */
+  .cfg-views {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+  }
+
+  .cfg-views::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cfg-view-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    padding: 0.45rem 0.9rem;
+  }
+}
+
+/* ─── POURQUOI METTEC ───────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .why-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .why-card-title {
+    font-size: 1rem;
+  }
+
+  .why-card-text {
+    font-size: 0.78rem;
+  }
+}
+
+/* ─── PROCESSUS ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .process-card {
+    padding: 1.25rem;
+  }
+
+  .process-num {
+    font-size: 2rem;
+  }
+}
+
+/* ─── TÉMOIGNAGES ───────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .testi-card {
+    flex: 0 0 100%;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .testi-card-top {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .testi-stars {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .testi-quote {
+    font-size: 0.82rem;
+  }
+}
+
+/* ─── SAV / GARANTIE ────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .sav-section {
+    grid-template-columns: 1fr;
+  }
+
+  .sav-l {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem 1.25rem;
+  }
+
+  .sav-r {
+    padding: 2rem 1.25rem;
+  }
+
+  .sav-title {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  .sav-badge {
+    width: 100%;
+  }
+
+  .sav-card {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+}
+
+/* ─── CTA / FORMULAIRE ──────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .cta-section {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-l {
+    padding: 2.5rem 1.25rem;
+    border-right: none;
+    border-bottom: 3px solid var(--primary);
+  }
+
+  .cta-r {
+    padding: 0;
+  }
+
+  .cta-r-top {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .cta-title {
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+  }
+
+  .cta-r-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  /* Formulaire — colonnes en une seule colonne */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .form {
+    gap: 0.75rem;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    font-size: 16px; /* évite le zoom auto iOS */
+    padding: 0.7rem 0.875rem;
+  }
+
+  .form-field label {
+    font-size: 0.65rem;
+  }
+
+  .form .btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  /* Contact infos */
+  .contact-item {
+    gap: 0.75rem;
+  }
+
+  .contact-item-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+
+  .contact-item-title {
+    font-size: 0.85rem;
+  }
+}
+
+/* ─── FOOTER ────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  footer {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 1.25rem;
+    gap: 1.75rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .footer-legal {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+/* ─── PARTENAIRES ───────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .partners-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .partner-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .partner-logo-placeholder {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+  }
+
+  .partner-name {
+    font-size: 0.875rem;
+  }
+
+  .partner-desc {
+    font-size: 0.75rem;
+  }
+}
+
+/* ─── RÉALISATIONS ──────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .realisations-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* ─── CHATBOT ───────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .cb-window {
+    width: calc(100vw - 2rem) !important;
+    right: 1rem !important;
+    bottom: 5rem !important;
+    max-height: 70svh;
+  }
+
+  .cb-header {
+    padding: 0.875rem 1rem;
+  }
+
+  .cb-messages {
+    padding: 0.875rem 1rem;
+  }
+}
+
+/* ─── SCROLL TO TOP & WHATSAPP ──────────────────────────────── */
+@media (max-width: 480px) {
+
+  #scrollTop {
+    bottom: 1rem;
+    right: 1rem;
+    width: 42px;
+    height: 42px;
+  }
+
+  #whatsapp-btn {
+    bottom: 4.5rem;
+    right: 1rem;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* ─── FIX GLOBAL — évite le débordement horizontal ─────────── */
+@media (max-width: 480px) {
+
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent; /* supprime le flash gris au tap */
+  }
+
+  /* Images pleine largeur propres */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Select natif visible correctement iOS */
+  select {
+    -webkit-appearance: auto;
+    background-image: none;
+  }
+}
