@@ -13,7 +13,7 @@
     "@context": "https://schema.org",
     "@type": "VideoGallery",
     "name": "Vidéos METTEC — Fabrication de Cabines Modulaires",
-    "description": "Galerie vidéo METTEC : timelapses de fabrication, installations sur chantier et visite d'atelier à Monastir.",
+    "description": "Galerie vidéo METTEC : fabrication, installations sur chantier et visite d'atelier à Monastir.",
     "url": "https://mettec.com.tn/videos.html",
     "breadcrumb": {
       "@type": "BreadcrumbList",
@@ -1087,7 +1087,7 @@
     <p class="videos-hero-desc">
       De l'acier brut à la cabine clé en main — chaque vidéo raconte
       une histoire de précision, de savoir-faire et d'innovation.
-      Fabrication, installation, time-lapse, témoignages… tout est là.
+      Fabrication, installation, témoignages… tout est là.
     </p>
     <div class="videos-hero-stats">
       <div class="videos-hero-stat">
@@ -1095,12 +1095,12 @@
         <div class="videos-hero-stat-label"></div>
       </div>
       <div class="videos-hero-stat">
-        <div class="videos-hero-stat-num">500+</div>
-        <div class="videos-hero-stat-label">Projets réalisés</div>
+        <div class="videos-hero-stat-num"></div>
+        <div class="videos-hero-stat-label"></div>
       </div>
       <div class="videos-hero-stat">
-        <div class="videos-hero-stat-num">15+</div>
-        <div class="videos-hero-stat-label">Ans d'expertise</div>
+        <div class="videos-hero-stat-num"></div>
+        <div class="videos-hero-stat-label"></div>
       </div>
     </div>
   </section>
@@ -1462,7 +1462,7 @@
      ============================================ -->
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-
+(function () {
 
   /* ── NAV ── */
   const menuToggle  = document.getElementById('menuToggle');
@@ -1545,7 +1545,6 @@
     fabrication:  '🔩 Fabrication',
     installation: '🏗️ Installation',
     smart:        '💡 Smart Cabin',
-    timelapse:    '⏱️ Time-lapse',
     presentation: '🎬 Présentation',
     chantier:     '🦺 Chantier'
   };
@@ -1651,8 +1650,16 @@
         revObs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-  reveals.forEach(el => revObs.observe(el));
+  }, { threshold: 0, rootMargin: '0px' });
+  reveals.forEach(el => {
+    /* Force immediate reveal for elements already visible in viewport */
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('in');
+    } else {
+      revObs.observe(el);
+    }
+  });
 
   /* ── NEWSLETTER ── */
   window.handleNewsletter = function (e) {
