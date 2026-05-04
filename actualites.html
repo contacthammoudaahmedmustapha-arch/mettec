@@ -691,6 +691,481 @@
       .footer-nl-btn { border-radius: 0 0 .8rem .8rem; text-align: center; }
     }
   </style>
+
+  <!-- ===== SAVE THE DATE STYLES ===== -->
+  <style>
+    /* === STD Wrapper === */
+    .std-wrapper {
+      position: relative;
+      border-radius: 2.5rem;
+      overflow: hidden;
+      margin-bottom: 4rem;
+      background: var(--ink);
+      box-shadow: 0 24px 80px rgba(15,14,10,0.22), 0 0 0 1px rgba(245,218,26,0.12);
+    }
+
+    /* animated grain texture */
+    .std-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* glowing orbs */
+    .std-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .std-orb-1 {
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(245,218,26,0.13) 0%, transparent 70%);
+      top: -140px; right: -80px;
+      animation: orbFloat1 7s ease-in-out infinite;
+    }
+    .std-orb-2 {
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(245,218,26,0.07) 0%, transparent 70%);
+      bottom: -100px; left: -60px;
+      animation: orbFloat2 9s ease-in-out infinite;
+    }
+    @keyframes orbFloat1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,20px)} }
+    @keyframes orbFloat2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(20px,-25px)} }
+
+    /* inner grid */
+    .std-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 500px;
+    }
+
+    /* LEFT: visual/branding panel */
+    .std-visual {
+      padding: 3.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid rgba(245,218,26,0.08);
+    }
+    .std-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--primary);
+      padding: 0.4rem 1rem;
+      border-radius: 3rem;
+      width: fit-content;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .std-badge::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.35);
+      transform: skewX(-20deg);
+      animation: badgeShine 3s ease-in-out infinite;
+    }
+    @keyframes badgeShine {
+      0%,70%,100% { left: -60%; opacity: 0; }
+      40% { left: 120%; opacity: 1; }
+    }
+
+    .std-event-label {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 0.75rem;
+    }
+    .std-event-name {
+      font-family: var(--font-main);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .std-event-name em {
+      color: var(--primary);
+      font-style: italic;
+      font-family: var(--font-display);
+    }
+    .std-dates-block {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .std-dates-line {
+      width: 36px;
+      height: 2px;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+    .std-dates-text {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.04em;
+    }
+
+    /* Solutions chips */
+    .std-solutions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+    }
+    .std-sol-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      background: rgba(245,218,26,0.1);
+      border: 1px solid rgba(245,218,26,0.25);
+      border-radius: 3rem;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.04em;
+      transition: all 0.25s ease;
+    }
+    .std-sol-chip:hover {
+      background: rgba(245,218,26,0.18);
+      border-color: rgba(245,218,26,0.5);
+    }
+    .std-sol-chip-dot {
+      width: 6px; height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+
+    /* Download invitation button */
+    .std-invite-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--primary) 0%, #ffe000 100%);
+      color: var(--ink);
+      border: none;
+      border-radius: 3rem;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      width: fit-content;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(245,218,26,0.3);
+    }
+    .std-invite-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #ffe000 0%, var(--primary) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .std-invite-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(245,218,26,0.45);
+    }
+    .std-invite-btn:hover::before { opacity: 1; }
+    .std-invite-btn span { position: relative; z-index: 1; }
+    .std-invite-btn-icon {
+      position: relative;
+      z-index: 1;
+      font-size: 1.1rem;
+      animation: ticketBounce 2s ease-in-out infinite;
+    }
+    @keyframes ticketBounce {
+      0%,100%{transform:rotate(0deg)} 25%{transform:rotate(-8deg)} 75%{transform:rotate(8deg)}
+    }
+
+    /* RIGHT: countdown panel */
+    .std-countdown-panel {
+      padding: 3.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+    }
+    .std-countdown-label {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .std-countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      width: 100%;
+    }
+    .std-count-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(245,218,26,0.12);
+      border-radius: 1.25rem;
+      padding: 1.25rem 0.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      transition: border-color 0.3s;
+    }
+    .std-count-box:hover { border-color: rgba(245,218,26,0.3); }
+    .std-count-num {
+      font-family: var(--font-main);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      min-width: 2ch;
+      display: block;
+    }
+    .std-count-unit {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* "METTEC sera présent" line */
+    .std-presence-line {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(245,218,26,0.07);
+      border: 1px solid rgba(245,218,26,0.15);
+      border-radius: 1rem;
+      padding: 1rem 1.5rem;
+      width: 100%;
+    }
+    .std-presence-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .std-presence-text {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+      text-align: left;
+    }
+    .std-presence-text strong {
+      color: var(--primary);
+      display: block;
+      font-size: 0.82rem;
+      margin-bottom: 0.15rem;
+    }
+
+    /* Decorative "SALON 2026" ticker on top edge */
+    .std-ticker {
+      background: var(--primary);
+      padding: 0.5rem 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .std-ticker-inner {
+      display: flex;
+      gap: 3rem;
+      animation: tickerScroll 18s linear infinite;
+      white-space: nowrap;
+      width: max-content;
+    }
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .std-ticker-item {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    /* === INVITATION MODAL === */
+    .invite-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,9,6,0.92);
+      backdrop-filter: blur(10px);
+      z-index: 99990;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .invite-modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .invite-modal {
+      background: var(--ink);
+      border: 1px solid rgba(245,218,26,0.15);
+      border-radius: 2rem;
+      max-width: 900px;
+      width: 100%;
+      padding: 2.5rem;
+      position: relative;
+      transform: scale(0.94) translateY(20px);
+      transition: transform 0.35s ease;
+    }
+    .invite-modal-overlay.open .invite-modal {
+      transform: scale(1) translateY(0);
+    }
+    .invite-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+    .invite-modal-title {
+      font-family: var(--font-main);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .invite-modal-title span {
+      color: var(--primary);
+    }
+    .invite-modal-close {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .invite-modal-close:hover {
+      background: rgba(245,218,26,0.15);
+      border-color: rgba(245,218,26,0.3);
+      color: var(--primary);
+    }
+    .invite-modal-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .invite-img-card {
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 1px solid rgba(245,218,26,0.1);
+      background: rgba(255,255,255,0.03);
+      transition: transform 0.25s ease;
+    }
+    .invite-img-card:hover { transform: scale(1.02); }
+    .invite-img-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+    .invite-img-label {
+      padding: 0.75rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+    }
+    .invite-modal-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.6rem;
+      border-radius: 3rem;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    .btn-dl-primary {
+      background: var(--primary);
+      color: var(--ink);
+      border: 2px solid var(--primary);
+    }
+    .btn-dl-primary:hover {
+      background: #ffe000;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(245,218,26,0.35);
+    }
+    .btn-dl-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.15);
+    }
+    .btn-dl-outline:hover {
+      border-color: rgba(245,218,26,0.4);
+      color: var(--primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .std-inner { grid-template-columns: 1fr; }
+      .std-visual { border-right: none; border-bottom: 1px solid rgba(245,218,26,0.08); }
+      .std-countdown-panel { padding: 2.5rem 2rem; }
+      .invite-modal-images { grid-template-columns: 1fr; }
+      .invite-img-card img { height: 220px; }
+    }
+    @media (max-width: 600px) {
+      .std-visual { padding: 2rem 1.5rem; }
+      .std-countdown-grid { grid-template-columns: repeat(2,1fr); }
+      .invite-modal { padding: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -709,6 +1184,8 @@
     <div class="progress-bar"></div>
   </div>
 </div>
+<script src="loader-once.js"></script>
+
 <style>
 #pageLoader {
   position: fixed;
@@ -777,43 +1254,6 @@
   transition: width 0.3s ease;
 }
 </style>
-<script>
-(function() {
-  var loader = document.getElementById('pageLoader');
-  var bar    = loader ? loader.querySelector('.progress-bar') : null;
-  var start  = Date.now();
-  var minDuration = 1200;
-  if (bar) {
-    var progress = 0;
-    var interval = setInterval(function() {
-      progress = Math.min(progress + Math.random() * 18, 90);
-      bar.style.width = progress + '%';
-      if (progress >= 90) clearInterval(interval);
-    }, 120);
-  }
-  function hideLoader() {
-    var elapsed = Date.now() - start;
-    var delay   = Math.max(0, minDuration - elapsed);
-    setTimeout(function() {
-      if (bar) bar.style.width = '100%';
-      setTimeout(function() {
-        if (loader) {
-          loader.classList.add('hide');
-          loader.addEventListener('transitionend', function() {
-            loader.style.display = 'none';
-          }, { once: true });
-        }
-      }, 200);
-    }, delay);
-  }
-  if (document.readyState === 'complete') {
-    hideLoader();
-  } else {
-    window.addEventListener('load', hideLoader);
-    setTimeout(hideLoader, 5000);
-  }
-})();
-</script>
 
 <!-- ============================================
      NAVIGATION (identique index.html)
@@ -878,7 +1318,7 @@
 <nav class="breadcrumb">
   <div class="breadcrumb-inner">
     <a href="index.html">Accueil</a>
-    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-sep"></span>
     <span class="breadcrumb-current">Actualités</span>
   </div>
 </nav>
@@ -889,15 +1329,15 @@
 <div class="marquee-band">
   <div class="marquee-inner">
     <span>Ossature Acier <strong></strong></span>
-    <span>Panneaux Sandwich <strong>PU 100mm</strong></span>
+    <span>Panneaux Sandwich <strong></strong></span>
     <span>Certification <strong>ISO 9001</strong>, <strong>ISO 14001</strong>, <strong>ISO 45001</strong></span>
     <span>Livraison <strong>Clé en main</strong></span>
     <span>Sur Mesure <strong>S+0 · S+1 · S+2</strong></span>
     <span>Événements <strong>2025</strong></span>
     <span>Salon Carthage Expo Bâtiment</span>
     <!-- boucle -->
-    <span>Ossature Acier <strong>S355</strong></span>
-    <span>Panneaux Sandwich <strong>PU 100mm</strong></span>
+    <span>Ossature Acier <strong></strong></span>
+    <span>Panneaux Sandwich <strong></strong></span>
     <span>Certification <strong>ISO 9001</strong>, <strong>ISO 14001</strong>, <strong>ISO 45001</strong></span>
     <span>Livraison <strong>Clé en main</strong></span>
     <span>Conçu pour durée <strong>+20 ans</strong></span>
@@ -912,6 +1352,95 @@
     <div class="news-section-header reveal">
       <div class="news-badge">✦ Dernières nouvelles</div>
       <h2 class="news-section-title">Nos <em>moments forts</em></h2>
+    </div>
+
+    <!-- SAVE THE DATE : Salon Bâtiment & Construction 2026 -->
+    <div class="std-wrapper reveal" id="salon-batiment-2026">
+      <!-- Ticker band -->
+      <div class="std-ticker">
+        <div class="std-ticker-inner">
+          <span class="std-ticker-item">✦ Save The Date</span>
+          <span class="std-ticker-item">19 — 24 Mai 2026</span>
+          <span class="std-ticker-item">✦ Salon Bâtiment &amp; Construction</span>
+          <span class="std-ticker-item">Capsule Modulaire</span>
+          <span class="std-ticker-item">✦ Maisonnette Modulaire</span>
+          <span class="std-ticker-item">METTEC sera présent</span>
+          <span class="std-ticker-item">✦ Save The Date</span>
+          <span class="std-ticker-item">19 — 24 Mai 2026</span>
+          <span class="std-ticker-item">✦ Salon Bâtiment &amp; Construction</span>
+          <span class="std-ticker-item">Capsule Modulaire</span>
+          <span class="std-ticker-item">✦ Maisonnette Modulaire</span>
+          <span class="std-ticker-item">METTEC sera présent</span>
+        </div>
+      </div>
+
+      <!-- Glow orbs -->
+      <div class="std-orb std-orb-1"></div>
+      <div class="std-orb std-orb-2"></div>
+
+      <div class="std-inner">
+        <!-- LEFT: info panel -->
+        <div class="std-visual">
+          <div>
+            <div class="std-badge">
+              <span>⚡</span><span>Save The Date</span>
+            </div>
+            <p class="std-event-label">Prochain événement METTEC</p>
+            <h3 class="std-event-name">Salon <em>Bâtiment</em><br>&amp; Construction</h3>
+            <div class="std-dates-block">
+              <div class="std-dates-line"></div>
+              <span class="std-dates-text">19 — 24 Mai 2026</span>
+            </div>
+            <div class="std-solutions">
+              <div class="std-sol-chip">
+                <div class="std-sol-chip-dot"></div>
+                Capsule Modulaire
+              </div>
+              <div class="std-sol-chip">
+                <div class="std-sol-chip-dot"></div>
+                Maisonnette Modulaire
+              </div>
+              <div class="std-sol-chip" style="border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.45);">
+                🏗️ 2 Innovations Exclusives
+              </div>
+            </div>
+          </div>
+          <button class="std-invite-btn" onclick="openInviteModal()" aria-label="Télécharger l'invitation">
+            <span class="std-invite-btn-icon">🎫</span>
+            <span>Arracher Mon Invitation !</span>
+          </button>
+        </div>
+
+        <!-- RIGHT: countdown -->
+        <div class="std-countdown-panel">
+          <p class="std-countdown-label">✦ Compte à rebours · Le salon débute dans</p>
+          <div class="std-countdown-grid">
+            <div class="std-count-box">
+              <span class="std-count-num" id="std-days">--</span>
+              <span class="std-count-unit">Jours</span>
+            </div>
+            <div class="std-count-box">
+              <span class="std-count-num" id="std-hours">--</span>
+              <span class="std-count-unit">Heures</span>
+            </div>
+            <div class="std-count-box">
+              <span class="std-count-num" id="std-mins">--</span>
+              <span class="std-count-unit">Minutes</span>
+            </div>
+            <div class="std-count-box">
+              <span class="std-count-num" id="std-secs">--</span>
+              <span class="std-count-unit">Secondes</span>
+            </div>
+          </div>
+          <div class="std-presence-line">
+            <div class="std-presence-icon">🏗️</div>
+            <div class="std-presence-text">
+              <strong>METTEC au rendez-vous !</strong>
+              Retrouvez-nous sur notre stand avec deux solutions innovantes en avant-première : la <em style="color:var(--primary);font-style:normal;font-weight:700;">Capsule Modulaire</em> &amp; la <em style="color:var(--primary);font-style:normal;font-weight:700;">Maisonnette Modulaire</em>.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ARTICLE 1 : Cérémonie fin d'année -->
@@ -995,7 +1524,7 @@
       <div class="article-body">
         <div>
           <div class="article-meta">
-            <time class="article-date" datetime="2024-11-14">14 Novembre 2024</time>
+            <time class="article-date" datetime="2022-05-19">19 Mai 2022</time>
             <span class="article-tag tag-salon">🏗️ Salon Pro</span>
           </div>
           <h2 class="article-title">METTEC au <em>Salon International<br>Carthage Expo Bâtiment</em></h2>
@@ -1060,7 +1589,7 @@
       <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </a>
-      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="TikTok">
+      <a href="https://www.tiktok.com/@mettec_gbm" class="footer-social" aria-label="TikTok">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12v-1a5 5 0 0 1 10 0v4"/><path d="M15 11v6a3 3 0 0 1-6 0v-4"/><path d="M9 16a3 3 0 0 0 6 0"/><path d="M12 5v5"/><circle cx="12" cy="5" r="1"/></svg>
       </a>
     </div>
@@ -1092,15 +1621,20 @@
       <li><a href="tel:+21636405822">+216 36 40 58 22</a></li>
       <li><a href="tel:+21629225405">+216 29 22 54 05</a></li>
       <li><a href="mailto:contact@mettec.com.tn">contact@mettec.com.tn</a></li>
-      <li><a href="#">Monastir, Tunisie</a></li>
       <li><a href="index.html#contact">Parlons de votre Idée</a></li>
     </ul>
   </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span>
-    <span class="footer-copy">Designed by <strong>AMH</strong></span>
-    <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div>
-  </div>
+<div class="footer-bottom">
+  <span class="footer-copy">© 2026 METTEC</span>
+  <span class="footer-copy">Designed by 
+    <a href="https://www.linkedin.com/in/hammouda-ahmed-mustapha-a55270195/" 
+       target="_blank" 
+       rel="noopener noreferrer">
+      <strong>AMH</strong>
+    </a>
+  </span>
+  <div class="footer-legal"><a href="#"></a><a href="#"></a></div>
+</div>
 </footer>
 
 <script>
@@ -1459,8 +1993,84 @@ function handleNewsletter(e) {
 </script>
 
 <!-- ============================================
-     SLIDESHOWS, SCROLL REVEAL & NAV SCRIPT
+     INVITATION MODAL
 ============================================ -->
+<div class="invite-modal-overlay" id="inviteModal" role="dialog" aria-modal="true" aria-label="Télécharger l'invitation">
+  <div class="invite-modal">
+    <div class="invite-modal-header">
+      <h3 class="invite-modal-title">Votre <span>Invitation Exclusive</span> 🎫</h3>
+      <button class="invite-modal-close" onclick="closeInviteModal()" aria-label="Fermer">✕</button>
+    </div>
+    <div class="invite-modal-images">
+      <div class="invite-img-card">
+        <img src="images/invitation_front.jpeg" alt="Invitation — Recto" loading="lazy">
+        <div class="invite-img-label">✦ Recto</div>
+      </div>
+      <div class="invite-img-card">
+        <img src="images/invitation_back.jpeg" alt="Invitation — Verso" loading="lazy">
+        <div class="invite-img-label">✦ Verso</div>
+      </div>
+    </div>
+    <div class="invite-modal-actions">
+      <a href="images/invitation_front.jpeg" download="METTEC_Invitation_Recto.jpeg" class="btn-dl btn-dl-primary">
+        ⬇ Télécharger le Recto
+      </a>
+      <a href="images/invitation_back.jpeg" download="METTEC_Invitation_Verso.jpeg" class="btn-dl btn-dl-primary">
+        ⬇ Télécharger le Verso
+      </a>
+      <button onclick="closeInviteModal()" class="btn-dl btn-dl-outline">
+        Fermer
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* === Invitation Modal === */
+function openInviteModal() {
+  document.getElementById('inviteModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeInviteModal() {
+  document.getElementById('inviteModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('inviteModal').addEventListener('click', function(e) {
+  if (e.target === this) closeInviteModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeInviteModal();
+});
+
+/* === Countdown Timer === */
+(function() {
+  var target = new Date('2026-05-19T08:00:00');
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function update() {
+    var now  = new Date();
+    var diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('std-days').textContent  = '00';
+      document.getElementById('std-hours').textContent = '00';
+      document.getElementById('std-mins').textContent  = '00';
+      document.getElementById('std-secs').textContent  = '00';
+      return;
+    }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('std-days').textContent  = pad(d);
+    document.getElementById('std-hours').textContent = pad(h);
+    document.getElementById('std-mins').textContent  = pad(m);
+    document.getElementById('std-secs').textContent  = pad(s);
+  }
+  update();
+  setInterval(update, 1000);
+})();
+</script>
+
+
 <script>
 (function() {
   /* ── Slideshows ── */

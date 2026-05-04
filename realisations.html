@@ -74,8 +74,8 @@ html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{background:var(--ink);color:var(--cream);font-family:'Space Mono',monospace;overflow-x:hidden;cursor:none}
 
 /* LOADER */
-#loader{position:fixed;inset:0;z-index:99999;background:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .6s ease,transform .5s ease}
-#loader.hide{opacity:0;pointer-events:none;transform:scale(1.04)}
+#pageLoader{position:fixed;inset:0;z-index:99999;background:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .6s ease,transform .5s ease}
+#pageLoader.hide{opacity:0;pointer-events:none;transform:scale(1.04)}
 .loader-mascot{width:clamp(200px,18vw,260px);height:auto;animation:mascotBounce 1.4s ease infinite;filter:drop-shadow(0 8px 24px rgba(15,14,10,.12))}
 @keyframes mascotBounce{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
 .loader-dots{display:flex;gap:8px;align-items:center}
@@ -96,7 +96,17 @@ body:has(a:hover,button:hover) #curR{width:44px;height:44px;background:var(--gol
 /* GRAIN */
 #grain{position:fixed;inset:0;z-index:8000;pointer-events:none;opacity:.18;mix-blend-mode:multiply}
 
-/* PROGRESS */
+/* NAV z-index — must sit above grain canvas (z:8000) */
+.navbar{position:sticky;top:0;z-index:8500}
+.menu-toggle{position:relative;z-index:8600;cursor:pointer}
+.nav-links{z-index:8500}
+.nav-overlay{z-index:8400}
+
+/* BURGER / CLOSE toggle — hide ☰ when menu is open */
+.nav-links.active ~ * .menu-toggle,
+.navbar:has(.nav-links.active) .menu-toggle{display:none}
+/* Fallback via class on navbar */
+.navbar.menu-open .menu-toggle{display:none}
 #tpb{position:fixed;top:0;left:0;right:0;height:3px;z-index:1001;pointer-events:none;background:transparent}
 #tpbF{height:100%;background:var(--gold);width:0%;transition:width .4s cubic-bezier(.4,0,.2,1)}
 
@@ -317,11 +327,12 @@ footer{background:var(--cream);border-top:1px solid rgba(245,218,26,.1);padding:
 <body>
 
 <!-- LOADER -->
-<div id="loader">
+<div id="pageLoader">
   <img src="images/mascotte-mettec.png" alt="METTEC" class="loader-mascot" onerror="this.style.opacity='0'">
   <div class="loader-dots"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div>
   <div class="loader-tagline">500+ Projets · Construit pour l'Éternité</div>
 </div>
+<script src="loader-once.js"></script>
 
 <!-- CURSOR -->
 <div id="cur"></div><div id="curR"></div>
@@ -376,6 +387,7 @@ footer{background:var(--cream);border-top:1px solid rgba(245,218,26,.1);padding:
       <li><a href="faq.html" class="nav-link">FAQ</a></li>
       <li><a href="vision.html" class="nav-link">Vision</a></li>
       <li><a href="videos.html" class="nav-link">Videos</a></li>
+      <li><a href="actualites.html" class="nav-link">Actualités</a></li>
       <li><a href="index.html#contact" class="nav-link nav-cta">Parlons de Votre Idée →</a></li>
     </ul>
   </div>
@@ -450,7 +462,7 @@ footer{background:var(--cream);border-top:1px solid rgba(245,218,26,.1);padding:
       <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </a>
-      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="TikTok">
+      <a href="https://www.tiktok.com/@mettec_gbm" class="footer-social" aria-label="TikTok">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12v-1a5 5 0 0 1 10 0v4"/><path d="M15 11v6a3 3 0 0 1-6 0v-4"/><path d="M9 16a3 3 0 0 0 6 0"/><path d="M12 5v5"/><circle cx="12" cy="5" r="1"/></svg>
       </a>
     </div>
@@ -464,9 +476,19 @@ footer{background:var(--cream);border-top:1px solid rgba(245,218,26,.1);padding:
 <li>
   <a href="mailto:amani.megdiche@gbm.tn">amani.megdiche@gbm.tn</a>
 </li>
-<li><a href="#">Monastir, Tunisie</a></li><li><a href="#contact">Parlons de votre Idée</a></li></ul></div>
+<li><a href="#contact">Parlons de votre Idée</a></li></ul></div>
  
-  <div class="footer-bottom"><span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span><span class="footer-copy">Designed by <strong>AMH</strong></span><div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
+<div class="footer-bottom">
+  <span class="footer-copy">© 2026 METTEC</span>
+  <span class="footer-copy">Designed by 
+    <a href="https://www.linkedin.com/in/hammouda-ahmed-mustapha-a55270195/" 
+       target="_blank" 
+       rel="noopener noreferrer">
+      <strong>AMH</strong>
+    </a>
+  </span>
+  <div class="footer-legal"><a href="#"></a><a href="#"></a></div>
+</div>
 </footer>
 <style>
 /* ── Footer Newsletter ── */
@@ -874,6 +896,34 @@ document.querySelectorAll('.nav-dropdown-toggle').forEach(t => {
   t.addEventListener('click', () => { t.closest('.nav-dropdown').classList.toggle('open'); });
 });
 
+/* ── BURGER SAFETY INIT (runs immediately, before script1.js) ── */
+(function(){
+  var toggle  = document.getElementById('menuToggle');
+  var close   = document.getElementById('menuClose');
+  var links   = document.getElementById('navLinks');
+  var overlay = document.getElementById('navOverlay');
+  if(!toggle||!links) return;
+  function openMenu(){
+    links.classList.add('active');
+    if(overlay) overlay.classList.add('active');
+    document.body.style.overflow='hidden';
+    toggle.style.display='none';
+  }
+  function closeMenu(){
+    links.classList.remove('active');
+    if(overlay) overlay.classList.remove('active');
+    document.body.style.overflow='';
+    toggle.style.display='';
+  }
+  toggle.addEventListener('click', openMenu);
+  if(close)   close.addEventListener('click', closeMenu);
+  if(overlay) overlay.addEventListener('click', closeMenu);
+  /* Close on nav link click (SPA-style navigation) */
+  links.querySelectorAll('a.nav-link').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+})();
+
 /* GRAIN */
 const cv=document.getElementById('grain'),gx=cv?cv.getContext('2d'):null;
 if(cv&&gx){ function rsz(){cv.width=innerWidth;cv.height=innerHeight}rsz();window.addEventListener('resize',rsz,{passive:true});(function g(){const w=cv.width,h=cv.height,id=gx.createImageData(w,h),d=id.data;for(let i=0;i<d.length;i+=4){const v=(Math.random()-.5)*255*.08;d[i]=d[i+1]=d[i+2]=128+v;d[i+3]=Math.abs(v)*1.2}gx.putImageData(id,0,0);requestAnimationFrame(g)})(); }
@@ -882,8 +932,6 @@ if(cv&&gx){ function rsz(){cv.width=innerWidth;cv.height=innerHeight}rsz();windo
 const dotEl=document.getElementById('cur'),ringEl=document.getElementById('curR');
 if(dotEl&&ringEl){ let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});(function cl(){dotEl.style.left=mx+'px';dotEl.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ringEl.style.left=rx+'px';ringEl.style.top=ry+'px';requestAnimationFrame(cl)})(); }
 
-/* LOADER */
-window.addEventListener('load',()=>setTimeout(()=>{ const l=document.getElementById('loader'); if(l){l.classList.add('hide');setTimeout(()=>l.remove(),700)} },1800));
 
 /* CHATBOT */
 (function(){
@@ -916,9 +964,35 @@ window.addEventListener('load',()=>setTimeout(()=>{ const l=document.getElementB
 })();
 </script>
 
+<!-- initLoader no-op: loader is handled by loader-once.js above -->
+<!-- initNavigation no-op: burger is handled by inline script above -->
+<script>
+  function initLoader(){}
+  function initNavigation(){
+    /* Scroll shadow only — burger already wired above */
+    var navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', function(){
+      if(window.pageYOffset > 60){ navbar && navbar.classList.add('scrolled'); }
+      else { navbar && navbar.classList.remove('scrolled'); }
+    }, {passive:true});
+    /* Dropdowns */
+    document.querySelectorAll('.nav-dropdown').forEach(function(dd){
+      var t = dd.querySelector('.nav-dropdown-toggle');
+      if(!t) return;
+      t.addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation();
+        document.querySelectorAll('.nav-dropdown').forEach(function(d){ if(d!==dd) d.classList.remove('active'); });
+        dd.classList.toggle('active');
+      });
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.nav-dropdown'))
+        document.querySelectorAll('.nav-dropdown').forEach(function(d){ d.classList.remove('active'); });
+    });
+  }
+</script>
 <script src="script1.js"></script>
 <style>
-  <style>
 /* ═══════════════════════════════════════
    CSS VARS — identiques à processus.html / style1.css
 ═══════════════════════════════════════ */
@@ -1211,7 +1285,6 @@ footer{background:var(--gray-100);border-top:3px solid var(--primary);padding:cl
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-thumb{background:rgba(245,218,26,.25);border-radius:2px}
-</style>
 </style>
 </body>
 </html>

@@ -18,58 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // LOADER
 // ============================================
 
-function initLoader() {
-    const loader = document.getElementById('pageLoader');
-    const progressBar = document.querySelector('.progress-bar');
 
-    if (!loader) return;
-    const minLoadTime = 4000;
-    const startTime = Date.now();
-
-    const hideLoader = () => {
-        const elapsed = Date.now() - startTime;
-        const remaining = Math.max(0, minLoadTime - elapsed);
-
-        setTimeout(() => {
-            loader.style.opacity = '0';
-            loader.style.transition = 'opacity 0.5s ease';
-
-            setTimeout(() => {
-                loader.style.display = 'none';
-                loader.remove();
-                triggerStatsAnimation();
-            }, 500);
-        }, remaining);
-    };
-
-    const onLoad = () => {
-        let visualProgress = 0;
-        const interval = setInterval(() => {
-            visualProgress += Math.random() * 15;
-            if (visualProgress > 90) visualProgress = 90;
-            if (progressBar) progressBar.style.width = visualProgress + '%';
-        }, 200);
-
-        setTimeout(() => {
-        clearInterval(interval);
-        if (progressBar) progressBar.style.width = '100%';
-        hideLoader();
-    }, minLoadTime - 100);
-    };
-
-    if (document.readyState === 'complete') {
-        onLoad();
-    } else {
-        window.addEventListener('load', onLoad);
-    }
-
-    setTimeout(() => {
-        if (loader && loader.style.display !== 'none') {
-            if (progressBar) progressBar.style.width = '100%';
-            hideLoader();
-        }
-    }, 4500);
-}
 
 function triggerStatsAnimation() {
     const stats = document.querySelectorAll('.stat-number[data-count]');

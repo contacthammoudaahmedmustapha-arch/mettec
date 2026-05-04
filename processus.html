@@ -526,6 +526,7 @@
   <div class="loader-tagline">Construit pour l'Éternité</div>
   <div class="loader-progress"><div class="progress-bar" id="loaderBar"></div></div>
 </div>
+<script src="loader-once.js"></script>
 
 <!-- ══════════════ NAV ══════════════ -->
 <div id="navOverlay" class="nav-overlay"></div>
@@ -567,7 +568,8 @@
       <li><a href="activite.html" class="nav-link">Activités</a></li>
       <li><a href="faq.html" class="nav-link">FAQ</a></li>
       <li><a href="vision.html" class="nav-link">Vision</a></li>
-      <li><a href="videos.html">Videos</a></li>
+      <li><a href="videos.html" class="nav-link">Videos</a></li>
+      <li><a href="actualites.html" class="nav-link">Actualités</a></li>
       <li><a href="index.html#contact" class="nav-link nav-cta"> Parlons de Votre Idée →</a></li>
     </ul>
   </div>
@@ -682,8 +684,8 @@
             <div class="proc-card-num">04</div>
             <div class="proc-card-icon">⚙️</div>
           </div>
-          <div class="proc-card-title">Découpe acier S355</div>
-          <div class="proc-card-text">Découpe plasma/laser, précision &lt; 0.1mm, contrôle dimensionnel.</div>
+          <div class="proc-card-title">Découpe acier</div>
+          <div class="proc-card-text">Découpe laser, précision &lt; 0.1mm, contrôle dimensionnel.</div>
           <button class="proc-card-btn" onclick="openModal(3)">
             En savoir plus
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -846,7 +848,7 @@
       <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </a>
-      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="TikTok">
+      <a href="https://www.tiktok.com/@mettec_gbm" class="footer-social" aria-label="TikTok">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12v-1a5 5 0 0 1 10 0v4"/><path d="M15 11v6a3 3 0 0 1-6 0v-4"/><path d="M9 16a3 3 0 0 0 6 0"/><path d="M12 5v5"/><circle cx="12" cy="5" r="1"/></svg>
       </a>
     </div>
@@ -860,9 +862,19 @@
 <li>
   <a href="mailto:amani.megdiche@gbm.tn">amani.megdiche@gbm.tn</a>
 </li>
-<li><a href="#">Monastir, Tunisie</a></li><li><a href="index.html#contact">Parlons de votre Idée</a></li></ul></div>
+<li><a href="index.html#contact">Parlons de votre Idée</a></li></ul></div>
  
-  <div class="footer-bottom"><span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span><span class="footer-copy">Designed by <strong>AMH</strong></span><div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
+<div class="footer-bottom">
+  <span class="footer-copy">© 2026 METTEC</span>
+  <span class="footer-copy">Designed by 
+    <a href="https://www.linkedin.com/in/hammouda-ahmed-mustapha-a55270195/" 
+       target="_blank" 
+       rel="noopener noreferrer">
+      <strong>AMH</strong>
+    </a>
+  </span>
+  <div class="footer-legal"><a href="#"></a><a href="#"></a></div>
+</div>
 </footer>
 <style>
 /* ── Footer Newsletter ── */
@@ -1063,25 +1075,6 @@
 
 <script src="script1.js"></script>
 <script>
-/* ═══════════════════════════════════════
-   LOADER
-═══════════════════════════════════════ */
-(function(){
-  const bar = document.getElementById('loaderBar');
-  let w = 0;
-  const iv = setInterval(() => {
-    w = Math.min(w + Math.random() * 18, 92);
-    if(bar) bar.style.width = w + '%';
-  }, 120);
-  window.addEventListener('load', () => {
-    clearInterval(iv);
-    if(bar) bar.style.width = '100%';
-    setTimeout(() => {
-      const l = document.getElementById('pageLoader');
-      if(l) l.classList.add('hide');
-    }, 350);
-  });
-})();
 
 /* ═══════════════════════════════════════
    REVEAL ON SCROLL
@@ -1135,7 +1128,7 @@ const steps = [
   {
     num: '04', icon: '⚙️',
     label: 'Phase 4 — Fabrication',
-    title: 'Découpe acier S355',
+    title: 'Découpe acier',
     desc: 'L\'acier haute résistance est découpé dans notre atelier par découpe laser avec une précision inférieure à 0.1mm. Chaque pièce est identifiée, tracée et contrôlée dimensionnellement avant assemblage. Nos machines CNC garantissent une répétabilité parfaite sur toute la série. Le contrôle dimensionnel est 100% — aucune pièce non conforme ne passe à l\'étape suivante.',
     tags: ['Acier','Découpe laser','Précision < 0.1mm','CNC','Traçabilité'],
     img: 'images/step4.webp'
@@ -1161,7 +1154,7 @@ const steps = [
     label: 'Phase 7 — Enveloppe',
     title: 'Panneaux sandwich PU',
     desc: 'L\'isolation thermique et phonique est assurée par des panneaux sandwich polyuréthane d\'épaisseur selon les besoins, offrant une résistance thermique. Les panneaux sont assemblés avec des joints à rupture de pont thermique. L\'étanchéité à l\'air est testée par dépressurisation. Résultat : une cabine confortable en toutes saisons, des économies d\'énergie significatives.',
-    tags: ['PU 100mm','R > 5 m².K/W','Pont thermique 0','Étanchéité à l\'air','Test dépressurisation'],
+    tags: ['R > 5 m².K/W','Pont thermique 0','Étanchéité à l\'air','Test dépressurisation'],
     img: 'images/step7.webp'
   },
   {
@@ -1263,7 +1256,7 @@ document.addEventListener('keydown', (e) => {
     {icon:'🏗️',q:'Qu\'est-ce que METTEC sait faire en préfabrication ?',a:'<strong>Préfabrication métallique</strong> — notre cœur de métier. Cabines modulaires, capsules Smart connectées, maisonettes clé-en-main, kiosques, vestiaires industriels… Tout fabriqué dans notre atelier de Monastir avec une précision au millimètre. Délai : <strong>3 à 6 semaines</strong>.'},
     {icon:'⏱️',q:'Quel est votre délai de livraison typique ?',a:'<strong>Cabine standard</strong> → 3 semaines · <strong>Construction</strong> → 2 à 6 mois · <strong>Mobilier</strong> → 4 à 8 semaines. Planning détaillé fourni dès la signature. Chez METTEC, <strong>on respecte les délais.</strong>'},
     {icon:'💡',q:'Comment démarrer un projet avec vous ?',a:'<strong>3 étapes :</strong> ① Contactez-nous (réponse &lt; 24h) · ② Appel avec un consultant · ③ <strong>Proposition sous 48h.'},
-    {icon:'🔩',q:'Quels matériaux utilisez-vous ?',a:'<strong>Acier S355 galvanisé</strong>, <strong>bois massif</strong> (chêne, noyer), <strong>marbre & granit</strong>, <strong>cuir pleine fleur</strong>. Quincaillerie premium européenne — fabriqué pour <strong>durer 20 ans minimum.</strong>'},
+    {icon:'🔩',q:'Quels matériaux utilisez-vous ?',a:'<strong>Acier galvanisé</strong>, <strong>bois massif</strong> (chêne, noyer), <strong>marbre & granit</strong>, <strong>cuir pleine fleur</strong>. Quincaillerie premium européenne — fabriqué pour <strong>durer 20 ans minimum.</strong>'},
     {icon:'📍',q:'Où êtes-vous et livrez-vous partout ?',a:'Atelier : <strong>Zone Industrielle, Manzel Harb, Monastir</strong>. Livraison & installation partout en Tunisie et à l\'international. Appelez le <strong>+216 36 40 58 22</strong> !'}
   ];
   function renderWelcome(){

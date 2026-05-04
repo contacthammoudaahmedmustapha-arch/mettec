@@ -949,6 +949,8 @@
     <div class="progress-bar"></div>
   </div>
 </div>
+<script src="loader-once.js"></script>
+
 <style>
 #pageLoader {
   position: fixed;
@@ -1064,6 +1066,8 @@
       <li><a href="faq.html"         class="nav-link">FAQ</a></li>
       <li><a href="vision.html"      class="nav-link">Vision</a></li>
       <li><a href="videos.html"      class="nav-link active">Vidéos</a></li>
+            <li><a href="actualites.html" class="nav-link">Actualités</a></li>
+
       <li><a href="index.html#contact" class="nav-link nav-cta">Parlons de votre Idée →</a></li>
     </ul>
   </div>
@@ -1340,7 +1344,7 @@
       <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </a>
-      <a href="https://www.instagram.com/mettec_gbm/" class="footer-social" aria-label="TikTok">
+      <a href="https://www.tiktok.com/@mettec_gbm" class="footer-social" aria-label="TikTok">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12v-1a5 5 0 0 1 10 0v4"/><path d="M15 11v6a3 3 0 0 1-6 0v-4"/><path d="M9 16a3 3 0 0 0 6 0"/><path d="M12 5v5"/><circle cx="12" cy="5" r="1"/></svg>
       </a>
     </div>
@@ -1376,11 +1380,17 @@
       <li><a href="index.html#contact">Parlons de votre Idée</a></li>
     </ul>
   </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span>
-    <span class="footer-copy">Designed by <strong>AMH</strong></span>
-    <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div>
-  </div>
+ <div class="footer-bottom">
+  <span class="footer-copy">© 2026 METTEC</span>
+  <span class="footer-copy">Designed by 
+    <a href="https://www.linkedin.com/in/hammouda-ahmed-mustapha-a55270195/" 
+       target="_blank" 
+       rel="noopener noreferrer">
+      <strong>AMH</strong>
+    </a>
+  </span>
+  <div class="footer-legal"><a href="#"></a><a href="#"></a></div>
+</div>
 </footer>
 
 <!-- Newsletter styles -->
@@ -1450,27 +1460,9 @@
 <!-- ============================================
      SCRIPTS
      ============================================ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-(function () {
-  /* ── LOADER ── */
-  (function () {
-    const loader = document.getElementById('pageLoader');
-    const bar = document.querySelector('.progress-bar');
-    let w = 0;
-    const iv = setInterval(() => {
-      w = Math.min(w + Math.random() * 18 + 4, 92);
-      if (bar) bar.style.width = w + '%';
-    }, 140);
-    window.addEventListener('load', () => {
-      clearInterval(iv);
-      if (bar) bar.style.width = '100%';
-      setTimeout(() => {
-        loader.style.opacity = '0';
-        loader.style.transition = 'opacity .5s ease';
-        setTimeout(() => { loader.style.display = 'none'; }, 500);
-      }, 350);
-    });
-  })();
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+
 
   /* ── NAV ── */
   const menuToggle  = document.getElementById('menuToggle');

@@ -139,6 +139,8 @@
     <div class="progress-bar"></div>
   </div>
 </div>
+<script src="loader-once.js"></script>
+
 <style>
     /* Nouveau loader type "mascotte" */
 #pageLoader {
@@ -214,7 +216,7 @@
 <div id="navOverlay" class="nav-overlay"></div>
 <nav class="navbar">
   <div class="nav-container">
-    <a href="#" class="nav-logo">
+    <a href="index.html" class="nav-logo">
       <img src="images/logo-mettec.png" alt="METTEC" class="nav-logo-img">
       <style>
         .nav-logo-img {
@@ -262,7 +264,8 @@
       <li><a href="activite.html" class="nav-link">Activités</a></li>
       <li><a href="faq.html" class="nav-link">FAQ</a></li>
       <li><a href="vision.html" class="nav-link">Vision</a></li>
-      <li><a href="videos.html">Videos</a></li>
+      <li><a href="videos.html" class="nav-link">Videos</a></li>
+      <li><a href="actualites.html" class="nav-link">Actualités</a></li>
       <li><a href="index.html#contact" class="nav-link nav-cta"> Parlons de Votre Idée →</a></li>
     </ul>
   </div>
@@ -288,7 +291,7 @@
         <div class="gamme-card"><div class="gamme-card-accent" style="background:var(--primary)"></div>
           <div class="gamme-card-top"><div class="gamme-icon">🏗️</div><div class="gamme-name">Cabine Standard</div><div class="gamme-tag-label">Standard · Clé en main · Livraison incluse</div></div>
           <div class="gamme-card-body">
-            <ul class="gamme-feat"><li>Dimensions 6m × 3m × 2.4m</li><li>Ossature acier galvanisée</li><li>Panneaux sandwich PU 100mm</li><li>1 porte + 1 fenêtre standard</li><li>Peinture & finition au choix</li><li>Livraison + pose incluses</li></ul>
+            <ul class="gamme-feat"><li>Dimensions 6m × 3m × 2.4m</li><li>Ossature acier galvanisée</li><li>Panneaux sandwich</li><li>1 porte + 1 fenêtre standard</li><li>Peinture & finition au choix</li><li>Livraison</li></ul>
             <div class="gamme-price-box"><div class="gamme-price-val">12 900 TND <span>TTC</span></div><div class="gamme-price-note">Livraison incluse · Clé en main</div></div>
             <a href="index.html#contact" class="gamme-cta">Parlons de votre Idée</a>
           </div>
@@ -428,9 +431,19 @@
 <li>
   <a href="mailto:amani.megdiche@gbm.tn">amani.megdiche@gbm.tn</a>
 </li>
-<li><a href="#">Monastir, Tunisie</a></li><li><a href="index.html#contact">Parlons de votre Idée</a></li></ul></div>
+<li><a href="index.html#contact">Parlons de votre Idée</a></li></ul></div>
  
-  <div class="footer-bottom"><span class="footer-copy">© 2026 METTEC — Zone Industrielle, Manzel Harb, Monastir</span><span class="footer-copy">Designed by <strong>AMH</strong></span><div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
+<div class="footer-bottom">
+  <span class="footer-copy">© 2026 METTEC</span>
+  <span class="footer-copy">Designed by 
+    <a href="https://www.linkedin.com/in/hammouda-ahmed-mustapha-a55270195/" 
+       target="_blank" 
+       rel="noopener noreferrer">
+      <strong>AMH</strong>
+    </a>
+  </span>
+  <div class="footer-legal"><a href="#"></a><a href="#"></a></div>
+</div>
 </footer>
 <style>
 /* ── Footer Newsletter ── */
