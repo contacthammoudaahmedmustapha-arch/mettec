@@ -566,9 +566,18 @@
 <script>
 
 
-// Dropdown (nav toggle handled by script1.js)
-document.querySelectorAll('.nav-dropdown-toggle').forEach(t => {
-  t.addEventListener('click', () => { t.closest('.nav-dropdown').classList.toggle('open'); });
+document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+  dropdown.querySelector('.nav-dropdown-toggle')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    document.querySelectorAll('.nav-dropdown').forEach(d => {
+      if (d !== dropdown) d.classList.remove('active');
+    });
+    dropdown.classList.toggle('active');
+  });
+});
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.nav-dropdown.active').forEach(d => d.classList.remove('active'));
 });
 
 // Scroll animations
