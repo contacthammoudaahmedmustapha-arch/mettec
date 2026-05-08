@@ -1,10 +1,4 @@
-// ============================================
-// METTEC — GLOBAL SCRIPTS
-// Structure COGEPAM · Contenu METTEC
-// ============================================
-
 document.addEventListener('DOMContentLoaded', function () {
-    initLoader();
     initNavigation();
     initScrollTop();
     initStatsCounter();
