@@ -1277,6 +1277,19 @@ document.addEventListener('keydown', (e) => {
   closeB.addEventListener('click',()=>{opened=false;win.classList.remove('open');btn.classList.remove('active');});
   document.addEventListener('click',(e)=>{if(opened&&!win.contains(e.target)&&e.target!==btn&&!btn.contains(e.target)){opened=false;win.classList.remove('open');btn.classList.remove('active');}});
 })();
+  document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+  dropdown.querySelector('.nav-dropdown-toggle')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    document.querySelectorAll('.nav-dropdown').forEach(d => {
+      if (d !== dropdown) d.classList.remove('active');
+    });
+    dropdown.classList.toggle('active');
+  });
+});
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.nav-dropdown.active').forEach(d => d.classList.remove('active'));
+});
 </script>
 </body>
 </html>
