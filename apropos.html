@@ -566,19 +566,7 @@
 <script>
 
 
-document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
-  dropdown.querySelector('.nav-dropdown-toggle')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    document.querySelectorAll('.nav-dropdown').forEach(d => {
-      if (d !== dropdown) d.classList.remove('active');
-    });
-    dropdown.classList.toggle('active');
-  });
-});
 
-document.addEventListener('click', () => {
-  document.querySelectorAll('.nav-dropdown.active').forEach(d => d.classList.remove('active'));
-});
 
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
